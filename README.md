@@ -5,7 +5,7 @@
 
 ## 🌟 About Me
 
-I transitioned into software development out of a deep passion for creating meaningful, functional, and beautiful digital experiences. My background in [укажи, если есть релевантный опыт — например, дизайн, математика, лингвистика, аналитика и т.д.] помогает мне быстро находить решения и выстраивать системное мышление в разработке.
+I transitioned into software development out of a deep passion for creating meaningful, functional, and beautiful digital experiences.
 
 My focus is on frontend development — I enjoy turning complex logic into clean, maintainable interfaces. I'm constantly exploring modern UI engineering practices and care deeply about performance, accessibility, and scalability. My career goal is to grow into a product-oriented developer who contributes not just code, but thoughtful solutions and ideas to real-world challenges.
 
