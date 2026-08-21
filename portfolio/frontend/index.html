@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Anastasia — colorful interactive portfolio."><link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./colorful.css"><title>Anastasia — Colorful Portfolio</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Anastasia — Frontend Developer. React, TypeScript, UX/UI and product interfaces."><link rel="icon" href="../favicon.svg"><link rel="stylesheet" href="./frontend.css"><title>Anastasia — Frontend edition</title>
 </head>
 <body>
 <div class="grain"></div><div class="cursor" id="cursor"></div><div class="progress"><span id="progress"></span></div>
 <div class="floaters" aria-hidden="true"><b>✦</b><b>🍓</b><b>404<br><small>NOT FOUND</small></b><b>主人公</b></div>
-<header><a class="logo" href="#top">✿ <span>Anastasia<small>visual developer</small></span></a><nav><a href="#about">Обо мне</a><a href="#projects">Проекты</a><a href="#skills">Навыки</a><a href="#contact">Контакты</a></nav><div class="tools"><button data-lang="ru" class="active">RU</button><button data-lang="en">EN</button><button id="theme">☼</button><a href="../">Full-stack ↗</a></div></header>
+<header><a class="logo" href="#top">✿ <span>Anastasia<small>frontend / visual developer</small></span></a><nav aria-label="Primary navigation"><a href="#about">Обо мне</a><a href="#projects">Проекты</a><a href="#skills">Навыки</a><a href="#contact">Контакты</a></nav><div class="tools"><button data-lang="ru" class="active">RU</button><button data-lang="en">EN</button><button id="theme" aria-label="Theme">☼</button><a href="../">Full-stack ↗</a></div></header>
 <main id="top">
 <section class="hero" id="about"><div class="hero-copy"><small class="eyebrow" data-i="eyebrow">FRONTEND · PRODUCT · VISUALS</small><h1 data-i="title">Digital products<br><em>with a pulse.</em></h1><p data-i="intro">Создаю интерфейсы, которые хочется рассматривать и которыми приятно пользоваться. Люблю React, TypeScript, продуктовую логику и немного сладкого хаоса.</p><div class="actions"><a class="primary" href="#projects" data-i="cta">Смотреть проекты ↗</a><a class="secondary" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub</a></div><div class="chips"><span>React</span><span>TypeScript</span><span>Next.js</span><span>UX / UI</span><span>AI</span></div></div><div class="hero-art"><div class="sun"></div><div class="orbit"></div><div class="card"><small>SELECTED WORK</small><strong>MAKE<br>IT<br>MEMORABLE</strong></div><div class="photo"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=700&q=82" alt="Developer workspace"><i>FRAME 001</i></div><span class="jp">デザイン<br>コード<br>遊び</span></div></section>
 <div class="marquee"><span>MAKE IT USEFUL ✦ MAKE IT BEAUTIFUL ✦ MAKE IT MEMORABLE ✦ MAKE IT WEIRD ✦ MAKE IT USEFUL ✦</span></div>
@@ -14,7 +14,7 @@
 <section class="section manifesto"><div class="note">✦ VISUAL NOTE</div><h2 data-i="manifesto">Характер — это не шум.<br><em>Это способ запомниться.</em></h2><p data-i="manifestoText">Текстуры, фотографии, маркеры, стикеры, anime mood и pop-culture существуют здесь не ради украшения. Они помогают продукту иметь голос.</p></section>
 <section class="section skills" id="skills"><small>02 / TOOLBOX</small><h2 data-i="skillsTitle">Что у меня в арсенале</h2><div class="skill-grid"><article><b>01</b><h3>Interface</h3><p>React · Next.js · TypeScript · responsive UI · forms · state</p></article><article><b>02</b><h3>Product</h3><p>UX flows · visual systems · SEO · reusable components</p></article><article><b>03</b><h3>Engineering</h3><p>API integration · testing · Git · deployment · full-stack thinking</p></article></div></section>
 <section class="section contact" id="contact"><div><small>03 / FINAL SCENE</small><h2 data-i="contactTitle">Есть идея?<br><em>Давайте сделаем.</em></h2><p data-i="contactText">Открыта к frontend, product и full-stack задачам.</p><a class="primary" href="mailto:nestlir@mail.ru">Написать мне ↗</a></div><div class="end">THANK YOU<br><small>roll credits →</small></div></section>
-</main><footer><span>© 2026 Anastasia</span><span>Colorful portfolio / version A</span><a href="../">View Full-stack portfolio ↗</a></footer>
-<div class="modal" id="modal" aria-hidden="true"><div class="backdrop"></div><article><button id="close">×</button><div id="modalBody"></div></article></div>
-<script src="./colorful.js"></script>
+</main><footer><span>© 2026 Anastasia</span><span>Frontend portfolio / visual edition</span><a href="../">View Full-stack portfolio ↗</a></footer>
+<div class="modal" id="modal" aria-hidden="true"><div class="backdrop"></div><article><button id="close" aria-label="Close">×</button><div id="modalBody"></div></article></div>
+<script src="./frontend.js"></script>
 </body></html>
