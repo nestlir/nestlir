@@ -1,52 +1,27 @@
-# Anastasia — Frontend Portfolio
+# Anastasia — Frontend edition
 
-Вторая версия личного портфолио: более яркая и визуальная, с акцентом на frontend, UX/UI, product thinking и editorial design.
+This is the original expressive frontend portfolio direction, restored as a real second page inside the same GitHub Pages project.
 
-## Concept
+## Visual direction
 
-**Dopamine landing · editorial typography · sweet chaos · cinematic details.**
+Dopamine colors, editorial typography, photography, stickers, anime/pop-culture references, playful motion and cinematic project popups. The page is intentionally more visual and personality-driven than the engineering-first Full-stack edition.
 
-Визуальная система использует много воздуха, candy-palette, фотографии, стикеры, frame-маркеры, doodle-линии, паттерны и pop-culture настроение.
+## Features
 
-## Information architecture
+- separate page, not a section inside Full-stack;
+- direct switch to the Full-stack portfolio from the header and footer;
+- RU / EN language switch;
+- project filters;
+- project popup with image, role, stack, scope and repository;
+- light/dark theme;
+- responsive layout;
+- animated marquee and decorative stickers;
+- keyboard Escape support for popup;
+- reduced-motion fallback.
 
-1. Hero — Frontend positioning.
-2. Selected Work — image-led project cards.
-3. Skill Tree — Frontend / UX / API / Quality.
-4. Contact — прямой CTA и переход в Full-stack edition.
+## Routes
 
-## Project popup
+- Full-stack: `/`
+- Frontend: `/frontend/`
 
-Каждая карточка открывает popup с:
-
-- большой фотографией;
-- frame marker;
-- названием проекта;
-- ролью и зоной ответственности;
-- стеком;
-- кратким engineering summary;
-- системной схемой UI → API → DATA → SHIP;
-- ссылкой на исходный репозиторий.
-
-## Editions
-
-- **Frontend edition:** `/portfolio/frontend/`
-- **Full-stack edition:** `/portfolio/`
-
-Переключение доступно в верхнем меню и в CTA.
-
-## Stack
-
-HTML5 · CSS3 · Vanilla JavaScript · Responsive CSS · GitHub Pages
-
-## Run locally
-
-```bash
-python -m http.server 4173
-```
-
-Откройте `http://localhost:4173/portfolio/frontend/`.
-
-## Visual assets
-
-Файлы относятся к frontend-версии и не изменяют общую архитектуру full-stack портфолио. При финальной production-подготовке фотографии рекомендуется заменить на локальные лицензированные WebP/AVIF assets.
+Both pages are published from the same `portfolio/` directory by GitHub Actions.
