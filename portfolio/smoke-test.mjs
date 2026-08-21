@@ -19,7 +19,7 @@ const fsHtml = read(resolve(portfolio, 'index.html'));
 const feHtml = read(resolve(frontend, 'index.html'));
 const i18n = read(resolve(portfolio, 'i18n.js'));
 const requiredFiles = [
-  'index.html','app.css','responsive.css','app.js','ui-controller.js','shared-ui.js','i18n.js','favicon.svg'
+  'index.html','app.css','responsive.css','app.js','ui-controller.js','shared-ui.js','i18n.js','favicon.svg','favicon.png'
 ].map(name => resolve(portfolio, name)).concat([
   'index.html','styles.css','quality-fixes.css','script.js'
 ].map(name => resolve(frontend, name)));
@@ -33,8 +33,10 @@ for (const id of ['menuToggle','mobileNav','mobileClose','themeToggle','chaosTog
   assert(fsHtml.includes(`id="${id}"`), `Full-stack missing #${id}`);
   assert(feHtml.includes(`id="${id}"`), `Frontend missing #${id}`);
 }
-assert(fsHtml.includes('href="./favicon.svg"'), 'Full-stack favicon link missing');
-assert(feHtml.includes('href="../favicon.svg"'), 'Frontend favicon link missing');
+assert(/href="\.\/favicon\.svg(?:\?[^\"]*)?"/.test(fsHtml), 'Full-stack favicon link missing');
+assert(/href="\.\.\/favicon\.svg(?:\?[^\"]*)?"/.test(feHtml), 'Frontend favicon link missing');
+assert(/href="\.\/favicon\.png(?:\?[^\"]*)?"/.test(fsHtml), 'Full-stack PNG favicon fallback missing');
+assert(/href="\.\.\/favicon\.png(?:\?[^\"]*)?"/.test(feHtml), 'Frontend PNG favicon fallback missing');
 assert(fsHtml.includes('href="./frontend/"'), 'Full-stack → Frontend link missing');
 assert(feHtml.includes('href="../"'), 'Frontend → Full-stack link missing');
 assert(fsHtml.includes('./ui-controller.js'), 'Full-stack UI controller not loaded');
