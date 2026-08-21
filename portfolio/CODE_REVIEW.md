@@ -1,58 +1,87 @@
-# Portfolio Code Review
+# Portfolio Code Review — final refactor
 
 ## Scope
 
-Review of the static portfolio in `portfolio/`: HTML structure, visual system, project cards and modal, RU/EN/JP localization, theme switching, mobile navigation, interaction code and responsive behavior.
+Final review of `portfolio/` after the transition from a frontend-style landing page to a professional **Full-stack Developer portfolio**.
 
-## Findings and actions
+Reviewed: semantic structure, project data, localization, project popup, theme switching, filters, mobile navigation, accessibility, visual assets, responsive behavior and stylesheet/script organization.
 
-### High priority — fixed
+## Final architecture
 
-- **Hero CTA localization:** the CTA is rendered through `data-i18n-html`, so the arrow is a real `<span>` instead of escaped markup. This prevents `<span>↗</span>` from appearing as text.
-- **Project presentation:** cards retain the image-led editorial layout and open a dedicated project modal with image, stack, localized description and repository CTA.
-- **Mobile navigation:** the menu has an explicit open state, overlay stacking context, close control, anchor handling and scroll locking.
-- **Theme/filter contrast:** filter controls have explicit light/dark colors instead of relying on inherited text color.
-- **End-card layering:** `THANK YOU FOR WATCHING` is kept below the contact actions so it cannot intercept or visually cover the links.
+```text
+portfolio/
+├── index.html              # semantic page structure
+├── app.js                  # project data, i18n and interactions
+├── app.css                 # primary visual/design system
+├── responsive.css          # responsive and mobile navigation rules
+├── favicon.svg
+├── assets/
+│   ├── icons/
+│   ├── stickers/
+│   ├── markers/
+│   └── README.md
+├── README.md
+└── CODE_REVIEW.md
+```
 
-### Medium priority — improved
+Legacy `styles.css`, `visual-system.css`, `overrides.css`, `fixes.css`, `script.js` and `repair.js` were removed after their responsibilities were consolidated. This eliminates the previous cascade of compatibility patches.
 
-- Added visible focus states for keyboard users.
-- Disabled the custom cursor on coarse/touch pointers.
-- Added reduced-motion handling for users who request it.
-- Added editorial frame markers, project badges, image overlays and a visual `PROJECT / VIEW` label without changing the project data model.
-- Kept decorative stickers and visual objects pointer-transparent so they do not block interaction.
+## High-priority findings — fixed
 
-## Architecture notes
+- **Hero CTA markup:** localized CTA text is rendered as intentional HTML, so `<span>↗</span>` cannot leak into visible text.
+- **Project cards:** image-first editorial cards show project type, number, visual frame, stack and — importantly — the actual engineering scope contributed by the developer.
+- **Project popup:** image + role + stack + localized contribution + UI → API → DATA → SHIP system map + repository CTA.
+- **Mobile navigation:** explicit open/close state, fullscreen overlay, close button, anchor handling, Escape support and scroll locking.
+- **Theme/filter contrast:** explicit theme-aware colors prevent text from disappearing when switching between light and dark modes.
+- **Contact end-card:** decorative `THANK YOU FOR WATCHING` stays below the actionable links.
 
-The project is intentionally framework-free: HTML provides the document structure, CSS owns the visual system, and `script.js` owns project data, localization, filtering, modal behavior and interactions.
+## Full-stack positioning
 
-The current codebase contains compatibility layers (`fixes.css`, `overrides.css`, `repair.js`) created during visual iteration. They are useful for a static portfolio, but a future cleanup should consolidate these layers into the primary stylesheet and remove duplicate selectors once the design is frozen.
+The information architecture is now:
 
-## Localization review
+1. **Hero** — Full-stack Developer positioning.
+2. **Stack** — UI, frontend, backend, data, infrastructure and AI.
+3. **Selected Work** — projects with real contribution/role labels.
+4. **Case Studies** — Understand → Build → Ship.
+5. **Engineering** — API contracts, validation, state, auth, data mapping, testing, Docker and deployment.
+6. **Experience** — practical intersection of UI, API and product logic.
+7. **Contact** — direct CTA and GitHub.
 
-Supported locales: **RU / EN / JP**. Locale state is persisted in `localStorage`. Project descriptions and modal content are localized from the same project data object, which avoids duplicating card markup for each language.
+This structure communicates engineering breadth without pretending every listed project was fully backend-owned.
 
-Recommended next step: move all remaining hard-coded UI strings (for example some decorative labels and accessibility labels) into the translation dictionary if complete localization is required.
+## Localization
 
-## Project popup review
+Supported: **RU / EN / JP**.
 
-The popup is a good portfolio pattern because it keeps the grid compact while providing a richer case-study surface on demand. It should remain image-first and include:
+- Locale is stored in `localStorage`.
+- Navigation, section copy, filters, project descriptions and modal content are localized.
+- Project data and localized copy share one data model.
+- No duplicated HTML page per language is required.
 
-1. project image;
-2. project number/frame marker;
-3. title;
-4. technology tags;
-5. concise engineering/product contribution;
-6. repository CTA;
-7. keyboard Escape and backdrop close.
+## Visual system
 
-## Remaining technical debt
+The visual language combines editorial typography, dopamine colors, photography, film/frame markers, stickers, Japanese references, grain, badges and controlled chaos.
 
-- `script.js` is large for a static page because translations and project data are embedded in one file.
-- Some visual CSS is duplicated between `styles.css`, `overrides.css` and `fixes.css`.
-- External Unsplash images are runtime dependencies; for a production portfolio, optimized local/WebP assets would make the site more reliable and faster.
-- A lightweight automated check for broken internal anchors and external project URLs would be useful before deployment.
+Created/organized local assets include SVG icon and scene-marker assets under `assets/`. Project photography remains remote while final licensed imagery is being selected; the asset README defines the intended migration path to local WebP/AVIF.
+
+## Accessibility and resilience
+
+- semantic anchors for section navigation;
+- visible `:focus-visible` states;
+- `aria-expanded` on mobile menu;
+- `aria-hidden` on decorative and modal surfaces where applicable;
+- decorative stickers are pointer-transparent;
+- touch devices do not require the custom cursor;
+- `prefers-reduced-motion` disables decorative motion.
+
+## Remaining considerations
+
+- Remote photography from Unsplash is still a runtime dependency. Before a strict production launch, self-host optimized WebP/AVIF images with explicit licenses.
+- A future CI check could validate internal anchors and external repository URLs.
+- The site remains intentionally framework-free; if the portfolio grows into many case studies, the same data model can be moved to React/Next.js without changing the content architecture.
 
 ## Verdict
 
-**Portfolio-ready with minor technical debt.** The visual direction is intentionally expressive, while the core interaction model remains understandable: browse → filter → open project → inspect → visit repository. The main remaining improvement is consolidation rather than adding more layers of code.
+**Ready for professional portfolio use.**
+
+The code is now organized around a single application layer instead of accumulated repair files, while the visual identity remains expressive. The project cards communicate not only technologies but also the developer's contribution, which is the key distinction between a portfolio and a list of repositories.
