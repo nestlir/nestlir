@@ -1,0 +1,27 @@
+/* Frontend final UI state + responsive layer */
+body{transition:background-color .28s ease,color .28s ease}
+body.dark{--bg:#171114;--surface:#241a1f;--ink:#fff8f4;--muted:#b9aab0;--line:#523e47;--soft:#35242b;background:var(--bg);color:var(--ink)}
+body.dark .site-header{background:rgba(36,26,31,.84);border-color:var(--line)}
+body.dark .project,body.dark .skills-grid article,body.dark .manifesto-side,body.dark .quote-card,body.dark .modal-card{background:var(--surface);color:var(--ink);border-color:var(--line)}
+body.dark .project p,body.dark .about-copy,body.dark .section-heading p,body.dark .manifesto-side p,body.dark .timeline p{color:var(--muted)}
+body.dark .button-ghost{color:var(--ink);border-color:var(--line)}
+body.dark .filter{color:var(--ink);background:var(--surface);border-color:var(--line)}
+body.dark .filter.active{color:#fff;background:#171114;border-color:#171114}
+body.dark .art-card{background:#241a1f;color:#fff8f4;border-color:var(--line)}
+body.dark .art-caption{background:#fff8f4;color:#21191d}
+body.dark .quote-card small{color:#f5d7df}
+body.chaos-mode .hero-art{transform:rotate(-1.5deg) scale(1.01)}
+body.chaos-mode .marquee{transform:rotate(1deg) scale(1.02)}
+body.chaos-mode .sticker{animation-duration:3s;filter:saturate(1.25)}
+body.chaos-mode .project:nth-child(3n){transform:rotate(1deg)}
+body.chaos-mode .project:nth-child(4n){transform:rotate(-1deg)}
+body.chaos-mode .marquee-track{animation-duration:11s}
+body.chaos-mode .chaos-button{transform:rotate(3deg) scale(1.04)}
+body.menu-open{overflow:hidden}
+.fullstack-switch{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:9px 13px;border:1px solid var(--accent);border-radius:13px;background:var(--accent);color:#fff;text-decoration:none;font-size:10px;line-height:1;font-weight:900;letter-spacing:.06em;white-space:nowrap;box-shadow:0 8px 18px rgba(239,49,81,.14);transition:transform .2s,box-shadow .2s}.fullstack-switch:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:0 12px 24px rgba(239,49,81,.22)}.switch-kicker{font-size:7px;opacity:.72;letter-spacing:.12em}.switch-arrow{font-size:13px}.filters .filter{color:var(--ink);background:var(--surface);border-color:var(--line);cursor:pointer}.filters .filter.active{color:#fff;background:var(--ink);border-color:var(--ink)}
+.cursor-hover .cursor-dot{width:18px;height:18px;background:rgba(239,49,81,.08);box-shadow:0 0 0 8px rgba(239,49,81,.08)}
+.hero h1 em,h2 em,.about h2 em,.experience h2 em,.manifesto-main strong em,.contact-panel h2 em{font-style:italic}
+@media(max-width:860px){.site-header .nav{display:none}.header-actions{gap:6px}.menu-toggle{display:inline-flex!important;align-items:center;justify-content:center;cursor:pointer}.fullstack-switch{min-height:40px;padding:8px 10px;font-size:9px}.switch-kicker{display:none}.mobile-nav{display:flex!important;position:fixed;inset:0;z-index:200;min-height:100dvh;padding:92px 24px 30px;flex-direction:column;justify-content:space-between;background:rgba(255,248,244,.98);color:#2b2024;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-14px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease}.mobile-nav.is-open,body.menu-open .mobile-nav{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}body.dark .mobile-nav{background:rgba(33,25,29,.98);color:#fff}.mobile-nav-head{display:flex;align-items:center;justify-content:space-between;color:var(--accent)}.mobile-nav-head button{width:44px;height:44px;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;font-size:26px;cursor:pointer}.mobile-nav-links{display:flex;flex-direction:column;border-top:1px solid currentColor}.mobile-nav-links a{display:grid;grid-template-columns:40px 1fr 26px;align-items:center;gap:10px;padding:17px 0;border-bottom:1px solid currentColor;color:inherit}.mobile-nav-links b{font:400 clamp(30px,8vw,52px)/.95 Georgia,serif}.mobile-nav-links span,.mobile-nav-links i{color:var(--accent);font-weight:900}.mobile-fullstack-link b{color:var(--accent)}}
+@media(max-width:620px){.header-actions .fullstack-switch{display:none}}
+@media(pointer:coarse){body{cursor:auto}.cursor-dot,.cursor-glow{display:none}}
+@media(prefers-reduced-motion:reduce){.mobile-nav,.fullstack-switch,.chaos-button,.button{transition:none!important}.marquee-track{animation:none!important}}
