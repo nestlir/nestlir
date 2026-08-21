@@ -46,7 +46,7 @@ assert(feHtml.includes('../i18n.js'), 'Frontend i18n not loaded');
 assert(i18n.includes('en:') && i18n.includes('ja:') && i18n.includes('ru:'), 'i18n must include RU/EN/JA');
 assert(i18n.includes('PortfolioI18n'), 'i18n API missing');
 assert(!feHtml.includes('frontend-refactor.js'), 'Legacy Frontend controller still referenced');
-assert(!feHtml.includes('./ui-controller.js'), 'Frontend must not load a duplicate local UI controller');
+assert(!feHtml.includes('src="./ui-controller.js"'), 'Frontend must not load a duplicate local UI controller');
 assert(!fsHtml.includes('portfolio-ui.js'), 'Legacy duplicate UI runtime still referenced');
 
 const keyedElements = [...feHtml.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map((match) => match[1]);

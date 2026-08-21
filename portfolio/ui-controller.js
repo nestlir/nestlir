@@ -8,6 +8,10 @@
   const themeToggle = document.getElementById('themeToggle');
   const chaosToggle = document.getElementById('chaosToggle');
   const progress = document.getElementById('progress') || document.getElementById('scrollProgress');
+  const chaosClass = body.classList.contains('fullstack-page') ? 'chaos' : 'chaos-mode';
+  const chaosLabels = body.classList.contains('fullstack-page')
+    ? ['MAKE IT WEIRD ✦', 'RESET CHAOS ✦']
+    : ['MAKE IT WEIRD ✦', 'TURN IT OFF ✦'];
 
   const store = {
     get(key, fallback) { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } },
@@ -30,12 +34,13 @@
   };
 
   const setChaos = (enabled) => {
-    body.classList.toggle('chaos-mode', enabled);
+    body.classList.toggle(chaosClass, enabled);
     html.dataset.chaos = enabled ? 'on' : 'off';
-    const language = store.get('portfolio-lang', 'ru');
     chaosToggle?.setAttribute('aria-pressed', String(enabled));
-    if (chaosToggle) chaosToggle.textContent = enabled ? 'TURN IT OFF ✦' : 'MAKE IT WEIRD ✦';
-    window.PortfolioI18n?.applyLanguage(language);
+    chaosToggle?.setAttribute('data-chaos-state', enabled ? 'on' : 'off');
+    if (chaosToggle) {
+      chaosToggle.textContent = chaosLabels[enabled ? 1 : 0];
+    }
   };
 
   setMenu(false);
@@ -53,7 +58,7 @@
   });
 
   chaosToggle?.addEventListener('click', () => {
-    const next = !body.classList.contains('chaos-mode');
+    const next = !body.classList.contains(chaosClass);
     store.set('portfolio-chaos', String(next));
     setChaos(next);
   });

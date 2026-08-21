@@ -1,61 +1,61 @@
-# Anastasia — Full-stack Developer Portfolio
+# Anastasia вЂ” Full-stack Developer Portfolio
 
 **Cinematic full-stack portfolio / product engineering / visual playground**
 
-Профессиональный персональный сайт, который показывает не только frontend, но и полный путь продукта: UI → API → DATA → AUTH → TEST → DEPLOY.
+РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ СЃР°Р№С‚, РєРѕС‚РѕСЂС‹Р№ РїРѕРєР°Р·С‹РІР°РµС‚ РЅРµ С‚РѕР»СЊРєРѕ frontend, РЅРѕ Рё РїРѕР»РЅС‹Р№ РїСѓС‚СЊ РїСЂРѕРґСѓРєС‚Р°: UI в†’ API в†’ DATA в†’ AUTH в†’ TEST в†’ DEPLOY.
 
 ## Information architecture
 
-1. **Hero** — Full-stack Developer positioning.
-2. **Stack** — UI/UX, frontend, backend, data, infrastructure, AI.
-3. **Selected Work** — проекты и реальная зона ответственности.
-4. **Case Studies** — Understand → Build → Ship.
-5. **Engineering** — API contracts, validation, state, authentication, mapping, testing, Docker, deployment.
-6. **Experience** — практический intersection UI / API / product logic.
-7. **Contact** — GitHub and direct contact CTA.
+1. **Hero** вЂ” Full-stack Developer positioning.
+2. **Stack** вЂ” UI/UX, frontend, backend, data, infrastructure, AI.
+3. **Selected Work** вЂ” РїСЂРѕРµРєС‚С‹ Рё СЂРµР°Р»СЊРЅР°СЏ Р·РѕРЅР° РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё.
+4. **Case Studies** вЂ” Understand в†’ Build в†’ Ship.
+5. **Engineering** вЂ” API contracts, validation, state, authentication, mapping, testing, Docker, deployment.
+6. **Experience** вЂ” РїСЂР°РєС‚РёС‡РµСЃРєРёР№ intersection UI / API / product logic.
+7. **Contact** вЂ” GitHub and direct contact CTA.
 
 ## Visual direction
 
-**Много воздуха + сладкий хаос + editorial typography + cinematic pacing.**
+**РњРЅРѕРіРѕ РІРѕР·РґСѓС…Р° + СЃР»Р°РґРєРёР№ С…Р°РѕСЃ + editorial typography + cinematic pacing.**
 
-Визуальный язык использует фотографии, stickers, SVG-маркеры, film frames, японские графические мотивы, grain, candy accents, мемные microcopy и controlled chaos. Декоративный слой не должен мешать навигации или содержанию.
+Р’РёР·СѓР°Р»СЊРЅС‹Р№ СЏР·С‹Рє РёСЃРїРѕР»СЊР·СѓРµС‚ С„РѕС‚РѕРіСЂР°С„РёРё, stickers, SVG-РјР°СЂРєРµСЂС‹, film frames, СЏРїРѕРЅСЃРєРёРµ РіСЂР°С„РёС‡РµСЃРєРёРµ РјРѕС‚РёРІС‹, grain, candy accents, РјРµРјРЅС‹Рµ microcopy Рё controlled chaos. Р”РµРєРѕСЂР°С‚РёРІРЅС‹Р№ СЃР»РѕР№ РЅРµ РґРѕР»Р¶РµРЅ РјРµС€Р°С‚СЊ РЅР°РІРёРіР°С†РёРё РёР»Рё СЃРѕРґРµСЂР¶Р°РЅРёСЋ.
 
 ## Languages
 
-**RU / EN / JP** без перезагрузки страницы. Выбранный язык сохраняется в `localStorage`. Проекты, роли, вклад и popup-кейсы используют единый локализованный data model.
+**RU / EN / JP** Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹. Р’С‹Р±СЂР°РЅРЅС‹Р№ СЏР·С‹Рє СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ РІ `localStorage`. РџСЂРѕРµРєС‚С‹, СЂРѕР»Рё, РІРєР»Р°Рґ Рё popup-РєРµР№СЃС‹ РёСЃРїРѕР»СЊР·СѓСЋС‚ РµРґРёРЅС‹Р№ Р»РѕРєР°Р»РёР·РѕРІР°РЅРЅС‹Р№ data model.
 
 ## Project cards
 
-Каждая карточка показывает:
+РљР°Р¶РґР°СЏ РєР°СЂС‚РѕС‡РєР° РїРѕРєР°Р·С‹РІР°РµС‚:
 
-- изображение и cinematic frame;
-- тип проекта;
-- технологии;
-- краткое описание;
-- **реальную зону ответственности разработчика**.
+- РёР·РѕР±СЂР°Р¶РµРЅРёРµ Рё cinematic frame;
+- С‚РёРї РїСЂРѕРµРєС‚Р°;
+- С‚РµС…РЅРѕР»РѕРіРёРё;
+- РєСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ;
+- **СЂРµР°Р»СЊРЅСѓСЋ Р·РѕРЅСѓ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°**.
 
-По клику открывается popup с крупной фотографией, ролью, стеком, описанием вклада, схемой `UI → API → DATA → SHIP` и ссылкой на репозиторий.
+РџРѕ РєР»РёРєСѓ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ popup СЃ РєСЂСѓРїРЅРѕР№ С„РѕС‚РѕРіСЂР°С„РёРµР№, СЂРѕР»СЊСЋ, СЃС‚РµРєРѕРј, РѕРїРёСЃР°РЅРёРµРј РІРєР»Р°РґР°, СЃС…РµРјРѕР№ `UI в†’ API в†’ DATA в†’ SHIP` Рё СЃСЃС‹Р»РєРѕР№ РЅР° СЂРµРїРѕР·РёС‚РѕСЂРёР№.
 
 ## Stack
 
-HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
+HTML5 В· CSS3 В· Vanilla JavaScript В· responsive design В· GitHub Actions В· GitHub Pages
 
 ## Structure
 
 ```text
 portfolio/
-├── index.html
-├── app.js
-├── app.css
-├── responsive.css
-├── favicon.svg
-├── assets/
-│   ├── icons/
-│   ├── stickers/
-│   ├── markers/
-│   └── README.md
-├── README.md
-└── CODE_REVIEW.md
+в”њв”Ђв”Ђ index.html
+в”њв”Ђв”Ђ app.js
+в”њв”Ђв”Ђ app.css
+в”њв”Ђв”Ђ responsive.css
+в”њв”Ђв”Ђ favicon.svg
+в”њв”Ђв”Ђ assets/
+в”‚   в”њв”Ђв”Ђ icons/
+в”‚   в”њв”Ђв”Ђ stickers/
+в”‚   в”њв”Ђв”Ђ markers/
+в”‚   в””в”Ђв”Ђ README.md
+в”њв”Ђв”Ђ README.md
+в””в”Ђв”Ђ CODE_REVIEW.md
 ```
 
 ## Visual assets
@@ -96,6 +96,4 @@ Open `http://localhost:4173/portfolio/`.
 
 **Character without noise. Engineering without the black box.**
 
-Сайт должен одновременно демонстрировать визуальный вкус, product thinking и способность довести систему от интерфейса до production.
-
-<!-- pages-trigger: 2295c09c2576016c3e89ab97f36e47d91567b980 -->
+РЎР°Р№С‚ РґРѕР»Р¶РµРЅ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ РґРµРјРѕРЅСЃС‚СЂРёСЂРѕРІР°С‚СЊ РІРёР·СѓР°Р»СЊРЅС‹Р№ РІРєСѓСЃ, product thinking Рё СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РґРѕРІРµСЃС‚Рё СЃРёСЃС‚РµРјСѓ РѕС‚ РёРЅС‚РµСЂС„РµР№СЃР° РґРѕ production.
