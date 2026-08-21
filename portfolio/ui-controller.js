@@ -32,8 +32,10 @@
   const setChaos = (enabled) => {
     body.classList.toggle('chaos-mode', enabled);
     html.dataset.chaos = enabled ? 'on' : 'off';
+    const language = store.get('portfolio-lang', 'ru');
     chaosToggle?.setAttribute('aria-pressed', String(enabled));
     if (chaosToggle) chaosToggle.textContent = enabled ? 'TURN IT OFF ✦' : 'MAKE IT WEIRD ✦';
+    window.PortfolioI18n?.applyLanguage(language);
   };
 
   setMenu(false);
