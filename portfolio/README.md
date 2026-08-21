@@ -1,44 +1,54 @@
 # Anastasia — Interactive Portfolio
 
-Интерактивный персональный сайт-портфолио frontend developer.
+**Dopamine landing / frontend portfolio / visual playground**
 
-## Концепция
+Интерактивный персональный сайт-портфолио, собранный как небольшой digital-experience, а не как стандартное резюме на странице.
 
-Визуальный язык сочетает editorial web design, японские графические мотивы, мягкую pastel-палитру, сетку, ботанические элементы и типографику. Вместо буквального повторения референсов дизайн использует их настроение как основу для собственной системы.
+## Visual concept
 
-## Что внутри
+**Много воздуха + сладкий хаос + editorial typography + cinematic pacing.**
 
-- responsive single-page portfolio;
-- hero section с CTA;
-- selected projects;
-- фильтрация проектов по направлениям;
-- интерактивные project modal cards;
-- dark/light theme toggle;
-- skills и engineering approach;
-- experience timeline;
-- contact section;
-- accessibility-friendly semantic HTML;
-- отсутствие внешнего JS framework — сайт максимально лёгкий.
+Визуальный язык смешивает pastel-среду, кремовые поверхности, яркие candy-акценты, японские графические мотивы, doodles, мемный микрокопирайтинг, pop-culture/anime настроение и «вкусные» визуальные метафоры.
+
+При этом декоративность подчинена продуктовой логике: контент остаётся читаемым, навигация — понятной, а интерактивность — функциональной.
+
+## Interactions
+
+- project filtering: All / Frontend / Product / Full-stack / AI;
+- animated project modal cards;
+- light / dark theme;
+- **MAKE IT WEIRD** chaos mode;
+- cursor glow;
+- magnetic CTA buttons;
+- 3D tilt interaction on skill cards;
+- animated marquee;
+- floating stickers;
+- orbiting visual elements;
+- scroll progress indicator;
+- responsive mobile composition;
+- keyboard Escape support for modals.
 
 ## Selected work
 
 DataVac · Furniture Store · Story OS · Multimodal AI · Stellar Burger · Web Larek · Mesto · Blog Customizer · Оно тебе надо.
 
-## Стек
+## Stack
 
-HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Pages
+HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
 
-## Локальный запуск
-
-Откройте `index.html` или запустите любой статический HTTP server из папки `portfolio`.
+## Run locally
 
 ```bash
 python -m http.server 4173
 ```
 
-Затем откройте `http://localhost:4173`.
+Откройте `http://localhost:4173/portfolio/`.
 
-## Структура
+## Deploy
+
+`.github/workflows/portfolio-pages.yml` автоматически собирает содержимое `portfolio/` и публикует его через GitHub Pages после изменений в этой папке.
+
+## Structure
 
 ```text
 portfolio/
@@ -48,6 +58,8 @@ portfolio/
 └── README.md
 ```
 
-## Примечание
+## Design principle
 
-Сайт намеренно не зависит от backend: данные проектов хранятся в `script.js`, а ссылки ведут на реальные GitHub-репозитории. Это делает портфолио пригодным для GitHub Pages и не раскрывает секреты.
+**Character without noise.**
+
+Сайт может быть странным, ярким и запоминающимся, но пользователь всегда должен понимать, где он находится, что можно сделать и зачем ему нажимать дальше.
