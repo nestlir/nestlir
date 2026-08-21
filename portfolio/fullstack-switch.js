@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const root=document.body;const bar=document.querySelector('.fs-actions');if(!bar||bar.querySelector('.fs-edition'))return;const a=document.createElement('a');a.className='fs-edition';a.href='./frontend/';a.textContent='Frontend ↗';bar.prepend(a);root.dataset.edition='fullstack';});
