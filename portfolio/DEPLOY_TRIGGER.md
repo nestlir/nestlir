@@ -1,1 +1,1 @@
-Pages deployment trigger. No site runtime dependency.
+Pages deployment trigger after final frontend UI refactor.
