@@ -32,10 +32,9 @@
     const switchTitle = $('.fullstack-switch strong'); if (switchTitle) switchTitle.textContent = copy.mode;
     const chaos = $('#chaosToggle'); if (chaos) chaos.textContent = document.body.classList.contains('chaos-mode') ? copy.chaosOff : copy.chaos;
     const theme = $('#themeToggle'); theme?.setAttribute('aria-label', copy.theme);
-
     $$('.filter').forEach((button, i) => { if (copy.filters[i]) button.textContent = copy.filters[i]; });
-    if (window.setPortfolioLanguage) window.setPortfolioLanguage(safeLang);
-    window.dispatchEvent(new CustomEvent('portfolio:language', { detail: safeLang }));
+    window.setPortfolioLanguage?.(safeLang);
+    window.setFullstackLanguage?.(safeLang);
     store.set('portfolio-lang', safeLang);
   };
 
