@@ -3,71 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Портфолио Анастасии — frontend developer. React, TypeScript, Next.js, UX/UI и продуктовая разработка." />
-  <title>Anastasia — Frontend Developer</title>
+  <meta name="description" content="Anastasia — frontend developer. React, TypeScript, Next.js, UX/UI, product development and AI experiments." />
+  <title>Anastasia — Dopamine Portfolio</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="cursor-glow" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <div class="floating-stickers" aria-hidden="true">
+    <span class="sticker sticker-berry">🍓</span><span class="sticker sticker-cake">🍰</span><span class="sticker sticker-spark">✦</span>
+    <span class="sticker sticker-meme">404<br><small>NOT FOUND</small></span>
+    <span class="sticker sticker-anime">主人公<br><small>main character</small></span>
+    <span class="sticker sticker-soda">🫧</span>
+  </div>
+
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Anastasia — начало">
-      <span class="brand-mark">✿</span>
-      <span><strong>Anastasia</strong><small>frontend developer</small></span>
-    </a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="#about">Обо мне</a><a href="#skills">Навыки</a><a href="#projects">Проекты</a><a href="#experience">Опыт</a><a href="#contact">Контакты</a>
-    </nav>
-    <div class="header-actions"><a class="button button-small" href="#contact">Связаться</a><button class="icon-button" id="themeToggle" aria-label="Переключить тему">☼</button></div>
+    <a class="brand" href="#top" aria-label="Anastasia — начало"><span class="brand-mark">✿</span><span><strong>Anastasia</strong><small>frontend developer / visual thinker</small></span></a>
+    <nav class="nav" aria-label="Основная навигация"><a href="#about">Обо мне</a><a href="#skills">Навыки</a><a href="#projects">Проекты</a><a href="#experience">Опыт</a><a href="#contact">Контакты</a></nav>
+    <div class="header-actions"><button class="chaos-button" id="chaosToggle">MAKE IT WEIRD ✦</button><button class="icon-button" id="themeToggle" aria-label="Переключить тему">☼</button></div>
   </header>
 
   <main id="top">
     <section class="hero section">
-      <div class="hero-copy">
-        <span class="eyebrow">Frontend · Product · UX-minded engineering</span>
+      <div class="cinema-top"><span>SCENE 01</span><span>ANASTASIA / PORTFOLIO</span><span>REC ●</span></div>
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Frontend · Product · UX · a little chaos</span>
         <h1>Анастасия<br><em>Frontend Developer</em></h1>
-        <p class="hero-text">Создаю современные веб-приложения, где визуальная система, пользовательский сценарий и качество кода работают вместе.</p>
-        <div class="hero-actions"><a class="button" href="#projects">Смотреть проекты <span>↗</span></a><a class="button button-ghost" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub</a></div>
-        <div class="hero-meta"><span>React / TypeScript</span><span>Next.js</span><span>API & integrations</span></div>
+        <p class="hero-text">Собираю интерфейсы, которые хочется рассматривать. Превращаю данные, идеи и сложные сценарии в живые digital-продукты.</p>
+        <div class="hero-actions"><a class="button magnetic" href="#projects">Смотреть проекты <span>↗</span></a><a class="button button-ghost magnetic" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub</a></div>
+        <div class="hero-meta"><span>React / TypeScript</span><span>Next.js</span><span>API & integrations</span><span>AI experiments</span></div>
       </div>
-      <div class="hero-art" aria-label="Абстрактная ботаническая композиция">
-        <div class="sun"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
-        <div class="leaf leaf-one">❧</div><div class="leaf leaf-two">❧</div>
-        <div class="flower flower-one">✿</div><div class="flower flower-two">✿</div>
+      <div class="hero-art reveal" id="heroArt" aria-label="Абстрактная кинематографичная композиция">
+        <div class="hero-frame"></div><div class="sun"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="jelly jelly-pink"></div><div class="jelly jelly-orange"></div><div class="jelly jelly-blue"></div>
+        <div class="flower flower-one">✿</div><div class="flower flower-two">✿</div><div class="flower flower-three">✿</div>
+        <div class="hero-word hero-word-one">DESIGN</div><div class="hero-word hero-word-two">CODE</div>
         <div class="art-card"><span>SELECTED</span><strong>WORK</strong><small>2023—2026</small></div>
-        <div class="vertical-jp">デザイン　コード　体験</div>
+        <div class="art-caption"><b>visual dopamine</b><br>clean systems / messy ideas</div>
+        <div class="vertical-jp">デザイン　コード　体験　遊び</div>
       </div>
+      <div class="hero-bottom"><span>↓ scroll to enter the portfolio</span><span>01 — 05</span></div>
     </section>
 
-    <section class="ticker" aria-label="Специализация"><span>REACT</span><i>✦</i><span>TYPESCRIPT</span><i>✦</i><span>NEXT.JS</span><i>✦</i><span>UX / UI</span><i>✦</i><span>API</span><i>✦</i><span>PRODUCT</span><i>✦</i></section>
+    <section class="marquee"><div class="marquee-track"><span>MAKE IT USEFUL</span><i>✦</i><span>MAKE IT BEAUTIFUL</span><i>✦</i><span>MAKE IT MEMORABLE</span><i>✦</i><span>MAKE IT USEFUL</span><i>✦</i><span>MAKE IT BEAUTIFUL</span><i>✦</i></div></section>
 
     <section class="section about" id="about">
-      <div class="section-label">01 / About</div>
-      <div class="about-grid"><div><h2>Разрабатываю интерфейсы, которыми <em>приятно пользоваться.</em></h2></div><div class="about-copy"><p>Мой основной фокус — frontend-разработка на React и TypeScript. Мне интересно превращать сложные требования и данные в понятные пользовательские сценарии.</p><p>Работаю на стыке разработки и дизайна: внимательно отношусь к композиции, responsive-поведению, компонентному подходу и деталям интерфейса.</p><div class="mini-stats"><div><strong>React</strong><span>UI & state</span></div><div><strong>TypeScript</strong><span>typed systems</span></div><div><strong>Next.js</strong><span>modern web</span></div></div></div></div>
+      <div class="section-label">01 / About the character</div>
+      <div class="about-grid reveal"><div><div class="stamp">MAIN<br>CHARACTER<br>ENERGY</div><h2>Разрабатываю интерфейсы, которыми <em>приятно пользоваться.</em></h2></div><div class="about-copy"><p>Мой основной фокус — frontend-разработка на React и TypeScript. Но я люблю смотреть шире кода: на историю пользователя, атмосферу продукта, визуальный ритм и то, что остаётся в памяти после взаимодействия.</p><p>Поэтому в моих проектах рядом существуют API, компоненты, анимации, Figma, AI, странные идеи и аккуратная инженерия.</p><div class="mini-stats"><div><strong>01</strong><span>product thinking</span></div><div><strong>02</strong><span>visual systems</span></div><div><strong>03</strong><span>engineering</span></div></div></div></div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="section-heading"><div><div class="section-label">02 / Selected work</div><h2>Проекты</h2></div><p>От продуктовых интерфейсов до AI и full-stack экспериментов.</p></div>
+    <section class="dopamine-strip" aria-label="Визуальные отсылки"><div class="doodle">૮ ˶ᵔ ᵕ ᵔ˶ ა</div><div><b>npm install dopamine</b><small>warning: side effects may include smiling</small></div><div class="doodle">♡</div><div><b>plot twist!</b><small>the frontend is the product</small></div><div class="doodle">★</div></section>
+
+    <section class="section projects-section" id="projects">
+      <div class="section-heading reveal"><div><div class="section-label">02 / Selected work</div><h2>Проекты<span class="tiny-spark">✦</span></h2></div><p>Продуктовые интерфейсы, AI, full-stack эксперименты и frontend-кейсы — без скучных презентаций.</p></div>
       <div class="filters" role="group" aria-label="Фильтр проектов"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="frontend">Frontend</button><button class="filter" data-filter="product">Product</button><button class="filter" data-filter="fullstack">Full-stack</button><button class="filter" data-filter="ai">AI</button></div>
       <div class="project-grid" id="projectGrid"></div>
     </section>
 
-    <section class="section skills" id="skills">
-      <div class="section-label">03 / Skills</div><h2>Инструменты и подход</h2>
-      <div class="skills-grid">
-        <article><span>01</span><h3>Frontend</h3><p>React, Next.js, TypeScript, JavaScript, HTML5, CSS/SCSS, Tailwind, responsive UI, component architecture.</p></article>
-        <article><span>02</span><h3>Product & UX</h3><p>Figma, интерфейсные системы, пользовательские сценарии, визуальная иерархия, accessibility и внимание к деталям.</p></article>
-        <article><span>03</span><h3>Data & API</h3><p>REST API, API mapping, typed contracts, forms, validation, server/client data flow, integrations.</p></article>
-        <article><span>04</span><h3>Beyond frontend</h3><p>Node.js, NestJS, Express, databases, Docker, testing, AI integrations и архитектурные эксперименты.</p></article>
+    <section class="section visual-manifesto">
+      <div class="section-label">03 / Visual manifesto</div>
+      <div class="manifesto-grid reveal">
+        <div class="manifesto-main"><span>DESIGN IS NOT DECORATION</span><strong>Это то,<br>как продукт<br><em>разговаривает.</em></strong><small>Я люблю интерфейсы с характером — но характер никогда не должен мешать пользователю.</small></div>
+        <div class="manifesto-side"><div class="food-orbit"><span>🍒</span><span>🍩</span><span>🧋</span><span>🍙</span><span>🍓</span><span>🍰</span></div><p>Текстуры, сладкие акценты, мемы, аниме-настроение и pop-culture — не ради шума, а чтобы создавать эмоциональную память.</p><div class="quote-card">「かわいい」<br><small>cute, but make it functional.</small></div></div>
       </div>
     </section>
 
-    <section class="section experience" id="experience">
-      <div class="section-label">04 / Experience</div><div class="experience-grid"><div><h2>От интерфейса<br>до <em>продукта.</em></h2></div><div class="timeline"><div><span>01</span><h3>Командная разработка</h3><p>Работа с реальными API, UI, пользовательскими сценариями, интеграциями, code review и E2E-проверками.</p></div><div><span>02</span><h3>Frontend engineering</h3><p>Адаптивные интерфейсы, сложные таблицы, поиск, фильтрация, формы, платежи, PDF и reusable components.</p></div><div><span>03</span><h3>Product mindset</h3><p>Стараюсь понимать не только «как сверстать», но и зачем пользователю нужен сценарий и какой результат должен получить продукт.</p></div></div></div>
+    <section class="section skills" id="skills">
+      <div class="section-label">04 / Skill tree</div><h2>Что у меня в арсенале</h2>
+      <div class="skills-grid reveal"><article class="tilt"><span>01</span><h3>Frontend</h3><p>React, Next.js, TypeScript, JavaScript, HTML5, CSS/SCSS, Tailwind, responsive UI, component architecture.</p><b>→ build the interface</b></article><article class="tilt"><span>02</span><h3>Product & UX</h3><p>Figma, интерфейсные системы, пользовательские сценарии, визуальная иерархия, accessibility и внимание к деталям.</p><b>→ shape the experience</b></article><article class="tilt"><span>03</span><h3>Data & API</h3><p>REST API, API mapping, typed contracts, forms, validation, server/client data flow и integrations.</p><b>→ make it work</b></article><article class="tilt"><span>04</span><h3>Beyond frontend</h3><p>Node.js, NestJS, Express, databases, Docker, testing, AI integrations и архитектурные эксперименты.</p><b>→ break the box</b></article></div>
     </section>
 
-    <section class="contact section" id="contact"><div class="contact-panel"><span class="eyebrow">05 / Contact</span><h2>Есть идея?<br><em>Давайте сделаем.</em></h2><p>Открыта к frontend, product и full-stack задачам, где можно приносить пользу и расти вместе с командой.</p><div class="contact-links"><a class="button" href="mailto:nestlir@mail.ru">Написать мне ↗</a><a class="button button-ghost" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub ↗</a><a class="button button-ghost" href="https://t.me/nestlir" target="_blank" rel="noreferrer">Telegram ↗</a></div></div></section>
+    <section class="section experience" id="experience">
+      <div class="section-label">05 / Behind the scenes</div><div class="experience-grid reveal"><div><div class="film-number">05</div><h2>От интерфейса<br>до <em>продукта.</em></h2></div><div class="timeline"><div><span>01</span><h3>Командная разработка</h3><p>Реальные API, UI, пользовательские сценарии, интеграции, code review и E2E-проверки.</p></div><div><span>02</span><h3>Frontend engineering</h3><p>Адаптивные интерфейсы, сложные таблицы, поиск, фильтрация, формы, платежи, PDF и reusable components.</p></div><div><span>03</span><h3>Product mindset</h3><p>Сначала понимаю историю пользователя и результат, затем выбираю технологию и форму.</p></div></div></div>
+    </section>
+
+    <section class="contact section" id="contact"><div class="contact-panel reveal"><div class="contact-noise"></div><span class="eyebrow">Final scene / Contact</span><h2>Есть идея?<br><em>Давайте сделаем.</em></h2><p>Открыта к frontend, product и full-stack задачам, где можно приносить пользу, экспериментировать и расти вместе с командой.</p><div class="contact-links"><a class="button magnetic" href="mailto:nestlir@mail.ru">Написать мне ↗</a><a class="button button-ghost magnetic" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub ↗</a><a class="button button-ghost magnetic" href="https://t.me/nestlir" target="_blank" rel="noreferrer">Telegram ↗</a></div><div class="end-card">THANK YOU FOR WATCHING<br><small>roll credits →</small></div></div></section>
   </main>
-  <footer><span>© 2026 Anastasia</span><span>Designed & built with attention to detail.</span></footer>
+  <footer><span>© 2026 Anastasia</span><span>Designed, coded & slightly overthought.</span></footer>
   <div class="modal" id="projectModal" aria-hidden="true"><div class="modal-backdrop"></div><article class="modal-card"><button class="modal-close" id="modalClose" aria-label="Закрыть">×</button><div id="modalContent"></div></article></div>
   <script src="./script.js"></script>
 </body>
