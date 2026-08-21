@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const link=document.createElement('a');link.className='portfolio-switch portfolio-switch--full';link.href='./';link.textContent='Full-stack ↗';const target=document.querySelector('.tools');if(target)target.prepend(link);const current=document.querySelector('header');if(current)current.dataset.portfolioEdition='frontend';});
