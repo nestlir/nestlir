@@ -1,44 +1,80 @@
-# Anastasia — Interactive Portfolio
+# Anastasia — Full-stack Developer Portfolio
 
-**Dopamine landing / frontend portfolio / visual playground**
+**Cinematic full-stack portfolio / product engineering / visual playground**
 
-Интерактивный персональный сайт-портфолио, собранный как небольшой digital-experience, а не как стандартное резюме.
+Профессиональный персональный сайт, который показывает не только frontend, но и полный путь продукта: UI → API → DATA → AUTH → TEST → DEPLOY.
 
-## Visual concept
+## Information architecture
+
+1. **Hero** — Full-stack Developer positioning.
+2. **Stack** — UI/UX, frontend, backend, data, infrastructure, AI.
+3. **Selected Work** — проекты и реальная зона ответственности.
+4. **Case Studies** — Understand → Build → Ship.
+5. **Engineering** — API contracts, validation, state, authentication, mapping, testing, Docker, deployment.
+6. **Experience** — практический intersection UI / API / product logic.
+7. **Contact** — GitHub and direct contact CTA.
+
+## Visual direction
 
 **Много воздуха + сладкий хаос + editorial typography + cinematic pacing.**
 
-Визуальный язык смешивает pastel-среду, кремовые поверхности, candy-акценты, японские графические мотивы, doodles, мемный микрокопирайтинг, anime/pop-culture настроение, фотографии, стикеры и кинематографичные frame-маркеры.
+Визуальный язык использует фотографии, stickers, SVG-маркеры, film frames, японские графические мотивы, grain, candy accents, мемные microcopy и controlled chaos. Декоративный слой не должен мешать навигации или содержанию.
 
 ## Languages
 
-Переключатель **RU / EN / JP** работает без перезагрузки страницы и сохраняет выбранный язык в `localStorage`.
+**RU / EN / JP** без перезагрузки страницы. Выбранный язык сохраняется в `localStorage`. Проекты, роли, вклад и popup-кейсы используют единый локализованный data model.
 
-## Interactions
+## Project cards
 
-- project filtering: All / Frontend / Product / Full-stack / AI;
-- project popup cards with project image, tags, description and repository CTA;
-- light / dark theme;
-- dark cinematic Hero-art palette;
-- **MAKE IT WEIRD** controlled chaos mode;
-- cursor glow + visible cursor dot on dark backgrounds;
-- magnetic CTA buttons;
-- 3D tilt interaction on skill cards;
-- animated marquee;
-- floating stickers and cultural references;
-- orbiting visual elements;
-- scroll progress indicator;
-- responsive mobile menu with section switching;
-- keyboard Escape support for modals;
-- SVG favicon.
+Каждая карточка показывает:
 
-## Selected work
+- изображение и cinematic frame;
+- тип проекта;
+- технологии;
+- краткое описание;
+- **реальную зону ответственности разработчика**.
 
-DataVac · Furniture Store · Story OS · Multimodal AI · Stellar Burger · Web Larek · Mesto · Blog Customizer · Оно тебе надо.
+По клику открывается popup с крупной фотографией, ролью, стеком, описанием вклада, схемой `UI → API → DATA → SHIP` и ссылкой на репозиторий.
 
 ## Stack
 
 HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
+
+## Structure
+
+```text
+portfolio/
+├── index.html
+├── app.js
+├── app.css
+├── responsive.css
+├── favicon.svg
+├── assets/
+│   ├── icons/
+│   ├── stickers/
+│   ├── markers/
+│   └── README.md
+├── README.md
+└── CODE_REVIEW.md
+```
+
+## Visual assets
+
+SVG assets are stored locally for reusable icons and markers. Photography is currently loaded from remote image URLs to keep the static repository lightweight; production optimization should migrate licensed images to WebP/AVIF in `assets/photos/`.
+
+## Interactions
+
+- RU / EN / JP switcher;
+- project filtering;
+- image-led project popup;
+- light / dark theme;
+- `MAKE IT WEIRD` controlled chaos mode;
+- responsive fullscreen mobile navigation;
+- scroll progress;
+- cinematic marquee;
+- decorative stickers and markers;
+- keyboard Escape for menu/modal;
+- reduced-motion support.
 
 ## Run locally
 
@@ -46,31 +82,18 @@ HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · Gi
 python -m http.server 4173
 ```
 
-Откройте `http://localhost:4173/portfolio/`.
+Open `http://localhost:4173/portfolio/`.
 
 ## Deploy
 
-`.github/workflows/portfolio-pages.yml` автоматически собирает содержимое `portfolio/` и публикует его через GitHub Pages после push в `main`.
+`.github/workflows/portfolio-pages.yml` publishes `portfolio/` through GitHub Pages after changes reach `main`.
 
-## Contact links
+## Live site
 
-GitHub now points to the public profile: `https://github.com/nestlir`.
-
-The Telegram destination is intentionally kept as a single configurable link in `index.html` until the exact public handle is confirmed; no guessed Telegram account is introduced.
-
-## Structure
-
-```text
-portfolio/
-├── index.html
-├── styles.css
-├── script.js
-├── favicon.svg
-└── README.md
-```
+`https://nestlir.github.io/nestlir/#projects`
 
 ## Design principle
 
-**Character without noise.**
+**Character without noise. Engineering without the black box.**
 
-Сайт может быть странным, ярким и запоминающимся, но пользователь всегда должен понимать, где он находится, что можно сделать и зачем ему нажимать дальше.
+Сайт должен одновременно демонстрировать визуальный вкус, product thinking и способность довести систему от интерфейса до production.
