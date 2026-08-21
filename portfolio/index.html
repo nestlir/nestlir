@@ -1,22 +1,112 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f1e8"><meta name="description" content="Anastasia — Full-stack Developer. Product interfaces, APIs, data and deployment."><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./fullstack-design.css"><link rel="stylesheet" href="./editorial.css"><title>Anastasia — Full-stack Developer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta name="description" content="Anastasia — Full-stack Developer. Product systems, APIs, data, integrations and deployment.">
+  <title>Anastasia — Full-stack Developer</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./fullstack-design.css">
+  <link rel="stylesheet" href="./editorial.css">
 </head>
 <body>
-<div class="fs-noise" aria-hidden="true"></div><div class="fs-grid" aria-hidden="true"></div><div class="fs-cursor" id="fsCursor" aria-hidden="true"></div>
-<header class="fs-header"><a class="fs-brand" href="#top"><span class="fs-brand-mark">A/</span><span><strong>Anastasia</strong><small>FULL-STACK / PRODUCT ENGINEERING</small></span></a><nav class="fs-nav" aria-label="Primary navigation"><a href="#about">About</a><a href="#stack">Stack</a><a href="#projects">Work</a><a href="#cases">Cases</a><a href="#engineering">Engineering</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav><div class="fs-actions"><div class="fs-langs"><button class="active" data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ja">JP</button></div><a class="fs-edition" href="./frontend/">FRONTEND ↗</a><button class="fs-menu-btn" id="fsMenuBtn" aria-expanded="false" aria-controls="fsMobile">MENU</button></div></header>
-<div class="fs-mobile" id="fsMobile" aria-hidden="true"><div class="fs-mobile-top"><span>MENU / SYSTEM</span><button id="fsMenuClose" aria-label="Close menu">×</button></div><nav><a href="#about">01 / About ↗</a><a href="#stack">02 / Stack ↗</a><a href="#projects">03 / Work ↗</a><a href="#cases">04 / Cases ↗</a><a href="#engineering">05 / Engineering ↗</a><a href="#experience">06 / Experience ↗</a><a href="#contact">07 / Contact ↗</a><a class="fs-mobile-edition" href="./frontend/">Frontend edition ↗</a></nav></div>
-<main id="top">
-<section class="fs-hero" id="about"><div class="fs-hero-top"><span>BUILD / 2026</span><span>REC ●</span></div><div class="fs-hero-copy"><div class="fs-kicker">FULL-STACK DEVELOPER</div><h1>From <em>interface</em><br>to <strong>production.</strong></h1><p>I build products across the whole chain: UI, API, data, auth, integrations, testing and deployment.</p><div class="fs-hero-actions"><a class="fs-button fs-button-accent" href="#projects">Explore selected work ↗</a><a class="fs-button" href="#contact">Start a conversation</a></div><div class="fs-signal"><span>UI</span><i>→</i><span>API</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div></div><div class="fs-hero-visual"><div class="fs-terminal"><div class="fs-terminal-bar"><i></i><i></i><i></i><span>production.log</span></div><div class="fs-terminal-body"><p><b>$</b> build --scope product</p><p><b>✓</b> interface ready</p><p><b>✓</b> api connected</p><p><b>✓</b> data mapped</p><p><b>✓</b> tests passing</p><p><b>→</b> deploy to production_</p></div></div><div class="fs-orbit-card c1">API<br><small>contracts</small></div><div class="fs-orbit-card c2">DB<br><small>data</small></div><div class="fs-orbit-card c3">AUTH<br><small>flows</small></div><div class="fs-orbit-card c4">TEST<br><small>quality</small></div><div class="fs-photo"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85" alt="Developer working with code"><span>FRAME / 001</span></div></div><div class="fs-hero-foot"><span>PRODUCT ENGINEERING / VISUAL SYSTEMS</span><span>SCROLL ↓</span></div></section>
-<section class="fs-marquee"><div>BUILD THE THING <i>✦</i> UNDERSTAND THE SYSTEM <i>✦</i> SHIP THE PRODUCT <i>✦</i> BUILD THE THING <i>✦</i> UNDERSTAND THE SYSTEM <i>✦</i></div></section>
-<section class="fs-section" id="stack"><div class="fs-section-head"><div><span class="fs-label">01 / STACK</span><h2>The whole <em>path.</em></h2></div><p>I am comfortable moving between visual detail and system-level concerns.</p></div><div class="fs-stack-grid"><article><span>01</span><b>Interface</b><p>React · Next.js · TypeScript · responsive UI · reusable components</p></article><article><span>02</span><b>Backend</b><p>Node.js · Express · NestJS · REST APIs · validation · auth</p></article><article><span>03</span><b>Data</b><p>SQL · MongoDB · mapping · persistence · structured state</p></article><article><span>04</span><b>Delivery</b><p>Docker · tests · Git · CI/CD · deployment · production fixes</p></article><article><span>05</span><b>AI</b><p>OpenAI integrations · multimodal workflows · product experiments</p></article><article><span>06</span><b>Product</b><p>UX flows · visual systems · edge cases · review-ready interfaces</p></article></div></section>
-<section class="fs-section" id="projects"><div class="fs-section-head"><div><span class="fs-label">02 / SELECTED WORK</span><h2>Systems I <em>built.</em></h2></div><p>Each case shows the part of the system I actually worked on — not just a technology list.</p></div><div class="fs-filters" role="group" aria-label="Project filters"><button class="active" data-filter="all">All</button><button data-filter="frontend">Frontend</button><button data-filter="fullstack">Full-stack</button><button data-filter="ai">AI</button></div><div class="fs-project-grid" id="fsProjectGrid"></div></section>
-<section class="fs-section" id="cases"><div class="fs-section-head"><div><span class="fs-label">03 / CASE STUDIES</span><h2>Understand.<br><em>Build. Ship.</em></h2></div><p>A compact case-study lens for every project: responsibility, architecture, constraints and delivery.</p></div><div class="fs-case-grid"><article><span>01</span><h3>Understand</h3><p>Map the user journey, data, constraints and expected result before choosing the implementation.</p></article><article><span>02</span><h3>Build</h3><p>Turn the system into reusable UI, state, API contracts, integrations and reliable flows.</p></article><article><span>03</span><h3>Ship</h3><p>Validate edge cases, debug critical paths and get the product into a usable deployed state.</p></article></div></section>
-<section class="fs-engineering" id="engineering"><div class="fs-eng-grid"><div><span class="fs-label">04 / ENGINEERING</span><h2>Behind the <em>interface.</em></h2><p>API contracts · validation · authentication · state management · data mapping · testing · Docker · deployment</p></div><div class="fs-diagram"><span>CLIENT</span><i>→</i><span>API</span><i>→</i><span>SERVICE</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div></div></section>
-<section class="fs-section" id="experience"><div class="fs-section-head"><div><span class="fs-label">05 / EXPERIENCE</span><h2>How I <em>work.</em></h2></div><p>At the intersection of interface, product logic and engineering quality.</p></div><div class="fs-exp-grid"><article><b>01</b><h3>Team delivery</h3><p>Code review, API integration, forms, search, filters, payments, PDF and E2E scenarios.</p></article><article><b>02</b><h3>Product thinking</h3><p>I start from user intent and business outcome, then choose the simplest reliable implementation.</p></article><article><b>03</b><h3>Visual craft</h3><p>Even technical products need hierarchy, rhythm, feedback states and an interface with character.</p></article></div></section>
-<section class="fs-contact" id="contact"><div class="fs-contact-copy"><span class="fs-label">06 / CONTACT</span><h2>Have a product<br>worth <em>building?</em></h2><p>Open to frontend, full-stack, product and AI work.</p><div class="fs-contact-actions"><a class="fs-button fs-button-accent" href="mailto:nestlir@mail.ru">Email me ↗</a><a class="fs-button" href="https://t.me/nestlir" target="_blank" rel="noreferrer">Telegram ↗</a><a class="fs-button" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub ↗</a></div></div><div class="fs-contact-card"><span>READY WHEN YOU ARE</span><strong>200 OK</strong><small>let's build something useful.</small></div></section>
-</main><footer class="fs-footer"><span>© 2026 Anastasia</span><span>FULL-STACK / PRODUCT ENGINEERING</span><a href="./frontend/">Frontend edition ↗</a></footer>
-<div class="fs-modal" id="fsModal" aria-hidden="true"><div class="fs-modal-bg"></div><article class="fs-modal-card"><button id="fsModalClose" aria-label="Close">×</button><div id="fsModalContent"></div></article></div>
-<script src="./fullstack.js"></script>
-</body></html>
+  <div class="fs-noise" aria-hidden="true"></div>
+  <div class="fs-grid" aria-hidden="true"></div>
+  <div class="fs-cursor" id="fsCursor" aria-hidden="true"></div>
+
+  <header class="fs-header">
+    <a class="fs-brand" href="#top"><span class="fs-brand-mark">A/</span><span><strong>Anastasia</strong><small>FULL-STACK / PRODUCT ENGINEERING</small></span></a>
+    <nav class="fs-nav" aria-label="Primary navigation">
+      <a href="#stack">Stack</a><a href="#work">Work</a><a href="#cases">Cases</a><a href="#engineering">Engineering</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="fs-actions"><a class="fs-edition" href="./frontend/">Frontend ↗</a><button class="fs-menu-btn" id="fsMenuBtn" aria-expanded="false" aria-controls="fsMobile">MENU</button></div>
+  </header>
+
+  <div class="fs-mobile" id="fsMobile" aria-hidden="true">
+    <div class="fs-mobile-top"><span>MENU / SYSTEM</span><button id="fsMenuClose" aria-label="Close menu">×</button></div>
+    <nav><a href="#stack">01 / Stack ↗</a><a href="#work">02 / Work ↗</a><a href="#cases">03 / Cases ↗</a><a href="#engineering">04 / Engineering ↗</a><a href="#experience">05 / Experience ↗</a><a href="#contact">06 / Contact ↗</a><a class="fs-mobile-edition" href="./frontend/">Frontend edition ↗</a></nav>
+  </div>
+
+  <main id="top">
+    <section class="fs-hero" aria-labelledby="hero-title">
+      <div class="fs-hero-top"><span>FULL-STACK / 2026</span><span>06 LAYERS ●</span></div>
+      <div class="fs-hero-copy">
+        <div class="fs-kicker">FULL-STACK DEVELOPER</div>
+        <h1 id="hero-title">I build the <em>system</em><br>behind the product.</h1>
+        <p>I work across the chain that makes a product real: interface, state, API, data, integrations, testing and deployment.</p>
+        <div class="fs-hero-actions"><a class="fs-button fs-button-accent" href="#work">See systems I built ↗</a><a class="fs-button" href="#contact">Contact / résumé</a></div>
+        <div class="fs-signal"><span>CLIENT</span><i>→</i><span>API</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div>
+      </div>
+      <div class="fs-hero-visual">
+        <div class="fs-architecture-board">
+          <div class="arch-caption">SYSTEM MAP / 001</div>
+          <div class="arch-layer"><b>UI</b><span>React · forms · state</span></div>
+          <div class="arch-connector">↓</div>
+          <div class="arch-layer accent"><b>API</b><span>REST · validation · auth</span></div>
+          <div class="arch-connector">↓</div>
+          <div class="arch-layer"><b>DATA</b><span>persistence · mapping</span></div>
+          <div class="arch-connector">↓</div>
+          <div class="arch-layer"><b>DELIVERY</b><span>tests · Git · deployment</span></div>
+          <div class="arch-side-note">NOT JUST UI<br><span>END TO END</span></div>
+        </div>
+        <div class="fs-sticker sticker-lime">SYSTEM<br><span>THINKING</span></div>
+        <div class="fs-sticker sticker-pink">API ≠<br>black box</div>
+        <div class="fs-photo"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85" alt="Developer workstation"><span>FRAME / ENGINEERING</span></div>
+        <div class="fs-crosshair" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="fs-hero-foot"><span>PRODUCT SYSTEMS / ARCHITECTURE / DELIVERY</span><span>SCROLL ↓</span></div>
+    </section>
+
+    <section class="fs-marquee"><div>INTERFACE ✦ LOGIC ✦ API ✦ DATA ✦ INTEGRATION ✦ TESTING ✦ DELIVERY ✦ INTERFACE ✦ LOGIC ✦ API ✦ DATA ✦</div></section>
+
+    <section class="fs-section fs-stack-section" id="stack">
+      <div class="fs-section-head"><div><span class="fs-label">01 / STACK</span><h2>Six layers of <em>work.</em></h2></div><p>The stack is grouped by responsibility, because a full-stack role is about moving through boundaries—not memorising package names.</p></div>
+      <div class="fs-stack-grid">
+        <article><span>01 / CLIENT</span><b>Frontend</b><p>TypeScript · JavaScript · React · Next.js · responsive UI · forms · state</p></article>
+        <article><span>02 / SERVER</span><b>Backend</b><p>Node.js · Express · REST APIs · validation · service logic · integration</p></article>
+        <article class="stack-highlight"><span>03 / DATA</span><b>Data</b><p>SQL · MongoDB · persistence · structured state · data mapping</p></article>
+        <article><span>04 / ACCESS</span><b>Auth</b><p>Authentication flows · role boundaries · guarded actions · client/server handoffs</p></article>
+        <article><span>05 / QUALITY</span><b>Testing</b><p>Unit thinking · E2E scenarios · edge cases · browser debugging · regression fixes</p></article>
+        <article><span>06 / DELIVERY</span><b>Ship</b><p>Git · CI-minded workflows · Docker · GitHub Pages · deployment-oriented refactors</p></article>
+      </div>
+      <div class="fs-stack-footer"><span>01—06 / RESPONSIBILITY MAP</span><div class="skill-meter"><i style="width:92%"></i><i style="width:81%"></i><i style="width:74%"></i><i style="width:68%"></i><i style="width:72%"></i><i style="width:78%"></i></div><span>NOT A BUZZWORD LIST</span></div>
+    </section>
+
+    <section class="fs-section fs-work-section" id="work">
+      <div class="fs-section-head"><div><span class="fs-label">02 / SELECTED WORK</span><h2>What I <em>actually built.</em></h2></div><p>Every project is framed by ownership: what I touched, what I connected and what had to work.</p></div>
+      <div class="fs-filters" role="group" aria-label="Project filters"><button class="active" data-filter="all">ALL</button><button data-filter="fullstack">FULL-STACK</button><button data-filter="ai">AI</button><button data-filter="frontend">FRONTEND</button></div>
+      <div class="fs-project-grid" id="fsProjectGrid"></div>
+    </section>
+
+    <section class="fs-section fs-cases-section" id="cases">
+      <div class="fs-section-head"><div><span class="fs-label">03 / CASE STUDIES</span><h2>From brief to <em>working system.</em></h2></div><p>The case study is not a diary. It is a compact explanation of the problem, architecture, responsibility and result.</p></div>
+      <div class="case-table">
+        <article><div class="case-id">CASE / 01</div><div class="case-title"><h3>Furniture Store</h3><p>Turn a visual storefront into a working product flow.</p></div><div class="case-columns"><div><b>PROBLEM</b><span>Static presentation did not explain how users browse, filter and submit products.</span></div><div><b>MY PART</b><span>Catalog state, filters, product dialogs, cart logic, seller tooling and deployment.</span></div><div><b>ARCHITECTURE</b><span>HTML/CSS/JS → local state → browser storage → GitHub Pages.</span></div></div><a href="https://github.com/nestlir/Furniture_Store_Ru" target="_blank" rel="noreferrer">REPO ↗</a></article>
+        <article><div class="case-id">CASE / 02</div><div class="case-title"><h3>Web Larek / Express</h3><p>Understand the seam between frontend and backend.</p></div><div class="case-columns"><div><b>PROBLEM</b><span>Product UI depends on data contracts and a reliable request lifecycle.</span></div><div><b>MY PART</b><span>React-side states, forms, API-connected flows, server/client debugging.</span></div><div><b>ARCHITECTURE</b><span>Client → REST endpoints → server logic → response → UI state.</span></div></div><a href="https://github.com/nestlir/web-larek-express" target="_blank" rel="noreferrer">REPO ↗</a></article>
+        <article><div class="case-id">CASE / 03</div><div class="case-title"><h3>Multimodal AI</h3><p>Connect an interface to AI-powered product behaviour.</p></div><div class="case-columns"><div><b>PROBLEM</b><span>Different modalities need one coherent user flow and service boundary.</span></div><div><b>MY PART</b><span>Application architecture, API gateway concepts, async UI and AI integration work.</span></div><div><b>ARCHITECTURE</b><span>Client → API → service layer → model integration → result state.</span></div></div><a href="https://github.com/nestlir/multimodal-ai-app" target="_blank" rel="noreferrer">REPO ↗</a></article>
+      </div>
+    </section>
+
+    <section class="fs-engineering" id="engineering">
+      <div class="fs-eng-grid"><div><span class="fs-label">04 / ENGINEERING</span><h2>Think in <em>boundaries.</em></h2><p>Good full-stack work is mostly about boundaries: where state lives, what an API promises, where validation happens, how errors travel and what is safe to change.</p></div>
+        <div class="engineering-canvas">
+          <div class="eng-node n-client">CLIENT<small>UI / STATE</small></div><div class="eng-arrow a1">→</div><div class="eng-node n-api">API<small>CONTRACT</small></div><div class="eng-arrow a2">→</div><div class="eng-node n-service">SERVICE<small>LOGIC</small></div><div class="eng-arrow a3">→</div><div class="eng-node n-data">DATA<small>PERSISTENCE</small></div><div class="eng-loop">↘ validation / errors / feedback ↖</div>
+        </div>
+      </div>
+      <div class="engineering-notes"><article><span>01</span><b>State before polish</b><p>Make transitions explicit before styling the final interaction.</p></article><article><span>02</span><b>Contracts before coupling</b><p>Decide what crosses the boundary and what stays local.</p></article><article><span>03</span><b>Ship before overbuilding</b><p>Reduce the surface area, validate the critical path, then iterate.</p></article></div>
+    </section>
+
+    <section class="fs-section fs-experience" id="experience">
+      <div class="fs-section-head"><div><span class="fs-label">05 / EXPERIENCE</span><h2>Range, not just <em>roles.</em></h2></div><p>Development, Business Informatics and product thinking inform the way I approach implementation.</p></div>
+      <div class="exp-layout"><div class="exp-timeline"><article><span>NOW</span><div><h3>Independent product work</h3><p>Frontend and full-stack projects, refactors, deployment, product experiments and technical portfolio work.</p></div></article><article><span>2024—25</span><div><h3>Web development</h3><p>JavaScript/TypeScript, React, API integration, coursework systems, testing and debugging.</p></div></article><article><span>ACADEMIC</span><div><h3>Business Informatics</h3><p>Systems thinking, research and the ability to connect technical implementation with business context.</p></div></article></div><aside class="experience-poster"><span>GOOD SYSTEMS</span><strong>reduce<br>uncertainty.</strong><small>01 / clarity<br>02 / ownership<br>03 / delivery</small></aside></div>
+    </section>
+
+    <section class="fs-contact" id="contact"><div class="contact-grid"><div class="contact-copy"><span class="fs-label">06 / CONTACT</span><h2>Let's build the <em>whole thing.</em></h2><p>Open to frontend, full-stack, product and AI-focused work.</p><div class="fs-contact-actions"><a class="fs-button fs-button-accent" href="mailto:nestlir@mail.ru">Email me ↗</a><a class="fs-button" href="https://t.me/nestlir" target="_blank" rel="noreferrer">Telegram ↗</a><a class="fs-button" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub ↗</a></div></div><div class="contact-poster"><span>STATUS</span><strong>OPEN</strong><small>for useful products,<br>messy systems &amp;<br>interesting problems.</small></div></div></section>
+  </main>
+
+  <footer class="fs-footer"><span>© 2026 Anastasia</span><span>FULL-STACK / PRODUCT ENGINEERING</span><a href="./frontend/">Frontend edition ↗</a></footer>
+  <div class="fs-modal" id="fsModal" aria-hidden="true"><div class="fs-modal-bg"></div><article class="fs-modal-card"><button id="fsModalClose" aria-label="Close">×</button><div id="fsModalContent"></div></article></div>
+  <script src="./fullstack.js"></script>
+</body>
+</html>
