@@ -1,0 +1,3 @@
+/* Edition switch: Frontend <-> Full-stack */
+.portfolio-switch{display:inline-flex;align-items:center;gap:6px;padding:9px 11px;border:1px solid currentColor;border-radius:10px;background:#ffe76a;color:#2b2024;font:900 8px/1 monospace;letter-spacing:.04em;text-decoration:none;white-space:nowrap}.portfolio-switch--full{background:#2b2024;color:#fff8f4}.portfolio-switch:hover{transform:translateY(-2px)}
+@media(max-width:860px){.portfolio-switch{display:none}}
