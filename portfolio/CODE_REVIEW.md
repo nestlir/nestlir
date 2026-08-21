@@ -1,87 +1,95 @@
-# Portfolio Code Review — final refactor
+# Portfolio Code Review — dual-page refactor
 
-## Scope
+## Executive result
 
-Final review of `portfolio/` after the transition from a frontend-style landing page to a professional **Full-stack Developer portfolio**.
+The portfolio is intentionally split into two independent pages inside one GitHub Pages project:
 
-Reviewed: semantic structure, project data, localization, project popup, theme switching, filters, mobile navigation, accessibility, visual assets, responsive behavior and stylesheet/script organization.
+- `/` — Full-stack / engineering portfolio;
+- `/frontend/` — original Frontend / visual portfolio.
 
-## Final architecture
+The previous implementation mixed these responsibilities by loading `frontend.css` and `frontend.js` into the Full-stack page and by adding a Frontend section to a page that was supposed to be a separate experience. That is now removed.
 
-```text
-portfolio/
-├── index.html              # semantic page structure
-├── app.js                  # project data, i18n and interactions
-├── app.css                 # primary visual/design system
-├── responsive.css          # responsive and mobile navigation rules
-├── favicon.svg
-├── assets/
-│   ├── icons/
-│   ├── stickers/
-│   ├── markers/
-│   └── README.md
-├── README.md
-└── CODE_REVIEW.md
-```
+## Problems found
 
-Legacy `styles.css`, `visual-system.css`, `overrides.css`, `fixes.css`, `script.js` and `repair.js` were removed after their responsibilities were consolidated. This eliminates the previous cascade of compatibility patches.
+### 1. Wrong information architecture
 
-## High-priority findings — fixed
+The Full-stack page contained a `#frontend` section and the Frontend assets were injected into the Full-stack document. This made the two concepts compete for the same page and defeated the intended dual-portfolio structure.
 
-- **Hero CTA markup:** localized CTA text is rendered as intentional HTML, so `<span>↗</span>` cannot leak into visible text.
-- **Project cards:** image-first editorial cards show project type, number, visual frame, stack and — importantly — the actual engineering scope contributed by the developer.
-- **Project popup:** image + role + stack + localized contribution + UI → API → DATA → SHIP system map + repository CTA.
-- **Mobile navigation:** explicit open/close state, fullscreen overlay, close button, anchor handling, Escape support and scroll locking.
-- **Theme/filter contrast:** explicit theme-aware colors prevent text from disappearing when switching between light and dark modes.
-- **Contact end-card:** decorative `THANK YOU FOR WATCHING` stays below the actionable links.
+**Fix:** Frontend is now a real `/frontend/` page. The Full-stack page has only a navigation link to it.
 
-## Full-stack positioning
+### 2. Duplicate Frontend implementations
 
-The information architecture is now:
+The repository contained both `portfolio/colorful/` and `portfolio/frontend/`, with two different colorful implementations. This created ambiguity over which version was canonical.
 
-1. **Hero** — Full-stack Developer positioning.
-2. **Stack** — UI, frontend, backend, data, infrastructure and AI.
-3. **Selected Work** — projects with real contribution/role labels.
-4. **Case Studies** — Understand → Build → Ship.
-5. **Engineering** — API contracts, validation, state, auth, data mapping, testing, Docker and deployment.
-6. **Experience** — practical intersection of UI, API and product logic.
-7. **Contact** — direct CTA and GitHub.
+**Fix:** the original `colorful` implementation is restored as the canonical `portfolio/frontend/` edition. The duplicate implementation is removed.
 
-This structure communicates engineering breadth without pretending every listed project was fully backend-owned.
+### 3. Fragile page switching
 
-## Localization
+The previous Full-stack header pointed to `#frontend`, while the desired behavior is a page-to-page transition.
 
-Supported: **RU / EN / JP**.
+**Fix:**
 
-- Locale is stored in `localStorage`.
-- Navigation, section copy, filters, project descriptions and modal content are localized.
-- Project data and localized copy share one data model.
-- No duplicated HTML page per language is required.
+- Full-stack → `./frontend/`
+- Frontend → `../`
 
-## Visual system
+These relative URLs work under the repository's GitHub Pages path as well as in local static hosting.
 
-The visual language combines editorial typography, dopamine colors, photography, film/frame markers, stickers, Japanese references, grain, badges and controlled chaos.
+### 4. Unnecessary CSS/JS coupling
 
-Created/organized local assets include SVG icon and scene-marker assets under `assets/`. Project photography remains remote while final licensed imagery is being selected; the asset README defines the intended migration path to local WebP/AVIF.
+The Full-stack page previously loaded a Frontend stylesheet and script even when the Frontend section was being rendered inside the page.
+
+**Fix:** each page owns its own CSS and JavaScript. The Full-stack page loads `app.css`, `responsive.css` and `app.js`; the Frontend page loads only its own `frontend.css` and `frontend.js`.
+
+### 5. Deployment structure
+
+The GitHub Pages workflow was carrying a special-case copy operation for the old `colorful/` route.
+
+**Fix:** the workflow now publishes the entire `portfolio/` directory as-is. A folder is a page; no route-specific copying is needed.
+
+## Full-stack architecture retained
+
+The engineering edition keeps the established structure:
+
+1. Hero — Full-stack positioning.
+2. Stack — UI, frontend, backend, data, infrastructure and AI.
+3. Selected Work — project cards with actual responsibility.
+4. Case Studies — Understand → Build → Ship.
+5. Engineering — API contracts, validation, state, auth, mapping, testing, Docker and deployment.
+6. Experience — UI/API/product intersection.
+7. Contact — direct CTA and GitHub.
+
+Project data, RU/EN/JP localization, filters, modal case views, theme switching, chaos mode, mobile navigation and scroll progress remain in `app.js`.
+
+## Frontend architecture restored
+
+The Frontend edition preserves the original visual concept:
+
+- `Digital products with a pulse.` hero;
+- dopamine/candy palette;
+- editorial serif typography;
+- photography and film-frame markers;
+- stickers and Japanese visual references;
+- marquee;
+- project filters;
+- cinematic project modal;
+- light/dark theme;
+- RU/EN switch;
+- playful but controlled motion.
 
 ## Accessibility and resilience
 
-- semantic anchors for section navigation;
-- visible `:focus-visible` states;
-- `aria-expanded` on mobile menu;
-- `aria-hidden` on decorative and modal surfaces where applicable;
-- decorative stickers are pointer-transparent;
-- touch devices do not require the custom cursor;
-- `prefers-reduced-motion` disables decorative motion.
+- semantic navigation;
+- keyboard Escape support for modal;
+- `aria-hidden` for decorative layers;
+- responsive layouts;
+- `prefers-reduced-motion` support;
+- decorative elements do not capture pointer input;
+- informative images have alt text.
 
-## Remaining considerations
+## Remaining technical note
 
-- Remote photography from Unsplash is still a runtime dependency. Before a strict production launch, self-host optimized WebP/AVIF images with explicit licenses.
-- A future CI check could validate internal anchors and external repository URLs.
-- The site remains intentionally framework-free; if the portfolio grows into many case studies, the same data model can be moved to React/Next.js without changing the content architecture.
+Project photography still uses remote Unsplash URLs. For a strict production launch, these should eventually be replaced with optimized local WebP/AVIF assets with confirmed licensing.
 
 ## Verdict
 
-**Ready for professional portfolio use.**
-
-The code is now organized around a single application layer instead of accumulated repair files, while the visual identity remains expressive. The project cards communicate not only technologies but also the developer's contribution, which is the key distinction between a portfolio and a list of repositories.
+**Architecture corrected: two independent portfolio pages, one repository, one GitHub Pages deployment.**

@@ -1,68 +1,72 @@
-# Anastasia — Dual Portfolio System
+# Anastasia — Dual Portfolio
 
-Two professional portfolio experiences live in the same GitHub project.
+One GitHub project, two deliberately different portfolio experiences.
 
-## Portfolio A — Colorful
+## 1. Frontend edition
 
-`/portfolio/colorful/`
+`/frontend/`
 
-The expressive version: dopamine landing, candy colors, editorial typography, photography, stickers, anime/pop-culture references and cinematic project popups. It emphasizes visual/frontend/product craft.
+The original visual/frontend direction: dopamine colors, editorial typography, photography, stickers, anime/pop-culture references, playful motion and cinematic project popups. It is designed to show frontend craft, UX/UI thinking, product sense and personality.
 
-## Portfolio B — Full-stack
+## 2. Full-stack edition
 
-`/portfolio/`
+`/`
 
-The engineering-first version: **UI → API → DATA → AUTH → TEST → DEPLOY**. It emphasizes architecture, APIs, data, AI, deployment and the actual responsibility held on each project.
+The engineering-first version. It emphasizes the complete product path:
+
+`UI → API → DATA → AUTH → TEST → DEPLOY`
+
+It shows architecture, API integration, data, AI, deployment and the actual responsibility held on each project.
 
 ## Shared principles
 
-- RU / EN / JP where the experience requires it;
-- image-led project cards with popup case views;
+- two real pages, one deployable project;
+- direct navigation between editions;
+- image-led project cards with case popups;
 - clear repository links;
 - responsive behavior;
-- accessible keyboard interactions;
-- reduced-motion support;
+- keyboard interactions and reduced-motion support;
 - decorative elements never block interaction;
-- project claims must reflect the actual contribution.
+- project claims reflect the actual contribution.
 
 ## Folder organization
 
 ```text
 portfolio/
-├── index.html                 # B: Full-stack
+├── index.html                 # Full-stack edition
 ├── app.js
 ├── app.css
 ├── responsive.css
 ├── favicon.svg
+├── frontend/                  # Frontend edition
+│   ├── index.html
+│   ├── frontend.css
+│   ├── frontend.js
+│   └── README.md
+├── assets/
 ├── CODE_REVIEW.md
 ├── ARCHITECTURE.md
-├── README.md
-├── colorful/                  # A: Colorful
-│   ├── index.html
-│   ├── colorful.css
-│   ├── colorful.js
-│   └── README.md
-└── assets/
-    ├── icons/
-    ├── stickers/
-    ├── markers/
-    └── README.md
+└── README.md
 ```
 
 ## Deploy
 
-GitHub Actions publishes the primary Full-stack portfolio at the site root and the Colorful variant at `/colorful/`.
+GitHub Actions publishes `portfolio/` as the Pages artifact. That means the resulting site is:
+
+- Full-stack: `https://nestlir.github.io/nestlir/`
+- Frontend: `https://nestlir.github.io/nestlir/frontend/`
+
+No special build step or SPA routing is required.
 
 ## Local development
+
+From the repository root:
 
 ```bash
 python -m http.server 4173
 ```
 
-- Full-stack: `http://localhost:4173/portfolio/`
-- Colorful: `http://localhost:4173/portfolio/colorful/`
+Then open:
 
-## Live
-
-- Full-stack: `https://nestlir.github.io/nestlir/`
-- Colorful: `https://nestlir.github.io/nestlir/colorful/`
+- `http://localhost:4173/portfolio/`
+- `http://localhost:4173/portfolio/frontend/`
