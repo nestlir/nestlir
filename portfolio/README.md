@@ -97,3 +97,5 @@ Open `http://localhost:4173/portfolio/`.
 **Character without noise. Engineering without the black box.**
 
 Сайт должен одновременно демонстрировать визуальный вкус, product thinking и способность довести систему от интерфейса до production.
+
+<!-- pages-trigger: 2295c09c2576016c3e89ab97f36e47d91567b980 -->
