@@ -1,27 +1,130 @@
-# 💫 About Me:
-<h1 align="center">Hi there, I'm Anastasia 👋</h1><br><p align="center">Frontend Developer | React & TypeScript Enthusiast | Building intuitive user experiences</p><br><br>---<br><br>## 🌟 About Me<br><br>I transitioned into software development out of a deep passion for creating meaningful, functional, and beautiful digital experiences.<br><br>My focus is on frontend development — I enjoy turning complex logic into clean, maintainable interfaces. I'm constantly exploring modern UI engineering practices and care deeply about performance, accessibility, and scalability. My career goal is to grow into a product-oriented developer who contributes not just code, but thoughtful solutions and ideas to real-world challenges.<br><br>I'm currently open to new opportunities and looking to join a team where I can contribute, learn, and grow together.<br><br>---<br><br>## 🔍 Looking for<br><br>- 🌱 A team where I can contribute to real-world products  <br>- 🧩 Projects that balance UX, performance & maintainable code  <br>- 🧠 Opportunities to work with experienced engineers and grow through mentorship<br><br>---<br><br>## 📫 Contact Me<br><br>- [📬 Email (public)](nestlir@mail.ru)<br>- [💬 Telegram](https://t.me/nestlir)<br>- 🔎 Currently: **Open to work** (Full-time / Remote  )<br><br>---<br><br>## 🎨 Bonus: A glimpse of my vibe<br><br><p align="center"><br>  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300" /><br></p>
+# Anastasia Kuzmina
 
+### Frontend / Full-Stack Developer · React · TypeScript · UX-minded Engineering
 
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/nestlir) 
+I build interfaces that are **clear to use, maintainable to extend, and grounded in product needs**.
 
-# 💻 Tech Stack:
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white) ![Vue.js](https://img.shields.io/badge/vue.js-%2335495e.svg?style=flat&logo=vuedotjs&logoColor=%234FC08D) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black) ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB) ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB) ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=flat&logo=react%20query&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat&logo=react-router&logoColor=white) ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=flat&logo=reacthookform&logoColor=white) ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=flat&logo=nestjs&logoColor=white) ![Next JS](https://img.shields.io/badge/Next-black?style=flat&logo=next.js&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=flat&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=flat&logo=bootstrap&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat&logo=nginx&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=flat&logo=mysql&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=flat&logo=figma&logoColor=white) ![Adobe](https://img.shields.io/badge/adobe-%23FF0000.svg?style=flat&logo=adobe&logoColor=white) ![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=flat&logo=storybook&logoColor=white) ![Adobe XD](https://img.shields.io/badge/Adobe%20XD-470137?style=flat&logo=Adobe%20XD&logoColor=#FF61F6) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white) ![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=flat&logo=gitlab&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white) ![CloudBees](https://img.shields.io/badge/CloudBees-1997B5&?logo=cloudbees&logoColor=white&style=flat) ![Cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=flat&logo=cypress&logoColor=058a5e) ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=flat&logo=jest&logoColor=white) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=flat&logo=babel&logoColor=black) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=flat&logo=eslint&logoColor=white) ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=flat&logo=kubernetes&logoColor=white) ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=flat&logo=powerbi&logoColor=black) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white) ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=flat&logo=steam&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=nestlir&theme=monokai&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=nestlir&theme=monokai&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=nestlir&theme=monokai&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
-
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=nestlir&theme=radical&no-frame=false&no-bg=false&margin-w=4)
-
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
-
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=nestlir&limit=5&theme=dark&combine_all_yearly_contributions=true)
+My strongest area is frontend engineering: turning complex requirements and visual designs into responsive, accessible interfaces. I also work comfortably across APIs, backend services, testing, data flows and deployment, which helps me understand the product beyond a single layer of the stack.
 
 ---
-[![](https://visitcount.itsvg.in/api?id=nestlir&icon=2&color=1)](https://visitcount.itsvg.in)
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+## What I bring
+
+| Area | What I can do |
+| --- | --- |
+| **Frontend** | React, Next.js, TypeScript, JavaScript, responsive UI, component architecture |
+| **Product UI** | Figma implementation, UX-minded interaction design, accessibility, responsive behavior |
+| **Backend** | Node.js, NestJS, REST APIs, authentication, MongoDB, PostgreSQL |
+| **Architecture** | API integration, state management, MVP patterns, modular application structure |
+| **Quality** | Jest, Cypress, API testing, validation, edge-case thinking |
+| **Infrastructure** | Docker, GitHub Actions, Nginx, Kubernetes fundamentals |
+| **AI** | OpenAI API, multimodal workflows, conversational product design |
+
+---
+
+## Selected work
+
+### 🏥 DataVac — production-style frontend
+
+**Next.js · React · TypeScript · Tailwind · REST API · PDF**
+
+Team frontend project for a vaccine information platform. Work included API integration, search/filtering, detailed vaccine pages, responsive UI, payment flows and PDF instruction generation.
+
+→ [**Portfolio case study**](./projects/datavac-frontend/README.md)
+
+---
+
+### 🛋️ РУСЬ — Furniture Commerce MVP
+
+**HTML · SCSS · JavaScript · GitHub Actions**
+
+Premium furniture showroom and commerce MVP combining brand presentation, catalog discovery, inquiry flow, seller UI and SEO-ready metadata.
+
+→ [**Open repository**](https://github.com/nestlir/Furniture_Store_Ru)
+
+---
+
+### 🤖 Story OS Bot
+
+**Python · OpenAI API · Telegram · SQLite · Docker**
+
+AI-assisted knowledge system for managing fictional worlds. The architecture separates stored facts from generated inference and suggestions.
+
+→ [**Open repository**](https://github.com/nestlir/story-os-bot-1.0)
+
+---
+
+### 🧠 Multimodal AI Application
+
+**React · Node.js · Python · Redis · Docker · Kubernetes**
+
+Microservices architecture for text, voice and image processing with multiple AI providers.
+
+→ [**Open repository**](https://github.com/nestlir/multimodal-ai-app)
+
+---
+
+### 🍔 Stellar Burger
+
+**React · TypeScript · Redux · React Router**
+
+Application-level frontend with burger construction, authenticated routes, API integration, ordering and live order data.
+
+→ [**Open repository**](https://github.com/nestlir/stellar-burger)
+
+---
+
+### 🛒 Web Larek
+
+**TypeScript · SCSS · Webpack · MVP**
+
+Typed e-commerce frontend demonstrating explicit Model–View–Presenter separation, API abstraction, basket and checkout flows.
+
+→ [**Open repository**](https://github.com/nestlir/web-larek-frontend)
+
+---
+
+## Product & frontend experiments
+
+- [**TipEase**](https://github.com/nestlir/tip-calculator) — accessible utility UI and interaction design.
+- [**Budget Tracker Pro**](https://github.com/nestlir/budget-tracker-pro) — finance dashboard and data visualization.
+- [**BizFlow ERP**](https://github.com/nestlir/bizflow-erp-system) — business dashboard and scheduling workspace.
+- [**Green Garden**](https://github.com/nestlir/green-garden-recipes) — ingredient matching and information design.
+- [**Blog Customizer**](https://github.com/nestlir/blog-customizer) — state modeling and configurable reading experience.
+- [**Mesto**](https://github.com/nestlir/mesto-project-ff) — API-driven social UI.
+- [**Закрывающий тег**](https://github.com/nestlir/zakrivayuschiy-teg-f) — responsive interactive page.
+- [**Сложно сосредоточиться**](https://github.com/nestlir/slozhno-sosredotochitsya) — responsive themes and visual system.
+- [**Оно тебе надо**](https://github.com/nestlir/ono-tebe-nado) — editorial layout and typography.
+- [**Email Campaign**](https://github.com/nestlir/spim) — cross-client responsive email engineering.
+
+---
+
+## Engineering approach
+
+I care about the layer between **design, engineering and product**:
+
+1. Understand the user's goal and the business constraint.
+2. Break the interface into reusable states and components.
+3. Define the data/API contract before wiring the UI.
+4. Build responsive behavior instead of treating mobile as an afterthought.
+5. Validate edge cases, accessibility and error states.
+6. Keep the implementation understandable for the next developer.
+
+---
+
+## Currently open to
+
+**Frontend / Full-Stack / Product-oriented engineering roles**
+
+Remote · open to international and distributed teams.
+
+---
+
+## Contact
+
+- Telegram: [@nestlir](https://t.me/nestlir)
+- GitHub: [@nestlir](https://github.com/nestlir)
+
+---
+
+> **I don't just implement screens — I try to understand the product those screens are part of.**
