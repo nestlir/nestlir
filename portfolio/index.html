@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Портфолио Анастасии — frontend developer. React, TypeScript, Next.js, UX/UI и продуктовая разработка." />
+  <title>Anastasia — Frontend Developer</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Anastasia — начало">
+      <span class="brand-mark">✿</span>
+      <span><strong>Anastasia</strong><small>frontend developer</small></span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#about">Обо мне</a><a href="#skills">Навыки</a><a href="#projects">Проекты</a><a href="#experience">Опыт</a><a href="#contact">Контакты</a>
+    </nav>
+    <div class="header-actions"><a class="button button-small" href="#contact">Связаться</a><button class="icon-button" id="themeToggle" aria-label="Переключить тему">☼</button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <span class="eyebrow">Frontend · Product · UX-minded engineering</span>
+        <h1>Анастасия<br><em>Frontend Developer</em></h1>
+        <p class="hero-text">Создаю современные веб-приложения, где визуальная система, пользовательский сценарий и качество кода работают вместе.</p>
+        <div class="hero-actions"><a class="button" href="#projects">Смотреть проекты <span>↗</span></a><a class="button button-ghost" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub</a></div>
+        <div class="hero-meta"><span>React / TypeScript</span><span>Next.js</span><span>API & integrations</span></div>
+      </div>
+      <div class="hero-art" aria-label="Абстрактная ботаническая композиция">
+        <div class="sun"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="leaf leaf-one">❧</div><div class="leaf leaf-two">❧</div>
+        <div class="flower flower-one">✿</div><div class="flower flower-two">✿</div>
+        <div class="art-card"><span>SELECTED</span><strong>WORK</strong><small>2023—2026</small></div>
+        <div class="vertical-jp">デザイン　コード　体験</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Специализация"><span>REACT</span><i>✦</i><span>TYPESCRIPT</span><i>✦</i><span>NEXT.JS</span><i>✦</i><span>UX / UI</span><i>✦</i><span>API</span><i>✦</i><span>PRODUCT</span><i>✦</i></section>
+
+    <section class="section about" id="about">
+      <div class="section-label">01 / About</div>
+      <div class="about-grid"><div><h2>Разрабатываю интерфейсы, которыми <em>приятно пользоваться.</em></h2></div><div class="about-copy"><p>Мой основной фокус — frontend-разработка на React и TypeScript. Мне интересно превращать сложные требования и данные в понятные пользовательские сценарии.</p><p>Работаю на стыке разработки и дизайна: внимательно отношусь к композиции, responsive-поведению, компонентному подходу и деталям интерфейса.</p><div class="mini-stats"><div><strong>React</strong><span>UI & state</span></div><div><strong>TypeScript</strong><span>typed systems</span></div><div><strong>Next.js</strong><span>modern web</span></div></div></div></div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading"><div><div class="section-label">02 / Selected work</div><h2>Проекты</h2></div><p>От продуктовых интерфейсов до AI и full-stack экспериментов.</p></div>
+      <div class="filters" role="group" aria-label="Фильтр проектов"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="frontend">Frontend</button><button class="filter" data-filter="product">Product</button><button class="filter" data-filter="fullstack">Full-stack</button><button class="filter" data-filter="ai">AI</button></div>
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <section class="section skills" id="skills">
+      <div class="section-label">03 / Skills</div><h2>Инструменты и подход</h2>
+      <div class="skills-grid">
+        <article><span>01</span><h3>Frontend</h3><p>React, Next.js, TypeScript, JavaScript, HTML5, CSS/SCSS, Tailwind, responsive UI, component architecture.</p></article>
+        <article><span>02</span><h3>Product & UX</h3><p>Figma, интерфейсные системы, пользовательские сценарии, визуальная иерархия, accessibility и внимание к деталям.</p></article>
+        <article><span>03</span><h3>Data & API</h3><p>REST API, API mapping, typed contracts, forms, validation, server/client data flow, integrations.</p></article>
+        <article><span>04</span><h3>Beyond frontend</h3><p>Node.js, NestJS, Express, databases, Docker, testing, AI integrations и архитектурные эксперименты.</p></article>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience">
+      <div class="section-label">04 / Experience</div><div class="experience-grid"><div><h2>От интерфейса<br>до <em>продукта.</em></h2></div><div class="timeline"><div><span>01</span><h3>Командная разработка</h3><p>Работа с реальными API, UI, пользовательскими сценариями, интеграциями, code review и E2E-проверками.</p></div><div><span>02</span><h3>Frontend engineering</h3><p>Адаптивные интерфейсы, сложные таблицы, поиск, фильтрация, формы, платежи, PDF и reusable components.</p></div><div><span>03</span><h3>Product mindset</h3><p>Стараюсь понимать не только «как сверстать», но и зачем пользователю нужен сценарий и какой результат должен получить продукт.</p></div></div></div>
+    </section>
+
+    <section class="contact section" id="contact"><div class="contact-panel"><span class="eyebrow">05 / Contact</span><h2>Есть идея?<br><em>Давайте сделаем.</em></h2><p>Открыта к frontend, product и full-stack задачам, где можно приносить пользу и расти вместе с командой.</p><div class="contact-links"><a class="button" href="mailto:nestlir@mail.ru">Написать мне ↗</a><a class="button button-ghost" href="https://github.com/nestlir" target="_blank" rel="noreferrer">GitHub ↗</a><a class="button button-ghost" href="https://t.me/nestlir" target="_blank" rel="noreferrer">Telegram ↗</a></div></div></section>
+  </main>
+  <footer><span>© 2026 Anastasia</span><span>Designed & built with attention to detail.</span></footer>
+  <div class="modal" id="projectModal" aria-hidden="true"><div class="modal-backdrop"></div><article class="modal-card"><button class="modal-close" id="modalClose" aria-label="Закрыть">×</button><div id="modalContent"></div></article></div>
+  <script src="./script.js"></script>
+</body>
+</html>
