@@ -2,31 +2,35 @@
 
 **Dopamine landing / frontend portfolio / visual playground**
 
-Интерактивный персональный сайт-портфолио, собранный как небольшой digital-experience, а не как стандартное резюме на странице.
+Интерактивный персональный сайт-портфолио, собранный как небольшой digital-experience, а не как стандартное резюме.
 
 ## Visual concept
 
 **Много воздуха + сладкий хаос + editorial typography + cinematic pacing.**
 
-Визуальный язык смешивает pastel-среду, кремовые поверхности, яркие candy-акценты, японские графические мотивы, doodles, мемный микрокопирайтинг, pop-culture/anime настроение и «вкусные» визуальные метафоры.
+Визуальный язык смешивает pastel-среду, кремовые поверхности, candy-акценты, японские графические мотивы, doodles, мемный микрокопирайтинг, anime/pop-culture настроение, фотографии, стикеры и кинематографичные frame-маркеры.
 
-При этом декоративность подчинена продуктовой логике: контент остаётся читаемым, навигация — понятной, а интерактивность — функциональной.
+## Languages
+
+Переключатель **RU / EN / JP** работает без перезагрузки страницы и сохраняет выбранный язык в `localStorage`.
 
 ## Interactions
 
 - project filtering: All / Frontend / Product / Full-stack / AI;
-- animated project modal cards;
+- project popup cards with project image, tags, description and repository CTA;
 - light / dark theme;
-- **MAKE IT WEIRD** chaos mode;
-- cursor glow;
+- dark cinematic Hero-art palette;
+- **MAKE IT WEIRD** controlled chaos mode;
+- cursor glow + visible cursor dot on dark backgrounds;
 - magnetic CTA buttons;
 - 3D tilt interaction on skill cards;
 - animated marquee;
-- floating stickers;
+- floating stickers and cultural references;
 - orbiting visual elements;
 - scroll progress indicator;
-- responsive mobile composition;
-- keyboard Escape support for modals.
+- responsive mobile menu with section switching;
+- keyboard Escape support for modals;
+- SVG favicon.
 
 ## Selected work
 
@@ -46,7 +50,13 @@ python -m http.server 4173
 
 ## Deploy
 
-`.github/workflows/portfolio-pages.yml` автоматически собирает содержимое `portfolio/` и публикует его через GitHub Pages после изменений в этой папке.
+`.github/workflows/portfolio-pages.yml` автоматически собирает содержимое `portfolio/` и публикует его через GitHub Pages после push в `main`.
+
+## Contact links
+
+GitHub now points to the public profile: `https://github.com/nestlir`.
+
+The Telegram destination is intentionally kept as a single configurable link in `index.html` until the exact public handle is confirmed; no guessed Telegram account is introduced.
 
 ## Structure
 
@@ -55,6 +65,7 @@ portfolio/
 ├── index.html
 ├── styles.css
 ├── script.js
+├── favicon.svg
 └── README.md
 ```
 
