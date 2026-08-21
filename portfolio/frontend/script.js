@@ -1,7 +1,7 @@
 const PROJECTS = [
   {name:'DataVac',type:'frontend product',tags:['Next.js','TypeScript','Tailwind'],image:'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1400&q=85',text:{ru:'Информационный продукт с поиском, фильтрацией, API-интеграцией, каталогом вакцин, платежным сценарием и генерацией PDF.',en:'Information product with search, filtering, API integration, vaccine catalog, payments and PDF generation.',ja:'検索・フィルター・API連携・ワクチンカタログ・決済・PDF生成を備えた情報プロダクト。'},detail:{ru:'Командный frontend-проект: реальные API, mapper-логика, сложные таблицы, поиск, фильтры, CloudPayments, PDF и E2E.',en:'Team frontend project with real APIs, mapper logic, complex tables, search, filters, CloudPayments, PDF and E2E.',ja:'実API、mapperロジック、複雑なテーブル、検索、フィルター、CloudPayments、PDF、E2Eを扱うチーム開発。'},repo:'https://github.com/DataVac-masterskaya/data-vac-frontend'},
   {name:'Furniture Store',type:'frontend product',tags:['HTML','SCSS','JavaScript'],image:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85',text:{ru:'Премиальный мебельный шоурум с каталогом, фильтрами, заявкой покупателя и демо-кабинетом продавца.',en:'Premium furniture showroom with catalog, filters, lead form and a demo seller dashboard.',ja:'カタログ、フィルター、問い合わせフォーム、販売員向けデモ画面を備えた家具ショールーム。'},detail:{ru:'Самостоятельный product-style кейс с responsive UI, SEO, Schema.org, GitHub Pages и локальным MVP кабинета продавца.',en:'Independent product-style case with responsive UI, SEO, Schema.org, GitHub Pages and a local seller-dashboard MVP.',ja:'レスポンシブUI、SEO、Schema.org、GitHub Pages、販売員ダッシュボードMVPを含む個人プロジェクト。'},repo:'https://github.com/nestlir/Furniture_Store_Ru'},
-  {name:'Story OS',type:'fullstack ai',tags:['Python','Telegram','OpenAI'],image:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85',text:{ru:'AI-ассистент для структурирования вымышленных миров, персонажей, событий и сюжетных линий.',en:'AI assistant for structuring fictional worlds, characters, events and storylines.',ja:'架空の世界、キャラクター、出来事、ストーリーを整理するAIアシスタント。'},detail:{ru:'Продуктовый AI-кейс: Telegram-first интерфейс, SQLite persistence, аналитический слой и дисциплина FACT / INFERENCE / SUGGESTION.',en:'Product AI case with Telegram-first UX, SQLite persistence, an analytics layer and FACT / INFERENCE / SUGGESTION discipline.',ja:'Telegram中心のUX、SQLite永続化、分析レイヤー、FACT / INFERENCE / SUGGESTIONの設計規律を持つAIプロダクト。'},repo:'https://github.com/nestlir/story-os-bot-1.0'},
+  {name:'Story OS',type:'fullstack ai',tags:['Python','Telegram','OpenAI'],image:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85',text:{ru:'AI-ассистент для структурирования вымышленных миров, персонажей, событий и сюжетных линий.',en:'AI assistant for structuring fictional worlds, characters, events and storylines.',ja:'架空の世界、キャラクター、出来事、ストーリーを整理するAIアシスタント。'},detail:{ru:'Продуктовый AI-кейс: Telegram-first интерфейс, SQLite persistence, аналитический слой и дисциплина FACT / INFERENCE / SUGGESTION.',en:'Product AI case with Telegram-first UX, SQLite persistence, analytics layer and FACT / INFERENCE / SUGGESTION discipline.',ja:'Telegram中心のUX、SQLite永続化、分析レイヤー、FACT / INFERENCE / SUGGESTIONの設計規律を持つAIプロダクト。'},repo:'https://github.com/nestlir/story-os-bot-1.0'},
   {name:'Multimodal AI',type:'fullstack ai',tags:['Python','React','Docker'],image:'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=85',text:{ru:'Мультимодальное приложение для обработки текста, голоса и изображений через набор сервисов.',en:'Multimodal application for text, voice and image processing across multiple services.',ja:'複数サービスを通じてテキスト、音声、画像を処理するマルチモーダルアプリ。'},detail:{ru:'Архитектурный кейс с microservices, API gateway, Redis, Docker/Kubernetes и несколькими AI-провайдерами.',en:'Architecture case using microservices, an API gateway, Redis, Docker/Kubernetes and multiple AI providers.',ja:'マイクロサービス、API Gateway、Redis、Docker/Kubernetes、複数AIプロバイダーを使ったアーキテクチャケース。'},repo:'https://github.com/nestlir/multimodal-ai-app'},
   {name:'Stellar Burger',type:'frontend',tags:['React','Redux','API'],image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=85',text:{ru:'Приложение для заказа бургеров с авторизацией, конструктором и личным кабинетом.',en:'Burger ordering application with authentication, constructor and personal account.',ja:'認証、バーガーコンストラクター、個人アカウントを備えた注文アプリ。'},detail:{ru:'React application с глобальным состоянием, маршрутизацией, API и пользовательскими сценариями заказа.',en:'React application with global state, routing, API integration and ordering flows.',ja:'グローバル状態、ルーティング、API連携、注文フローを備えたReactアプリ。'},repo:'https://github.com/nestlir/stellar-burger'},
   {name:'Web Larek',type:'fullstack',tags:['TypeScript','Express','MongoDB'],image:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85',text:{ru:'E-commerce приложение с frontend, backend и административными сценариями.',en:'E-commerce application with frontend, backend and administrative flows.',ja:'フロントエンド、バックエンド、管理者フローを備えたE-commerceアプリ。'},detail:{ru:'Кейс, показывающий TypeScript frontend, API-взаимодействие и понимание full-stack границы приложения.',en:'Case demonstrating TypeScript frontend engineering, API communication and full-stack boundaries.',ja:'TypeScriptフロントエンド、API通信、フルスタック境界への理解を示すケース。'},repo:'https://github.com/nestlir/web-larek-frontend'},
@@ -18,65 +18,14 @@ const I18N = {
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-const getState = (key, fallback) => { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } };
-const setState = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
-
-const state = {
-  lang: getState('frontend-lang', 'ru'),
-  theme: getState('frontend-theme', 'light'),
-  chaos: getState('frontend-chaos', 'false') === 'true',
-  filter: 'all'
-};
-
+const state = { lang: localStorage.getItem('portfolio-lang') || 'ru', filter: 'all' };
 const modal = $('#projectModal');
 const grid = $('#projectGrid');
-const mobileNav = $('#mobileNav');
-const body = document.body;
 
-function applyTheme() {
-  const dark = state.theme === 'dark';
-  body.classList.toggle('dark', dark);
-  $('#themeToggle')?.setAttribute('aria-pressed', String(dark));
-  $('#themeToggle')?.setAttribute('title', dark ? 'Switch to light theme' : 'Switch to dark theme');
-}
-
-function applyChaos() {
-  body.classList.toggle('chaos-mode', state.chaos);
-  const button = $('#chaosToggle');
-  button?.setAttribute('aria-pressed', String(state.chaos));
-  if (button) button.textContent = state.chaos ? 'TURN IT OFF ✦' : 'MAKE IT WEIRD ✦';
-}
-
-function setMenu(open) {
-  body.classList.toggle('menu-open', open);
-  mobileNav?.classList.toggle('is-open', open);
-  $('#menuToggle')?.setAttribute('aria-expanded', String(open));
-  mobileNav?.setAttribute('aria-hidden', String(!open));
-}
-
-function translatePage(lang) {
-  state.lang = I18N[lang] ? lang : 'ru';
-  setState('frontend-lang', state.lang);
-  document.documentElement.lang = state.lang;
-  $$('.lang').forEach(button => button.classList.toggle('active', button.dataset.lang === state.lang));
-
-  const translations = window.FRONTEND_TRANSLATIONS?.[state.lang];
-  if (translations) {
-    $$('[data-i18n]').forEach(node => {
-      const value = translations[node.dataset.i18n];
-      if (value != null) node.textContent = value;
-    });
-    $$('[data-i18n-html]').forEach(node => {
-      const value = translations[node.dataset.i18nHtml];
-      if (value != null) node.innerHTML = value;
-    });
-  }
-  renderProjects(state.filter);
-}
-
-function renderProjects(filter = 'all') {
+function renderProjects(filter = state.filter) {
   state.filter = filter;
   const items = filter === 'all' ? PROJECTS : PROJECTS.filter(project => project.type.includes(filter));
+  if (!grid) return;
   grid.innerHTML = items.map(project => `<article class="project"><div><span class="project-num">${String(PROJECTS.indexOf(project) + 1).padStart(2, '0')}</span><h3>${project.name}</h3><div class="tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><p>${project.text[state.lang]}</p></div><button class="project-link" type="button" data-project="${PROJECTS.indexOf(project)}">${I18N[state.lang].more}</button></article>`).join('');
 }
 
@@ -86,73 +35,35 @@ function openProject(index) {
   $('#modalContent').innerHTML = `<div class="popup-image"><img src="${project.image}" alt="${project.name}"><span>SELECTED / ${project.name.toUpperCase()}</span></div><div class="popup-copy"><span class="eyebrow">${I18N[state.lang].selected}</span><h2>${project.name}</h2><div class="tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><p>${project.detail[state.lang]}</p><div class="system-map"><span>UI</span><i>→</i><span>API</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div><a class="button" href="${project.repo}" target="_blank" rel="noreferrer">${I18N[state.lang].open}</a></div>`;
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
-  body.classList.add('modal-open');
+  document.body.classList.add('modal-open');
 }
 
 function closeProject() {
   modal?.classList.remove('open');
   modal?.setAttribute('aria-hidden', 'true');
-  body.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
 }
 
-function updateProgress() {
-  const bar = $('#scrollProgress');
-  if (!bar) return;
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  bar.style.width = `${max > 0 ? Math.min(100, window.scrollY / max * 100) : 0}%`;
+function setPortfolioLanguage(lang) {
+  if (!I18N[lang]) return;
+  state.lang = lang;
+  localStorage.setItem('portfolio-lang', lang);
+  renderProjects(state.filter);
 }
 
-function bindEvents() {
-  $$('.lang').forEach(button => button.addEventListener('click', () => translatePage(button.dataset.lang)));
-  $$('.filter').forEach(button => button.addEventListener('click', () => { $$('.filter').forEach(item => item.classList.remove('active')); button.classList.add('active'); renderProjects(button.dataset.filter); }));
-  grid?.addEventListener('click', event => { const button = event.target.closest('[data-project]'); if (button) openProject(Number(button.dataset.project)); });
-  $('#themeToggle')?.addEventListener('click', () => { state.theme = state.theme === 'dark' ? 'light' : 'dark'; setState('frontend-theme', state.theme); applyTheme(); });
-  $('#chaosToggle')?.addEventListener('click', () => { state.chaos = !state.chaos; setState('frontend-chaos', String(state.chaos)); applyChaos(); });
-  $('#menuToggle')?.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
-  $('#mobileClose')?.addEventListener('click', () => setMenu(false));
-  $$('.mobile-nav-links a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-  $('.modal-backdrop', modal)?.addEventListener('click', closeProject);
-  $('#modalClose')?.addEventListener('click', closeProject);
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { setMenu(false); closeProject(); }
-  });
-  window.addEventListener('scroll', updateProgress, {passive:true});
-  window.addEventListener('resize', updateProgress);
-}
+window.setPortfolioLanguage = setPortfolioLanguage;
 
-function bindPointerEffects() {
-  if (window.matchMedia('(pointer:coarse)').matches) return;
-  const dot = $('.cursor-dot');
-  const glow = $('.cursor-glow');
-  window.addEventListener('pointermove', event => {
-    if (dot) { dot.style.left = `${event.clientX}px`; dot.style.top = `${event.clientY}px`; }
-    if (glow) { glow.style.left = `${event.clientX}px`; glow.style.top = `${event.clientY}px`; }
-  }, {passive:true});
-  $$('.magnetic').forEach(element => {
-    element.addEventListener('pointermove', event => {
-      const rect = element.getBoundingClientRect();
-      element.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * .12}px,${(event.clientY - rect.top - rect.height / 2) * .12}px)`;
-    });
-    element.addEventListener('pointerleave', () => { element.style.transform = ''; });
-  });
-  $$('.tilt').forEach(card => {
-    card.addEventListener('pointermove', event => {
-      const rect = card.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - .5) * 6;
-      const y = ((event.clientY - rect.top) / rect.height - .5) * -6;
-      card.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-6px)`;
-    });
-    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-  });
-}
+document.addEventListener('click', (event) => {
+  const projectButton = event.target.closest('[data-project]');
+  if (projectButton) openProject(Number(projectButton.dataset.project));
+  const filter = event.target.closest('.filter');
+  if (filter) {
+    $$('.filter').forEach((item) => item.classList.remove('active'));
+    filter.classList.add('active');
+    const filters = ['all','frontend','product','fullstack','ai'];
+    renderProjects(filters[Number(filter.dataset.index || 0)] || filter.dataset.filter || 'all');
+  }
+  if (event.target.closest('.modal-backdrop') || event.target.closest('#modalClose')) closeProject();
+});
 
-function boot() {
-  applyTheme();
-  applyChaos();
-  bindEvents();
-  bindPointerEffects();
-  renderProjects('all');
-  updateProgress();
-}
-
-document.addEventListener('DOMContentLoaded', boot);
+document.addEventListener('DOMContentLoaded', () => renderProjects());
