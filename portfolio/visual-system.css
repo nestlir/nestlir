@@ -1,0 +1,43 @@
+/* Visual system — decorative layer only. Keep layout and interaction rules in the main stylesheets. */
+:root{--visual-black:#21191d;--visual-paper:#fffdfb;--visual-accent:#ef3151;--visual-yellow:#ffe76a}
+
+/* Editorial project treatment */
+.project{position:relative;isolation:isolate}
+.project-visual{border-bottom:1px solid var(--line);background:#171114}
+.project-visual img{filter:saturate(.92) contrast(1.03);transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .65s ease}
+.project:hover .project-visual img{transform:scale(1.06);filter:saturate(1.18) contrast(1.05)}
+.project-visual .project-film{box-shadow:3px 3px 0 rgba(33,25,29,.16)}
+.project-body{background:linear-gradient(180deg,var(--surface),rgba(255,253,251,.96))}
+.project-body:before{content:"";position:absolute;left:0;right:0;top:190px;height:1px;background:linear-gradient(90deg,var(--accent),transparent 70%);opacity:.5}
+
+/* Stickers / stamps */
+.visual-sticker{position:absolute;display:grid;place-items:center;z-index:8;pointer-events:none;font-weight:900;line-height:.95;text-align:center}
+.visual-sticker--round{width:62px;height:62px;border:2px solid var(--visual-black);border-radius:50%;background:var(--visual-yellow);font-size:10px;transform:rotate(8deg);box-shadow:4px 5px 0 rgba(33,25,29,.12)}
+.visual-sticker--star{width:54px;height:54px;background:var(--visual-accent);color:#fff;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 56%,79% 94%,50% 70%,21% 94%,32% 56%,2% 35%,39% 35%);font-size:9px;transform:rotate(-8deg)}
+.visual-sticker--tape{padding:7px 13px;background:#fff0a8;border:1px solid rgba(33,25,29,.2);font:900 8px/1 system-ui;letter-spacing:.12em;transform:rotate(-4deg)}
+
+/* Floating visual punctuation */
+.visual-marker{display:inline-flex;align-items:center;gap:7px;padding:5px 8px;border:1px solid currentColor;border-radius:999px;font:900 8px/1 system-ui;letter-spacing:.12em;text-transform:uppercase}
+.visual-marker:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.visual-crosshair{position:absolute;width:28px;height:28px;z-index:6;pointer-events:none;opacity:.55}
+.visual-crosshair:before,.visual-crosshair:after{content:"";position:absolute;background:currentColor}
+.visual-crosshair:before{width:100%;height:1px;top:50%;left:0}.visual-crosshair:after{height:100%;width:1px;left:50%;top:0}
+
+/* Image-frame language */
+.art-photo,.project-visual,.popup-image{overflow:hidden}
+.art-photo:after{content:"PHOTO / 001";position:absolute;right:4px;top:4px;background:#fff;color:#111;padding:3px 4px;font:900 6px/1 system-ui;letter-spacing:.1em}
+.popup-image:after{pointer-events:none}
+
+/* Small icon language for tech tags */
+.tag:before{content:"◆";font-size:6px;margin-right:4px;vertical-align:1px}
+
+/* Dark theme keeps the decorative layer intentional */
+body.dark .visual-sticker--round{background:#ffe76a;color:#21191d}
+body.dark .visual-sticker--tape{background:#4b3a19;color:#fff3b0;border-color:#8d7438}
+body.dark .visual-marker{color:#ffe76a}
+body.dark .project-body{background:linear-gradient(180deg,#241c20,#21191d)}
+body.dark .project-visual{border-color:#49383f}
+
+/* Mobile: decoration supports content, never competes with it */
+@media(max-width:700px){.visual-sticker--round{width:50px;height:50px;font-size:8px}.visual-sticker--star{width:44px;height:44px}.visual-marker{font-size:7px}.project-body:before{top:0}}
+@media(prefers-reduced-motion:reduce){.project:hover .project-visual img{transform:none}}

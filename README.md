@@ -1,46 +1,76 @@
-# Anastasia Kuzmina — Frontend Developer
+# Anastasia — Interactive Portfolio
 
-**React · TypeScript · Next.js · UX/UI · Product-minded engineering**
+**Dopamine landing / frontend portfolio / visual playground**
 
-I build modern web interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail.
+Интерактивный персональный сайт-портфолио, собранный как небольшой digital-experience, а не как стандартное резюме.
 
-### ✦ Interactive portfolio
+## Visual concept
 
-**[Open portfolio →](./portfolio/)**
+**Много воздуха + сладкий хаос + editorial typography + cinematic pacing.**
 
-A visual overview of my selected work, skills and engineering approach.
+Визуальный язык смешивает pastel-среду, кремовые поверхности, candy-акценты, японские графические мотивы, doodles, мемный микрокопирайтинг, anime/pop-culture настроение, фотографии, стикеры и кинематографичные frame-маркеры.
 
-### Selected work
+## Languages
 
-| Project | Focus |
-| --- | --- |
-| **DataVac** | Next.js · TypeScript · API · search · payments · PDF |
-| **Furniture Store** | Responsive UI · product experience · SEO |
-| **Story OS** | Python · Telegram · OpenAI · product architecture |
-| **Multimodal AI** | React · Python · microservices · AI |
-| **Stellar Burger** | React · Redux · API · application UI |
-| **Web Larek** | TypeScript · Express · MongoDB · e-commerce |
+Переключатель **RU / EN / JP** работает без перезагрузки страницы и сохраняет выбранный язык в `localStorage`.
 
-### What I do
+## Interactions
 
-- **Frontend development:** React, Next.js, TypeScript, JavaScript
-- **UI engineering:** responsive interfaces, component systems, forms, complex states
-- **API integration:** REST, typed data mapping, loading/error states, external services
-- **Product & UX:** translating requirements and designs into usable user journeys
-- **Beyond frontend:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
+- project filtering: All / Frontend / Product / Full-stack / AI;
+- project popup cards with project image, tags, description and repository CTA;
+- light / dark theme;
+- dark cinematic Hero-art palette;
+- **MAKE IT WEIRD** controlled chaos mode;
+- cursor glow + visible cursor dot on dark backgrounds;
+- magnetic CTA buttons;
+- 3D tilt interaction on skill cards;
+- animated marquee;
+- floating stickers and cultural references;
+- orbiting visual elements;
+- scroll progress indicator;
+- responsive mobile menu with section switching;
+- keyboard Escape support for modals;
+- SVG favicon.
 
-### Engineering approach
+## Selected work
 
-I like working where implementation and product thinking meet: understand the user scenario, structure the data flow, build a clear interface, then refine the details and edge cases.
+DataVac · Furniture Store · Story OS · Multimodal AI · Stellar Burger · Web Larek · Mesto · Blog Customizer · Оно тебе надо.
 
-I am especially interested in **frontend / product development roles** where I can contribute to real-world interfaces while continuing to grow as an engineer.
+## Stack
 
-### Contact
+HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
 
-- [GitHub](https://github.com/nestlir)
-- [Telegram](https://t.me/nestlir)
-- [Email](mailto:nestlir@mail.ru)
+## Run locally
 
----
+```bash
+python -m http.server 4173
+```
 
-*Selected projects are presented as portfolio case studies; each repository contains its own technical context and setup instructions.*
+Откройте `http://localhost:4173/portfolio/`.
+
+## Deploy
+
+`.github/workflows/portfolio-pages.yml` автоматически собирает содержимое `portfolio/` и публикует его через GitHub Pages после push в `main`.
+
+## Contact links
+
+GitHub now points to the public profile: `https://github.com/nestlir`.
+
+The Telegram destination is intentionally kept as a single configurable link in `index.html` until the exact public handle is confirmed; no guessed Telegram account is introduced.
+
+## Structure
+
+```text
+portfolio/
+├── index.html
+├── styles.css
+├── script.js
+├── favicon.svg
+└── README.md
+```
+
+## Design principle
+
+**Character without noise.**
+
+Сайт может быть странным, ярким и запоминающимся, но пользователь всегда должен понимать, где он находится, что можно сделать и зачем ему нажимать дальше.
