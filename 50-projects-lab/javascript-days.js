@@ -1,2 +1,34 @@
-const jsDays=[{"id":52,"day":1,"name":"Introduction","category":"JavaScript Fundamentals","slug":"day-01"},{"id":53,"day":2,"name":"Data Types","category":"JavaScript Fundamentals","slug":"day-02"},{"id":54,"day":3,"name":"Booleans and Operators","category":"JavaScript Fundamentals","slug":"day-03"},{"id":55,"day":4,"name":"Higher Order Functions","category":"JavaScript Fundamentals","slug":"day-04"},{"id":56,"day":5,"name":"Arrays","category":"JavaScript Fundamentals","slug":"day-05"},{"id":57,"day":6,"name":"Loops","category":"JavaScript Fundamentals","slug":"day-06"},{"id":58,"day":7,"name":"Functions","category":"JavaScript Fundamentals","slug":"day-07"},{"id":59,"day":8,"name":"Objects","category":"JavaScript Fundamentals","slug":"day-08"},{"id":60,"day":9,"name":"Higher Order Functions","category":"JavaScript Fundamentals","slug":"day-09"},{"id":61,"day":10,"name":"Sets and Maps","category":"JavaScript Fundamentals","slug":"day-10"},{"id":62,"day":11,"name":"Destructuring and Spreading","category":"JavaScript Advanced","slug":"day-11"},{"id":63,"day":12,"name":"Regular Expressions","category":"JavaScript Advanced","slug":"day-12"},{"id":64,"day":13,"name":"Console Object Methods","category":"JavaScript Advanced","slug":"day-13"},{"id":65,"day":14,"name":"Error Handling","category":"JavaScript Advanced","slug":"day-14"},{"id":66,"day":15,"name":"Classes","category":"JavaScript Advanced","slug":"day-15"},{"id":67,"day":16,"name":"JSON","category":"JavaScript Advanced","slug":"day-16"},{"id":68,"day":17,"name":"Web Storage","category":"JavaScript Advanced","slug":"day-17"},{"id":69,"day":18,"name":"Promises","category":"JavaScript Advanced","slug":"day-18"},{"id":70,"day":19,"name":"Closures","category":"JavaScript Advanced","slug":"day-19"},{"id":71,"day":20,"name":"Writing Clean Code","category":"JavaScript Advanced","slug":"day-20"},{"id":72,"day":21,"name":"DOM","category":"DOM & Projects","slug":"day-21"},{"id":73,"day":22,"name":"Manipulating DOM","category":"DOM & Projects","slug":"day-22"},{"id":74,"day":23,"name":"Event Listeners","category":"DOM & Projects","slug":"day-23"},{"id":75,"day":24,"name":"Mini Project: Number Generator","category":"DOM & Projects","slug":"day-24"},{"id":76,"day":25,"name":"World Countries Data","category":"DOM & Projects","slug":"day-25"},{"id":77,"day":26,"name":"Mini Project: Population Chart","category":"DOM & Projects","slug":"day-26"},{"id":78,"day":27,"name":"Mini Project: Leaderboard","category":"DOM & Projects","slug":"day-27"},{"id":79,"day":28,"name":"Mini Project: Portfolio","category":"DOM & Projects","slug":"day-28"},{"id":80,"day":29,"name":"Mini Project: Visualizations","category":"DOM & Projects","slug":"day-29"},{"id":81,"day":30,"name":"Final Challenge","category":"DOM & Projects","slug":"day-30"}]);
-window.JS_DAYS=jsDays;
+const jsDays = [
+  { id: 52, day: 1, name: 'Introduction', category: 'JavaScript Fundamentals', slug: 'day-01' },
+  { id: 53, day: 2, name: 'Data Types', category: 'JavaScript Fundamentals', slug: 'day-02' },
+  { id: 54, day: 3, name: 'Booleans and Operators', category: 'JavaScript Fundamentals', slug: 'day-03' },
+  { id: 55, day: 4, name: 'Higher Order Functions', category: 'JavaScript Fundamentals', slug: 'day-04' },
+  { id: 56, day: 5, name: 'Arrays', category: 'JavaScript Fundamentals', slug: 'day-05' },
+  { id: 57, day: 6, name: 'Loops', category: 'JavaScript Fundamentals', slug: 'day-06' },
+  { id: 58, day: 7, name: 'Functions', category: 'JavaScript Fundamentals', slug: 'day-07' },
+  { id: 59, day: 8, name: 'Objects', category: 'JavaScript Fundamentals', slug: 'day-08' },
+  { id: 60, day: 9, name: 'Higher Order Functions', category: 'JavaScript Fundamentals', slug: 'day-09' },
+  { id: 61, day: 10, name: 'Sets and Maps', category: 'JavaScript Fundamentals', slug: 'day-10' },
+  { id: 62, day: 11, name: 'Destructuring and Spreading', category: 'JavaScript Advanced', slug: 'day-11' },
+  { id: 63, day: 12, name: 'Regular Expressions', category: 'JavaScript Advanced', slug: 'day-12' },
+  { id: 64, day: 13, name: 'Console Object Methods', category: 'JavaScript Advanced', slug: 'day-13' },
+  { id: 65, day: 14, name: 'Error Handling', category: 'JavaScript Advanced', slug: 'day-14' },
+  { id: 66, day: 15, name: 'Classes', category: 'JavaScript Advanced', slug: 'day-15' },
+  { id: 67, day: 16, name: 'JSON', category: 'JavaScript Advanced', slug: 'day-16' },
+  { id: 68, day: 17, name: 'Web Storage', category: 'JavaScript Advanced', slug: 'day-17' },
+  { id: 69, day: 18, name: 'Closures', category: 'JavaScript Advanced', slug: 'day-18' },
+  { id: 70, day: 19, name: 'Writing Clean Code', category: 'JavaScript Advanced', slug: 'day-19' },
+  { id: 71, day: 20, name: 'Clean Code', category: 'JavaScript Advanced', slug: 'day-20' },
+  { id: 72, day: 21, name: 'DOM', category: 'DOM & Projects', slug: 'day-21' },
+  { id: 73, day: 22, name: 'Manipulating DOM', category: 'DOM & Projects', slug: 'day-22' },
+  { id: 74, day: 23, name: 'Event Listeners', category: 'DOM & Projects', slug: 'day-23' },
+  { id: 75, day: 24, name: 'Number Generator', category: 'DOM & Projects', slug: 'day-24' },
+  { id: 76, day: 25, name: 'World Countries Data', category: 'DOM & Projects', slug: 'day-25' },
+  { id: 77, day: 26, name: 'Population Chart', category: 'DOM & Projects', slug: 'day-26' },
+  { id: 78, day: 27, name: 'Leaderboard', category: 'DOM & Projects', slug: 'day-27' },
+  { id: 79, day: 28, name: 'Portfolio', category: 'DOM & Projects', slug: 'day-28' },
+  { id: 80, day: 29, name: 'Visualizations', category: 'DOM & Projects', slug: 'day-29' },
+  { id: 81, day: 30, name: 'Final Challenge', category: 'DOM & Projects', slug: 'day-30' }
+];
+
+window.JS_DAYS = jsDays;
