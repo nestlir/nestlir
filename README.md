@@ -1,22 +1,26 @@
-# Anastasia Kuzmina — Frontend Developer
+# Anastasia Kuzmina — Full-stack / Frontend Developer
 
-**React · TypeScript · Next.js · UX/UI · Product-minded engineering**
+**React · TypeScript · Next.js · UX/UI · Product-minded engineering · APIs · Systems**
 
-I build modern web interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail.
+I build modern interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail — and I also work across APIs, data flows and engineering architecture when the project requires it.
 
-### ✦ Interactive portfolio
+## ✦ Live portfolio
 
-**[Open portfolio →](./portfolio/)**
+- [Open Full-stack portfolio](https://nestlir.github.io/nestlir/portfolio/)
+- [Open Frontend portfolio](https://nestlir.github.io/nestlir/portfolio/frontend/)
 
-A visual overview of my selected work, skills and engineering approach.
+The portfolio presents selected work, engineering scope, technology stacks and the path from **UI → API → DATA → SHIP**.
 
-### ✦ 50 Projects Lab
+## ✦ 50 Projects Lab
 
-**[Explore the interactive showcase →](./50-projects-lab/)**
+- [Open interactive Projects Lab](https://50-projects-lab.vercel.app/)
+- [Browse the source](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
 
-A unified portfolio/showcase interface for the **50 Projects in 50 Days** collection. It demonstrates catalog architecture, search and filtering UX, category navigation, project previews and working source/demo transitions.
+The lab combines a frontend-project catalog with interactive C/C++ systems architecture explainers.
 
-### Selected work
+> The repository documents the current implementation honestly: some frontend demos are standalone wrappers around original educational projects, while the C/C++ systems projects live as native source code.
+
+## Selected work
 
 | Project | Focus |
 | --- | --- |
@@ -27,15 +31,25 @@ A unified portfolio/showcase interface for the **50 Projects in 50 Days** collec
 | **Stellar Burger** | React · Redux · API · application UI |
 | **Web Larek** | TypeScript · Express · MongoDB · e-commerce |
 
-### What I do
+## What I do
 
 - **Frontend development:** React, Next.js, TypeScript, JavaScript
-- **UI engineering:** responsive interfaces, component systems, forms, complex states
-- **API integration:** REST, typed data mapping, loading/error states, external services
+- **UI engineering:** responsive interfaces, component systems, forms and complex states
+- **API integration:** REST, typed data mapping, loading/error states and external services
 - **Product & UX:** translating requirements and designs into usable user journeys
-- **Beyond frontend:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
+- **Full-stack engineering:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
+- **Systems learning:** C/C++ projects covering processes, networking, storage, compilers, virtual machines and emulation
 
-### Contact
+## Repository structure
+
+```text
+nestlir/
+├── portfolio/          # Full-stack + Frontend portfolio
+├── 50-projects-lab/    # Frontend exercises + C/C++ systems lab
+└── .github/workflows/  # CI, QA and GitHub Pages workflows
+```
+
+## Contact
 
 - [GitHub](https://github.com/nestlir)
 - [Telegram](https://t.me/nestlir)
