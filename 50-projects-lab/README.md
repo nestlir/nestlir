@@ -1,77 +1,68 @@
 # 50+ Projects Lab
 
-A professional **frontend portfolio/showcase** that turns Brad Traversy's *50 Projects in 50 Days* collection into one searchable, interactive experience.
-
-## ✨ What was built
-
-This is not just a list of links. The showcase provides:
-
-- **51 indexed projects** in one unified interface
-- 🔎 Live search by project name and skill area
-- 🗂 Category filtering
-- ↕️ Original-order and alphabetical sorting
-- 🖥 Embedded project viewer with fallback actions
-- 🔗 Direct navigation to the original demo and source code
-- ⭐ Favorites persisted with `localStorage`
-- 📱 Responsive layout for desktop and mobile
-- 📊 Visible collection/progress status
+A unified **frontend portfolio and interactive project archive** built around the 50 Projects in 50 Days collection.
 
 ## Live
 
-Production deployment:
+urlProduction deploymenthttps://50-projects-lab.vercel.app
 
-https://50-projects-lab.vercel.app
+## What the application includes
 
-## Local development
+- **51 projects** indexed in one application
+- Search and category filtering
+- Interactive project viewer
+- Previous / next navigation across the collection
+- Random-project navigation
+- Responsive portfolio layout
+- Individual project route structure under `projects/`
+- Direct links to the original source collection
+- Vanilla HTML, CSS and JavaScript — no framework required
+
+## Architecture
+
+```text
+50-projects-lab/
+├── index.html          # Portfolio shell
+├── app.js              # Catalog + demo engine
+├── site.js             # Shared project manifest
+├── PROJECTS.json       # Project metadata
+├── projects/           # Individual project routes
+│   ├── 01-expanding-cards/
+│   ├── 02-progress-steps/
+│   └── ...
+└── README.md
+```
+
+## Run locally
 
 ```bash
 git clone https://github.com/nestlir/nestlir.git
 cd nestlir/50-projects-lab
-```
-
-The project is dependency-free:
-
-```bash
 npx serve .
 ```
 
-Then open the local URL printed by the server.
+Then open the local address printed by the server.
 
-## Project structure
+## Project navigation
 
+The portfolio is designed as:
+
+```text
+Portfolio
+   ↓
+Project
+   ↓
+Interactive Demo
+   ↓
+Previous / Next / Random
 ```
-50-projects-lab/
-├── index.html       # Showcase UI and interaction layer
-├── PROJECTS.json    # Catalog of all 51 projects
-└── README.md
-```
 
-## Technology
+## Credits and attribution
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Browser localStorage
-- Vercel
+The original exercises and source implementations are based on Brad Traversy's **50 Projects in 50 Days** collection.
 
-## Navigation logic
+Original repository:
 
-Each project exposes three paths:
+urlbradtraversy/50projects50dayshttps://github.com/bradtraversy/50projects50days
 
-1. **Preview** — attempts to open the original demo inside the built-in viewer.
-2. **Open demo** — opens the original live project in a new tab.
-3. **View source** — opens the corresponding source directory in GitHub.
-
-This makes the showcase useful even when an external demo blocks iframe embedding.
-
-## Credits
-
-The original exercises, ideas and source projects belong to Brad Traversy's **50 Projects in 50 Days** collection:
-
-https://github.com/bradtraversy/50projects50days
-
-This repository contains a separate portfolio/showcase interface and preserves navigation back to the original work.
-
-## License note
-
-The original repository is distributed under the MIT License. Applicable attribution and license requirements should be preserved when reusing original source code.
+This project adds a separate portfolio architecture, unified catalog, navigation layer and presentation system. Any reuse of original source code must retain the applicable attribution and MIT license requirements.
