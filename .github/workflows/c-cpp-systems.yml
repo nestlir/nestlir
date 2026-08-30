@@ -1,0 +1,42 @@
+name: C/C++ Systems Lab
+
+on:
+  push:
+    paths:
+      - 'projects/project-based-learning/c-cpp/**'
+      - '.github/workflows/c-cpp-systems.yml'
+  pull_request:
+    paths:
+      - 'projects/project-based-learning/c-cpp/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - shell
+          - hash-table
+          - tiny-database
+          - text-editor
+          - tiny-compiler
+          - memory-allocator
+          - virtual-machine
+          - http-server
+          - tcp-chat-server
+          - redis-clone
+          - chip8-emulator
+          - tiny-raytracer
+    defaults:
+      run:
+        working-directory: projects/project-based-learning/c-cpp
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: make -C ${{ matrix.project }}
+      - name: Smoke test VM
+        if: matrix.project == 'virtual-machine'
+        run: test "$(./virtual-machine/tiny-vm)" = "38"
+      - name: Smoke test compiler
+        if: matrix.project == 'tiny-compiler'
+        run: test "$(printf '2 + 3 * (4 + 1)\n' | ./tiny-compiler/tiny-compiler)" = "17"

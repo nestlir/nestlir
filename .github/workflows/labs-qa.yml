@@ -1,0 +1,41 @@
+name: Labs QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [shell, hash-table, http-server, memory-allocator, redis-clone, tcp-chat-server, text-editor, tiny-compiler, tiny-database, tiny-raytracer, virtual-machine, chip8-emulator]
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y build-essential
+      - run: make -C "50-projects-lab/projects/c-cpp/${{ matrix.project }}"
+
+  mini-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -d 50-projects-lab/projects/c-cpp/mini-kernel
+
+  frontend-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          node --check 50-projects-lab/app.js
+          node --check 50-projects-lab/project-runtime.js
+          node 50-projects-lab/qa/audit-deep.mjs
