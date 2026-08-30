@@ -1,33 +1,31 @@
 # 50 Projects Lab
 
-An interactive engineering archive that combines **30 browser-based frontend exercises** and **13 native C/C++ systems projects**.
-
-The catalog is intentionally based on the directories that actually exist in this repository.
+A self-contained interactive engineering archive with **30 local browser projects** and **13 native C/C++ systems projects**.
 
 ## Live site
 
 - [Open 50 Projects Lab](https://50-projects-lab.vercel.app/)
-- [Open this folder on GitHub](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
+- [Browse source](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
 
-## What's inside
+## Frontend Lab — 30 local demos
 
-### Frontend Lab — 30 projects
+Projects `01`–`30` use a shared local runtime: `project-runtime.js`.
 
-The frontend catalog contains projects `01` through `30`.
+Every project keeps its own public URL and `index.html`, while the runtime provides the interactive implementation.
+
+**No remote demo iframes. No dependency on the old missing `site.js`.**
 
 ```text
 projects/
 ├── 01-expanding-cards/
 ├── 02-progress-steps/
-├── ...
+├── …
 └── 30-auto-text-effect/
 ```
 
-Projects **01–20** currently use a shared legacy project-shell template and require the missing `site.js` catalog layer to become fully functional as standalone demos.
+The collection includes local interactions such as card expansion, progress controls, search, loading states, keyboard events, FAQ collapse, random selection, counters, canvas drawing, drag and drop, sliders, clocks, toast notifications, GitHub API lookup and animated text.
 
-Projects **21–30** are working showcase wrappers around the original educational demos and load the demos in an iframe. Their source links point to the original project directories.
-
-### C/C++ Systems Lab — 13 projects
+## C/C++ Systems Lab — 13 projects
 
 ```text
 projects/c-cpp/
@@ -46,7 +44,7 @@ projects/c-cpp/
 └── mini-kernel/
 ```
 
-The browser catalog contains interactive architecture explainers for the systems projects. These explainers visualize execution flow and **do not replace the native C/C++ implementations**.
+The browser catalog provides architecture explainers. Native C/C++ source remains the authoritative implementation.
 
 ## Architecture
 
@@ -54,16 +52,12 @@ The browser catalog contains interactive architecture explainers for the systems
 50-projects-lab/
 ├── index.html
 ├── app.js
+├── project-runtime.js
 ├── javascript-days.js
 ├── style.css
 ├── projects/
-│   ├── 01-expanding-cards/
-│   ├── ...
-│   ├── 30-auto-text-effect/
-│   └── c-cpp/
 ├── qa/
 ├── scripts/
-├── README.md
 └── vercel.json
 ```
 
@@ -75,22 +69,21 @@ cd nestlir/50-projects-lab
 python -m http.server 8080
 ```
 
-Then open:
+Open `http://localhost:8080`.
 
-```text
-http://localhost:8080
-```
-
-## JavaScript checks
+## QA
 
 ```bash
 node --check app.js
-node --check javascript-days.js
+node --check project-runtime.js
+node qa/audit-deep.mjs
 ```
 
-## Native C/C++ projects
+The frontend audit verifies that all 30 project pages use the local runtime and that no external iframe dependency remains.
 
-Each native project has its own source layout and build requirements. Check the project directory and its README where available. For example:
+## Native projects
+
+Each native project has its own build requirements. Typical example:
 
 ```bash
 cd projects/c-cpp/shell
@@ -98,21 +91,9 @@ make
 ./mini-shell
 ```
 
-## QA and cleanup status
-
-The repository contains QA tooling under `qa/` and validation helpers under `scripts/`.
-
-Before considering the Frontend Lab fully production-ready, verify:
-
-1. every catalog link resolves;
-2. projects 01–20 receive a real local implementation or a restored catalog runtime;
-3. iframe-based projects 21–30 still load successfully;
-4. browser JavaScript has no syntax errors;
-5. native projects build according to their own project instructions.
-
 ## Deployment
 
-The lab is configured as a static Vercel project.
+Static Vercel deployment:
 
 ```text
 Root directory: 50-projects-lab
@@ -122,9 +103,6 @@ Output directory: .
 
 ## Credits
 
-The frontend exercise names originate from the educational **50 Projects in 50 Days** collection by Brad Traversy.
+The project names are inspired by the educational **50 Projects in 50 Days** collection by Brad Traversy. This repository contains its own local runtime, catalog and systems-project integration.
 
-- [Original collection repository](https://github.com/bradtraversy/50projects50days)
-- [Original project demos](https://50projects50days.com/)
-
-This repository adds its own catalog UI, systems-project archive and C/C++ architecture explainers.
+- [Original collection](https://github.com/bradtraversy/50projects50days)
