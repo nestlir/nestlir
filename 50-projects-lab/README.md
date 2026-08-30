@@ -1,35 +1,33 @@
-# Projects Lab
+# 50 Projects Lab
 
-A unified portfolio package containing a **Frontend Lab** and a **C/C++ Systems Lab**.
+An interactive engineering archive that combines **30 browser-based frontend exercises** and **13 native C/C++ systems projects**.
 
-> The catalog deliberately reflects the folders that physically exist in this package. It does not invent routes for missing projects.
+The catalog is intentionally based on the directories that actually exist in this repository.
 
 ## Live site
 
-urlProduction deploymenthttps://50-projects-lab.vercel.app
+- [Open 50 Projects Lab](https://50-projects-lab.vercel.app/)
+- [Open this folder on GitHub](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
 
 ## What's inside
 
-### Frontend Lab
+### Frontend Lab — 30 projects
 
-The package currently contains **30 frontend projects**:
-
-- 01–20: core interactive UI projects
-- 21–30: additional browser projects
-
-Each project lives in its own directory under:
+The frontend catalog contains projects `01` through `30`.
 
 ```text
 projects/
-└── 01-expanding-cards/
-    ├── index.html
-    ├── style.css
-    └── script.js
+├── 01-expanding-cards/
+├── 02-progress-steps/
+├── ...
+└── 30-auto-text-effect/
 ```
 
-### C/C++ Systems Lab
+Projects **01–20** currently use a shared legacy project-shell template and require the missing `site.js` catalog layer to become fully functional as standalone demos.
 
-The Systems Lab contains the native project tree under:
+Projects **21–30** are working showcase wrappers around the original educational demos and load the demos in an iframe. Their source links point to the original project directories.
+
+### C/C++ Systems Lab — 13 projects
 
 ```text
 projects/c-cpp/
@@ -48,7 +46,7 @@ projects/c-cpp/
 └── mini-kernel/
 ```
 
-The browser site provides **interactive architecture explainers** for these projects. Those visualizations explain execution flow and are **not substitutes for the native C/C++ implementations**.
+The browser catalog contains interactive architecture explainers for the systems projects. These explainers visualize execution flow and **do not replace the native C/C++ implementations**.
 
 ## Architecture
 
@@ -57,23 +55,19 @@ The browser site provides **interactive architecture explainers** for these proj
 ├── index.html
 ├── app.js
 ├── javascript-days.js
+├── style.css
 ├── projects/
 │   ├── 01-expanding-cards/
 │   ├── ...
 │   ├── 30-auto-text-effect/
 │   └── c-cpp/
 ├── qa/
-│   └── audit-deep.mjs
 ├── scripts/
-│   ├── helpers/
-│   └── validators/
 ├── README.md
 └── vercel.json
 ```
 
 ## Run locally
-
-No framework is required.
 
 ```bash
 git clone https://github.com/nestlir/nestlir.git
@@ -81,53 +75,44 @@ cd nestlir/50-projects-lab
 python -m http.server 8080
 ```
 
-Open:
+Then open:
 
 ```text
 http://localhost:8080
 ```
 
-You can also use any static server.
-
-## QA
-
-Run the deep frontend audit:
-
-```bash
-node qa/audit-deep.mjs
-```
-
-The report is written to:
-
-```text
-qa-report.json
-```
-
-The audit checks:
-
-- missing files
-- duplicate implementations
-- external iframe demos
-- detected interaction handlers
-- network/API usage
-- generic fake-demo markers
-
-A failing audit is intentionally not hidden. The report is the source of truth for cleanup work.
-
-## JavaScript syntax checks
+## JavaScript checks
 
 ```bash
 node --check app.js
 node --check javascript-days.js
 ```
 
-## Native projects
+## Native C/C++ projects
 
-Build commands depend on each project's own source layout. The CI workflow attempts project-level builds for the supported native projects and keeps the legacy source tree until migration/build verification is complete.
+Each native project has its own source layout and build requirements. Check the project directory and its README where available. For example:
+
+```bash
+cd projects/c-cpp/shell
+make
+./mini-shell
+```
+
+## QA and cleanup status
+
+The repository contains QA tooling under `qa/` and validation helpers under `scripts/`.
+
+Before considering the Frontend Lab fully production-ready, verify:
+
+1. every catalog link resolves;
+2. projects 01–20 receive a real local implementation or a restored catalog runtime;
+3. iframe-based projects 21–30 still load successfully;
+4. browser JavaScript has no syntax errors;
+5. native projects build according to their own project instructions.
 
 ## Deployment
 
-The package is configured as a static Vercel project.
+The lab is configured as a static Vercel project.
 
 ```text
 Root directory: 50-projects-lab
@@ -135,18 +120,11 @@ Build command: none
 Output directory: .
 ```
 
-Before promoting a deployment, verify:
-
-1. the deployment returns HTTP 200;
-2. the catalog reflects the real project tree;
-3. browser JavaScript has no syntax errors;
-4. project links resolve;
-5. the Systems Lab visualizers respond to user interaction.
-
 ## Credits
 
-The frontend exercise names are historically associated with the educational **50 Projects in 50 Days** collection by Brad Traversy.
+The frontend exercise names originate from the educational **50 Projects in 50 Days** collection by Brad Traversy.
 
-urlOriginal collection repositoryhttps://github.com/bradtraversy/50projects50days
+- [Original collection repository](https://github.com/bradtraversy/50projects50days)
+- [Original project demos](https://50projects50days.com/)
 
-This repository uses its own package structure, catalog layer, QA tooling and Systems Lab integration.
+This repository adds its own catalog UI, systems-project archive and C/C++ architecture explainers.
