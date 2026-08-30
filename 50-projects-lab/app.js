@@ -1,6 +1,6 @@
 const frontendProjects = [
   'Expanding Cards','Progress Steps','Rotating Navigation','Hidden Search','Blurry Loading','Scroll Animation','Split Landing Page','Form Wave','Sound Board','Dad Jokes','Event Keycodes','FAQ Collapse','Random Choice Picker','Animated Navigation','Incrementing Counter','Drink Water','Movie App','Background Slider','Theme Clock','Button Ripple Effect','Drag and Drop','Drawing App','Kinetic Loader','Content Placeholder','Sticky Navigation','Double Vertical Slider','Toast Notification','Github Profiles','Double Click Heart','Auto Text Effect'
-].map((name, index) => ({ id: index + 1, name, slug: String(index + 1).padStart(2, '0'), kind: 'frontend' }));
+].map((name, index) => ({ id: index + 1, name, slug: String(index + 1).padStart(2, '0'), slugName: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''), kind: 'frontend' }));
 
 const systems = [
   ['shell','Shell','Process creation, parsing and execution'],['hash-table','Hash Table','Hashing, buckets and collisions'],['tiny-database','Tiny Database','Storage pages and query flow'],['text-editor','Text Editor','Buffer and cursor model'],['tiny-compiler','Tiny Compiler','Lexer, parser, AST and bytecode'],['memory-allocator','Memory Allocator','Heap blocks and free list'],['virtual-machine','Virtual Machine','Fetch, decode and stack execution'],['http-server','HTTP Server','Socket, request and response lifecycle'],['tcp-chat-server','TCP Chat Server','Clients, sockets and broadcast'],['redis-clone','Redis Clone','RESP commands and persistence'],['chip8-emulator','CHIP-8 Emulator','CPU, memory, registers and display'],['tiny-raytracer','Tiny Raytracer','Rays, intersections and pixels'],['mini-kernel','Mini Kernel','Boot, entry point and kernel flow']
@@ -14,7 +14,7 @@ let filter = 'All';
 
 function createCard(project) {
   if (project.kind === 'system') return `<article class="card system-card"><div class="system-mark">C/C++</div><div class="card-body"><small>SYSTEMS LAB</small><h2>${project.name}</h2><p>${project.description}</p><div><button class="open" data-system="${project.slug}">Explore →</button><a href="./projects/c-cpp/${project.slug}/">Source →</a></div></div></article>`;
-  return `<article class="card"><div class="thumb"><b>#${String(project.id).padStart(2,'0')}</b></div><div class="card-body"><small>FRONTEND LAB</small><h2>${project.name}</h2><div><a class="open" href="./projects/${project.slug}/index.html">Open project →</a></div></div></article>`;
+  return `<article class="card"><div class="thumb"><b>#${String(project.id).padStart(2,'0')}</b></div><div class="card-body"><small>FRONTEND LAB</small><h2>${project.name}</h2><div><a class="open" href="./projects/${String(project.id).padStart(2,'0')}-${project.slugName}/index.html">Open project →</a></div></div></article>`;
 }
 function render() {
   const query = search.value.trim().toLowerCase();
