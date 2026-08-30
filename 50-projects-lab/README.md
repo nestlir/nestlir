@@ -1,64 +1,77 @@
-# 50 Projects Lab
+# 50+ Projects Lab
 
-A unified showcase for the **51 mini projects** from Brad Traversy's **50 Projects in 50 Days** collection.
+A professional **frontend portfolio/showcase** that turns Brad Traversy's *50 Projects in 50 Days* collection into one searchable, interactive experience.
 
-## Concept
+## ✨ What was built
 
-Instead of browsing dozens of separate folders, this project provides one clean interface for:
+This is not just a list of links. The showcase provides:
 
-- searching the complete collection;
-- browsing projects in the original order or alphabetically;
-- opening the original live demo;
-- jumping directly to the original source project.
+- **51 indexed projects** in one unified interface
+- 🔎 Live search by project name and skill area
+- 🗂 Category filtering
+- ↕️ Original-order and alphabetical sorting
+- 🖥 Embedded project viewer with fallback actions
+- 🔗 Direct navigation to the original demo and source code
+- ⭐ Favorites persisted with `localStorage`
+- 📱 Responsive layout for desktop and mobile
+- 📊 Visible collection/progress status
 
-## Live site
+## Live
+
+Production deployment:
 
 https://50-projects-lab.vercel.app
 
-## Run locally
-
-Clone the repository and open the project:
+## Local development
 
 ```bash
 git clone https://github.com/nestlir/nestlir.git
 cd nestlir/50-projects-lab
 ```
 
-Because the current version is a dependency-free static site, you can simply open `index.html` in a browser.
-
-For a local development server:
+The project is dependency-free:
 
 ```bash
 npx serve .
 ```
 
-## Structure
+Then open the local URL printed by the server.
+
+## Project structure
 
 ```
 50-projects-lab/
-└── index.html
+├── index.html       # Showcase UI and interaction layer
+├── PROJECTS.json    # Catalog of all 51 projects
+└── README.md
 ```
 
-## Tech
+## Technology
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
+- Browser localStorage
 - Vercel
 
-## Credits & license
+## Navigation logic
 
-The original exercises, project ideas and source projects belong to the **50 Projects in 50 Days** collection by Brad Traversy / Traversy Media:
+Each project exposes three paths:
+
+1. **Preview** — attempts to open the original demo inside the built-in viewer.
+2. **Open demo** — opens the original live project in a new tab.
+3. **View source** — opens the corresponding source directory in GitHub.
+
+This makes the showcase useful even when an external demo blocks iframe embedding.
+
+## Credits
+
+The original exercises, ideas and source projects belong to Brad Traversy's **50 Projects in 50 Days** collection:
 
 https://github.com/bradtraversy/50projects50days
 
-This repository is a separate showcase interface and keeps links back to the original demos and source projects. The original repository is distributed under the MIT License; attribution and applicable license terms should be preserved when reusing original source code.
+This repository contains a separate portfolio/showcase interface and preserves navigation back to the original work.
 
-## Roadmap
+## License note
 
-- Add project categories and tags.
-- Add visual previews/screenshots.
-- Add favorites and progress tracking.
-- Add an embedded preview mode.
-- Rebuild selected projects into a unified component architecture.
-
+The original repository is distributed under the MIT License. Applicable attribution and license requirements should be preserved when reusing original source code.
