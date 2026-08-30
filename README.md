@@ -10,6 +10,12 @@ I build modern web interfaces and product experiences with a focus on clear inte
 
 A visual overview of my selected work, skills and engineering approach.
 
+### ✦ 50 Projects Lab
+
+**[Explore the interactive showcase →](./50-projects-lab/)**
+
+A unified portfolio/showcase interface for the **50 Projects in 50 Days** collection. It demonstrates catalog architecture, search and filtering UX, category navigation, project previews and working source/demo transitions.
+
 ### Selected work
 
 | Project | Focus |
@@ -29,18 +35,8 @@ A visual overview of my selected work, skills and engineering approach.
 - **Product & UX:** translating requirements and designs into usable user journeys
 - **Beyond frontend:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
 
-### Engineering approach
-
-I like working where implementation and product thinking meet: understand the user scenario, structure the data flow, build a clear interface, then refine the details and edge cases.
-
-I am especially interested in **frontend / product development roles** where I can contribute to real-world interfaces while continuing to grow as an engineer.
-
 ### Contact
 
 - [GitHub](https://github.com/nestlir)
 - [Telegram](https://t.me/nestlir)
 - [Email](mailto:nestlir@mail.ru)
-
----
-
-*Selected projects are presented as portfolio case studies; each repository contains its own technical context and setup instructions.*
