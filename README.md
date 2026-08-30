@@ -1,16 +1,26 @@
-# Anastasia Kuzmina — Frontend Developer
+# Anastasia Kuzmina — Full-stack / Frontend Developer
 
-**React · TypeScript · Next.js · UX/UI · Product-minded engineering**
+**React · TypeScript · Next.js · UX/UI · Product-minded engineering · APIs · Systems**
 
-I build modern web interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail.
+I build modern interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail — and I also work across APIs, data flows and engineering architecture when the project requires it.
 
-### ✦ Interactive portfolio
+## ✦ Live portfolio
 
-**[Open portfolio →](./portfolio/)**
+- [Open Full-stack portfolio](https://nestlir.github.io/nestlir/portfolio/)
+- [Open Frontend portfolio](https://nestlir.github.io/nestlir/portfolio/frontend/)
 
-A visual overview of my selected work, skills and engineering approach.
+The portfolio presents selected work, engineering scope, technology stacks and the path from **UI → API → DATA → SHIP**.
 
-### Selected work
+## ✦ 50 Projects Lab
+
+- [Open interactive Projects Lab](https://50-projects-lab.vercel.app/)
+- [Browse the source](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
+
+The lab combines a frontend-project catalog with interactive C/C++ systems architecture explainers.
+
+> The repository documents the current implementation honestly: some frontend demos are standalone wrappers around original educational projects, while the C/C++ systems projects live as native source code.
+
+## Selected work
 
 | Project | Focus |
 | --- | --- |
@@ -21,26 +31,26 @@ A visual overview of my selected work, skills and engineering approach.
 | **Stellar Burger** | React · Redux · API · application UI |
 | **Web Larek** | TypeScript · Express · MongoDB · e-commerce |
 
-### What I do
+## What I do
 
 - **Frontend development:** React, Next.js, TypeScript, JavaScript
-- **UI engineering:** responsive interfaces, component systems, forms, complex states
-- **API integration:** REST, typed data mapping, loading/error states, external services
+- **UI engineering:** responsive interfaces, component systems, forms and complex states
+- **API integration:** REST, typed data mapping, loading/error states and external services
 - **Product & UX:** translating requirements and designs into usable user journeys
-- **Beyond frontend:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
+- **Full-stack engineering:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
+- **Systems learning:** C/C++ projects covering processes, networking, storage, compilers, virtual machines and emulation
 
-### Engineering approach
+## Repository structure
 
-I like working where implementation and product thinking meet: understand the user scenario, structure the data flow, build a clear interface, then refine the details and edge cases.
+```text
+nestlir/
+├── portfolio/          # Full-stack + Frontend portfolio
+├── 50-projects-lab/    # Frontend exercises + C/C++ systems lab
+└── .github/workflows/  # CI, QA and GitHub Pages workflows
+```
 
-I am especially interested in **frontend / product development roles** where I can contribute to real-world interfaces while continuing to grow as an engineer.
-
-### Contact
+## Contact
 
 - [GitHub](https://github.com/nestlir)
 - [Telegram](https://t.me/nestlir)
 - [Email](mailto:nestlir@mail.ru)
-
----
-
-*Selected projects are presented as portfolio case studies; each repository contains its own technical context and setup instructions.*
