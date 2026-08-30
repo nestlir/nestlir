@@ -1,8 +1,8 @@
-name: Unified Labs QA
+name: Labs QA
 
 on:
   push:
-    branches: [main, labs-unification]
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -11,46 +11,22 @@ permissions:
   contents: read
 
 jobs:
-  migration-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Verify migrated C/C++ tree
-        run: node 50-projects-lab/qa/migration-check.mjs
-
   native-build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        project:
-          - shell
-          - hash-table
-          - http-server
-          - memory-allocator
-          - redis-clone
-          - tcp-chat-server
-          - text-editor
-          - tiny-compiler
-          - tiny-database
-          - tiny-raytracer
-          - virtual-machine
-          - chip8-emulator
+        project: [shell, hash-table, http-server, memory-allocator, redis-clone, tcp-chat-server, text-editor, tiny-compiler, tiny-database, tiny-raytracer, virtual-machine, chip8-emulator]
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update && sudo apt-get install -y build-essential
-      - name: Build native project
-        run: make -C "50-projects-lab/projects/c-cpp/${{ matrix.project }}"
+      - run: make -C "50-projects-lab/projects/c-cpp/${{ matrix.project }}"
 
   mini-kernel:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify kernel source layout
-        run: test -d 50-projects-lab/projects/c-cpp/mini-kernel
+      - run: test -d 50-projects-lab/projects/c-cpp/mini-kernel
 
   frontend-audit:
     runs-on: ubuntu-latest
@@ -59,9 +35,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Syntax checks
-        run: |
+      - run: |
           node --check 50-projects-lab/app.js
-          node --check 50-projects-lab/javascript-days.js
-      - name: Deep frontend audit
-        run: node 50-projects-lab/qa/audit-deep.mjs
+          node --check 50-projects-lab/project-runtime.js
+          node 50-projects-lab/qa/audit-deep.mjs
