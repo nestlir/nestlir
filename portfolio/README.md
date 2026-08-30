@@ -1,99 +1,110 @@
-# Anastasia вЂ” Full-stack Developer Portfolio
+# Anastasia — Full-stack Developer Portfolio
 
 **Cinematic full-stack portfolio / product engineering / visual playground**
 
-РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ СЃР°Р№С‚, РєРѕС‚РѕСЂС‹Р№ РїРѕРєР°Р·С‹РІР°РµС‚ РЅРµ С‚РѕР»СЊРєРѕ frontend, РЅРѕ Рё РїРѕР»РЅС‹Р№ РїСѓС‚СЊ РїСЂРѕРґСѓРєС‚Р°: UI в†’ API в†’ DATA в†’ AUTH в†’ TEST в†’ DEPLOY.
+A personal portfolio that presents the full product path: **UI → API → DATA → AUTH → TEST → DEPLOY**.
 
 ## Information architecture
 
-1. **Hero** вЂ” Full-stack Developer positioning.
-2. **Stack** вЂ” UI/UX, frontend, backend, data, infrastructure, AI.
-3. **Selected Work** вЂ” РїСЂРѕРµРєС‚С‹ Рё СЂРµР°Р»СЊРЅР°СЏ Р·РѕРЅР° РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё.
-4. **Case Studies** вЂ” Understand в†’ Build в†’ Ship.
-5. **Engineering** вЂ” API contracts, validation, state, authentication, mapping, testing, Docker, deployment.
-6. **Experience** вЂ” РїСЂР°РєС‚РёС‡РµСЃРєРёР№ intersection UI / API / product logic.
-7. **Contact** вЂ” GitHub and direct contact CTA.
-
-## Visual direction
-
-**РњРЅРѕРіРѕ РІРѕР·РґСѓС…Р° + СЃР»Р°РґРєРёР№ С…Р°РѕСЃ + editorial typography + cinematic pacing.**
-
-Р’РёР·СѓР°Р»СЊРЅС‹Р№ СЏР·С‹Рє РёСЃРїРѕР»СЊР·СѓРµС‚ С„РѕС‚РѕРіСЂР°С„РёРё, stickers, SVG-РјР°СЂРєРµСЂС‹, film frames, СЏРїРѕРЅСЃРєРёРµ РіСЂР°С„РёС‡РµСЃРєРёРµ РјРѕС‚РёРІС‹, grain, candy accents, РјРµРјРЅС‹Рµ microcopy Рё controlled chaos. Р”РµРєРѕСЂР°С‚РёРІРЅС‹Р№ СЃР»РѕР№ РЅРµ РґРѕР»Р¶РµРЅ РјРµС€Р°С‚СЊ РЅР°РІРёРіР°С†РёРё РёР»Рё СЃРѕРґРµСЂР¶Р°РЅРёСЋ.
+1. **Hero** — Full-stack Developer positioning.
+2. **Stack** — UI/UX, frontend, backend, data, infrastructure and AI.
+3. **Selected Work** — projects with the actual area of responsibility highlighted.
+4. **Case Studies** — Understand → Build → Ship.
+5. **Engineering** — API contracts, validation, state, authentication, data mapping, testing, Docker and deployment.
+6. **Experience** — practical work across UI, API and product logic.
+7. **Contact** — GitHub and direct contact CTA.
 
 ## Languages
 
-**RU / EN / JP** Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹. Р’С‹Р±СЂР°РЅРЅС‹Р№ СЏР·С‹Рє СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ РІ `localStorage`. РџСЂРѕРµРєС‚С‹, СЂРѕР»Рё, РІРєР»Р°Рґ Рё popup-РєРµР№СЃС‹ РёСЃРїРѕР»СЊР·СѓСЋС‚ РµРґРёРЅС‹Р№ Р»РѕРєР°Р»РёР·РѕРІР°РЅРЅС‹Р№ data model.
+The portfolio supports **RU / EN / JP** without a page reload. The selected language is stored in `localStorage`, and project cards plus modal case studies use the same localized data model.
 
-## Project cards
+## Selected projects
 
-РљР°Р¶РґР°СЏ РєР°СЂС‚РѕС‡РєР° РїРѕРєР°Р·С‹РІР°РµС‚:
+- **DataVac** — Next.js, TypeScript, API integration, payments, PDF and E2E.
+- **Furniture Store** — responsive product UI, SEO and seller-dashboard MVP.
+- **Story OS** — Python, Telegram, SQLite, OpenAI and product architecture.
+- **Multimodal AI** — React, Python, Redis, Docker/Kubernetes and AI integrations.
+- **Stellar Burger** — React, Redux, API and application UI.
+- **Web Larek** — TypeScript, Express, MongoDB and e-commerce flows.
+- **Mesto** — React, REST API and interface decomposition.
+- **Blog Customizer** — React, TypeScript, forms and reusable UI.
+- **Оно тебе надо** — semantic HTML, CSS and responsive editorial layout.
 
-- РёР·РѕР±СЂР°Р¶РµРЅРёРµ Рё cinematic frame;
-- С‚РёРї РїСЂРѕРµРєС‚Р°;
-- С‚РµС…РЅРѕР»РѕРіРёРё;
-- РєСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ;
-- **СЂРµР°Р»СЊРЅСѓСЋ Р·РѕРЅСѓ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°**.
+Each card exposes the technology stack and the concrete contribution described by the portfolio data. Repository links open the corresponding GitHub project.
 
-РџРѕ РєР»РёРєСѓ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ popup СЃ РєСЂСѓРїРЅРѕР№ С„РѕС‚РѕРіСЂР°С„РёРµР№, СЂРѕР»СЊСЋ, СЃС‚РµРєРѕРј, РѕРїРёСЃР°РЅРёРµРј РІРєР»Р°РґР°, СЃС…РµРјРѕР№ `UI в†’ API в†’ DATA в†’ SHIP` Рё СЃСЃС‹Р»РєРѕР№ РЅР° СЂРµРїРѕР·РёС‚РѕСЂРёР№.
+## Visual direction
+
+The visual language combines editorial typography, cinematic pacing, photography, stickers, SVG markers, Japanese graphic references, grain and controlled chaos. Decorative elements are kept separate from the content and navigation layer.
 
 ## Stack
 
-HTML5 В· CSS3 В· Vanilla JavaScript В· responsive design В· GitHub Actions В· GitHub Pages
+HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
 
 ## Structure
 
 ```text
 portfolio/
-в”њв”Ђв”Ђ index.html
-в”њв”Ђв”Ђ app.js
-в”њв”Ђв”Ђ app.css
-в”њв”Ђв”Ђ responsive.css
-в”њв”Ђв”Ђ favicon.svg
-в”њв”Ђв”Ђ assets/
-в”‚   в”њв”Ђв”Ђ icons/
-в”‚   в”њв”Ђв”Ђ stickers/
-в”‚   в”њв”Ђв”Ђ markers/
-в”‚   в””в”Ђв”Ђ README.md
-в”њв”Ђв”Ђ README.md
-в””в”Ђв”Ђ CODE_REVIEW.md
+├── index.html
+├── app.js
+├── i18n.js
+├── ui-controller.js
+├── shared-ui.js
+├── app.css
+├── responsive.css
+├── favicon.svg
+├── favicon.png
+├── assets/
+├── frontend/
+│   ├── index.html
+│   ├── script.js
+│   ├── styles.css
+│   └── quality-fixes.css
+├── smoke-test.mjs
+└── README.md
 ```
-
-## Visual assets
-
-SVG assets are stored locally for reusable icons and markers. Photography is currently loaded from remote image URLs to keep the static repository lightweight; production optimization should migrate licensed images to WebP/AVIF in `assets/photos/`.
 
 ## Interactions
 
-- RU / EN / JP switcher;
+- RU / EN / JP language switcher;
 - project filtering;
-- image-led project popup;
+- project detail modal;
 - light / dark theme;
-- `MAKE IT WEIRD` controlled chaos mode;
-- responsive fullscreen mobile navigation;
-- scroll progress;
-- cinematic marquee;
-- decorative stickers and markers;
-- keyboard Escape for menu/modal;
+- `MAKE IT WEIRD` visual mode;
+- responsive mobile navigation;
+- scroll progress and cinematic marquee;
+- keyboard Escape handling for menus and modals;
 - reduced-motion support.
 
 ## Run locally
+
+From the repository root:
 
 ```bash
 python -m http.server 4173
 ```
 
-Open `http://localhost:4173/portfolio/`.
+Open:
 
-## Deploy
+```text
+http://localhost:4173/portfolio/
+```
 
-`.github/workflows/portfolio-pages.yml` publishes `portfolio/` through GitHub Pages after changes reach `main`.
+## Deployment
+
+GitHub Pages is configured by `.github/workflows/portfolio-pages.yml`, which publishes the `portfolio/` directory after changes reach `main`.
 
 ## Live site
 
-`https://nestlir.github.io/nestlir/#projects`
+[Open the portfolio](https://nestlir.github.io/nestlir/portfolio/)
+
+## Related views
+
+- [Frontend portfolio](https://nestlir.github.io/nestlir/portfolio/frontend/)
+- [50 Projects Lab](https://50-projects-lab.vercel.app/)
+- [Repository](https://github.com/nestlir/nestlir)
 
 ## Design principle
 
 **Character without noise. Engineering without the black box.**
 
-РЎР°Р№С‚ РґРѕР»Р¶РµРЅ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ РґРµРјРѕРЅСЃС‚СЂРёСЂРѕРІР°С‚СЊ РІРёР·СѓР°Р»СЊРЅС‹Р№ РІРєСѓСЃ, product thinking Рё СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РґРѕРІРµСЃС‚Рё СЃРёСЃС‚РµРјСѓ РѕС‚ РёРЅС‚РµСЂС„РµР№СЃР° РґРѕ production.
+The goal is to show visual taste, product thinking and the ability to move from an interface to a working production-oriented system without hiding the engineering behind decorative presentation.
