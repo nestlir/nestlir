@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="30 local frontend projects and 13 native C/C++ systems projects.">
+  <title>50 Projects Lab — Frontend + C/C++ Systems</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="app"></main>
+  <div id="catalog">
+    <nav class="nav wrap">
+      <a class="brand" href="./">50 Projects Lab</a>
+      <span id="count" aria-live="polite"></span>
+    </nav>
+    <header class="hero wrap">
+      <p class="eyebrow">INTERACTIVE ENGINEERING ARCHIVE</p>
+      <h1>Frontend.<br><span>Systems.</span></h1>
+      <p class="lead">30 local interactive browser projects plus 13 native C/C++ systems projects.</p>
+      <div class="hero-actions">
+        <a class="primary" href="#projects">Browse projects</a>
+        <button class="secondary" data-filter="Systems">Explore Systems Lab</button>
+      </div>
+    </header>
+    <section class="wrap controls-panel" id="projects">
+      <div class="filters" role="group" aria-label="Project type">
+        <button class="chip active" data-filter="All">All</button>
+        <button class="chip" data-filter="Frontend">Frontend</button>
+        <button class="chip" data-filter="Systems">C/C++ Systems</button>
+      </div>
+      <label class="search-box">
+        <span class="sr-only">Search projects</span>
+        <input id="search" type="search" placeholder="Search projects…">
+      </label>
+    </section>
+    <section class="wrap"><div id="grid" class="grid"></div></section>
+    <footer class="wrap footer">
+      <p>Self-contained frontend demos. Native systems source lives in this repository.</p>
+      <a href="https://github.com/nestlir/nestlir/tree/main/50-projects-lab" target="_blank" rel="noreferrer">Source on GitHub ↗</a>
+    </footer>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
