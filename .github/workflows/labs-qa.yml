@@ -1,0 +1,22 @@
+name: Unified Labs QA
+on:
+  push:
+    branches: [labs-unification]
+jobs:
+  native-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y build-essential
+      - run: |
+          for p in shell hash-table http-server memory-allocator redis-clone tcp-chat-server text-editor tiny-compiler tiny-database tiny-raytracer virtual-machine chip8-emulator; do
+            make -C "50-projects-lab/projects/c-cpp/$p"
+          done
+  frontend-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node 50-projects-lab/qa/audit-deep.mjs
