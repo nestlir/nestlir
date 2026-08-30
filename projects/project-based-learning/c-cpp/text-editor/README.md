@@ -1,11 +1,20 @@
 # Tiny Text Editor (C)
 
-A terminal text editor foundation demonstrating raw terminal mode, keyboard input and screen rendering.
+A runnable terminal editor with raw mode, file loading, insertion, deletion, cursor movement and saving.
 
 ## Build
+
 ```bash
 make
-./tiny-editor
+./tiny-editor notes.txt
 ```
 
-Press Ctrl-Q to quit.
+## Controls
+
+- Arrow keys — move
+- Enter — new line
+- Backspace — delete
+- Ctrl-S — save
+- Ctrl-Q — quit
+
+Use a real interactive terminal because the program switches the terminal into raw mode.
