@@ -1,0 +1,72 @@
+@media (max-width: 1100px) {
+  .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .archive-item--wide { grid-column: 1 / -1; width: 70%; }
+  .trip-page-grid, .trip-inner { gap: 6vw; }
+}
+
+@media (max-width: 900px) {
+  .site-header { padding: 20px 22px; }
+  .site-nav { display: none; }
+  .menu-button { display: block; }
+  .mobile-nav { position: fixed; top: 58px; right: 16px; z-index: 101; padding: 22px; background: var(--paper); color: var(--ink); }
+  .mobile-nav.open { display: flex; flex-direction: column; gap: 16px; }
+  .mobile-nav a { text-decoration: none; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+
+  .container { width: min(100% - 44px, 1180px); }
+  .hero-content { padding-bottom: 15vh; }
+  .hero h1 { font-size: clamp(6.5rem, 27vw, 12rem); }
+  .hero-coordinates { left: 22px; right: 22px; bottom: 20px; gap: 10px; }
+  .hero-coordinates span:nth-child(2) { display: none; }
+  .scroll-hint { display: none; }
+
+  .section-grid,
+  .section-heading,
+  .journal,
+  .explore-grid,
+  .food-footer-inner,
+  .trip-inner,
+  .trip-page-grid,
+  .weather-grid { grid-template-columns: 1fr; gap: 5vh; }
+
+  .section-heading { margin-bottom: 6vh; }
+  .archive-controls { margin: 0 0 28px; flex-wrap: wrap; }
+  .archive-grid,
+  .food-grid { grid-template-columns: 1fr; gap: 7vh; }
+  .archive-item--offset,
+  .archive-item--small,
+  .archive-item--wide { padding-top: 0; width: 100%; margin: 0; }
+
+  .journal-media { min-height: 62vh; }
+  .journal-copy { padding: 12vh 22px; }
+
+  .route { padding: 12vh 0; }
+  .route-head,
+  .route-plan { width: min(100% - 44px, 820px); }
+  .route-library { position: static; width: auto; margin: 8vh 22px 0; }
+
+  .trip { padding: 12vh 0; }
+  .trip-copy { padding-bottom: 6vh; }
+  .map-canvas { min-height: 62vh; }
+  .place-panel { padding: 8vh 0; }
+  .place-hero { padding: 10vh 0 0; }
+  .place-hero-image { height: auto; aspect-ratio: 4 / 5; }
+  .place-hero-copy { padding: 6vh 22px 9vh; }
+  .place-hero-copy h1 { font-size: clamp(5rem, 18vw, 9rem); }
+  .related-grid { grid-template-columns: 1fr; gap: 7vh; }
+  .food-toolbar { gap: 3vh; }
+  .trip-list article { grid-template-columns: 60px 1fr 25px; }
+}
+
+@media (max-width: 560px) {
+  .hero-content { padding-inline: 22px; }
+  .archive, .journal, .food-page, .place-story, .related, .page-intro { padding-block: 11vh; }
+  .archive-media, .image-frame, .food-image, .related-card img { aspect-ratio: 1 / 1.2; }
+  .place-panel-image { aspect-ratio: 4 / 5; }
+  .trip-stats div, .trip-summary > div { grid-template-columns: 1fr; gap: 8px; }
+  .weather-grid > div:last-child { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
