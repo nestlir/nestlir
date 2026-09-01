@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOMAD — My Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="trip.css" />
+</head>
+<body>
+  <header class="trip-header">
+    <a class="wordmark" href="app.html">NOMAD</a>
+    <nav><a href="app.html">Home</a><a href="map-explorer.html">Explore</a><a class="active" href="my-trip.html">My Trip</a></nav>
+  </header>
+
+  <main>
+    <section class="trip-hero">
+      <p class="eyebrow">YOUR KYOTO / VOL. 01</p>
+      <h1>My Trip</h1>
+      <p>Three quiet days, assembled one place at a time.</p>
+      <div class="trip-meta"><span>01—03 SEP 2026</span><span>KYOTO / JAPAN</span></div>
+    </section>
+
+    <section class="dashboard">
+      <div class="dashboard-heading"><span>01 — ITINERARY</span><h2>Leave room<br><em>between things.</em></h2></div>
+      <div class="itinerary" id="itinerary"></div>
+    </section>
+
+    <section class="summary">
+      <div><span class="section-label">02 — THE DAY</span><h2>Light,<br><em>not empty.</em></h2></div>
+      <div class="summary-grid">
+        <div><strong id="stopCount">0</strong><span>saved stops</span></div>
+        <div><strong id="foodCount">0</strong><span>food notes</span></div>
+        <div><strong id="distance">0 km</strong><span>on foot</span></div>
+        <div><strong id="spend">¥0</strong><span>planned spend</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="trip.js"></script>
+</body>
+</html>
