@@ -33,13 +33,8 @@
 
     <section class="dashboard-grid">
       <div class="itinerary-panel">
-        <div class="panel-top"><div><p class="section-number">DAY 01</p><h2>The quiet start</h2></div><span>4 stops</span></div>
-        <div class="timeline" id="timeline">
-          <article class="timeline-item" data-id="fushimi"><span class="time">07:10</span><div><h3>Fushimi Inari</h3><p>Shrine path / 01h40m</p></div><button type="button" class="remove-stop" data-remove="fushimi" aria-label="Remove Fushimi Inari">×</button></article>
-          <article class="timeline-item" data-id="higashiyama"><span class="time">09:20</span><div><h3>Higashiyama</h3><p>Quiet streets / 01h30m</p></div><button type="button" class="remove-stop" data-remove="higashiyama" aria-label="Remove Higashiyama">×</button></article>
-          <article class="timeline-item" data-id="nishiki"><span class="time">12:30</span><div><h3>Nishiki Market</h3><p>Lunch / 01h15m</p></div><button type="button" class="remove-stop" data-remove="nishiki" aria-label="Remove Nishiki Market">×</button></article>
-          <article class="timeline-item" data-id="gion"><span class="time">18:42</span><div><h3>Gion</h3><p>Lantern hour / 02h00m</p></div><button type="button" class="remove-stop" data-remove="gion" aria-label="Remove Gion">×</button></article>
-        </div>
+        <div class="panel-top"><div><p class="section-number">DAY 01</p><h2>The quiet start</h2></div><span id="itineraryCount">4 stops</span></div>
+        <div class="timeline" id="timeline" aria-live="polite"></div>
         <a class="add-place" href="map-explorer.html">+ Add from places</a>
       </div>
 
@@ -56,15 +51,10 @@
 
     <section class="budget-section">
       <div><p class="section-number">06 — BUDGET</p><h2>A day,<br><em>without the arithmetic.</em></h2></div>
-      <div class="budget-list">
-        <div><span>Food</span><strong>¥3,500</strong></div>
-        <div><span>Transport</span><strong>¥1,200</strong></div>
-        <div><span>Tea / coffee</span><strong>¥1,400</strong></div>
-        <div><span>Entry</span><strong>¥2,300</strong></div>
-      </div>
+      <div class="budget-list" id="budgetList"></div>
     </section>
   </main>
 
-  <script src="trip.js" defer></script>
+  <script type="module" src="trip.js"></script>
 </body>
 </html>
