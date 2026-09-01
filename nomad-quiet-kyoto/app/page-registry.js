@@ -7,12 +7,12 @@ import { renderPlace } from '../pages/place.js';
 import { renderFoodDetail } from '../pages/food-detail.js';
 
 export const PAGE_RENDERERS = Object.freeze({
-  [ROUTES.HOME]: renderHome,
-  [ROUTES.EXPLORE]: renderExplore,
-  [ROUTES.EAT]: renderEat,
-  [ROUTES.TRIP]: renderTrip,
-  [ROUTES.PLACE]: renderPlace,
-  [ROUTES.FOOD]: renderFoodDetail,
+  [ROUTES.HOME]: (root, application, navigate) => renderHome(root, application, navigate),
+  [ROUTES.EXPLORE]: (root, application, navigate) => renderExplore(root, application, navigate),
+  [ROUTES.EAT]: (root, application, navigate) => renderEat(root, application, navigate),
+  [ROUTES.TRIP]: (root, application, navigate) => renderTrip(root, application, navigate),
+  [ROUTES.PLACE]: (root, application, navigate, params = {}) => renderPlace(root, application, params.id, navigate),
+  [ROUTES.FOOD]: (root, application, navigate, params = {}) => renderFoodDetail(root, application, params.id, navigate),
 });
 
 export function getPageRenderer(routeName) {
