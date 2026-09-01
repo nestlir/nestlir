@@ -130,7 +130,11 @@ export function readTripState(storage: Storage): TripState {
     if (!raw) return DEFAULT_TRIP;
     const parsed: unknown = JSON.parse(raw);
     if (!isTripState(parsed)) return DEFAULT_TRIP;
-    return parsed;
+    return {
+      places: parsed.places.map((id) => id as PlaceId),
+      food: parsed.food.map((id) => id as FoodId),
+      saved: parsed.saved,
+    };
   } catch {
     return DEFAULT_TRIP;
   }
@@ -148,7 +152,11 @@ export function findFood(id: FoodId): Food | undefined {
   return FOOD.find((item) => item.id === id);
 }
 
-function isTripState(value: unknown): value is TripState {
+function isTripState(value: unknown): value is {
+  places: string[];
+  food: string[];
+  saved: boolean;
+} {
   if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
