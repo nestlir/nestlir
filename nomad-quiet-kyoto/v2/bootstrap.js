@@ -1,7 +1,11 @@
 import { renderHome } from './pages/home.js';
-import { createTripStore } from './shared/trip-store.js';
+import { createApplication } from './shared/application.js';
 
 const root = document.querySelector('#app');
-const store = createTripStore(window.localStorage);
 
-renderHome(root, store);
+if (!root) {
+  throw new Error('NOMAD app root was not found');
+}
+
+const application = createApplication(window.localStorage);
+renderHome(root, application);
