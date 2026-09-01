@@ -1,38 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NOMAD — a quiet field guide to Kyoto.">
-  <title>NOMAD — Kyoto / Destination</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171714">
+  <meta name="description" content="NOMAD — Quiet Kyoto travel journal and itinerary planner.">
+  <title>NOMAD — Quiet Kyoto</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/nomad.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="wordmark" href="#top">NOMAD</a>
-    <nav aria-label="Primary"><a href="#archive">Archive</a><a href="#journal">Journal</a><a href="#route">Route</a></nav>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav">Menu</button>
-  </header>
-  <div class="mobile-nav" id="mobileNav"><a href="#archive">Archive</a><a href="#journal">Journal</a><a href="#route">Route</a></div>
-  <main id="top">
-    <section class="hero"><div class="hero-media" aria-hidden="true"></div><div class="hero-overlay" aria-hidden="true"></div><div class="hero-content"><p class="eyebrow">A FIELD GUIDE TO QUIETER PLACES</p><h1>KYOTO</h1><p class="hero-deck">The art of slowing down.</p><a class="hero-cta" href="#archive">Explore the archive <span>↘</span></a></div><div class="hero-coordinates" aria-hidden="true"><span>35.0116° N</span><span>135.7681° E</span><span>VOL. 01 / 2026</span></div><a class="scroll-hint" href="#archive" aria-label="Scroll to archive"><span></span>Scroll</a></section>
-
-    <section class="archive section" id="archive"><div class="section-heading"><p class="section-number">01 — ARCHIVE</p><div><h2>A city,<br><em>observed slowly.</em></h2><p class="section-description">Routes, rituals, morning walks and places for days with nowhere else to be.</p></div></div><div class="archive-controls" aria-label="Archive filters"><button class="filter is-active" data-filter="all">All</button><button class="filter" data-filter="walk">Walks</button><button class="filter" data-filter="ritual">Rituals</button><button class="filter" data-filter="food">Food</button></div><div class="archive-grid"><article class="archive-item archive-item--large reveal" data-type="walk"><div class="archive-media archive-media--gion"></div><div class="archive-caption"><span>01</span><div><h3>After the lanterns</h3><p>Walk / Gion / 18:42</p></div></div></article><article class="archive-item archive-item--offset reveal" data-type="walk"><div class="archive-media archive-media--fushimi"></div><div class="archive-caption"><span>02</span><div><h3>Before the crowd</h3><p>Walk / Fushimi Inari / 07:10</p></div></div></article><article class="archive-item archive-item--small reveal" data-type="ritual"><div class="archive-media archive-media--tea"></div><div class="archive-caption"><span>03</span><div><h3>Tea, without hurry</h3><p>Ritual / Higashiyama / 14:05</p></div></div></article><article class="archive-item archive-item--wide reveal" data-type="food"><div class="archive-media archive-media--market"></div><div class="archive-caption"><span>04</span><div><h3>Breakfast by the river</h3><p>Food / Kamo / 08:16</p></div></div></article></div></section>
-
-    <section class="journal section" id="journal"><div class="journal-media" aria-hidden="true"></div><div class="journal-copy reveal"><p class="section-number">02 — JOURNAL</p><p class="journal-time">07:03 / THE MORNING ROUTE</p><h2>Begin where<br><em>the city is quiet.</em></h2><p>Walk east before the shops open. Follow the river. Let the first train pass. Kyoto reveals itself in the spaces between destinations.</p><a class="text-link" href="#route">Build this route <span>↗</span></a></div></section>
-
-    <section class="route" id="route">
-      <div class="route-head"><p class="section-number">03 — MY DAY</p><h2>Fushimi → Gion</h2><p class="route-deck">A slow route for one long day.</p><div class="route-summary"><span><strong id="routeDuration">06h 32m</strong><small>planned time</small></span><span><strong id="routeDistance">11.2 km</strong><small>on foot</small></span></div></div>
-      <div class="route-plan" id="routePlan" aria-label="Itinerary"></div>
-      <aside class="route-library" aria-label="Add a stop"><p class="library-label">ADD A PLACE</p><button class="library-stop" data-place="coffee"><span>+</span><div><strong>Riverside coffee</strong><small>09:45 / Kamo</small></div></button><button class="library-stop" data-place="market"><span>+</span><div><strong>Nishiki market</strong><small>12:30 / central Kyoto</small></div></button><button class="library-stop" data-place="tea"><span>+</span><div><strong>Tea house</strong><small>14:05 / Higashiyama</small></div></button></aside>
-      <div class="route-side"><span class="route-time" id="routeTime">07:10</span><span class="route-line"></span><span id="routeCount">04 stops</span></div>
-    </section>
-
-    <section class="trip" id="map"><div class="trip-copy"><p class="section-number">04 — MY TRIP</p><h2>Keep the day<br><em>light.</em></h2><p>Save this route, keep a running budget, and leave room for whatever you find between stops.</p><button class="save-route" id="saveRoute" type="button" aria-pressed="false">Save route <span>♡</span></button></div><div class="trip-stats"><div><strong id="tripCost">¥ 8,400</strong><span>estimated day</span></div><div><strong id="tripStops">4</strong><span>stops</span></div><div><strong id="tripDistance">11.2 km</strong><span>on foot</span></div></div></section>
-  </main>
-  <script src="script.js" defer></script>
+  <div id="app" class="app"></div>
+  <noscript>NOMAD requires JavaScript to run.</noscript>
+  <script type="module" src="./app/main.js"></script>
 </body>
 </html>
