@@ -1,0 +1,14 @@
+{
+  "name": "nomad-quiet-kyoto",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test": "node --test tests/unit/*.test.mjs",
+    "e2e": "playwright test",
+    "qa": "npm test && npm run e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
