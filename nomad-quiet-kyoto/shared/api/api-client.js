@@ -11,16 +11,13 @@ async function request(path, options = {}) {
       ...(options.headers || {}),
     },
   });
-
   const payload = await response.json().catch(() => null);
-
   if (!response.ok) {
     const error = new Error(payload?.error?.message || `Request failed with ${response.status}`);
     error.code = payload?.error?.code || 'API_REQUEST_FAILED';
     error.status = response.status;
     throw error;
   }
-
   return payload;
 }
 
@@ -30,6 +27,7 @@ export const apiClient = Object.freeze({
   getFoods: () => request('/foods'),
   getFood: (id) => request(`/foods/${encodeURIComponent(id)}`),
   getTrip: (id = 'demo') => request(`/trips/${encodeURIComponent(id)}`),
+  replaceTrip: (id, trip) => request(`/trips/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ places: trip.places, food: trip.food, saved: trip.saved }) }),
   togglePlace: (tripId, placeId) => request(`/trips/${encodeURIComponent(tripId)}/places/${encodeURIComponent(placeId)}`, { method: 'POST' }),
   toggleFood: (tripId, foodId) => request(`/trips/${encodeURIComponent(tripId)}/food/${encodeURIComponent(foodId)}`, { method: 'POST' }),
   toggleSaved: (tripId) => request(`/trips/${encodeURIComponent(tripId)}/saved`, { method: 'POST' }),
