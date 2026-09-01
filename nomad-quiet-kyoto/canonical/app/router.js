@@ -3,12 +3,13 @@ export const ROUTES = Object.freeze({
   ARCHIVE: 'archive',
   EXPLORE: 'explore',
   EAT: 'eat',
+  FOOD: 'food',
   TRIP: 'trip',
   PLACE: 'place',
 });
 
 export function getRoute(location = window.location) {
-  const hash = location.hash.replace(/^#/, '');
+  const hash = location.hash.replace(/^#\/?/, '');
   if (!hash) return { name: ROUTES.HOME, params: {} };
 
   const [rawPath, rawQuery = ''] = hash.split('?');
@@ -16,7 +17,11 @@ export function getRoute(location = window.location) {
   const params = Object.fromEntries(new URLSearchParams(rawQuery));
 
   if (path.startsWith('place/')) {
-    return { name: ROUTES.PLACE, params: { ...params, id: path.slice('place/'.length) } };
+    return { name: ROUTES.PLACE, params: { ...params, id: decodeURIComponent(path.slice('place/'.length)) } };
+  }
+
+  if (path.startsWith('food/')) {
+    return { name: ROUTES.FOOD, params: { ...params, id: decodeURIComponent(path.slice('food/'.length)) } };
   }
 
   return Object.values(ROUTES).includes(path)
@@ -25,11 +30,12 @@ export function getRoute(location = window.location) {
 }
 
 export function navigate(name, params = {}) {
-  const query = new URLSearchParams(params).toString();
   const path = name === ROUTES.PLACE && params.id
     ? `place/${encodeURIComponent(params.id)}`
-    : name;
-  window.location.hash = query && name !== ROUTES.PLACE ? `${path}?${query}` : path;
+    : name === ROUTES.FOOD && params.id
+      ? `food/${encodeURIComponent(params.id)}`
+      : name;
+  window.location.hash = path;
 }
 
 export function startRouter(onRouteChange) {
