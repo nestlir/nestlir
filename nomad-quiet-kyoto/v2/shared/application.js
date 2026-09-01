@@ -1,6 +1,7 @@
 import { food } from '../entities/food/model.js';
 import { places, isKnownPlaceId } from '../entities/place/model.js';
 import { createTripState, persistTripState, toggleFood, togglePlace, toggleSaved } from '../entities/trip/model.js';
+import { isKnownFoodId } from '../entities/food/model.js';
 
 export function createApplication(storage) {
   let state = createTripState(storage);
@@ -31,6 +32,7 @@ export function createApplication(storage) {
       return commit(togglePlace(state, id));
     },
     toggleFood(id) {
+      if (!isKnownFoodId(id)) return false;
       return commit(toggleFood(state, id));
     },
     toggleSaved() {
