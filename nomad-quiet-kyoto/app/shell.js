@@ -1,10 +1,5 @@
-import { ROUTES, navigate, startRouter } from './router.js';
-import { renderHome } from '../pages/home.js';
-import { renderExplore } from '../pages/explore.js';
-import { renderEat } from '../pages/eat.js';
-import { renderTrip } from '../pages/trip.js';
-import { renderPlace } from '../pages/place.js';
-import { renderFoodDetail } from '../pages/food-detail.js';
+import { navigate, startRouter } from './router.js';
+import { getPageRenderer } from './page-registry.js';
 import { getTripSummary } from '../shared/lib/trip-summary.js';
 
 export function renderShell(root, application) {
@@ -44,28 +39,11 @@ export function renderShell(root, application) {
   const renderRoute = (route) => {
     pageCleanup();
     pageCleanup = () => {};
+    pageRoot.replaceChildren();
 
-    if (route.name === ROUTES.EXPLORE) {
-      pageCleanup = renderExplore(pageRoot, application, navigate);
-      return;
-    }
-    if (route.name === ROUTES.EAT) {
-      pageCleanup = renderEat(pageRoot, application, navigate);
-      return;
-    }
-    if (route.name === ROUTES.TRIP) {
-      pageCleanup = renderTrip(pageRoot, application, navigate);
-      return;
-    }
-    if (route.name === ROUTES.PLACE) {
-      pageCleanup = renderPlace(pageRoot, application, route.params.id, navigate);
-      return;
-    }
-    if (route.name === ROUTES.FOOD) {
-      pageCleanup = renderFoodDetail(pageRoot, application, route.params.id, navigate);
-      return;
-    }
-    pageCleanup = renderHome(pageRoot, application, navigate);
+    const renderer = getPageRenderer(route.name);
+    pageCleanup = renderer(pageRoot, application, navigate, route.params) ?? (() => {});
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   };
 
   const renderCount = (state) => {
