@@ -15,9 +15,11 @@ export function createTripStore(storage) {
   };
 
   const setState = (nextState) => {
+    if (nextState === state) return false;
     state = nextState;
     persistTripState(storage, state);
     emit();
+    return true;
   };
 
   return {
@@ -27,13 +29,13 @@ export function createTripStore(storage) {
       return () => listeners.delete(listener);
     },
     togglePlace(id) {
-      setState(togglePlace(state, id));
+      return setState(togglePlace(state, id));
     },
     toggleFood(id) {
-      setState(toggleFood(state, id));
+      return setState(toggleFood(state, id));
     },
     toggleSaved() {
-      setState(toggleSaved(state));
+      return setState(toggleSaved(state));
     },
   };
 }
