@@ -1,5 +1,12 @@
 import { findFood } from '../entities/food/model.js';
 
+const escapeHtml = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
+
 export function renderFoodDetail(root, application, id, navigate) {
   const food = findFood(id);
   root.replaceChildren();
@@ -14,12 +21,31 @@ export function renderFoodDetail(root, application, id, navigate) {
     return () => root.removeEventListener('click', onMissing);
   }
 
-  const render = () => {
+  root.innerHTML = `
+    <section class="place-hero section-light">
+      <div class="container">
+        <div class="place-hero-image image-surface"><img src="${escapeHtml(food.image)}" alt="${escapeHtml(food.name)}" loading="eager" decoding="async"></div>
+        <div class="place-hero-copy">
+          <button class="back-link" type="button" data-route="eat">← Eat Kyoto</button>
+          <p class="section-label">${escapeHtml(food.type)} / ${escapeHtml(food.place)}</p>
+          <h1>${escapeHtml(food.name)}</h1>
+          <p>${escapeHtml(food.description)}</p>
+          <div class="meta-row"><span>${escapeHtml(food.duration)}</span><span>¥${food.price.toLocaleString('en-US')}</span></div>
+          <div class="place-hero-actions">
+            <button class="text-link" type="button" data-toggle></button>
+            <button class="text-link" type="button" data-route="trip">See My Trip ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="place-story section-light"><div class="container section-grid"><p class="section-label">THE TABLE</p><div><h2>Eat without<br><em>hurrying.</em></h2><p class="lede">A meal is another kind of stop. Keep the pace light enough that the next street can still surprise you.</p></div></div></section>
+  `;
+
+  const saveButton = root.querySelector('[data-toggle]');
+  const renderState = () => {
     const saved = application.getState().food.includes(food.id);
-    root.innerHTML = `
-      <section class="place-hero section-light"><div class="place-hero-image"><img src="${food.image}" alt="${food.name}"></div><div class="container place-hero-copy"><button class="back-link" type="button" data-route="eat">← Eat Kyoto</button><p class="section-label">${food.type} / ${food.place}</p><h1>${food.name}</h1><p>${food.description}</p><div class="meta-row"><span>${food.duration}</span><span>¥${food.price.toLocaleString('en-US')}</span></div><button class="text-link" type="button" data-toggle>${saved?'Remove from My Day −':'Add to My Day +'}</button><button class="text-link" type="button" data-route="trip">See My Trip ↗</button></div></section>
-      <section class="place-story section-light"><div class="container section-grid"><p class="section-label">THE TABLE</p><div><h2>Eat without<br><em>hurrying.</em></h2><p class="lede">A meal is another kind of stop. Keep the pace light enough that the next street can still surprise you.</p></div></div></section>
-    `;
+    saveButton.textContent = saved ? 'Remove from My Day −' : 'Add to My Day +';
+    saveButton.setAttribute('aria-pressed', String(saved));
   };
 
   const onClick = (event) => {
@@ -30,7 +56,7 @@ export function renderFoodDetail(root, application, id, navigate) {
   };
 
   root.addEventListener('click', onClick);
-  const unsubscribe = application.subscribe(render);
-  render();
+  const unsubscribe = application.subscribe(renderState);
+  renderState();
   return () => { unsubscribe(); root.removeEventListener('click', onClick); };
 }
