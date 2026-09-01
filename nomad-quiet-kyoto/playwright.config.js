@@ -7,10 +7,18 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
-  webServer: {
-    command: 'python3 -m http.server 4173',
-    cwd: '.',
-    url: 'http://127.0.0.1:4173/nomad-quiet-kyoto/',
-    reuseExistingServer: true,
-  },
+  webServer: [
+    {
+      command: 'python3 -m http.server 4173',
+      cwd: '.',
+      url: 'http://127.0.0.1:4173/',
+      reuseExistingServer: true,
+    },
+    {
+      command: 'npm --prefix backend start',
+      cwd: '.',
+      url: 'http://127.0.0.1:8787/api/health',
+      reuseExistingServer: true,
+    },
+  ],
 });
