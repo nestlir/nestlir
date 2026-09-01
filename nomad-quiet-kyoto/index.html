@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="NOMAD — a quiet field guide to Kyoto.">
-  <title>NOMAD — Quiet Kyoto</title>
+  <title>NOMAD — Kyoto / Destination</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -14,22 +14,16 @@
   <header class="site-header">
     <a class="wordmark" href="#top">NOMAD</a>
     <nav aria-label="Primary">
-      <a href="#archive">Archive</a>
-      <a href="#journal">Journal</a>
-      <a href="#route">Route</a>
+      <a href="#archive">Archive</a><a href="#journal">Journal</a><a href="#route">Route</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav">Menu</button>
   </header>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#archive">Archive</a><a href="#journal">Journal</a><a href="#route">Route</a>
-  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="#archive">Archive</a><a href="#journal">Journal</a><a href="#route">Route</a></div>
+
   <main id="top">
     <section class="hero">
       <div class="hero-media" aria-hidden="true"></div><div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content">
-        <p class="eyebrow">A FIELD GUIDE TO QUIETER PLACES</p><h1>KYOTO</h1>
-        <p class="hero-deck">The art of slowing down.</p><a class="hero-cta" href="#archive">Explore the archive <span>↘</span></a>
-      </div>
+      <div class="hero-content"><p class="eyebrow">A FIELD GUIDE TO QUIETER PLACES</p><h1>KYOTO</h1><p class="hero-deck">The art of slowing down.</p><a class="hero-cta" href="#archive">Explore the archive <span>↘</span></a></div>
       <div class="hero-coordinates" aria-hidden="true"><span>35.0116° N</span><span>135.7681° E</span><span>VOL. 01 / 2026</span></div>
       <a class="scroll-hint" href="#archive" aria-label="Scroll to archive"><span></span>Scroll</a>
     </section>
@@ -52,13 +46,24 @@
 
     <section class="journal section" id="journal">
       <div class="journal-media" aria-hidden="true"></div>
-      <div class="journal-copy reveal">
-        <p class="section-number">02 — JOURNAL</p><p class="journal-time">07:03 / THE MORNING ROUTE</p><h2>Begin where<br><em>the city is quiet.</em></h2>
-        <p>Walk east before the shops open. Follow the river. Let the first train pass. Kyoto reveals itself in the spaces between destinations.</p>
-        <a class="text-link" href="#route">Build this route <span>↗</span></a>
-      </div>
+      <div class="journal-copy reveal"><p class="section-number">02 — JOURNAL</p><p class="journal-time">07:03 / THE MORNING ROUTE</p><h2>Begin where<br><em>the city is quiet.</em></h2><p>Walk east before the shops open. Follow the river. Let the first train pass. Kyoto reveals itself in the spaces between destinations.</p><a class="text-link" href="#route">Build this route <span>↗</span></a></div>
     </section>
-    <section class="route" id="route"><div><p class="section-number">03 — ROUTE</p><h2>Fushimi → Gion</h2></div><div class="route-line"><span>07:10</span><span>09:20</span><span>12:30</span><span>18:42</span></div></section>
+
+    <section class="route" id="route">
+      <div class="route-head"><p class="section-number">03 — MY DAY</p><h2>Fushimi → Gion</h2><p class="route-deck">A slow route for one long day.</p></div>
+      <div class="route-plan">
+        <button class="route-stop is-active" data-time="07:10"><span>01</span><div><strong>Fushimi Inari</strong><small>07:10 / shrine path</small></div><em>↗</em></button>
+        <button class="route-stop" data-time="09:20"><span>02</span><div><strong>Higashiyama</strong><small>09:20 / quiet streets</small></div><em>↗</em></button>
+        <button class="route-stop" data-time="12:30"><span>03</span><div><strong>Nishiki</strong><small>12:30 / market lunch</small></div><em>↗</em></button>
+        <button class="route-stop" data-time="18:42"><span>04</span><div><strong>Gion</strong><small>18:42 / lantern hour</small></div><em>↗</em></button>
+      </div>
+      <div class="route-side"><span class="route-time" id="routeTime">07:10</span><span class="route-line"></span><span>01 / 04</span></div>
+    </section>
+
+    <section class="trip" id="map">
+      <div class="trip-copy"><p class="section-number">04 — MY TRIP</p><h2>Keep the day<br><em>light.</em></h2><p>Save this route, keep a running budget, and leave room for whatever you find between stops.</p><button class="save-route" id="saveRoute">Save route <span>♡</span></button></div>
+      <div class="trip-stats"><div><strong>¥ 8,400</strong><span>estimated day</span></div><div><strong>4</strong><span>stops</span></div><div><strong>11.2 km</strong><span>on foot</span></div></div>
+    </section>
   </main>
   <script src="script.js" defer></script>
 </body>
