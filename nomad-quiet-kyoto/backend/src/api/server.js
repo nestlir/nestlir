@@ -1,14 +1,21 @@
 import http from 'node:http';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { PLACES } from '../../../entities/place/model.js';
 import { FOODS } from '../../../entities/food/model.js';
 import { PlaceRepository } from '../domain/place/place-repository.js';
 import { FoodRepository } from '../domain/food/food-repository.js';
 import { InMemoryTripRepository } from '../infrastructure/repositories/in-memory-trip-repository.js';
+import { JsonFileTripRepository } from '../infrastructure/repositories/json-file-trip-repository.js';
 import { TripService } from '../application/trip/trip-service.js';
 
 const placeRepository = new PlaceRepository(PLACES);
 const foodRepository = new FoodRepository(FOODS);
-const tripRepository = new InMemoryTripRepository([{ id: 'demo', places: [], food: [], saved: false }]);
+const initialTrips = [{ id: 'demo', places: [], food: [], saved: false }];
+const backendRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const tripRepository = process.env.TRIP_STORE === 'memory'
+  ? new InMemoryTripRepository(initialTrips)
+  : new JsonFileTripRepository(process.env.TRIP_DATA_FILE || path.join(backendRoot, 'data', 'trips.json'), initialTrips);
 const tripService = new TripService(placeRepository, foodRepository, tripRepository);
 
 const json = (response, status, payload = null) => {
