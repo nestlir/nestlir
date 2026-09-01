@@ -1,5 +1,7 @@
-export type PlaceId = string & { readonly __brand: 'PlaceId' };
-export type FoodId = string & { readonly __brand: 'FoodId' };
+export type Brand<T, Name extends string> = T & { readonly __brand: Name };
+
+export type PlaceId = Brand<string, 'PlaceId'>;
+export type FoodId = Brand<string, 'FoodId'>;
 
 export type PlaceType = 'walk' | 'ritual' | 'food';
 export type FoodType = 'morning' | 'tea' | 'dinner';
@@ -33,3 +35,14 @@ export interface TripState {
   readonly food: readonly FoodId[];
   readonly saved: boolean;
 }
+
+export interface TripSummary {
+  readonly placeCount: number;
+  readonly foodCount: number;
+  readonly stopCount: number;
+  readonly distanceKm: number;
+  readonly spendYen: number;
+}
+
+export const asPlaceId = (value: string): PlaceId => value as PlaceId;
+export const asFoodId = (value: string): FoodId => value as FoodId;
