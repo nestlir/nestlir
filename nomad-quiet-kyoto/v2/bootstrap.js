@@ -8,4 +8,6 @@ if (!root) {
 }
 
 const application = createApplication(window.localStorage);
-renderHome(root, application);
+const dispose = renderHome(root, application);
+
+window.addEventListener('beforeunload', dispose, { once: true });
