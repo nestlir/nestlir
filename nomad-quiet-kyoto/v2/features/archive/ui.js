@@ -1,29 +1,42 @@
-import { places } from '../../shared/data.js';
+import { places } from '../../entities/place/model.js';
 
-export function renderArchive(root, store) {
+export function renderArchive(root, application) {
   const section = document.createElement('section');
   section.className = 'archive';
-  section.innerHTML = `<p class="eyebrow">01 — ARCHIVE</p><h2>A city,<br><em>observed slowly.</em></h2><div class="archive-list"></div>`;
+  section.innerHTML = `
+    <p class="eyebrow">01 — ARCHIVE</p>
+    <h2>A city,<br><em>observed slowly.</em></h2>
+    <div class="archive-list" role="list"></div>
+  `;
+
   const list = section.querySelector('.archive-list');
+  if (!list) throw new Error('Archive list mount was not found');
 
-  const render = () => {
-    const state = store.getState();
-    list.innerHTML = places
-      .map((place) => {
-        const saved = state.places.includes(place.id);
-        return `<button class="archive-item ${saved ? 'is-saved' : ''}" data-id="${place.id}" type="button"><span>${place.name}</span><small>${place.area} / ${place.time}</small><b>${saved ? 'Saved' : 'Add'}</b></button>`;
-      })
-      .join('');
+  function render(state) {
+    list.replaceChildren();
 
-    list.querySelectorAll('[data-id]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const id = button.getAttribute('data-id');
-        if (id) store.togglePlace(id);
+    for (const place of places) {
+      const saved = state.places.includes(place.id);
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = `archive-item${saved ? ' is-saved' : ''}`;
+      item.dataset.id = place.id;
+      item.setAttribute('aria-pressed', String(saved));
+      item.innerHTML = `
+        <span>${place.name}</span>
+        <small>${place.area} / ${place.time}</small>
+        <b>${saved ? 'Saved' : 'Add'}</b>
+      `;
+      item.addEventListener('click', () => {
+        application.togglePlace(place.id);
       });
-    });
-  };
+      list.append(item);
+    }
+  }
 
-  store.subscribe(render);
-  render();
-  root.append(section);
+  const unsubscribe = application.subscribe(render);
+  render(application.getState());
+  root.replaceChildren(section);
+
+  return unsubscribe;
 }
