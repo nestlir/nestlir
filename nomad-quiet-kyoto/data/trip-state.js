@@ -1,12 +1,30 @@
 const STORAGE_KEY = 'nomad-kyoto-trip-v1';
-const DEFAULT_TRIP = { places: ['fushimi', 'higashiyama', 'nishiki', 'gion'], food: [], saved: false };
 
-export const loadTrip = () => {
+const DEFAULT_TRIP = {
+  places: ['fushimi', 'higashiyama', 'nishiki', 'gion'],
+  food: [],
+  saved: false,
+};
+
+export const createTripState = () => ({
+  places: [...DEFAULT_TRIP.places],
+  food: [...DEFAULT_TRIP.food],
+  saved: DEFAULT_TRIP.saved,
+});
+
+export const getTripState = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? { ...DEFAULT_TRIP, ...JSON.parse(raw) } : { ...DEFAULT_TRIP };
+    if (!raw) return createTripState();
+    const parsed = JSON.parse(raw);
+    return {
+      ...createTripState(),
+      ...parsed,
+      places: Array.isArray(parsed.places) ? parsed.places : [...DEFAULT_TRIP.places],
+      food: Array.isArray(parsed.food) ? parsed.food : [],
+    };
   } catch {
-    return { ...DEFAULT_TRIP };
+    return createTripState();
   }
 };
 
@@ -28,4 +46,4 @@ export const toggleFood = (trip, foodId) => ({
     : [...trip.food, foodId],
 });
 
-export const setSaved = (trip, saved) => ({ ...trip, saved });
+export const toggleSaved = (trip) => ({ ...trip, saved: !trip.saved });
