@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOMAD — a personal Kyoto trip dashboard.">
+  <title>NOMAD — My Kyoto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="trip.css">
+</head>
+<body>
+  <header class="trip-header">
+    <a class="wordmark" href="index.html">NOMAD</a>
+    <span>MY TRIP / KYOTO</span>
+    <a href="map-explorer.html">Explore map ↗</a>
+  </header>
+
+  <main>
+    <section class="trip-intro">
+      <p class="section-number">05 — MY TRIP</p>
+      <h1>Three days,<br><em>at your own pace.</em></h1>
+      <p class="trip-lead">A quiet itinerary assembled from places worth staying with a little longer.</p>
+      <div class="trip-date"><span>01 — 03 SEP 2026</span><span>KYOTO / JAPAN</span></div>
+    </section>
+
+    <section class="weather-strip" aria-label="Kyoto weather">
+      <div><p class="section-number">TODAY / KYOTO</p><strong>32°</strong><span>Mostly cloudy</span></div>
+      <div><span>Best walking window</span><strong>07:00 — 10:30</strong><small>cooler / softer light</small></div>
+      <div><span>Sunrise</span><strong>05:29</strong><small>Sunset 18:24</small></div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="itinerary-panel">
+        <div class="panel-top"><div><p class="section-number">DAY 01</p><h2>The quiet start</h2></div><span>4 stops</span></div>
+        <div class="timeline" id="timeline">
+          <article class="timeline-item" data-id="fushimi"><span class="time">07:10</span><div><h3>Fushimi Inari</h3><p>Shrine path / 01h40m</p></div><button type="button" class="remove-stop" data-remove="fushimi" aria-label="Remove Fushimi Inari">×</button></article>
+          <article class="timeline-item" data-id="higashiyama"><span class="time">09:20</span><div><h3>Higashiyama</h3><p>Quiet streets / 01h30m</p></div><button type="button" class="remove-stop" data-remove="higashiyama" aria-label="Remove Higashiyama">×</button></article>
+          <article class="timeline-item" data-id="nishiki"><span class="time">12:30</span><div><h3>Nishiki Market</h3><p>Lunch / 01h15m</p></div><button type="button" class="remove-stop" data-remove="nishiki" aria-label="Remove Nishiki Market">×</button></article>
+          <article class="timeline-item" data-id="gion"><span class="time">18:42</span><div><h3>Gion</h3><p>Lantern hour / 02h00m</p></div><button type="button" class="remove-stop" data-remove="gion" aria-label="Remove Gion">×</button></article>
+        </div>
+        <a class="add-place" href="map-explorer.html">+ Add from places</a>
+      </div>
+
+      <aside class="summary-panel">
+        <p class="section-number">TRIP NOTES</p>
+        <h2>Leave room<br><em>for the in-between.</em></h2>
+        <div class="summary-stats">
+          <div><strong id="stopCount">4</strong><span>stops</span></div>
+          <div><strong id="distanceValue">11.2</strong><span>km on foot</span></div>
+          <div><strong id="budgetValue">¥8,400</strong><span>planned spend</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="budget-section">
+      <div><p class="section-number">06 — BUDGET</p><h2>A day,<br><em>without the arithmetic.</em></h2></div>
+      <div class="budget-list">
+        <div><span>Food</span><strong>¥3,500</strong></div>
+        <div><span>Transport</span><strong>¥1,200</strong></div>
+        <div><span>Tea / coffee</span><strong>¥1,400</strong></div>
+        <div><span>Entry</span><strong>¥2,300</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="trip.js" defer></script>
+</body>
+</html>
