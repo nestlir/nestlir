@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from '../src/api/server.js';
+process.env.TRIP_STORE = 'memory';
+const { createServer } = await import('../src/api/server.js');
 
 let server;
 let baseUrl;
