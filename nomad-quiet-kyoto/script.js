@@ -30,6 +30,21 @@ const observer = new IntersectionObserver(
 revealItems.forEach((item) => observer.observe(item));
 
 const heroMedia = document.querySelector('.hero-media');
+const filters = document.querySelectorAll('.filter');
+const archiveItems = document.querySelectorAll('.archive-item');
+
+filters.forEach((filter) => {
+  filter.addEventListener('click', () => {
+    filters.forEach((button) => button.classList.remove('is-active'));
+    filter.classList.add('is-active');
+
+    const selectedType = filter.dataset.filter;
+    archiveItems.forEach((item) => {
+      const matches = selectedType === 'all' || item.dataset.type === selectedType;
+      item.classList.toggle('is-hidden', !matches);
+    });
+  });
+});
 
 window.addEventListener(
   'scroll',
