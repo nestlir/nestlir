@@ -4,12 +4,13 @@ import { createInitialTrip, loadTrip, saveTrip, toggleFood, togglePlace, toggleS
 import { apiClient } from '../shared/api/api-client.js';
 
 const DEFAULT_TRIP_ID = 'demo';
-
 const hasSelections = (trip) => trip.places.length > 0 || trip.food.length > 0 || trip.saved;
+const snapshotTrip = (trip) => ({ places: [...trip.places], food: [...trip.food], saved: trip.saved });
 
 export function createApplication(storage, { remote = true, tripId = DEFAULT_TRIP_ID } = {}) {
-  let state = loadTrip(storage, createInitialTrip(PLACES, FOODS));
+  let state = loadTrip(storage, createInitialTrip());
   let syncing = false;
+  let syncQueue = Promise.resolve();
   const listeners = new Set();
 
   const notify = () => listeners.forEach((listener) => listener(state));
@@ -22,13 +23,14 @@ export function createApplication(storage, { remote = true, tripId = DEFAULT_TRI
     return true;
   };
 
-  const pushState = async () => {
-    if (!remote) return;
-    try {
-      await apiClient.replaceTrip(tripId, state);
-    } catch {
-      // Static hosting remains a supported offline fallback.
-    }
+  const enqueuePush = (nextState = state) => {
+    if (!remote) return Promise.resolve();
+    const snapshot = snapshotTrip(nextState);
+    syncQueue = syncQueue
+      .catch(() => undefined)
+      .then(() => apiClient.replaceTrip(tripId, snapshot))
+      .catch(() => undefined);
+    return syncQueue;
   };
 
   const sync = async () => {
@@ -41,7 +43,7 @@ export function createApplication(storage, { remote = true, tripId = DEFAULT_TRI
         saveTrip(storage, state);
         notify();
       } else if (hasSelections(state)) {
-        await pushState();
+        await enqueuePush(state);
       }
     } catch {
       // Remote API is optional for static/offline hosting.
@@ -49,8 +51,6 @@ export function createApplication(storage, { remote = true, tripId = DEFAULT_TRI
       syncing = false;
     }
   };
-
-  const syncAfterMutation = () => { void pushState(); };
 
   return Object.freeze({
     getState: () => state,
@@ -61,17 +61,17 @@ export function createApplication(storage, { remote = true, tripId = DEFAULT_TRI
     },
     togglePlace(id) {
       const changed = commitLocal(togglePlace(state, id, PLACES));
-      if (changed) syncAfterMutation();
+      if (changed) void enqueuePush(state);
       return changed;
     },
     toggleFood(id) {
       const changed = commitLocal(toggleFood(state, id, FOODS));
-      if (changed) syncAfterMutation();
+      if (changed) void enqueuePush(state);
       return changed;
     },
     toggleSaved() {
       const changed = commitLocal(toggleSaved(state));
-      if (changed) syncAfterMutation();
+      if (changed) void enqueuePush(state);
       return changed;
     },
     sync,
