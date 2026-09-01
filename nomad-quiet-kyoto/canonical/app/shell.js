@@ -3,6 +3,7 @@ import { renderExplore } from '../pages/explore.js';
 import { renderEat } from '../pages/eat.js';
 import { renderTrip } from '../pages/trip.js';
 import { renderPlaceDetail } from '../pages/place.js';
+import { ROUTES, navigate, startRouter } from './router.js';
 
 export function renderShell(root, application) {
   root.replaceChildren();
@@ -11,20 +12,21 @@ export function renderShell(root, application) {
   app.className = 'site';
   app.innerHTML = `
     <header class="site-header">
-      <a class="wordmark" href="#home" aria-label="NOMAD home">NOMAD</a>
+      <a class="wordmark" href="#${ROUTES.HOME}" aria-label="NOMAD home">NOMAD</a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#archive" data-route>Archive</a>
-        <a href="#explore" data-route>Explore</a>
-        <a href="#eat" data-route>Eat</a>
-        <a href="#trip" data-route>My Trip <sup id="trip-count">0</sup></a>
+        <a href="#${ROUTES.ARCHIVE}">Archive</a>
+        <a href="#${ROUTES.EXPLORE}">Explore</a>
+        <a href="#${ROUTES.EAT}">Eat</a>
+        <a href="#${ROUTES.TRIP}">My Trip <sup id="trip-count">0</sup></a>
       </nav>
       <button class="menu-button" id="menu-button" type="button" aria-expanded="false">Menu</button>
     </header>
-    <div class="mobile-nav" id="mobile-nav">
-      <a href="#archive" data-route>Archive</a>
-      <a href="#explore" data-route>Explore</a>
-      <a href="#eat" data-route>Eat</a>
-      <a href="#trip" data-route>My Trip</a>
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <a href="#${ROUTES.HOME}">Home</a>
+      <a href="#${ROUTES.ARCHIVE}">Archive</a>
+      <a href="#${ROUTES.EXPLORE}">Explore</a>
+      <a href="#${ROUTES.EAT}">Eat</a>
+      <a href="#${ROUTES.TRIP}">My Trip</a>
     </div>
     <main id="page-root"></main>
     <div id="modal-root"></div>
@@ -37,37 +39,43 @@ export function renderShell(root, application) {
   const menuButton = app.querySelector('#menu-button');
   const mobileNav = app.querySelector('#mobile-nav');
 
+  if (!pageRoot || !tripCount || !menuButton || !mobileNav) {
+    throw new Error('NOMAD shell mount failed');
+  }
+
   let cleanup = () => {};
 
-  const route = () => {
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function renderRoute(route) {
     cleanup();
     cleanup = () => {};
-    const target = (window.location.hash || '#home').slice(1) || 'home';
-    const [name, id] = target.split('/');
 
-    if (name === 'place' && id) {
-      cleanup = renderPlaceDetail(pageRoot, application, id, navigate);
-      return;
+    switch (route.name) {
+      case ROUTES.EXPLORE:
+        cleanup = renderExplore(pageRoot, application, navigate);
+        break;
+      case ROUTES.EAT:
+        cleanup = renderEat(pageRoot, application, navigate);
+        break;
+      case ROUTES.TRIP:
+        cleanup = renderTrip(pageRoot, application, navigate);
+        break;
+      case ROUTES.PLACE:
+        cleanup = renderPlaceDetail(pageRoot, application, route.params.id, navigate);
+        break;
+      case ROUTES.ARCHIVE:
+      case ROUTES.HOME:
+      default:
+        cleanup = renderHome(pageRoot, application, navigate, route.name === ROUTES.ARCHIVE);
+        break;
     }
-    if (name === 'explore') {
-      cleanup = renderExplore(pageRoot, application, navigate);
-      return;
-    }
-    if (name === 'eat') {
-      cleanup = renderEat(pageRoot, application, navigate);
-      return;
-    }
-    if (name === 'trip') {
-      cleanup = renderTrip(pageRoot, application, navigate);
-      return;
-    }
-    cleanup = renderHome(pageRoot, application, navigate);
-  };
 
-  function navigate(path) {
-    window.location.hash = path.startsWith('#') ? path : `#${path}`;
-    mobileNav.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
+    closeMobileNav();
   }
 
   function renderCount(state) {
@@ -75,19 +83,19 @@ export function renderShell(root, application) {
   }
 
   const unsubscribe = application.subscribe(renderCount);
+  const stopRouter = startRouter(renderRoute);
+
   renderCount(application.getState());
 
-  window.addEventListener('hashchange', route);
   menuButton.addEventListener('click', () => {
     const open = mobileNav.classList.toggle('open');
+    mobileNav.setAttribute('aria-hidden', String(!open));
     menuButton.setAttribute('aria-expanded', String(open));
   });
 
-  route();
-
   return () => {
     unsubscribe();
-    window.removeEventListener('hashchange', route);
+    stopRouter();
     cleanup();
     app.remove();
   };
