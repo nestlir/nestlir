@@ -1,0 +1,9 @@
+{
+  "name": "nomad-quiet-kyoto-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/api/server.js",
+    "test": "node --test tests/api.test.mjs"
+  }
+}
