@@ -7,3 +7,4 @@ if (!root) throw new Error('NOMAD: #app root not found');
 
 const application = createApplication(window.localStorage);
 renderShell(root, application);
+void application.sync();
