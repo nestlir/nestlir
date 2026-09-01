@@ -37,7 +37,7 @@ flowchart TD
 
 ## Persistence status
 
-The current backend uses an in-memory Trip repository for the prototype. The API contract is already independent from that implementation, so a PostgreSQL/Prisma repository can replace it without changing page code or HTTP routes.
+The backend uses a JSON-file Trip repository by default and an in-memory repository for isolated tests. The HTTP and application contracts are independent from the concrete repository, so PostgreSQL/Prisma can replace the persistence implementation without changing page code or HTTP routes.
 
 ## Migration path
 
