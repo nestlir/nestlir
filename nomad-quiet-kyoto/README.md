@@ -1,34 +1,65 @@
 # NOMAD — Quiet Kyoto
 
-NOMAD is a travel-experience frontend concept for Kyoto, built as a small modular application rather than a collection of independent HTML pages.
+NOMAD is a modular travel-experience application for Kyoto. The active runtime is a single client-side application with one entrypoint, one router and a separate backend API boundary.
 
-## Active frontend
-
-The active application lives under `src/`. There is one entrypoint and one application state boundary.
+## Active architecture
 
 ```text
 nomad-quiet-kyoto/
-├── index.html              # only frontend entrypoint
+├── index.html
 ├── package.json
 ├── playwright.config.js
-├── src/
-│   ├── app/                # bootstrap, router, application shell
-│   ├── pages/              # route-level screens
-│   ├── widgets/            # large reusable UI blocks
-│   ├── features/           # user scenarios
-│   ├── entities/           # domain models/data
-│   ├── shared/             # storage, pure helpers, shared UI
-│   └── styles/             # presentation layer
+│
+├── app/                    # bootstrap, router, shell, route registry
+├── pages/                  # route-level renderers
+├── entities/               # Place, Food and Trip domain models
+├── shared/
+│   ├── api/                # HTTP client
+│   ├── lib/                # pure calculations
+│   └── storage/            # browser persistence adapter
+├── styles/
+│   ├── base.css            # tokens and global reset
+│   ├── layout.css          # grids and geometry
+│   ├── components.css      # reusable UI components
+│   ├── nomad.css           # page composition and typography
+│   └── responsive.css      # viewport overrides
+│
+├── backend/
+│   ├── src/
+│   │   ├── api/            # HTTP transport
+│   │   ├── application/    # use cases
+│   │   ├── domain/         # repository/domain contracts
+│   │   └── infrastructure/ # repository implementations
+│   └── test/
+│
 ├── tests/
 │   ├── unit/
 │   └── e2e/
 ├── docs/
-└── legacy/                 # preserved historical standalone prototypes
+└── legacy/                 # historical prototypes, never imported by runtime
 ```
 
-## Routing
+## Dependency direction
 
-The application uses one client-side hash router. Supported routes:
+```text
+pages
+  ↓
+app / application state
+  ↓
+entities + shared
+  ↓
+HTTP API client
+  ↓
+backend API
+  ↓
+application services
+  ↓
+repositories
+```
+
+The browser pages never call `localStorage` or backend internals directly.
+
+## Routes
 
 - `#home`
 - `#explore`
@@ -37,35 +68,59 @@ The application uses one client-side hash router. Supported routes:
 - `#place/<place-id>`
 - `#food/<food-id>`
 
-There are no separate active `map.html`, `food.html`, `place.html` or `trip.html` entrypoints.
+Invalid routes safely fall back to Home. Invalid detail IDs render an explicit not-found state.
 
-## State
+## Images
 
-Trip state is owned by the application layer and persisted through one storage adapter. Pages, widgets and features must not access `localStorage` directly.
+All active images use a stable media box with controlled `object-fit`. The application shell installs one fallback for failed image requests so a broken remote image does not collapse the layout.
 
-## Development
+## Local development
+
+Terminal 1:
 
 ```bash
 cd nomad-quiet-kyoto
-python3 -m http.server 4173
+npm run serve
 ```
 
-Open `http://localhost:4173/nomad-quiet-kyoto/`.
+Terminal 2:
+
+```bash
+cd nomad-quiet-kyoto/backend
+npm start
+```
+
+Open:
+
+```text
+http://127.0.0.1:4173/
+```
+
+The frontend uses the local API at:
+
+```text
+http://127.0.0.1:8787/api
+```
+
+For static hosting where no API exists, the application keeps its offline local-storage fallback.
 
 ## QA
 
 ```bash
 npm test
+npm run test:backend
 npm run e2e
 npm run qa
 ```
 
+The E2E suite starts both the frontend and backend and checks navigation, detail pages, add/remove flows, persistence, image geometry and mobile navigation.
+
 ## Architecture rules
 
-1. `app` composes the system; it does not contain business rules.
-2. `pages` compose features/widgets for a route.
-3. `features` implement user scenarios.
-4. `entities` own domain data and domain operations.
-5. `shared` is reusable and must not import from pages/features/widgets.
-6. No active code imports from `legacy/`.
-7. One canonical runtime only.
+1. One active frontend runtime.
+2. No active imports from `legacy/`.
+3. Geometry belongs in `layout.css`; reusable controls in `components.css`; page composition in `nomad.css`.
+4. Pages do not access browser storage directly.
+5. API transport is isolated in `shared/api/`.
+6. Backend HTTP routes do not contain domain rules.
+7. Backend application services return structured success/error results.
