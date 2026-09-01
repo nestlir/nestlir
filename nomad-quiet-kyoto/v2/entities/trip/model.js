@@ -1,31 +1,9 @@
-const STORAGE_KEY = 'nomad-v2-trip';
+import { readTrip, writeTrip } from '../../shared/storage.js';
 
-export const DEFAULT_STATE = Object.freeze({
-  places: ['fushimi', 'higashiyama', 'nishiki', 'gion'],
-  food: [],
-  saved: false,
-});
-
-export function createTripState(storage) {
-  try {
-    const raw = storage.getItem(STORAGE_KEY);
-    if (!raw) return cloneDefault();
-
-    const value = JSON.parse(raw);
-    if (!isTripState(value)) return cloneDefault();
-
-    return {
-      places: [...new Set(value.places)],
-      food: [...new Set(value.food)],
-      saved: value.saved,
-    };
-  } catch {
-    return cloneDefault();
-  }
-}
+export { readTrip as createTripState } from '../../shared/storage.js';
 
 export function persistTripState(storage, state) {
-  storage.setItem(STORAGE_KEY, JSON.stringify(state));
+  writeTrip(storage, state);
 }
 
 export function togglePlace(state, id) {
@@ -44,21 +22,6 @@ export function toggleSaved(state) {
   return { ...state, saved: !state.saved };
 }
 
-function cloneDefault() {
-  return {
-    places: [...DEFAULT_STATE.places],
-    food: [...DEFAULT_STATE.food],
-    saved: DEFAULT_STATE.saved,
-  };
-}
-
-function isTripState(value) {
-  if (typeof value !== 'object' || value === null) return false;
-  return (
-    Array.isArray(value.places) &&
-    value.places.every((id) => typeof id === 'string') &&
-    Array.isArray(value.food) &&
-    value.food.every((id) => typeof id === 'string') &&
-    typeof value.saved === 'boolean'
-  );
+export function loadTrip(storage) {
+  return readTrip(storage);
 }
