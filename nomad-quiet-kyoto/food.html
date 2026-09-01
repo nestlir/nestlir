@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOMAD — Eat Kyoto slowly.">
+  <title>NOMAD — Eat Kyoto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="food.css">
+</head>
+<body>
+  <header class="food-header">
+    <a class="wordmark" href="index.html">NOMAD</a>
+    <span class="section-label">05 — EAT KYOTO</span>
+    <a class="back-link" href="index.html#archive">Back to archive ↗</a>
+  </header>
+
+  <main>
+    <section class="food-hero">
+      <div>
+        <p class="eyebrow">FOOD / KYOTO</p>
+        <h1>Eat<br><em>slowly.</em></h1>
+      </div>
+      <p class="food-intro">Markets before noon. Tea at four. A bowl of noodles when the rain starts. The best meals are rarely in a hurry.</p>
+    </section>
+
+    <section class="food-explorer">
+      <div class="food-toolbar">
+        <div>
+          <p class="section-number">01 — FIND A TABLE</p>
+          <h2>Today's<br><em>small discoveries.</em></h2>
+        </div>
+        <form class="search-form" id="foodSearch">
+          <label for="searchInput">Search</label>
+          <div class="search-row"><input id="searchInput" type="search" placeholder="ramen, tea, market..." autocomplete="off"><button type="submit">Search ↗</button></div>
+          <div class="food-filters" id="foodFilters" aria-label="Cuisine filters">
+            <button type="button" class="food-filter is-active" data-filter="all">All</button>
+            <button type="button" class="food-filter" data-filter="breakfast">Morning</button>
+            <button type="button" class="food-filter" data-filter="tea">Tea</button>
+            <button type="button" class="food-filter" data-filter="dinner">Dinner</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="food-layout">
+        <div class="food-list" id="foodList" aria-live="polite"></div>
+        <aside class="food-detail" id="foodDetail">
+          <div class="detail-image" id="detailImage"></div>
+          <p class="detail-type" id="detailType"></p>
+          <h3 id="detailName"></h3>
+          <p class="detail-place" id="detailPlace"></p>
+          <p class="detail-copy" id="detailCopy"></p>
+          <div class="detail-meta"><span id="detailPrice"></span><span id="detailTime"></span></div>
+          <button class="add-food" id="addFood" type="button">Add to My Day <span>+</span></button>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script src="food.js" defer></script>
+</body>
+</html>
