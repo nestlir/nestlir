@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://127.0.0.1:4173/nomad-quiet-kyoto/');
+  await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 });
@@ -21,7 +21,7 @@ test('core page navigation works', async ({ page }) => {
 
 test('place detail and itinerary flow works', async ({ page }) => {
   await page.getByRole('link', { name: 'Explore' }).click();
-  await page.getByRole('button', { name: /Read place detail/i }).first().click();
+  await page.getByRole('button', { name: /Read place detail/i }).click();
   await expect(page).toHaveURL(/#place\//);
   await expect(page.getByRole('heading', { name: /Fushimi Inari|Higashiyama|Nishiki Market|Gion|Kamo Breakfast/ })).toBeVisible();
   const addButton = page.getByRole('button', { name: /Add to My Day/ });
@@ -37,7 +37,7 @@ test('food detail and itinerary flow works', async ({ page }) => {
   await page.getByRole('button', { name: /Open Breakfast by the Kamo/i }).click();
   await expect(page).toHaveURL(/#food\/kamo-breakfast$/);
   await expect(page.getByRole('heading', { name: /Breakfast by the Kamo/ })).toBeVisible();
-  await page.getByRole('button', { name: /Add to My Trip/ }).click();
+  await page.getByRole('button', { name: /Add to My Day/ }).click();
   await page.getByRole('link', { name: /My Trip/ }).click();
   await expect(page).toHaveURL(/#trip$/);
   await expect(page.getByText('Breakfast by the Kamo')).toBeVisible();
@@ -60,4 +60,13 @@ test('gallery image has a stable box', async ({ page }) => {
   expect(box).not.toBeNull();
   expect(box.width).toBeGreaterThan(150);
   expect(box.height).toBeGreaterThan(150);
+});
+
+test('mobile menu opens and routes correctly', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'Menu' }).click();
+  const navigation = page.getByLabel('Mobile navigation');
+  await expect(navigation).toBeVisible();
+  await navigation.getByRole('link', { name: 'Eat' }).click();
+  await expect(page).toHaveURL(/#eat$/);
 });
