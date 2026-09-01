@@ -1,61 +1,108 @@
-const STORAGE_KEY = 'nomad-my-day';
+import { findPlace } from './data/places.js';
+import { findFood } from './data/food.js';
+import { loadTrip, saveTrip, togglePlace, toggleFood } from './data/trip-state.js';
+import { getTripDistance, getTripSpend, getTripFood } from './data/trip-summary.js';
 
 const timeline = document.querySelector('#timeline');
 const stopCount = document.querySelector('#stopCount');
+const itineraryCount = document.querySelector('#itineraryCount');
 const distanceValue = document.querySelector('#distanceValue');
 const budgetValue = document.querySelector('#budgetValue');
+const budgetList = document.querySelector('#budgetList');
 
-const defaults = ['fushimi', 'higashiyama', 'nishiki', 'gion'];
-const distances = { fushimi: 2.8, higashiyama: 2.1, nishiki: 1.7, gion: 4.6 };
-const budgets = { fushimi: 0, higashiyama: 800, nishiki: 3500, gion: 0 };
+let trip = loadTrip();
 
-function readStops() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(saved) && saved.length ? saved : defaults;
-  } catch {
-    return defaults;
-  }
-}
+const formatCurrency = (value) => `¥${value.toLocaleString('en-US')}`;
 
-function writeStops(stops) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(stops));
-}
+const formatFoodType = (type) => type.charAt(0).toUpperCase() + type.slice(1);
 
-function updateSummary(stops) {
-  if (stopCount) stopCount.textContent = String(stops.length);
-  if (distanceValue) {
-    distanceValue.textContent = stops.reduce((sum, id) => sum + (distances[id] || 0), 0).toFixed(1);
-  }
-  if (budgetValue) {
-    const total = stops.reduce((sum, id) => sum + (budgets[id] || 0), 0);
-    budgetValue.textContent = `¥${total.toLocaleString('en-US')}`;
-  }
-}
+function renderItinerary() {
+  if (!timeline) return;
+  const places = trip.places.map(findPlace).filter(Boolean);
+  const food = trip.food.map(findFood).filter(Boolean);
+  timeline.innerHTML = '';
 
-function renderStops(stops) {
-  timeline?.querySelectorAll('.timeline-item').forEach((item) => {
-    item.hidden = !stops.includes(item.dataset.id);
+  places.forEach((place) => {
+    const item = document.createElement('article');
+    item.className = 'timeline-item';
+    item.dataset.id = place.id;
+    item.innerHTML = `
+      <span class="time">${place.time}</span>
+      <div>
+        <h3>${place.name}</h3>
+        <p>${place.area} / ${place.duration}</p>
+      </div>
+      <button type="button" class="remove-stop" data-remove="${place.id}" aria-label="Remove ${place.name}">×</button>
+    `;
+    timeline.appendChild(item);
   });
-  updateSummary(stops);
+
+  food.forEach((itemData) => {
+    const item = document.createElement('article');
+    item.className = 'timeline-item';
+    item.dataset.id = itemData.id;
+    item.innerHTML = `
+      <span class="time">—</span>
+      <div>
+        <h3>${itemData.name}</h3>
+        <p>${formatFoodType(itemData.type)} / ${itemData.place}</p>
+      </div>
+      <button type="button" class="remove-stop" data-food-remove="${itemData.id}" aria-label="Remove ${itemData.name}">×</button>
+    `;
+    timeline.appendChild(item);
+  });
+
+  timeline.querySelectorAll('[data-remove]').forEach((button) => {
+    button.addEventListener('click', () => removePlace(button.dataset.remove));
+  });
+
+  timeline.querySelectorAll('[data-food-remove]').forEach((button) => {
+    button.addEventListener('click', () => removeFood(button.dataset.foodRemove));
+  });
 }
 
-let stops = readStops();
-renderStops(stops);
+function renderSummary() {
+  const places = trip.places.map(findPlace).filter(Boolean);
+  const food = getTripFood(trip);
+  const totalStops = places.length + food.length;
 
+  if (stopCount) stopCount.textContent = String(totalStops);
+  if (itineraryCount) itineraryCount.textContent = `${totalStops} ${totalStops === 1 ? 'stop' : 'stops'}`;
+  if (distanceValue) distanceValue.textContent = getTripDistance(trip).toFixed(1);
+  if (budgetValue) budgetValue.textContent = formatCurrency(getTripSpend(trip));
+}
 
-timeline?.querySelectorAll('.remove-stop').forEach((button) => {
-  button.addEventListener('click', () => {
-    const id = button.dataset.remove;
-    if (!id || stops.length <= 1) return;
+function renderBudget() {
+  if (!budgetList) return;
+  const places = trip.places.map(findPlace).filter(Boolean);
+  const food = getTripFood(trip);
+  const rows = [
+    ['Places', places.reduce((sum, place) => sum + place.price, 0)],
+    ['Food', food.reduce((sum, item) => sum + item.price, 0)],
+  ];
 
-    const item = button.closest('.timeline-item');
-    item?.classList.add('removing');
+  budgetList.innerHTML = rows.map(([label, amount]) => `
+    <div><span>${label}</span><strong>${formatCurrency(amount)}</strong></div>
+  `).join('');
+}
 
-    window.setTimeout(() => {
-      stops = stops.filter((stop) => stop !== id);
-      writeStops(stops);
-      renderStops(stops);
-    }, 260);
-  });
-});
+function removePlace(id) {
+  if (trip.places.length <= 1) return;
+  trip = togglePlace(trip, id);
+  saveTrip(trip);
+  renderAll();
+}
+
+function removeFood(id) {
+  trip = toggleFood(trip, id);
+  saveTrip(trip);
+  renderAll();
+}
+
+function renderAll() {
+  renderItinerary();
+  renderSummary();
+  renderBudget();
+}
+
+renderAll();
