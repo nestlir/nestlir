@@ -1,44 +1,64 @@
 const STORAGE_KEY = 'nomad-v2-trip';
-const DEFAULT_STATE = { places: ['fushimi', 'higashiyama', 'nishiki', 'gion'], food: [], saved: false };
+
+export const DEFAULT_STATE = Object.freeze({
+  places: ['fushimi', 'higashiyama', 'nishiki', 'gion'],
+  food: [],
+  saved: false,
+});
 
 export function createTripState(storage) {
   try {
     const raw = storage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULT_STATE, places: [...DEFAULT_STATE.places], food: [] };
+    if (!raw) return cloneDefault();
 
     const value = JSON.parse(raw);
-    if (!value || !Array.isArray(value.places) || !Array.isArray(value.food) || typeof value.saved !== 'boolean') {
-      return { ...DEFAULT_STATE, places: [...DEFAULT_STATE.places], food: [] };
-    }
+    if (!isTripState(value)) return cloneDefault();
 
     return {
-      places: value.places.filter((id) => typeof id === 'string'),
-      food: value.food.filter((id) => typeof id === 'string'),
+      places: [...new Set(value.places)],
+      food: [...new Set(value.food)],
       saved: value.saved,
     };
   } catch {
-    return { ...DEFAULT_STATE, places: [...DEFAULT_STATE.places], food: [] };
+    return cloneDefault();
   }
 }
 
+export function persistTripState(storage, state) {
+  storage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
 export function togglePlace(state, id) {
-  return {
-    ...state,
-    places: state.places.includes(id)
-      ? state.places.filter((item) => item !== id)
-      : [...state.places, id],
-  };
+  return state.places.includes(id)
+    ? { ...state, places: state.places.filter((item) => item !== id) }
+    : { ...state, places: [...state.places, id] };
 }
 
 export function toggleFood(state, id) {
-  return {
-    ...state,
-    food: state.food.includes(id)
-      ? state.food.filter((item) => item !== id)
-      : [...state.food, id],
-  };
+  return state.food.includes(id)
+    ? { ...state, food: state.food.filter((item) => item !== id) }
+    : { ...state, food: [...state.food, id] };
 }
 
 export function toggleSaved(state) {
   return { ...state, saved: !state.saved };
+}
+
+function cloneDefault() {
+  return {
+    places: [...DEFAULT_STATE.places],
+    food: [...DEFAULT_STATE.food],
+    saved: DEFAULT_STATE.saved,
+  };
+}
+
+function isTripState(value) {
+  if (typeof value !== 'object' || value === null) return false;
+  return (
+    Array.isArray(value.places) &&
+    value.places.every((id) => typeof id === 'string') &&
+    Array.isArray(value.food) &&
+    value.food.every((id) => typeof id === 'string') &&
+    typeof value.saved === 'boolean'
+  );
 }
