@@ -1,3 +1,10 @@
-export { places } from './places.js';
-export { food } from './food.js';
-export { createTripState, getTripState, togglePlace, toggleFood, toggleSaved } from './trip-state.js';
+export { places, findPlace } from './places.js';
+export { food, findFood } from './food.js';
+export {
+  createTripState,
+  getTripState,
+  saveTrip,
+  togglePlace,
+  toggleFood,
+  toggleSaved,
+} from './trip-state.js';
