@@ -1,44 +1,56 @@
-# NOMAD architecture
+# NOMAD Architecture
 
-## Target architecture
+## Active architecture
 
-The project is currently a browser-native prototype. The canonical runtime is intentionally kept self-contained while the domain boundaries are established for the future Next.js migration.
+NOMAD currently runs as a browser-native modular application with a separately executable HTTP API. The architecture deliberately keeps transport, state, domain data and presentation isolated so the future React/Next.js migration can preserve the same contracts.
 
-```text
-canonical runtime
-├── UI shell
-├── feature interactions
-├── domain data
-└── persistence adapter
+```mermaid
+flowchart TD
+  Page[Route Page] --> App[Application State]
+  Page --> Shared[Shared UI / Utilities]
+  App --> Entity[Entities]
+  App --> API[Shared API Client]
+  API --> HTTP[Backend HTTP API]
+  HTTP --> Service[Application Service]
+  Service --> Repo[Repository]
+  Repo --> Persistence[Persistence Implementation]
 ```
 
-## Dependency direction
+## Frontend boundaries
 
-```text
-UI → application/domain → persistence
-```
+- **app/** — bootstrap, hash router, shell lifecycle and route registry.
+- **pages/** — route-level composition and event binding; no direct storage access.
+- **entities/** — canonical Place/Food data and pure Trip state transitions.
+- **shared/** — storage, API transport and pure calculations.
+- **styles/base.css** — tokens and global primitives.
+- **styles/layout.css** — geometry, grids and stable media boxes.
+- **styles/components.css** — reusable controls and global image fallback styling.
+- **styles/nomad.css** — page composition and typography only.
+- **styles/responsive.css** — viewport-specific overrides.
 
-The inverse direction is forbidden. UI must not implement storage rules, and persistence must not know about DOM elements.
+## Backend boundaries
 
-## State
+- **api/** translates HTTP requests into application calls.
+- **application/** contains use cases and structured Result responses.
+- **domain/** owns repository/domain contracts.
+- **infrastructure/** contains concrete repository implementations.
 
-Only one canonical trip state is used by the active prototype. Place and food selections are persisted together. Future Next.js migration should move server data to TanStack Query and keep Zustand restricted to UI-only state.
+## Persistence status
+
+The current backend uses an in-memory Trip repository for the prototype. The API contract is already independent from that implementation, so a PostgreSQL/Prisma repository can replace it without changing page code or HTTP routes.
 
 ## Migration path
 
 ```text
-v3 canonical vanilla prototype
+stable vanilla runtime
         ↓
-TypeScript domain modules
+TypeScript domain contracts
         ↓
 Next.js App Router
         ↓
-FSD: app / pages / widgets / features / entities / shared
+TanStack Query for server state
+        ↓
+FSD production layers
+        ↓
+PostgreSQL / Prisma persistence
 ```
-
-## Performance principles
-
-- Keep hero media optimized and avoid eager loading below the fold.
-- Prefer normal document flow for layout; use absolute positioning only for decorative overlays and map pins.
-- Avoid rerendering the entire page for local interactions in the future React implementation.
-- Load expensive interactive modules lazily when they become real application features.
