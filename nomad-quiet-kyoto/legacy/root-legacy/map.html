@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NOMAD — Kyoto place explorer." />
+  <title>NOMAD — Kyoto / Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="map.css" />
+</head>
+<body>
+  <header class="map-header">
+    <a class="wordmark" href="index.html">NOMAD</a>
+    <div class="map-label"><span>05 — MAP</span><strong>KYOTO / 2026</strong></div>
+    <a class="close-map" href="index.html">Back ↗</a>
+  </header>
+
+  <main class="explorer">
+    <section class="map-canvas" aria-label="Kyoto places map">
+      <div class="map-paper"></div>
+      <div class="map-water"></div>
+      <div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div>
+      <div class="river"></div>
+      <div class="place-pin pin-fushimi" data-place="fushimi"><span>01</span></div>
+      <div class="place-pin pin-higashiyama" data-place="higashiyama"><span>02</span></div>
+      <div class="place-pin pin-nishiki" data-place="nishiki"><span>03</span></div>
+      <div class="place-pin pin-gion" data-place="gion"><span>04</span></div>
+      <div class="map-route"><i></i><i></i><i></i><i></i></div>
+      <div class="map-compass">N</div>
+      <div class="map-note">Not a navigation map.<br />A slower way of finding your way.</div>
+    </section>
+
+    <aside class="place-panel" aria-live="polite">
+      <div class="panel-top"><span id="placeNumber">01 / 04</span><span id="placeType">WALK</span></div>
+      <div class="place-image" id="placeImage"></div>
+      <div class="place-copy">
+        <p class="place-time" id="placeTime">07:10</p>
+        <h1 id="placeTitle">Fushimi Inari</h1>
+        <p id="placeDescription">Begin before the crowds. Follow the vermilion gates upward until the city falls quiet behind you.</p>
+        <div class="place-meta"><span id="placeArea">Fushimi</span><span id="placeDuration">01h 40m</span></div>
+        <button id="addPlace" class="add-place">Add to My Day <span>+</span></button>
+      </div>
+      <div class="panel-footer"><span>Kyoto, Japan</span><span id="selectedState">Not saved</span></div>
+    </aside>
+  </main>
+
+  <script src="map.js" defer></script>
+</body>
+</html>
