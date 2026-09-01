@@ -1,18 +1,24 @@
-import { createTripState, togglePlace, toggleFood, toggleSaved } from '../entities/trip/model.js';
+import {
+  createTripState,
+  persistTripState,
+  toggleFood,
+  togglePlace,
+  toggleSaved,
+} from '../entities/trip/model.js';
 
 export function createTripStore(storage) {
   let state = createTripState(storage);
   const listeners = new Set();
 
-  function emit() {
+  const emit = () => {
     listeners.forEach((listener) => listener(state));
-  }
+  };
 
-  function setState(nextState) {
+  const setState = (nextState) => {
     state = nextState;
-    storage.setItem('nomad-trip-v2', JSON.stringify(state));
+    persistTripState(storage, state);
     emit();
-  }
+  };
 
   return {
     getState: () => state,
