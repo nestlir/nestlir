@@ -113,7 +113,11 @@ npm run e2e
 npm run qa
 ```
 
-The E2E suite starts both the frontend and backend and checks navigation, detail pages, add/remove flows, persistence, image geometry and mobile navigation.
+The E2E suite starts both the frontend and backend and checks navigation, detail pages, add/remove flows, API synchronization, persistence, image geometry and mobile navigation.
+
+## Backend persistence
+
+The backend now persists trips to a JSON file by default (`backend/data/trips.json`). Generated data is ignored by Git. Tests set `TRIP_STORE=memory` to keep contract runs isolated. The repository boundary is intentionally stable so a PostgreSQL/Prisma implementation can replace the JSON repository later without changing the HTTP API.
 
 ## Architecture rules
 
