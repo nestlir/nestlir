@@ -1,4 +1,6 @@
-const API_BASE = '/api';
+const isLocalBrowser = typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname);
+const configuredBase = typeof window !== 'undefined' ? window.__NOMAD_API_BASE__ : undefined;
+const API_BASE = configuredBase || (isLocalBrowser ? 'http://127.0.0.1:8787/api' : '/api');
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE}${path}`, {
