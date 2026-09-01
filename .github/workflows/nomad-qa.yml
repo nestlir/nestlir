@@ -1,0 +1,48 @@
+name: NOMAD QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'nomad-quiet-kyoto/**'
+      - '.github/workflows/nomad-qa.yml'
+  pull_request:
+    paths:
+      - 'nomad-quiet-kyoto/**'
+      - '.github/workflows/nomad-qa.yml'
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nomad-quiet-kyoto
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run backend contract tests
+        run: npm run test:backend
+
+      - name: Run end-to-end tests
+        run: npm run e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nomad-playwright-report
+          path: nomad-quiet-kyoto/test-results/
+          if-no-files-found: ignore
