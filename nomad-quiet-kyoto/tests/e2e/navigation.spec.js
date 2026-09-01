@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, request }) => {
+  await request.put('http://127.0.0.1:8787/api/trips/demo', {
+    data: { places: [], food: [], saved: false },
+  });
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
@@ -43,9 +46,10 @@ test('food detail and itinerary flow works', async ({ page }) => {
   await expect(page.getByText('Breakfast by the Kamo')).toBeVisible();
 });
 
-test('trip selection survives reload', async ({ page }) => {
+test('trip selection survives reload and synchronizes with API', async ({ page }) => {
   await page.getByRole('link', { name: 'Explore' }).click();
   await page.getByRole('button', { name: /Add to My Day/ }).click();
+  await page.waitForTimeout(100);
   await page.reload();
   await expect(page.getByRole('link', { name: /My Trip/ })).toContainText('1');
   await page.getByRole('link', { name: /My Trip/ }).click();
