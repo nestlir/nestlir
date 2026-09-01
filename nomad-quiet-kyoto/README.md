@@ -1,46 +1,62 @@
 # NOMAD — Quiet Kyoto
 
-Canonical frontend prototype for the NOMAD travel product concept.
+NOMAD is a quiet luxury / editorial travel experience for Kyoto. The project is intentionally built as a modular frontend prototype with a clear path to a future Next.js + TypeScript implementation.
 
-## Structure
+## Canonical frontend
+
+The only active implementation is:
 
 ```text
 nomad-quiet-kyoto/
-├── README.md
-├── v3/                 # current canonical runtime
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── legacy/             # historical iterations; do not use for active development
-│   ├── v1/
-│   └── v2/
+├── index.html
+├── app/
+├── pages/
+├── features/
+├── entities/
+├── widgets/
+├── shared/
+├── assets/
+├── styles/
+├── tests/
 └── docs/
-    └── architecture.md
 ```
 
-## Canonical version
-
-Use `v3/` for active development and visual QA. Older iterations are preserved under `legacy/` and are not entrypoints.
+Historical experiments are preserved under `legacy/` and are not application entrypoints.
 
 ## Run locally
 
 ```bash
-cd nomad-quiet-kyoto/v3
+cd nomad-quiet-kyoto
 python3 -m http.server 4173
 ```
 
-Open `http://localhost:4173/`.
+Open:
+
+`http://localhost:4173/`
+
+Do not open old `v1`, `v2`, or `v3` files directly for active development.
 
 ## Product flow
 
-Home → Archive → Place detail → Explore → Eat → My Trip.
+```text
+Home
+  → Archive
+  → Place detail
+  → Explore
+  → Eat
+  → My Trip
+```
 
-All interactive state in the canonical prototype is kept in one localStorage record: `nomad-v3-trip`.
+All trip state is managed by one application store and one persistence key. UI modules do not own persistence or business calculations.
 
-## Refactoring rules
+## Architecture rules
 
-1. One canonical runtime only.
-2. No feature may create its own trip state or storage key.
-3. UI modules must not own persistence logic.
-4. New features must consume the shared domain/data contract.
-5. Keep legacy iterations untouched unless a migration explicitly requires changes.
+1. `app` composes the application and owns routing/bootstrap only.
+2. `pages` compose screens and coordinate features/widgets.
+3. `features` implement user actions and scenarios.
+4. `entities` contain domain data and pure business rules.
+5. `widgets` contain reusable large UI blocks.
+6. `shared` contains infrastructure, utilities, storage, and reusable UI primitives.
+7. Dependencies must point inward/downward; no circular dependencies.
+8. No page or widget may create its own trip store or storage key.
+9. Legacy code is preserved for reference and regression comparison only.
