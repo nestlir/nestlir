@@ -1,6 +1,8 @@
 import { places } from '../../entities/place/model.js';
 
 export function renderArchive(root, application) {
+  if (!root) throw new Error('Archive root was not found');
+
   const section = document.createElement('section');
   section.className = 'archive';
   section.innerHTML = `
@@ -13,7 +15,7 @@ export function renderArchive(root, application) {
   if (!list) throw new Error('Archive list mount was not found');
 
   function render(state) {
-    list.replaceChildren();
+    const fragment = document.createDocumentFragment();
 
     for (const place of places) {
       const saved = state.places.includes(place.id);
@@ -27,11 +29,11 @@ export function renderArchive(root, application) {
         <small>${place.area} / ${place.time}</small>
         <b>${saved ? 'Saved' : 'Add'}</b>
       `;
-      item.addEventListener('click', () => {
-        application.togglePlace(place.id);
-      });
-      list.append(item);
+      item.addEventListener('click', () => application.togglePlace(place.id));
+      fragment.append(item);
     }
+
+    list.replaceChildren(fragment);
   }
 
   const unsubscribe = application.subscribe(render);
