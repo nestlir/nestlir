@@ -6,8 +6,8 @@ I build modern interfaces and product experiences with a focus on clear interact
 
 ## ✦ Live portfolio
 
-- [Open Full-stack portfolio](https://nestlir.github.io/nestlir/portfolio/)
-- [Open Frontend portfolio](https://nestlir.github.io/nestlir/portfolio/frontend/)
+- [Open Full-stack portfolio](https://nestlir.github.io/nestlir/)
+- [Open Frontend portfolio](https://nestlir.github.io/nestlir/)
 
 The portfolio presents selected work, engineering scope, technology stacks and the path from **UI → API → DATA → SHIP**.
 
