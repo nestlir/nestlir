@@ -7,34 +7,62 @@ export const ROUTES = Object.freeze({
   FOOD: 'food',
 });
 
+const VALID_TOP_LEVEL = new Set(Object.values(ROUTES));
+
+function safeDecode(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
 export function parseRoute(location = window.location) {
-  const hash = location.hash.replace(/^#/, '').replace(/^\//, '');
-  if (!hash) return {name: ROUTES.HOME, params: {}};
+  const rawHash = typeof location.hash === 'string' ? location.hash : '';
+  const hash = rawHash.replace(/^#/, '').replace(/^\//, '').trim();
+  if (!hash) return { name: ROUTES.HOME, params: {} };
 
   const [path, queryString = ''] = hash.split('?');
-  const segments = path.split('/').filter(Boolean);
+  const segments = path.split('/').filter(Boolean).map(safeDecode);
   const params = Object.fromEntries(new URLSearchParams(queryString));
+  const [name, id] = segments;
 
-  if (segments[0] === ROUTES.PLACE && segments[1]) {
-    return {name: ROUTES.PLACE, params: {id: decodeURIComponent(segments[1]), ...params}};
+  if (name === ROUTES.PLACE && id) {
+    return { name, params: { id, ...params } };
   }
 
-  if (segments[0] === ROUTES.FOOD && segments[1]) {
-    return {name: ROUTES.FOOD, params: {id: decodeURIComponent(segments[1]), ...params}};
+  if (name === ROUTES.FOOD && id) {
+    return { name, params: { id, ...params } };
   }
 
-  if (Object.values(ROUTES).includes(segments[0])) {
-    return {name: segments[0], params};
+  if (VALID_TOP_LEVEL.has(name)) {
+    return { name, params };
   }
 
-  return {name: ROUTES.HOME, params: {}};
+  return { name: ROUTES.HOME, params: {} };
 }
 
 export function navigate(name, params = {}) {
-  const id = params.id ? `/${encodeURIComponent(params.id)}` : '';
-  const queryEntries = Object.entries(params).filter(([key]) => key !== 'id');
+  if (!VALID_TOP_LEVEL.has(name)) return false;
+
+  const id = params.id ? `/${encodeURIComponent(String(params.id))}` : '';
+  const queryEntries = Object.entries(params)
+    .filter(([key]) => key !== 'id' && valueIsPresent(params[key]))
+    .map(([key, value]) => [key, String(value)]);
   const query = new URLSearchParams(queryEntries).toString();
-  window.location.hash = `#${name}${id}${query ? `?${query}` : ''}`;
+  const nextHash = `#${name}${id}${query ? `?${query}` : ''}`;
+
+  if (window.location.hash === nextHash) {
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    return true;
+  }
+
+  window.location.hash = nextHash;
+  return true;
+}
+
+function valueIsPresent(value) {
+  return value !== null && value !== undefined && value !== '';
 }
 
 export function startRouter(onChange) {
