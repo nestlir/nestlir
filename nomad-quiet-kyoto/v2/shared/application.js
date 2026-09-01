@@ -1,13 +1,13 @@
-import { isKnownPlaceId } from '../entities/place/model.js';
-import { toggleFood, togglePlace, toggleSaved } from '../entities/trip/model.js';
-import { persistTripState, createTripState } from '../entities/trip/model.js';
+import { food } from '../entities/food/model.js';
+import { places, isKnownPlaceId } from '../entities/place/model.js';
+import { createTripState, persistTripState, toggleFood, togglePlace, toggleSaved } from '../entities/trip/model.js';
 
 export function createApplication(storage) {
   let state = createTripState(storage);
   const listeners = new Set();
 
   function notify() {
-    listeners.forEach((listener) => listener(state));
+    for (const listener of listeners) listener(state);
   }
 
   function commit(nextState) {
@@ -20,6 +20,8 @@ export function createApplication(storage) {
 
   return Object.freeze({
     getState: () => state,
+    getPlaces: () => places,
+    getFood: () => food,
     subscribe(listener) {
       listeners.add(listener);
       return () => listeners.delete(listener);
