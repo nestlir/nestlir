@@ -32,6 +32,10 @@ jobs:
           test -f suwenku/manifest.json
           test -f suwenku/robots.txt
           test -f suwenku/sitemap.xml
+          node --check suwenku/app.js
+          node --check suwenku/api/server.mjs
           grep -q 'og:title' suwenku/index.html
           grep -q 'canonical' suwenku/index.html
           grep -q 'Skip to content' suwenku/index.html
+          grep -q 'id="order-form"' suwenku/index.html
+          grep -q 'id="news-dialog"' suwenku/index.html
