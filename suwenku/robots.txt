@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nestlir.github.io/nestlir/suwenku/sitemap.xml

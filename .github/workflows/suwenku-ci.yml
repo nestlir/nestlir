@@ -1,0 +1,37 @@
+name: SUWENKU CI
+
+on:
+  push:
+    branches: [main]
+    paths: ['suwenku/**', '.github/workflows/suwenku-ci.yml']
+  pull_request:
+    paths: ['suwenku/**', '.github/workflows/suwenku-ci.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820024
+        with:
+          node-version: 22
+      - name: Unit and API integration tests
+        working-directory: suwenku
+        run: npm test
+      - name: API smoke / e2e flow
+        working-directory: suwenku
+        run: npm run smoke
+      - name: Static frontend contract checks
+        run: |
+          test -f suwenku/index.html
+          test -f suwenku/styles.css
+          test -f suwenku/app.js
+          test -f suwenku/manifest.json
+          test -f suwenku/robots.txt
+          test -f suwenku/sitemap.xml
+          grep -q 'og:title' suwenku/index.html
+          grep -q 'canonical' suwenku/index.html
+          grep -q 'Skip to content' suwenku/index.html

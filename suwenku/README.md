@@ -1,38 +1,49 @@
 # MOMOHA — Sakura Street Food
 
-A standalone responsive editorial landing page built from the provided Sakura street-food art direction. The site is self-contained in this folder and no longer depends on the previous preview service.
+Production-like static frontend + lightweight Node API.
 
-## Files
+## Screen map
 
-- `index.html` — complete page markup and MOMOHA branding
-- `styles.css` — responsive visual system, layout and animations
-- `app.js` — smooth navigation and reveal interactions
-- `manifest.json` — app metadata
+`Hero → Menu → Kitchen → News → Visit → Footer`
 
-## Run locally
+Primary task flow: `Menu → Quick Order → Cart → Contact → POST /api/orders → Confirmation`.
 
-From the repository root:
+## UX audit
 
-```bash
-python -m http.server 4173
-```
+| Criterion | Status | Main finding |
+|---|---|---|
+| Usability | 🟢 | Clear primary CTA, card-level add actions, multi-item cart and checkout flow |
+| Accessibility / WCAG 2.2 | 🟡 | Skip link, semantic landmarks, labels, focus states, reduced motion and 44px controls; automated axe/manual audit should still be run before a formal conformance claim |
+| Visual hierarchy | 🟢 | Strong display typography, high-contrast CTA and consistent section rhythm |
+| Consistency | 🟢 | Shared pink/blush/ink tokens, common radii and interaction states |
+| Responsiveness | 🟢 | Desktop/tablet/mobile grids and compact checkout layout |
+| Brand | 🟢 | Sakura pink, Japanese accents, supplied artwork and playful editorial composition |
 
-Open:
+WCAG 2.2 is the current W3C recommendation; this project targets the practical AA baseline rather than claiming formal conformance without manual review.
 
-```text
-http://localhost:4173/suwenku/
-```
+## Local
 
-## GitHub Pages
+Frontend: `python -m http.server 4173` then open `/suwenku/`.
 
-After the Pages workflow finishes, the project is available at:
+API: `npm start` inside `suwenku/` (default `http://localhost:8787`).
 
-`https://nestlir.github.io/nestlir/suwenku/`
+The static frontend uses `/api` by default. For a separately hosted API, define `window.MOMOHA_API_URL` before `app.js`.
 
-## Brand
+## API
 
-**MOMOHA** is the final project name: short, memorable and visually compatible with the pink Sakura / Japanese street-food identity.
+- `GET /api/health`
+- `GET /api/menu`
+- `GET /api/orders` — internal/admin use only; protect with auth before public deployment
+- `POST /api/orders`
 
-## Design
+Orders are persisted to `api/data/orders.json`, written atomically and capped at 500 records.
 
-Sakura-pink frame, rounded editorial canvas, bold Bowlby One typography, pill navigation, oversized hero composition, food cards, news grid and responsive mobile layout.
+## Deployment
+
+The frontend is published by the repository Pages workflow. The API is containerized with `Dockerfile` and can be deployed using the included `render.yaml` blueprint. Set `CORS_ORIGIN` to the exact frontend origin in production.
+
+The API is intentionally lightweight and has no database. For a real restaurant, replace the JSON store with PostgreSQL/managed storage and add authentication, order status management, email/SMS notifications and payment integration.
+
+## CI
+
+`.github/workflows/suwenku-ci.yml` runs Node unit/integration tests, an API smoke/e2e flow, and static frontend contract checks on pushes/PRs affecting `suwenku`.

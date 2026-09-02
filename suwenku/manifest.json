@@ -1,9 +1,1 @@
-{
-  "name": "MOMOHA — Sakura Street Food",
-  "short_name": "MOMOHA",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#fff7f8",
-  "theme_color": "#e94e8f",
-  "description": "MOMOHA — Sakura street food, ramen, takoyaki and seasonal sweets."
-}
+{"name":"MOMOHA — Sakura Street Food","short_name":"MOMOHA","start_url":"./","display":"standalone","background_color":"#fffaf5","theme_color":"#e92d70","description":"Sakura street food, ramen, takoyaki and seasonal sweets."}

@@ -30,12 +30,18 @@ jobs:
           node-version: 22
       - name: Run portfolio smoke test
         run: node portfolio/smoke-test.mjs
-      - name: Validate SUWENKU
+      - name: Run SUWENKU tests
+        working-directory: suwenku
+        run: npm test
+      - name: Run SUWENKU API smoke
+        working-directory: suwenku
+        run: npm run smoke
+      - name: Validate SUWENKU frontend
         run: |
           test -f suwenku/index.html
           test -f suwenku/styles.css
           test -f suwenku/app.js
-          grep -q 'SUWENKU' suwenku/index.html
+          grep -q 'MOMOHA' suwenku/index.html
 
   deploy:
     needs: test
