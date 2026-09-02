@@ -1,4 +1,5 @@
 const API_BASE = (window.MOMOHA_API_URL || '').replace(/\/$/, '');
+const apiUrl = (path) => `${API_BASE}${path}`;
 const FALLBACK_MENU = [
   { id: 'ramen', name: 'Tokyo Ramen', price: 980, category: 'savory', description: 'Rich broth · noodles · egg · nori', image: 'assets/food.jpg' },
   { id: 'takoyaki', name: 'Takoyaki', price: 680, category: 'street', description: '6 crispy octopus balls · bonito · sauce', image: 'assets/news-2.jpg' },
@@ -25,6 +26,8 @@ const totalOutput = $('#order-total');
 const cartList = $('#cart-list');
 const addItemButton = $('#add-item');
 const submitButton = $('#submit-order');
+let lastOrderTrigger = null;
+let lastNewsTrigger = null;
 
 const money = (value) => `¥ ${Number(value).toLocaleString('en-US')}`;
 const setMenuState = (open) => {
@@ -76,50 +79,65 @@ function renderSelect() {
 function renderMenu() {
   if (!menuGrid) return;
   menuGrid.innerHTML = state.menu.map((item, index) => `<article class="menu-card ${index === 0 ? 'featured' : ''}"><div class="card-art"><img src="${item.image}" alt="${item.name}" width="900" height="900" loading="lazy" decoding="async"></div><div class="menu-info"><span>${item.category === 'sweet' ? 'SWEET' : item.category === 'street' ? 'HOT' : 'NEW'}</span><h3>${item.name}</h3><p>${item.description}</p><strong>${money(item.price)}</strong><button class="card-order" type="button" data-add="${item.id}">ADD TO ORDER <span>+</span></button></div></article>`).join('');
-  $$('.card-order', menuGrid).forEach((button) => button.addEventListener('click', () => { addToCart(button.dataset.add, 1); openOrder(button.dataset.add); }));
+  $$('.card-order', menuGrid).forEach((button) => button.addEventListener('click', () => { addToCart(button.dataset.add, 1); openOrder(button.dataset.add, button); }));
   const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target); } }), { threshold: .08 });
   $$('.menu-card', menuGrid).forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 80, 180)}ms`; reveal.observe(element); });
 }
 async function loadMenu() {
   try {
-    const response = await fetch(`${API_BASE}/api/menu`, { headers: { accept: 'application/json' } });
+    if (!API_BASE) throw new Error('No API configured');
+    const response = await fetch(apiUrl('/api/menu'), { headers: { accept: 'application/json' } });
     if (!response.ok) throw new Error('Menu unavailable');
     const payload = await response.json();
     state.menu = Array.isArray(payload.items) ? payload.items : FALLBACK_MENU;
   } catch { state.menu = FALLBACK_MENU; }
   renderMenu(); renderSelect(); renderCart();
 }
-function openOrder(itemId = '') {
+function openOrder(itemId = '', trigger = null) {
   if (!dialog) return;
+  lastOrderTrigger = trigger || document.activeElement;
   if (itemId && itemSelect) itemSelect.value = itemId;
   if (typeof dialog.showModal === 'function') dialog.showModal();
   renderCart();
   setTimeout(() => itemSelect?.focus(), 50);
 }
-$$('.js-order').forEach((button) => button.addEventListener('click', () => openOrder(button.dataset.item || '')));
+function closeOrder() {
+  dialog?.close();
+  setTimeout(() => lastOrderTrigger?.focus?.(), 0);
+}
+$$('.js-order').forEach((button) => button.addEventListener('click', () => openOrder(button.dataset.item || '', button)));
 addItemButton?.addEventListener('click', () => { addToCart(itemSelect?.value, Number(qtyInput?.value || 1)); qtyInput.value = '1'; itemSelect?.focus(); });
-dialog?.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
-dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+dialog?.querySelector('[data-close]')?.addEventListener('click', closeOrder);
+dialog?.addEventListener('click', (event) => { if (event.target === dialog) closeOrder(); });
+
+autoCloseOnEscape(dialog, closeOrder);
 
 $$('.news-card-link').forEach((button) => button.addEventListener('click', () => {
   const story = NEWS[button.closest('.news-card')?.dataset.news];
   if (!story || !newsDialog) return;
+  lastNewsTrigger = button;
   $('#news-dialog-kicker').textContent = story.kicker;
   $('#news-dialog-title').textContent = story.title;
   $('#news-dialog-body').textContent = story.body;
   $('.js-news-order', newsDialog).dataset.item = story.item;
   newsDialog.showModal();
+  setTimeout(() => $('.js-news-order', newsDialog)?.focus(), 50);
 }));
-newsDialog?.querySelector('[data-news-close]')?.addEventListener('click', () => newsDialog.close());
-newsDialog?.addEventListener('click', (event) => { if (event.target === newsDialog) newsDialog.close(); });
-$('.js-news-order', newsDialog)?.addEventListener('click', () => { const item = $('.js-news-order', newsDialog).dataset.item; newsDialog.close(); openOrder(item); });
+function closeNews() {
+  newsDialog?.close();
+  setTimeout(() => lastNewsTrigger?.focus?.(), 0);
+}
+newsDialog?.querySelector('[data-news-close]')?.addEventListener('click', closeNews);
+newsDialog?.addEventListener('click', (event) => { if (event.target === newsDialog) closeNews(); });
+$('.js-news-order', newsDialog)?.addEventListener('click', () => { const item = $('.js-news-order', newsDialog).dataset.item; closeNews(); openOrder(item, lastNewsTrigger); });
+autoCloseOnEscape(newsDialog, closeNews);
 
 async function submitOrder() {
   const formData = new FormData(form);
   const payload = { items: state.cart, customerName: formData.get('customerName'), email: formData.get('email'), note: formData.get('note') };
   if (!payload.items.length) throw new Error('Add at least one item to your order.');
   if (!API_BASE) throw new Error('Ordering is not connected on this preview. Please set MOMOHA_API_URL for the deployed API.');
-  const response = await fetch(`${API_BASE}/api/orders`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+  const response = await fetch(apiUrl('/api/orders'), { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
   let result = {};
   try { result = await response.json(); } catch { /* handled below */ }
   if (!response.ok) throw new Error(result?.error?.message || 'We could not place your order. Please try again.');
@@ -135,7 +153,7 @@ form?.addEventListener('submit', async (event) => {
     const payload = await submitOrder();
     message.textContent = `ORDER ${payload.order.id} RECEIVED — TOTAL ${money(payload.order.total)}.`;
     state.cart = []; saveCart(); renderCart(); form.reset();
-    setTimeout(() => dialog?.close(), 1800);
+    setTimeout(closeOrder, 1800);
   } catch (error) {
     message.className = 'form-message error';
     message.textContent = error.message;
@@ -143,6 +161,7 @@ form?.addEventListener('submit', async (event) => {
 });
 
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && nav?.classList.contains('open')) setMenuState(false); });
+function autoCloseOnEscape(target, close) { target?.addEventListener('cancel', (event) => { event.preventDefault(); close(); }); }
 loadCart();
 loadMenu();
 $$('.news-card,.kitchen-copy,.kitchen-image').forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 70, 210)}ms`; });
