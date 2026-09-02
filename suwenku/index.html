@@ -1,36 +1,126 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#e94e8f" />
-    <title>MOMOHA — Sakura Street Food</title>
-    <meta name="description" content="MOMOHA — Sakura street food, ramen, takoyaki and seasonal sweets." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="frame">
-      <main class="page">
-        <nav class="nav" aria-label="Primary">
-          <a class="brand" href="#top">MOMOHA<span>®</span></a>
-          <div class="nav-links">
-            <a href="#kitchen">OUR KITCHEN</a><a href="#news">NEWS</a><a href="#visit">VISIT US</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e92d70" />
+  <meta name="description" content="SUWENKU — Sakura Street Food. Fresh, hot Japanese street food with a playful pop-art spirit." />
+  <title>SUWENKU — Sakura Street Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav-wrap">
+      <a class="brand" href="#top" aria-label="SUWENKU home">
+        <span class="brand-mark">す</span>
+        <span>SUWENKU</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#menu">MENU</a>
+        <a href="#kitchen">OUR KITCHEN</a>
+        <a href="#news">NEWS</a>
+        <a href="#visit">VISIT US</a>
+        <button class="nav-order js-order">ORDER NOW <span>↗</span></button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="assets/hero.jpg" alt="Pink illustrated Sakura Street Food scene with a chef holding takoyaki" />
+        <div class="hero-overlay">
+          <div class="hero-copy">
+            <span class="eyebrow">SAKURA STREET FOOD</span>
+            <h1 id="hero-title">FRESH<br /><em>&amp; HOT!</em></h1>
+            <p>Japanese comfort food, made with a little extra sparkle.</p>
+            <div class="hero-actions">
+              <a class="button button-dark" href="#menu">SEE THE MENU <span>↓</span></a>
+              <button class="round-stamp js-order" aria-label="Order food">おいしい!<small>DELICIOUS!</small><b>♥</b></button>
+            </div>
           </div>
-          <a class="nav-cta" href="#visit">GET MENU <span>↗</span></a>
-        </nav>
-        <section id="top" class="hero">
-          <div class="hero-copy"><p class="eyebrow">TOKYO / SEOUL / BANGKOK</p><h1>SAKURA<br /><span>STREET</span><br />FOOD<br />WITH A<br />BIT OF MAGIC.</h1><p class="hero-lede">Big flavor, fast hands, soft pink skies. MOMOHA brings the night-market feeling indoors.</p><a class="round-button" href="#kitchen" aria-label="Discover our kitchen">DISCOVER <span>↓</span></a></div>
-          <div class="hero-art" aria-label="Decorative bowl illustration"><div class="sunburst"></div><div class="flower flower-a">✿</div><div class="flower flower-b">✽</div><div class="bowl"><div class="steam s1"></div><div class="steam s2"></div><div class="bowl-food">🍜</div></div><div class="sticker sticker-one">FRESH<br />+ FAST</div><div class="sticker sticker-two">WOW!</div></div>
-        </section>
-        <section id="kitchen" class="kitchen section"><div class="section-head"><p class="eyebrow">01 / THE GOOD STUFF</p><h2>OUR<br /><span>KITCHEN</span></h2></div><div class="kitchen-grid"><article class="card card-dark"><div class="card-number">01</div><h3>LOUD<br />NOODLES</h3><p>Silky noodles, punchy broths and toppings that refuse to whisper.</p><span class="card-arrow">↘</span></article><article class="card card-pink"><div class="card-number">02</div><h3>CRUNCHY<br />SIDES</h3><p>Takoyaki, tempura, pickles and snacks built for sharing.</p><span class="card-arrow">↘</span></article><article class="card card-cream"><div class="card-number">03</div><h3>SWEET<br />FINISH</h3><p>Matcha, strawberry and citrus — because every night needs one.</p><span class="card-arrow">↘</span></article></div></section>
-        <section id="news" class="news section"><div class="section-head inline-head"><div><p class="eyebrow">02 / WHAT'S NEW</p><h2>NEWS<span>!</span></h2></div><p class="tiny-copy">Little updates from the kitchen, studio and street.</p></div><div class="news-grid"><article class="news-item"><div class="news-art art-1"><span>NEW</span></div><div class="news-meta"><span>12.08.26</span><span>MENU</span></div><h3>SAKURA RAMEN IS HERE.</h3><p>Warm broth, citrus oil and a little extra attitude.</p></article><article class="news-item"><div class="news-art art-2"><span>POP-UP</span></div><div class="news-meta"><span>29.07.26</span><span>EVENT</span></div><h3>NIGHT MARKET / SATURDAY.</h3><p>One evening. Three guest cooks. Very little sitting down.</p></article><article class="news-item"><div class="news-art art-3"><span>PLAY</span></div><div class="news-meta"><span>14.07.26</span><span>STUDIO</span></div><h3>SAKURA STICKERS, WHO DIS?</h3><p>Grab a sheet at the bar and make your laptop happier.</p></article></div></section>
-        <section id="visit" class="visit"><div><p class="eyebrow">03 / COME THROUGH</p><h2>SEE YOU<br /><span>AT MOMOHA.</span></h2></div><div class="visit-copy"><p>Open late. Walk-ins welcome. Bring your friends, your appetite and your best story from the week.</p><a class="big-link" href="mailto:hello@momoha.example">hello@momoha.example <span>↗</span></a></div></section>
-        <footer class="footer"><span>MOMOHA / SAKURA STREET FOOD</span><span>© 2026</span><a href="#top">BACK TO TOP ↑</a></footer>
-      </main>
-    </div>
-    <script src="./app.js" defer></script>
-  </body>
+          <div class="vertical-note">できたて<br /><span>FRESH &amp; HOT!</span></div>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Restaurant highlights">
+        <span>TAKOYAKI</span><i>✿</i><span>RAMEN</span><i>✿</i><span>DAIFUKU</span><i>✿</i><span>FRESH DAILY</span><i>✿</i><span>TAKOYAKI</span>
+      </section>
+
+      <section id="menu" class="menu-section section-pad">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">MADE TO ORDER</span>
+            <h2>THE GOOD<br /><span>STUFF</span></h2>
+          </div>
+          <p>Golden bites, steamy bowls and sweet little treats. Everything is cooked fresh, served hot, and built for sharing.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card featured">
+            <div class="card-art"><img src="assets/food.jpg" alt="Illustrated bowl of Japanese ramen with chopsticks" /></div>
+            <div class="menu-info"><span>01 / SAVORY</span><h3>Tokyo Ramen</h3><p>Rich broth · noodles · egg · nori</p><strong>¥ 980</strong></div>
+          </article>
+          <article class="menu-card">
+            <div class="card-art"><img src="assets/news-2.jpg" alt="Illustrated takoyaki with sauce" /></div>
+            <div class="menu-info"><span>02 / STREET</span><h3>Takoyaki</h3><p>6 crispy octopus balls · bonito · sauce</p><strong>¥ 680</strong></div>
+          </article>
+          <article class="menu-card">
+            <div class="card-art"><img src="assets/news-3.jpg" alt="Illustrated strawberry daifuku" /></div>
+            <div class="menu-info"><span>03 / SWEET</span><h3>Strawberry Daifuku</h3><p>Soft mochi · fresh strawberry · cream</p><strong>¥ 520</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="kitchen" class="kitchen-section section-pad">
+        <div class="kitchen-image"><img src="assets/food.jpg" alt="Japanese comfort food illustration" /><span class="scribble">いただきます!</span></div>
+        <div class="kitchen-copy">
+          <span class="eyebrow">OUR KITCHEN</span>
+          <h2>SMALL<br /><span>PLATES.</span><br />BIG JOY.</h2>
+          <p>SUWENKU brings the bright, nostalgic energy of a Tokyo street corner to every plate. We keep the menu focused, the ingredients honest, and the kitchen moving.</p>
+          <div class="facts"><div><b>01</b><span>Cooked<br />to order</span></div><div><b>02</b><span>Local &amp;<br />seasonal</span></div><div><b>03</b><span>Always<br />smiling</span></div></div>
+          <button class="text-link js-order">ORDER SOMETHING GOOD <span>↗</span></button>
+        </div>
+      </section>
+
+      <section id="news" class="news-section section-pad">
+        <div class="section-heading compact">
+          <div><span class="eyebrow">WHAT'S NEW</span><h2>FROM THE<br /><span>STREET</span></h2></div>
+          <a class="text-link" href="#news">ALL NEWS <span>↗</span></a>
+        </div>
+        <div class="news-grid">
+          <article class="news-card"><div class="news-img"><img src="assets/news-1.jpg" alt="Illustrated bowl of spicy ramen" /><span>NEW</span></div><div><time>06.12.26</time><h3>Midnight ramen is back.</h3><a href="#menu">READ MORE ↗</a></div></article>
+          <article class="news-card"><div class="news-img"><img src="assets/news-2.jpg" alt="Illustrated takoyaki" /><span>HOT</span></div><div><time>05.28.26</time><h3>Our takoyaki, extra crispy.</h3><a href="#menu">READ MORE ↗</a></div></article>
+          <article class="news-card"><div class="news-img"><img src="assets/news-3.jpg" alt="Illustrated strawberry daifuku" /><span>SWEET</span></div><div><time>05.14.26</time><h3>Strawberry season has landed.</h3><a href="#menu">READ MORE ↗</a></div></article>
+        </div>
+      </section>
+
+      <section id="visit" class="visit-section">
+        <div class="visit-copy"><span class="eyebrow">COME SAY HI</span><h2>MEET US<br /><span>ON THE STREET.</span></h2><p>12 Sakura Lane, Shibuya<br />Tokyo, Japan</p><p><b>Mon–Sun</b> · 11:30–22:00</p><a class="button button-light" href="mailto:hello@suwenku.example">SAY HELLO <span>↗</span></a></div>
+        <div class="visit-doodle" aria-hidden="true">桜<br /><small>STREET</small><br />食</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div><a class="brand footer-brand" href="#top"><span class="brand-mark">す</span><span>SUWENKU</span></a><p>SAKURA STREET FOOD<br />FRESH &amp; HOT, EVERY DAY.</p></div>
+      <div class="footer-links"><a href="#menu">MENU</a><a href="#kitchen">KITCHEN</a><a href="#news">NEWS</a><a href="#visit">VISIT</a></div>
+      <div class="footer-social"><span>FOLLOW THE SMELL</span><a href="#">INSTAGRAM ↗</a><a href="#">TIKTOK ↗</a></div>
+      <div class="copyright">© 2026 SUWENKU. MADE WITH LOVE + LOTS OF SAUCE.</div>
+    </footer>
+  </div>
+
+  <dialog class="order-dialog" id="order-dialog">
+    <button class="dialog-close" data-close aria-label="Close">×</button>
+    <span class="eyebrow">QUICK ORDER</span>
+    <h2>WHAT'S<br /><span>CALLING?</span></h2>
+    <form id="order-form">
+      <label>Pick your favorite<select name="item"><option>Tokyo Ramen — ¥980</option><option>Takoyaki — ¥680</option><option>Strawberry Daifuku — ¥520</option></select></label>
+      <label>How many?<input name="qty" type="number" min="1" max="12" value="1" /></label>
+      <button class="button button-dark" type="submit">ADD TO ORDER <span>↗</span></button>
+    </form>
+    <p class="form-message" id="form-message" role="status"></p>
+  </dialog>
+  <script src="app.js"></script>
+</body>
 </html>
