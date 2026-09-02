@@ -30,6 +30,10 @@ let lastOrderTrigger = null;
 let lastNewsTrigger = null;
 
 const money = (value) => `¥ ${Number(value).toLocaleString('en-US')}`;
+const storage = {
+  get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+  set(key, value) { try { localStorage.setItem(key, value); } catch { /* storage can be blocked */ } }
+};
 const setMenuState = (open) => {
   nav?.classList.toggle('open', open);
   menuToggle?.setAttribute('aria-expanded', String(open));
@@ -38,11 +42,11 @@ const setMenuState = (open) => {
 menuToggle?.addEventListener('click', () => setMenuState(!nav?.classList.contains('open')));
 $$('.site-nav a').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
 
-function saveCart() { localStorage.setItem('momoha-cart', JSON.stringify(state.cart)); }
+function saveCart() { storage.set('momoha-cart', JSON.stringify(state.cart)); }
 function loadCart() {
   try {
-    const saved = JSON.parse(localStorage.getItem('momoha-cart') || '[]');
-    if (Array.isArray(saved)) state.cart = saved.filter((entry) => entry && typeof entry.itemId === 'string' && Number.isInteger(entry.qty) && entry.qty > 0);
+    const saved = JSON.parse(storage.get('momoha-cart') || '[]');
+    if (Array.isArray(saved)) state.cart = saved.filter((entry) => entry && typeof entry.itemId === 'string' && Number.isInteger(entry.qty) && entry.qty > 0 && entry.qty <= 12);
   } catch { state.cart = []; }
 }
 function getItem(id) { return state.menu.find((item) => item.id === id); }
@@ -65,51 +69,75 @@ function renderCart() {
 }
 function addToCart(itemId, qty = 1) {
   const item = getItem(itemId);
-  if (!item) return;
+  if (!item) return false;
   const amount = Math.min(12, Math.max(1, Number(qty) || 1));
   const existing = state.cart.find((entry) => entry.itemId === itemId);
   if (existing) existing.qty = Math.min(12, existing.qty + amount);
   else state.cart.push({ itemId, qty: amount });
   saveCart(); renderCart();
+  return true;
 }
 function renderSelect() {
   if (!itemSelect) return;
   itemSelect.innerHTML = state.menu.map((item) => `<option value="${item.id}">${item.name} — ${money(item.price)}</option>`).join('');
 }
+function observeReveal(elements, threshold = .08) {
+  if (!elements.length) return;
+  if (!('IntersectionObserver' in window)) { elements.forEach((element) => element.classList.add('is-visible')); return; }
+  const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target); }
+  }), { threshold });
+  elements.forEach((element) => reveal.observe(element));
+}
 function renderMenu() {
   if (!menuGrid) return;
   menuGrid.innerHTML = state.menu.map((item, index) => `<article class="menu-card ${index === 0 ? 'featured' : ''}"><div class="card-art"><img src="${item.image}" alt="${item.name}" width="900" height="900" loading="lazy" decoding="async"></div><div class="menu-info"><span>${item.category === 'sweet' ? 'SWEET' : item.category === 'street' ? 'HOT' : 'NEW'}</span><h3>${item.name}</h3><p>${item.description}</p><strong>${money(item.price)}</strong><button class="card-order" type="button" data-add="${item.id}">ADD TO ORDER <span>+</span></button></div></article>`).join('');
-  $$('.card-order', menuGrid).forEach((button) => button.addEventListener('click', () => { addToCart(button.dataset.add, 1); openOrder(button.dataset.add, button); }));
-  const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target); } }), { threshold: .08 });
-  $$('.menu-card', menuGrid).forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 80, 180)}ms`; reveal.observe(element); });
+  $$('.card-order', menuGrid).forEach((button) => button.addEventListener('click', () => { if (addToCart(button.dataset.add, 1)) openOrder(button.dataset.add, button); }));
+  const cards = $$('.menu-card', menuGrid);
+  cards.forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 80, 180)}ms`; });
+  observeReveal(cards);
+}
+async function fetchJson(path, options = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(apiUrl(path), { ...options, signal: controller.signal });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload?.error?.message || `Request failed (${response.status}).`);
+    return payload;
+  } finally { clearTimeout(timer); }
 }
 async function loadMenu() {
   try {
     if (!API_BASE) throw new Error('No API configured');
-    const response = await fetch(apiUrl('/api/menu'), { headers: { accept: 'application/json' } });
-    if (!response.ok) throw new Error('Menu unavailable');
-    const payload = await response.json();
-    state.menu = Array.isArray(payload.items) ? payload.items : FALLBACK_MENU;
+    const payload = await fetchJson('/api/menu', { headers: { accept: 'application/json' } });
+    state.menu = Array.isArray(payload.items) && payload.items.length ? payload.items : FALLBACK_MENU;
   } catch { state.menu = FALLBACK_MENU; }
   renderMenu(); renderSelect(); renderCart();
 }
+function openDialog(target) {
+  if (!target) return false;
+  if (typeof target.showModal !== 'function') { target.setAttribute('open', ''); return true; }
+  if (!target.open) target.showModal();
+  return true;
+}
+function closeDialog(target) { if (!target) return; if (target.open) target.close(); else target.removeAttribute('open'); }
 function openOrder(itemId = '', trigger = null) {
   if (!dialog) return;
   lastOrderTrigger = trigger || document.activeElement;
   if (itemId && itemSelect) itemSelect.value = itemId;
-  if (typeof dialog.showModal === 'function') dialog.showModal();
+  openDialog(dialog);
   renderCart();
   setTimeout(() => itemSelect?.focus(), 50);
 }
-function closeOrder() {
-  dialog?.close();
-  setTimeout(() => lastOrderTrigger?.focus?.(), 0);
-}
+function closeOrder() { closeDialog(dialog); setTimeout(() => lastOrderTrigger?.focus?.(), 0); }
 $$('.js-order').forEach((button) => button.addEventListener('click', () => openOrder(button.dataset.item || '', button)));
-addItemButton?.addEventListener('click', () => { addToCart(itemSelect?.value, Number(qtyInput?.value || 1)); qtyInput.value = '1'; itemSelect?.focus(); });
+addItemButton?.addEventListener('click', () => {
+  if (!addToCart(itemSelect?.value, Number(qtyInput?.value || 1))) return;
+  qtyInput.value = '1'; itemSelect?.focus();
+});
 dialog?.querySelector('[data-close]')?.addEventListener('click', closeOrder);
 dialog?.addEventListener('click', (event) => { if (event.target === dialog) closeOrder(); });
-
 autoCloseOnEscape(dialog, closeOrder);
 
 $$('.news-card-link').forEach((button) => button.addEventListener('click', () => {
@@ -120,13 +148,10 @@ $$('.news-card-link').forEach((button) => button.addEventListener('click', () =>
   $('#news-dialog-title').textContent = story.title;
   $('#news-dialog-body').textContent = story.body;
   $('.js-news-order', newsDialog).dataset.item = story.item;
-  newsDialog.showModal();
+  openDialog(newsDialog);
   setTimeout(() => $('.js-news-order', newsDialog)?.focus(), 50);
 }));
-function closeNews() {
-  newsDialog?.close();
-  setTimeout(() => lastNewsTrigger?.focus?.(), 0);
-}
+function closeNews() { closeDialog(newsDialog); setTimeout(() => lastNewsTrigger?.focus?.(), 0); }
 newsDialog?.querySelector('[data-news-close]')?.addEventListener('click', closeNews);
 newsDialog?.addEventListener('click', (event) => { if (event.target === newsDialog) closeNews(); });
 $('.js-news-order', newsDialog)?.addEventListener('click', () => { const item = $('.js-news-order', newsDialog).dataset.item; closeNews(); openOrder(item, lastNewsTrigger); });
@@ -136,11 +161,9 @@ async function submitOrder() {
   const formData = new FormData(form);
   const payload = { items: state.cart, customerName: formData.get('customerName'), email: formData.get('email'), note: formData.get('note') };
   if (!payload.items.length) throw new Error('Add at least one item to your order.');
-  if (!API_BASE) throw new Error('Ordering is not connected on this preview. Please set MOMOHA_API_URL for the deployed API.');
-  const response = await fetch(apiUrl('/api/orders'), { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
-  let result = {};
-  try { result = await response.json(); } catch { /* handled below */ }
-  if (!response.ok) throw new Error(result?.error?.message || 'We could not place your order. Please try again.');
+  if (!API_BASE) throw new Error('Ordering is not connected on this preview. Set MOMOHA_API_URL to the deployed API.');
+  const result = await fetchJson('/api/orders', { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(payload) });
+  if (!result?.order?.id) throw new Error('The server returned an invalid order response. Please try again.');
   return result;
 }
 form?.addEventListener('submit', async (event) => {
@@ -156,7 +179,7 @@ form?.addEventListener('submit', async (event) => {
     setTimeout(closeOrder, 1800);
   } catch (error) {
     message.className = 'form-message error';
-    message.textContent = error.message;
+    message.textContent = error.name === 'AbortError' ? 'The request timed out. Please try again.' : error.message;
   } finally { submitButton.disabled = false; }
 });
 
@@ -164,6 +187,6 @@ document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && 
 function autoCloseOnEscape(target, close) { target?.addEventListener('cancel', (event) => { event.preventDefault(); close(); }); }
 loadCart();
 loadMenu();
-$$('.news-card,.kitchen-copy,.kitchen-image').forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 70, 210)}ms`; });
-const globalReveal = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); globalReveal.unobserve(entry.target); } }), { threshold: .1 });
-$$('.reveal').forEach((element) => globalReveal.observe(element));
+const initialReveal = $$('.news-card,.kitchen-copy,.kitchen-image');
+initialReveal.forEach((element, index) => { element.classList.add('reveal'); element.style.transitionDelay = `${Math.min(index * 70, 210)}ms`; });
+observeReveal(initialReveal, .1);
