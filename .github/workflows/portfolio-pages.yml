@@ -1,10 +1,11 @@
-name: Deploy portfolio
+name: Deploy portfolio and SUWENKU
 
 on:
   push:
     branches: [main]
     paths:
       - 'portfolio/**'
+      - 'suwenku/**'
       - '.github/workflows/portfolio-pages.yml'
   workflow_dispatch:
 
@@ -24,11 +25,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820024
         with:
           node-version: 22
       - name: Run portfolio smoke test
         run: node portfolio/smoke-test.mjs
+      - name: Validate SUWENKU
+        run: |
+          test -f suwenku/index.html
+          test -f suwenku/styles.css
+          test -f suwenku/app.js
+          grep -q 'SUWENKU' suwenku/index.html
 
   deploy:
     needs: test
@@ -43,8 +50,9 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - name: Prepare static site
         run: |
-          mkdir -p _site
+          mkdir -p _site/suwenku
           cp -R portfolio/. _site/
+          cp -R suwenku/. _site/suwenku/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
         with:
