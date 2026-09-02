@@ -1,27 +1,33 @@
 # SUWENKU — Asian Street Food
 
-Frontend landing-page template inspired by the provided editorial restaurant reference.
+A standalone responsive editorial landing page built from the restaurant reference direction. The site is self-contained in this folder and no longer depends on the previous preview service.
 
-## Stack
+## Files
 
-- React + TypeScript
-- TanStack Router
-- Tailwind CSS
-- Lucide React
-- Google Fonts (Bowlby One + Rubik)
-
-## Layout
-
-- Hot-pink outer frame
-- Rounded white composition card
-- Pill navigation/header
-- Floral anime-inspired hero artwork
-- OUR KITCHEN section
-- NEWS section with three stories
-- Responsive desktop/tablet/mobile layout
+- `index.html` — complete page markup
+- `styles.css` — responsive visual system, layout and animations
+- `app.js` — smooth navigation and reveal interactions
 
 ## Run locally
 
-> The complete generated application source is maintained in the companion Lovable project. This folder is the dedicated portfolio slot for SUWENKU.
+From the repository root:
 
-Project preview: https://id-preview--d0847fbf-1f02-46df-ab16-cb6815173909.lovable.app
+```bash
+python -m http.server 4173
+```
+
+Open:
+
+```text
+http://localhost:4173/suwenku/
+```
+
+## GitHub Pages
+
+The existing Pages workflow now publishes this folder together with the portfolio. After the workflow finishes, SUWENKU is available at:
+
+`https://nestlir.github.io/nestlir/suwenku/`
+
+## Design
+
+Hot-pink frame, rounded editorial canvas, bold Bowlby One typography, pill navigation, oversized hero composition, kitchen cards, news grid and responsive mobile layout.
