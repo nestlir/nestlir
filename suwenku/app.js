@@ -1,44 +1,12 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.site-nav');
-const dialog = document.querySelector('#order-dialog');
-const form = document.querySelector('#order-form');
-const message = document.querySelector('#form-message');
-
-menuToggle?.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(open));
-});
-
-nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')));
-
-document.querySelectorAll('.js-order').forEach((button) => {
-  button.addEventListener('click', () => {
-    if (typeof dialog.showModal === 'function') dialog.showModal();
-  });
-});
-
-dialog?.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
-dialog?.addEventListener('click', (event) => {
-  if (event.target === dialog) dialog.close();
-});
-
-form?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const data = new FormData(form);
-  message.textContent = `Added ${data.get('qty')} × ${data.get('item')} — see you soon!`;
-  window.setTimeout(() => dialog.close(), 1400);
-});
-
-const reveal = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      reveal.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.menu-card, .news-card, .kitchen-copy, .kitchen-image').forEach((element) => {
-  element.classList.add('reveal');
-  reveal.observe(element);
-});
+const API_BASE = window.MOMOHA_API_URL || '';
+const menuToggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.site-nav'),dialog=document.querySelector('#order-dialog'),form=document.querySelector('#order-form'),message=document.querySelector('#form-message'),itemSelect=form?.querySelector('[name="item"]'),qtyInput=form?.querySelector('[name="qty"]'),totalOutput=document.querySelector('#order-total');
+const setMenuState=(open)=>{nav?.classList.toggle('open',open);menuToggle?.setAttribute('aria-expanded',String(open));menuToggle?.setAttribute('aria-label',open?'Close menu':'Open menu')};
+menuToggle?.addEventListener('click',()=>setMenuState(!nav?.classList.contains('open')));nav?.querySelectorAll('a').forEach((link)=>link.addEventListener('click',()=>setMenuState(false)));
+function updateTotal(){if(!itemSelect||!qtyInput||!totalOutput)return;const price=Number(itemSelect.selectedOptions[0]?.dataset.price||0);const qty=Math.min(12,Math.max(1,Number(qtyInput.value)||1));qtyInput.value=String(qty);totalOutput.textContent=`¥ ${price*qty}`}
+function openOrder(itemId){if(!dialog)return;if(itemId&&itemSelect)itemSelect.value=itemId;updateTotal();if(typeof dialog.showModal==='function'){dialog.showModal();setTimeout(()=>itemSelect?.focus(),50)}}
+document.querySelectorAll('.js-order').forEach((button)=>button.addEventListener('click',()=>openOrder(button.dataset.item||'')));
+dialog?.querySelector('[data-close]')?.addEventListener('click',()=>dialog.close());dialog?.addEventListener('click',(event)=>{if(event.target===dialog)dialog.close()});document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&nav?.classList.contains('open'))setMenuState(false)});
+itemSelect?.addEventListener('change',updateTotal);qtyInput?.addEventListener('input',updateTotal);updateTotal();
+async function submitOrder(itemId,qty){const response=await fetch(`${API_BASE}/api/orders`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({itemId,qty:Number(qty)})});const payload=await response.json();if(!response.ok)throw new Error(payload?.error?.message||'Order failed');return payload}
+form?.addEventListener('submit',async(event)=>{event.preventDefault();message.textContent='Sending order…';try{const payload=await submitOrder(itemSelect?.value||'ramen',Number(qtyInput?.value||1));message.textContent=`Order ${payload.order.id} placed — ${payload.order.qty} × ${payload.order.item}.`;setTimeout(()=>dialog?.close(),1500)}catch(error){message.textContent=`${error.message} The preview is still available.`}});
+const reveal=new IntersectionObserver((entries)=>entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.menu-card,.news-card,.kitchen-copy,.kitchen-image').forEach((element,index)=>{element.classList.add('reveal');element.style.transitionDelay=`${Math.min(index*70,210)}ms`;reveal.observe(element)});

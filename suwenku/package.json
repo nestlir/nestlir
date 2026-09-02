@@ -1,0 +1,1 @@
+{"name":"momoha","private":true,"type":"module","scripts":{"start":"node api/server.mjs","test":"node --test api/server.test.mjs"},"engines":{"node":">=20"}}
