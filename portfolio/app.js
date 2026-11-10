@@ -14,7 +14,7 @@ const t={ru:{nav:['Обо мне','Стек','Проекты','Инженери�
 en:{nav:['About','Stack','Projects','Engineering','Experience','Contact'],heroKicker:'FULL-STACK DEVELOPER / 2026',heroTitle:'From pixels to <em>production.</em>',heroText:'I build digital products end to end: interface, APIs, data, integrations and deployment. Engineering should work as a system; visual design should give it character.',heroCta:'View projects',stackKicker:'01 / Stack',stackTitle:'The whole product path',stackText:'I do more than build UI. I understand how data reaches the interface, where business logic lives and what happens after Deploy.',stack:['UI / UX','React / Next.js','TypeScript','Node.js / Python','REST / API','SQL / MongoDB','Docker / CI/CD','AI integrations'],projectsKicker:'02 / Selected work',projectsTitle:'Projects',projectsText:'Not just the stack — the actual part of the system I built.',filters:['All','Frontend','Full-stack','AI'],caseKicker:'03 / Case studies',caseTitle:'How I approach products',case1:'01 — Understand',case1t:'Start with the user flow, data and constraints.',case2:'02 — Build',case2t:'Build the interface, API integrations, state and reusable pieces.',case3:'03 — Ship',case3t:'Check edge cases, tests, production builds and maintainability.',engKicker:'04 / Engineering',engTitle:'Engineering behind the interface',engText:'API contracts · validation · state management · authentication · data mapping · testing · Docker · deployment',expKicker:'05 / Experience',expTitle:'Frontend → Full-stack mindset',expText:'I work at the intersection of UI, APIs and product logic: code review, integrations, forms, complex tables, search, filters, payments, PDF and E2E.',contactKicker:'06 / Contact',contactTitle:'Have a task?<br><em>Let’s build the system.</em>',contactText:'Open to frontend, full-stack, product and AI work.',github:'GitHub ↗',email:'Write to me ↗',more:'Open case ↗',repo:'Open repository ↗',selected:'Selected work',close:'Close',footer:'Designed, coded & engineered with a little chaos.'},
 ja:{nav:['プロフィール','スタック','プロジェクト','Engineering','経験','連絡先'],heroKicker:'FULL-STACK DEVELOPER / 2026',heroTitle:'ピクセルから<em>productionへ。</em>',heroText:'UI、API、データ、連携、デプロイまで、プロダクトを一つのシステムとして作ります。エンジニアリングには構造を、ビジュアルには個性を。',heroCta:'プロジェクトを見る',stackKicker:'01 / Stack',stackTitle:'プロダクトの全体像',stackText:'UIだけではなく、データがどう届き、ビジネスロジックがどこにあり、Deployの後に何が起きるかまで考えます。',stack:['UI / UX','React / Next.js','TypeScript','Node.js / Python','REST / API','SQL / MongoDB','Docker / CI/CD','AI integrations'],projectsKicker:'02 / Selected work',projectsTitle:'プロジェクト',projectsText:'技術スタックだけでなく、実際に担当したシステム領域を見せます。',filters:['すべて','Frontend','Full-stack','AI'],caseKicker:'03 / Case studies',caseTitle:'プロダクトへの考え方',case1:'01 — Understand',case1t:'ユーザーフロー、データ、制約から始めます。',case2:'02 — Build',case2t:'UI、API連携、state、再利用可能な部品を作ります。',case3:'03 — Ship',case3t:'edge case、テスト、production build、保守性を確認します。',engKicker:'04 / Engineering',engTitle:'UIの裏側にあるEngineering',engText:'API contracts · validation · state management · authentication · data mapping · testing · Docker · deployment',expKicker:'05 / Experience',expTitle:'Frontend → Full-stack mindset',expText:'UI、API、プロダクトロジックの間で、code review、連携、フォーム、複雑なテーブル、検索、決済、PDF、E2Eまで扱います。',contactKicker:'06 / Contact',contactTitle:'課題がありますか？<br><em>一緒にシステムを。</em>',contactText:'Frontend、Full-stack、Product、AIの仕事にオープンです。',github:'GitHub ↗',email:'メールを送る ↗',more:'Caseを見る ↗',repo:'リポジトリを開く ↗',selected:'Selected work',close:'閉じる',footer:'Designed, coded & engineered with a little chaos.'}};
 
-let lang=localStorage.getItem('portfolio-lang')||'ru'; let filter='all';
+let lang='ru'; let filter='all';
 const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
 const fullstackKeys={
   'nav.about':'nav.0','nav.stack':'nav.1','nav.projects':'nav.2','nav.engineering':'nav.3','nav.experience':'nav.4','nav.contact':'nav.5',
@@ -31,7 +31,117 @@ window.setFullstackLanguage=setFullstackLanguage;
 function renderFilters(){const labels=t[lang].filters; const keys=['all','frontend','fullstack','ai']; $('#filters').innerHTML=labels.map((label,i)=>`<button class="filter ${filter===keys[i]?'active':''}" data-filter="${keys[i]}" aria-pressed="${filter===keys[i]}">${label}</button>`).join(''); $$('#filters .filter').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;renderFilters();renderProjects()}));}
 function matches(p){if(filter==='all')return true;if(filter==='ai')return p.kind.includes('ai');if(filter==='fullstack')return p.kind.includes('full-stack');return p.kind.includes('frontend');}
 function renderProjects(){const list=projects.filter(matches); $('#projectGrid').innerHTML=list.map((p,i)=>`<article class="project-card"><button class="project-open" data-id="${p.id}" aria-label="${t[lang].more}"><figure><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="frame">FRAME ${String(i+1).padStart(2,'0')}</span><span class="sticker">✦ ${String(i+1).padStart(2,'0')}</span></figure><div class="project-content"><div class="project-top"><span>${p.kind}</span><span>0${i+1}</span></div><h3>${p.name} <b>↗</b></h3><p>${p.text[lang]}</p><div class="tags">${p.tags.map(x=>`<span>${x}</span>`).join('')}</div><small>${p.role[lang]}</small></div></button></article>`).join(''); $$('.project-open').forEach(b=>b.addEventListener('click',()=>openProject(b.dataset.id)));}
-function openProject(id){const p=projects.find(x=>x.id===id); if(!p)return; $('#modalContent').innerHTML=`<div class="modal-media"><img src="${p.image}" alt="${p.name}"><span>SELECTED / ${p.name.toUpperCase()}</span></div><div class="modal-copy"><div class="eyebrow">${t[lang].selected}</div><h2>${p.name}</h2><p class="modal-role">${p.role[lang]}</p><div class="tags">${p.tags.map(x=>`<span>${x}</span>`).join('')}</div><p>${p.detail[lang]}</p><div class="system-map"><span>UI</span><i>→</i><span>API</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div><a class="button" href="${p.repo}" target="_blank" rel="noreferrer">${t[lang].repo}</a></div>`; $('#modal').classList.add('open'); document.body.classList.add('modal-open');}
-function closeModal(){$('#modal').classList.remove('open');document.body.classList.remove('modal-open')}
-$('#modalClose').addEventListener('click',closeModal); $('#modal').addEventListener('click',e=>{if(e.target.classList.contains('modal-backdrop'))closeModal()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+let lastProjectTrigger = null;
+
+function safeProjectUrl(value) {
+  try {
+    const url = new URL(value, window.location.href);
+    return url.protocol === 'https:' ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+function openProject(id) {
+  const project = projects.find((item) => item.id === id);
+  const modal = $('#modal');
+  const content = $('#modalContent');
+  if (!project || !modal || !content) return;
+
+  lastProjectTrigger = document.activeElement;
+  content.replaceChildren();
+
+  const media = document.createElement('div');
+  media.className = 'modal-media';
+  const image = document.createElement('img');
+  image.src = project.image;
+  image.alt = project.name;
+  const mediaLabel = document.createElement('span');
+  mediaLabel.textContent = `SELECTED / ${project.name.toUpperCase()}`;
+  media.append(image, mediaLabel);
+
+  const copy = document.createElement('div');
+  copy.className = 'modal-copy';
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'eyebrow';
+  eyebrow.textContent = t[lang].selected;
+  const title = document.createElement('h2');
+  title.id = 'projectModalTitle';
+  title.textContent = project.name;
+  const role = document.createElement('p');
+  role.className = 'modal-role';
+  role.textContent = project.role[lang];
+  const tags = document.createElement('div');
+  tags.className = 'tags';
+  for (const value of project.tags) {
+    const tag = document.createElement('span');
+    tag.textContent = value;
+    tags.append(tag);
+  }
+  const detail = document.createElement('p');
+  detail.textContent = project.detail[lang];
+  const map = document.createElement('div');
+  map.className = 'system-map';
+  for (const value of ['UI', '→', 'API', '→', 'DATA', '→', 'SHIP']) {
+    const node = document.createElement(value === '→' ? 'i' : 'span');
+    node.textContent = value;
+    map.append(node);
+  }
+  const link = document.createElement('a');
+  link.className = 'button';
+  const safeUrl = safeProjectUrl(project.repo);
+  if (safeUrl) {
+    link.href = safeUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = t[lang].repo;
+  }
+
+  copy.append(eyebrow, title, role, tags, detail, map, link);
+  content.append(media, copy);
+
+  modal.setAttribute('aria-labelledby', title.id);
+  modal.setAttribute('aria-hidden', 'false');
+  modal.classList.add('open');
+  document.body.classList.add('modal-open');
+  $('#modalClose')?.focus();
+}
+
+function closeModal() {
+  const modal = $('#modal');
+  if (!modal?.classList.contains('open')) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  lastProjectTrigger?.focus?.();
+  lastProjectTrigger = null;
+}
+
+$('#modalClose')?.addEventListener('click', closeModal);
+$('#modal')?.addEventListener('click', (event) => {
+  if (event.target.classList.contains('modal-backdrop')) closeModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeModal();
+  if (event.key !== 'Tab' || !$('#modal')?.classList.contains('open')) return;
+  const modal = $('#modal');
+  const focusable = [...modal.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )].filter((element) => element.getClientRects().length > 0);
+  if (!focusable.length) {
+    event.preventDefault();
+    $('#modalClose')?.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const focusOutside = !modal.contains(document.activeElement);
+  if (event.shiftKey && (document.activeElement === first || focusOutside)) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && (document.activeElement === last || focusOutside)) {
+    event.preventDefault();
+    first.focus();
+  }
+});
 renderStatic();
