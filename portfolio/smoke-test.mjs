@@ -54,6 +54,29 @@ assert(!fsHtml.includes('portfolio-ui.js'), 'Legacy duplicate UI runtime still r
 const keyedElements = [...feHtml.matchAll(/data-i18n(?:-html)?="([^"]+)"/g)].map((match) => match[1]);
 for (const key of keyedElements) assert(i18n.includes(key.split('.')[0]), `i18n source does not mention ${key}`);
 
+
+const fsApp = read(resolve(portfolio, 'app.js'));
+const feApp = read(resolve(frontend, 'script.js'));
+const shared = read(resolve(portfolio, 'shared-ui.js'));
+const workflow = read(resolve(root, '.github/workflows/portfolio-pages.yml'));
+
+assert(fsHtml.includes('role="dialog" aria-modal="true"'), 'Full-stack modal must expose dialog semantics');
+assert(feHtml.includes('role="dialog" aria-modal="true"'), 'Frontend modal must expose dialog semantics');
+assert(!fsApp.includes("$('#modalContent').innerHTML"), 'Full-stack modal must not interpolate dynamic HTML');
+assert(!feApp.includes("$('#modalContent').innerHTML"), 'Frontend modal must not interpolate dynamic HTML');
+assert(fsApp.includes("event.key !== 'Tab'") && feApp.includes("event.key !== 'Tab'"), 'Both modals must trap keyboard focus');
+assert(fsApp.includes('lastProjectTrigger?.focus') && feApp.includes('lastProjectTrigger?.focus'), 'Both modals must restore focus to the trigger');
+assert(!fsApp.includes("localStorage.getItem('portfolio-lang')") && !feApp.includes("localStorage.getItem('portfolio-lang')"), 'Language reads must be centralized in i18n.js');
+assert(!fsApp.includes("localStorage.setItem('portfolio-lang'") && !feApp.includes("localStorage.setItem('portfolio-lang'"), 'Language writes must be centralized in i18n.js');
+assert(i18n.includes('try { return localStorage.getItem(key)') && i18n.includes('try { localStorage.setItem(key, value)'), 'i18n storage wrapper must handle unavailable localStorage');
+assert(feApp.includes('filter.dataset.filter') && !feApp.includes('data.index'), 'Frontend filters must use their data-filter value directly');
+assert(shared.includes('prefers-reduced-motion'), 'Custom cursor must respect reduced motion');
+assert(shared.includes('scheduleRender();') && !shared.includes('  render();'), 'Custom cursor animation must be event-driven');
+assert(workflow.includes('  pull_request:'), 'Portfolio validation must run on pull requests');
+assert(workflow.includes("if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'"), 'Pages deployment must be skipped on pull requests and non-main refs');
+assert(workflow.includes('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020'), 'setup-node must use a resolvable full-length commit SHA');
+assert(!workflow.includes('49933ea5288caeca8642d1e84afbd3f7d6820024'), 'Invalid setup-node SHA must be removed');
+
 console.log(`Portfolio smoke test: ${failures.length === 0 ? 'PASS' : 'FAIL'}`);
 if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`);

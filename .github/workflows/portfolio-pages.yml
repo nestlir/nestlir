@@ -1,6 +1,11 @@
 name: Deploy portfolio and SUWENKU
 
 on:
+  pull_request:
+    paths:
+      - 'portfolio/**'
+      - 'suwenku/**'
+      - '.github/workflows/portfolio-pages.yml'
   push:
     branches: [main]
     paths:
@@ -25,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820024
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
       - name: Run portfolio smoke test
@@ -44,6 +49,7 @@ jobs:
           grep -q 'MOMOHA' suwenku/index.html
 
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: test
     runs-on: ubuntu-latest
     environment:

@@ -18,7 +18,7 @@ const I18N = {
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-const state = { lang: localStorage.getItem('portfolio-lang') || 'ru', filter: 'all' };
+const state = { lang: 'ru', filter: 'all' };
 const modal = $('#projectModal');
 const grid = $('#projectGrid');
 
@@ -29,41 +29,128 @@ function renderProjects(filter = state.filter) {
   grid.innerHTML = items.map(project => `<article class="project"><div><span class="project-num">${String(PROJECTS.indexOf(project) + 1).padStart(2, '0')}</span><h3>${project.name}</h3><div class="tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><p>${project.text[state.lang]}</p></div><button class="project-link" type="button" data-project="${PROJECTS.indexOf(project)}">${I18N[state.lang].more}</button></article>`).join('');
 }
 
+let lastProjectTrigger = null;
+
 function openProject(index) {
   const project = PROJECTS[index];
   if (!project || !modal) return;
-  $('#modalContent').innerHTML = `<div class="popup-image"><img src="${project.image}" alt="${project.name}"><span>SELECTED / ${project.name.toUpperCase()}</span></div><div class="popup-copy"><span class="eyebrow">${I18N[state.lang].selected}</span><h2>${project.name}</h2><div class="tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div><p>${project.detail[state.lang]}</p><div class="system-map"><span>UI</span><i>→</i><span>API</span><i>→</i><span>DATA</span><i>→</i><span>SHIP</span></div><a class="button" href="${project.repo}" target="_blank" rel="noreferrer">${I18N[state.lang].open}</a></div>`;
+
+  lastProjectTrigger = document.activeElement;
+  const content = $('#modalContent');
+  content.replaceChildren();
+
+  const media = document.createElement('div');
+  media.className = 'popup-image';
+  const image = document.createElement('img');
+  image.src = project.image;
+  image.alt = project.name;
+  const mediaLabel = document.createElement('span');
+  mediaLabel.textContent = `SELECTED / ${project.name.toUpperCase()}`;
+  media.append(image, mediaLabel);
+
+  const copy = document.createElement('div');
+  copy.className = 'popup-copy';
+  const eyebrow = document.createElement('span');
+  eyebrow.className = 'eyebrow';
+  eyebrow.textContent = I18N[state.lang].selected;
+  const title = document.createElement('h2');
+  title.id = 'projectModalTitle';
+  title.textContent = project.name;
+  const tags = document.createElement('div');
+  tags.className = 'tags';
+  for (const tagValue of project.tags) {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = tagValue;
+    tags.append(tag);
+  }
+  const detail = document.createElement('p');
+  detail.textContent = project.detail[state.lang];
+  const map = document.createElement('div');
+  map.className = 'system-map';
+  for (const value of ['UI', '→', 'API', '→', 'DATA', '→', 'SHIP']) {
+    const node = document.createElement(value === '→' ? 'i' : 'span');
+    node.textContent = value;
+    map.append(node);
+  }
+  const link = document.createElement('a');
+  link.className = 'button';
+  try {
+    const url = new URL(project.repo, window.location.href);
+    if (url.protocol === 'https:') {
+      link.href = url.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = I18N[state.lang].open;
+    }
+  } catch {
+    // Invalid repository URLs are intentionally not rendered.
+  }
+  copy.append(eyebrow, title, tags, detail, map, link);
+  content.append(media, copy);
+
+  modal.setAttribute('aria-labelledby', title.id);
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
+  $('#modalClose')?.focus();
 }
 
 function closeProject() {
-  modal?.classList.remove('open');
-  modal?.setAttribute('aria-hidden', 'true');
+  if (!modal?.classList.contains('open')) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
+  lastProjectTrigger?.focus?.();
+  lastProjectTrigger = null;
 }
 
 function setPortfolioLanguage(lang) {
   if (!I18N[lang]) return;
   state.lang = lang;
-  localStorage.setItem('portfolio-lang', lang);
   renderProjects(state.filter);
 }
 
 window.setPortfolioLanguage = setPortfolioLanguage;
 
 document.addEventListener('click', (event) => {
-  const projectButton = event.target.closest('[data-project]');
+  const target = event.target instanceof Element ? event.target : null;
+  if (!target) return;
+  const projectButton = target.closest('[data-project]');
   if (projectButton) openProject(Number(projectButton.dataset.project));
-  const filter = event.target.closest('.filter');
+  const filter = target.closest('.filter');
   if (filter) {
     $$('.filter').forEach((item) => item.classList.remove('active'));
     filter.classList.add('active');
-    const filters = ['all','frontend','product','fullstack','ai'];
-    renderProjects(filters[Number(filter.dataset.index || 0)] || filter.dataset.filter || 'all');
+    const nextFilter = filter.dataset.filter;
+    if (['all', 'frontend', 'product', 'fullstack', 'ai'].includes(nextFilter)) {
+      renderProjects(nextFilter);
+    }
   }
-  if (event.target.closest('.modal-backdrop') || event.target.closest('#modalClose')) closeProject();
+  if (target.closest('.modal-backdrop') || target.closest('#modalClose')) closeProject();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeProject();
+  if (event.key !== 'Tab' || !modal?.classList.contains('open')) return;
+  const focusable = [...modal.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )].filter((element) => element.getClientRects().length > 0);
+  if (!focusable.length) {
+    event.preventDefault();
+    $('#modalClose')?.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const focusOutside = !modal.contains(document.activeElement);
+  if (event.shiftKey && (document.activeElement === first || focusOutside)) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && (document.activeElement === last || focusOutside)) {
+    event.preventDefault();
+    first.focus();
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () => renderProjects());
