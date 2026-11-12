@@ -9,7 +9,7 @@ Personal portfolio for Anastasia, focused on interface development and honest pr
 - Project details are rendered with DOM nodes and text content.
 - Language and theme preferences are stored safely when browser storage is available.
 - Keyboard-accessible filter and theme states, skip link, live result count, mobile navigation and reduced-motion support.
-- No remote photography or font dependency.
+- No remote photography. Display fonts are requested from Google Fonts; system fallbacks are defined. For a fully self-hosted/offline build, bundle the required WOFF2 files locally.
 
 ## Project attribution
 
