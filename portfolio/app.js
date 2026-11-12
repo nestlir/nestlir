@@ -118,10 +118,11 @@
     menuButton.setAttribute('aria-label',open ? (language === 'ru' ? 'Закрыть меню' : 'Close menu') : (language === 'ru' ? 'Открыть меню' : 'Open menu'));
     mobileNav.hidden = !open;
     document.body.classList.toggle('menu-open',open);
+    document.body.style.overflow = open ? 'hidden' : '';
     if (open) mobileNav.querySelector('a').focus();
     else menuButton.focus();
   }
   menuButton.addEventListener('click',() => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => { mobileNav.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); }));
+  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => { mobileNav.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); document.body.style.overflow = ''; menuButton.focus(); }));
   document.addEventListener('keydown',(event) => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false); });
 })();
