@@ -83,7 +83,7 @@
     });
     document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
     applyFilter(filter);
-    renderProjects();
+    document.title = language === 'ru' ? 'Анастасия — интерфейсы и цифровые продукты' : 'Anastasia — interfaces and digital products';
     safeSet('portfolio-language', language);
   }
   function applyFilter(next) {
@@ -96,7 +96,7 @@
     renderProjects();
   }
   document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-  document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
+  document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => { applyLanguage(button.dataset.lang); setTheme(document.body.classList.contains('dark')); }));
   const savedLanguage = safeGet('portfolio-language','ru');
   applyLanguage(savedLanguage);
   const themeToggle = document.getElementById('themeToggle');
