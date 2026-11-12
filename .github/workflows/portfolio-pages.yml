@@ -7,6 +7,11 @@ on:
       - 'portfolio/**'
       - 'suwenku/**'
       - '.github/workflows/portfolio-pages.yml'
+  pull_request:
+    paths:
+      - 'portfolio/**'
+      - 'suwenku/**'
+      - '.github/workflows/portfolio-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -44,6 +49,7 @@ jobs:
           grep -q 'MOMOHA' suwenku/index.html
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: test
     runs-on: ubuntu-latest
     environment:
