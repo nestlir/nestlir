@@ -118,6 +118,6 @@
     else menuButton.focus();
   }
   menuButton.addEventListener('click',() => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => { mobileNav.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); document.body.style.overflow = ''; menuButton.focus(); }));
+  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => setMenu(false)));
   document.addEventListener('keydown',(event) => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false); });
 })();
