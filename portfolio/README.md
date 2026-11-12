@@ -1,110 +1,41 @@
-# Anastasia — Full-stack Developer Portfolio
+# NESTLIR — Illustrated Digital Atlas
 
-**Cinematic full-stack portfolio / product engineering / visual playground**
+Personal portfolio for Anastasia, focused on interface development and honest project context. The site is a single responsive experience in Russian and English.
 
-A personal portfolio that presents the full product path: **UI → API → DATA → AUTH → TEST → DEPLOY**.
+## Experience
 
-## Information architecture
+- Editorial atlas identity with locally drawn SVG illustration and a matching monogram favicon.
+- One project catalog with filters for team, AI-assisted and educational work.
+- Project details are rendered with DOM nodes and text content.
+- Language and theme preferences are stored safely when browser storage is available.
+- Keyboard-accessible filter and theme states, skip link, live result count, mobile navigation and reduced-motion support.
+- No remote photography or font dependency.
 
-1. **Hero** — Full-stack Developer positioning.
-2. **Stack** — UI/UX, frontend, backend, data, infrastructure and AI.
-3. **Selected Work** — projects with the actual area of responsibility highlighted.
-4. **Case Studies** — Understand → Build → Ship.
-5. **Engineering** — API contracts, validation, state, authentication, data mapping, testing, Docker and deployment.
-6. **Experience** — practical work across UI, API and product logic.
-7. **Contact** — GitHub and direct contact CTA.
+## Project attribution
 
-## Languages
+- **DataVac** — team product; contribution is limited to frontend tasks in the vaccination module.
+- **Furniture Store** — AI-assisted experiment guided by the author's brief.
+- **Web Larek, Stellar Burger, Mesto, Blog Customizer, Оно тебе надо** — educational assignments.
 
-The portfolio supports **RU / EN / JP** without a page reload. The selected language is stored in `localStorage`, and project cards plus modal case studies use the same localized data model.
+Archived projects without confirmed personal contribution are omitted.
 
-## Selected projects
+## Files
 
-- **DataVac** — Next.js, TypeScript, API integration, payments, PDF and E2E.
-- **Furniture Store** — responsive product UI, SEO and seller-dashboard MVP.
-- **Story OS** — Python, Telegram, SQLite, OpenAI and product architecture.
-- **Multimodal AI** — React, Python, Redis, Docker/Kubernetes and AI integrations.
-- **Stellar Burger** — React, Redux, API and application UI.
-- **Web Larek** — TypeScript, Express, MongoDB and e-commerce flows.
-- **Mesto** — React, REST API and interface decomposition.
-- **Blog Customizer** — React, TypeScript, forms and reusable UI.
-- **Оно тебе надо** — semantic HTML, CSS and responsive editorial layout.
-
-Each card exposes the technology stack and the concrete contribution described by the portfolio data. Repository links open the corresponding GitHub project.
-
-## Visual direction
-
-The visual language combines editorial typography, cinematic pacing, photography, stickers, SVG markers, Japanese graphic references, grain and controlled chaos. Decorative elements are kept separate from the content and navigation layer.
-
-## Stack
-
-HTML5 · CSS3 · Vanilla JavaScript · responsive design · GitHub Actions · GitHub Pages
-
-## Structure
-
-```text
-portfolio/
-├── index.html
-├── app.js
-├── i18n.js
-├── ui-controller.js
-├── shared-ui.js
-├── app.css
-├── responsive.css
-├── favicon.svg
-├── favicon.png
-├── assets/
-├── frontend/
-│   ├── index.html
-│   ├── script.js
-│   ├── styles.css
-│   └── quality-fixes.css
-├── smoke-test.mjs
-└── README.md
-```
-
-## Interactions
-
-- RU / EN / JP language switcher;
-- project filtering;
-- project detail modal;
-- light / dark theme;
-- `MAKE IT WEIRD` visual mode;
-- responsive mobile navigation;
-- scroll progress and cinematic marquee;
-- keyboard Escape handling for menus and modals;
-- reduced-motion support.
+- `index.html` — unified page and content structure.
+- `app.js` — bilingual copy, project data, filters and accessible controls.
+- `app.css`, `responsive.css` — visual system and responsive layouts.
+- `assets/atlas-map.svg` — original local hero illustration.
+- `frontend/index.html` — compatibility redirect to the single portfolio.
+- `smoke-test.mjs` — static release checks.
 
 ## Run locally
 
-From the repository root:
-
-```bash
-python -m http.server 4173
-```
-
-Open:
-
-```text
-http://localhost:4173/portfolio/
-```
+From the repository root, run `python -m http.server 4173` and open `http://localhost:4173/portfolio/`.
 
 ## Deployment
 
-GitHub Pages is configured by `.github/workflows/portfolio-pages.yml`, which publishes the `portfolio/` directory after changes reach `main`.
-
-## Live site
-
-[Open the portfolio](https://nestlir.github.io/nestlir/portfolio/)
-
-## Related views
-
-- [Frontend portfolio](https://nestlir.github.io/nestlir/portfolio/frontend/)
-- [50 Projects Lab](https://50-projects-lab.vercel.app/)
-- [Repository](https://github.com/nestlir/nestlir)
+The portfolio is published with the repository's GitHub Pages workflow at [nestlir.github.io/nestlir/portfolio](https://nestlir.github.io/nestlir/portfolio/).
 
 ## Design principle
 
-**Character without noise. Engineering without the black box.**
-
-The goal is to show visual taste, product thinking and the ability to move from an interface to a working production-oriented system without hiding the engineering behind decorative presentation.
+**Character without noise. Experience without inflated claims.**
