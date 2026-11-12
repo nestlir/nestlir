@@ -72,6 +72,7 @@
   function applyLanguage(next) {
     language = next === 'en' ? 'en' : 'ru';
     document.documentElement.lang = language;
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => { const value = dictionary[language][el.dataset.i18nHtml]; if (value !== undefined) el.innerHTML = value; });
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const value = dictionary[language][el.dataset.i18n];
       if (value !== undefined) el.textContent = value;
