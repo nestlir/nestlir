@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +18,10 @@ static void put(Table *t, const char *key, int value) {
     for (Node *n=t->b[i]; n; n=n->next)
         if (!strcmp(n->key,key)) { n->value=value; return; }
     Node *n=malloc(sizeof(*n));
-    n->key=strdup(key); n->value=value; n->next=t->b[i]; t->b[i]=n;
+    if (!n) return;
+    n->key=strdup(key);
+    if (!n->key) { free(n); return; }
+    n->value=value; n->next=t->b[i]; t->b[i]=n;
 }
 static Node *get(Table *t,const char *key) {
     for(Node *n=t->b[hash(key)]; n; n=n->next) if(!strcmp(n->key,key)) return n;
@@ -30,6 +34,6 @@ int main(void) {
     Table t={0};
     put(&t,"language",1); put(&t,"systems",2); put(&t,"language",3);
     Node *n=get(&t,"language");
-    printf("language=%d\n", n ? n->value : -1);
+    printf("language=%d\\n", n ? n->value : -1);
     destroy(&t);
 }
