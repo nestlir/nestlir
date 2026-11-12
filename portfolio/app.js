@@ -12,21 +12,21 @@
   const dictionary = {
     ru: {
       'nav.work':'Работы','nav.approach':'Подход','nav.about':'Обо мне','nav.contact':'Контакт',
-      'hero.eyebrow':'НЕЗАВИСИМАЯ РАЗРАБОТЧИЦА · МОСКВА','hero.title':'Цифровые<br>вещи с <em>человеческим</em><br>масштабом.','hero.intro':'Я Анастасия. Собираю ясные интерфейсы и продумываю детали, которые помогают людям уверенно двигаться по продукту.','hero.cta':'Смотреть избранное','hero.mail':'Написать мне ↗','hero.note':'Заметки о работе с интерфейсами и продуктами',
+      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Цифровые','hero.line2':'вещи с','hero.em':'человеческим','hero.line3':'масштабом.','hero.intro':'Я Анастасия. Собираю ясные интерфейсы и продумываю детали, которые помогают людям уверенно двигаться по продукту.','hero.cta':'Смотреть избранное','hero.mail':'Написать мне ↗','hero.note':'Заметки о работе с интерфейсами и продуктами',
       'work.label':'ИЗБРАННЫЕ РАБОТЫ','work.title':'Полевой архив','work.intro':'Небольшая подборка проектов. Роль и контекст указаны прямо — чтобы было понятно, что именно стоит за каждой работой.',
       'filter.all':'Все','filter.team':'Командный проект','filter.assisted':'С помощью ИИ','filter.study':'Учебные',
-      'approach.label':'РАБОЧИЕ ПРИНЦИПЫ','approach.title':'Хороший интерфейс<br>сначала <em>понятен.</em>','approach.one.title':'Слушать контекст','approach.one.text':'Разобраться в задаче, людях и ограничениях до выбора решения.','approach.two.title':'Упростить путь','approach.two.text':'Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.','approach.three.title':'Проверить детали','approach.three.text':'Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.',
-      'about.label':'НЕМНОГО ОБО МНЕ','about.title':'Внимание к людям.<br>Любопытство к системам.','about.text':'Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.','about.note':'Каждый проект — точка на карте. Важен и маршрут, и то, что он помог понять.',
-      'contact.title':'Есть задача?<br><em>Давайте обсудим.</em>','contact.text':'Открыта к интересным командам и осмысленным цифровым продуктам.','footer.note':'Сделано внимательно','footer.top':'Наверх ↑','card.open':'Открыть репозиторий ↗','card.note':'Вклад описан отдельно от контекста проекта.','results':'ПРОЕКТОВ'
+      'approach.label':'РАБОЧИЕ ПРИНЦИПЫ','approach.line1':'Хороший интерфейс','approach.line2':'сначала','approach.em':'понятен.','approach.one.title':'Слушать контекст','approach.one.text':'Разобраться в задаче, людях и ограничениях до выбора решения.','approach.two.title':'Упростить путь','approach.two.text':'Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.','approach.three.title':'Проверить детали','approach.three.text':'Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.',
+      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Любопытство к системам.','about.text':'Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.','about.note':'Каждый проект — точка на карте. Важен и маршрут, и то, что он помог понять.',
+      'contact.line1':'Есть задача?','contact.em':'Давайте обсудим.','contact.text':'Открыта к интересным командам и осмысленным цифровым продуктам.','footer.note':'Сделано внимательно','footer.top':'Наверх ↑','card.open':'Открыть репозиторий ↗','card.note':'Вклад описан отдельно от контекста проекта.','results':'ПРОЕКТОВ'
     },
     en: {
       'nav.work':'Work','nav.approach':'Approach','nav.about':'About','nav.contact':'Contact',
-      'hero.eyebrow':'INDEPENDENT DEVELOPER · MOSCOW','hero.title':'Digital<br>things with a <em>human</em><br>scale.','hero.intro':'I’m Anastasia. I build clear interfaces and sweat the details that help people move through a product with confidence.','hero.cta':'Explore selected work','hero.mail':'Get in touch ↗','hero.note':'Field notes on interfaces and products',
+      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Digital','hero.line2':'things with a','hero.em':'human','hero.line3':'scale.','hero.intro':'I’m Anastasia. I build clear interfaces and sweat the details that help people move through a product with confidence.','hero.cta':'Explore selected work','hero.mail':'Get in touch ↗','hero.note':'Field notes on interfaces and products',
       'work.label':'SELECTED WORK','work.title':'Field archive','work.intro':'A small selection of projects. Role and context are stated plainly, so you can see what each piece represents.',
       'filter.all':'All','filter.team':'Team project','filter.assisted':'AI-assisted','filter.study':'Study projects',
-      'approach.label':'WORKING PRINCIPLES','approach.title':'A good interface<br>is first <em>understood.</em>','approach.one.title':'Listen to context','approach.one.text':'Understand the task, people and constraints before choosing a solution.','approach.two.title':'Make the path clear','approach.two.text':'Remove extra steps, use familiar words and make the next move visible.','approach.three.title':'Check the details','approach.three.text':'Think through states, keyboard navigation and small-screen behaviour.',
-      'about.label':'A LITTLE ABOUT ME','about.title':'Care for people.<br>Curiosity about systems.','about.text':'I’m drawn to frontend work where visual culture meets engineering. In team settings, I prefer to state my own responsibilities clearly and show what I have learned through practice.','about.note':'Each project is a point on the map. The route matters, as does what it helps us understand.',
-      'contact.title':'Have a challenge?<br><em>Let’s talk.</em>','contact.text':'Open to thoughtful teams and meaningful digital products.','footer.note':'Made with care','footer.top':'Back to top ↑','card.open':'View repository ↗','card.note':'My contribution is distinct from the project context.','results':'PROJECTS'
+      'approach.label':'WORKING PRINCIPLES','approach.line1':'A good interface','approach.line2':'is first','approach.em':'understood.','approach.one.title':'Listen to context','approach.one.text':'Understand the task, people and constraints before choosing a solution.','approach.two.title':'Make the path clear','approach.two.text':'Remove extra steps, use familiar words and make the next move visible.','approach.three.title':'Check the details','approach.three.text':'Think through states, keyboard navigation and small-screen behaviour.',
+      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Curiosity about systems.','about.text':'I’m drawn to frontend work where visual culture meets engineering. In team settings, I prefer to state my own responsibilities clearly and show what I have learned through practice.','about.note':'Each project is a point on the map. The route matters, as does what it helps us understand.',
+      'contact.line1':'Have a challenge?','contact.em':'Let’s talk.','contact.text':'Open to thoughtful teams and meaningful digital products.','footer.note':'Made with care','footer.top':'Back to top ↑','card.open':'View repository ↗','card.note':'My contribution is distinct from the project context.','results':'PROJECTS'
     }
   };
   const projectGrid = document.getElementById('projectGrid');
@@ -72,14 +72,9 @@
   function applyLanguage(next) {
     language = next === 'en' ? 'en' : 'ru';
     document.documentElement.lang = language;
-    document.querySelectorAll('[data-i18n-html]').forEach((el) => { const value = dictionary[language][el.dataset.i18nHtml]; if (value !== undefined) el.innerHTML = value; });
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const value = dictionary[language][el.dataset.i18n];
       if (value !== undefined) el.textContent = value;
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
-      const value = dictionary[language][el.dataset.i18nHtml];
-      if (value !== undefined) el.innerHTML = value;
     });
     document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
     applyFilter(filter);
