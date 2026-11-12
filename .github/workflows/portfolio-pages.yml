@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820024
+        uses: actions/setup-node@101b3474143230c3562bd21f0b3c3f8254784571
         with:
           node-version: 22
       - name: Run portfolio smoke test
