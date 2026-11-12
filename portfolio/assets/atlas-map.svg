@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 560" fill="none" role="presentation">
+<rect width="620" height="560" fill="#E9E5DA"/>
+<path d="M40 291C84 225 79 158 153 127c73-30 120 6 182-33 63-38 128-31 192 26 61 55 48 121 42 184-7 67-63 121-124 141-64 22-111-9-171 22-70 36-155-3-205-50-49-45-65-83-29-126Z" stroke="#A8B3A6" stroke-width="1.2"/>
+<path d="M70 300c63-33 91-94 150-119s103 10 155-22 112-27 161 4M78 343c60-44 112-55 156-47 65 12 88 64 154 56 64-7 86-78 155-75M110 226c32 28 43 67 24 113-20 49-10 93 34 132M199 153c28 35 35 81 10 130-25 50-17 102 20 148M308 97c-13 48-5 89 28 124 31 34 41 75 27 122-15 47-9 83 17 111M425 116c-27 48-28 89-2 124 28 37 40 76 35 120-4 38 10 67 41 88" stroke="#B7BFB3" stroke-width="1"/>
+<path d="M78 379c72-70 120-121 180-137s104 34 155 5c42-24 62-70 110-86M133 452c34-55 84-87 142-96 60-9 89 27 143 13 39-10 69-38 102-72" stroke="#C65F3D" stroke-width="2" stroke-dasharray="5 7"/>
+<path d="M118 371c23-32 47-40 70-25s25 37 8 64-42 34-65 20-31-33-13-59Z" fill="#D2DDCF" stroke="#244D3C" stroke-width="1.4"/>
+<path d="M306 190c19-29 42-35 67-17s28 42 7 68-48 31-68 11-24-38-6-62Z" fill="#E8BD56" stroke="#244D3C" stroke-width="1.4"/>
+<path d="M422 340c19-29 43-34 67-15s27 43 6 68-47 29-67 9-24-39-6-62Z" fill="#E9BFAE" stroke="#244D3C" stroke-width="1.4"/>
+<circle cx="215" cy="246" r="8" fill="#C65F3D" stroke="#F3F0E8" stroke-width="4"/>
+<circle cx="373" cy="241" r="7" fill="#244D3C" stroke="#F3F0E8" stroke-width="4"/>
+<circle cx="323" cy="326" r="7" fill="#244D3C" stroke="#F3F0E8" stroke-width="4"/>
+<circle cx="201" cy="410" r="6" fill="#C65F3D" stroke="#F3F0E8" stroke-width="4"/>
+<path d="M505 112v63m-18-18 18 18 18-18" stroke="#244D3C" stroke-width="1.5"/>
+<text x="499" y="101" fill="#244D3C" font-family="monospace" font-size="10" letter-spacing="2">N</text>
+<text x="91" y="336" fill="#244D3C" font-family="monospace" font-size="9" letter-spacing="1">01 / START</text>
+<text x="288" y="174" fill="#244D3C" font-family="monospace" font-size="9" letter-spacing="1">02 / SHAPE</text>
+<text x="412" y="325" fill="#244D3C" font-family="monospace" font-size="9" letter-spacing="1">03 / DETAIL</text>
+<text x="221" y="467" fill="#667168" font-family="monospace" font-size="8" letter-spacing="2">A SMALL ATLAS OF DIGITAL WORK</text>
+</svg>
