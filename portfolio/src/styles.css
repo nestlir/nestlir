@@ -22,3 +22,19 @@
 .reset-filters:hover{color:var(--orange)}
 .catalog-select:focus-visible,.reset-filters:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 @media(max-width:720px){.catalog-extra-controls{align-items:stretch;gap:12px}.catalog-select-label{justify-content:space-between;width:100%}.catalog-select{flex:1;max-width:none}.reset-filters{margin-left:0;align-self:flex-start}}
+
+.engineering-section{background:#eee7d8}
+.engineering-intro{max-width:680px;margin:-18px 0 32px;color:var(--muted);font-size:14px;line-height:1.7}
+.engineering-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.engineering-card{display:flex;flex-direction:column;min-height:350px;padding:22px;background:rgba(255,255,255,.38);border:1px solid rgba(48,55,43,.12)}
+.engineering-card-top{display:flex;justify-content:space-between;align-items:center;color:var(--orange);font:9px var(--mono);letter-spacing:.1em}
+.engineering-card h3{font:500 27px/1.1 var(--serif);margin:26px 0 10px}
+.engineering-summary{font-size:12px;line-height:1.65;color:#68675d;min-height:58px}
+.engineering-card ul{padding-left:17px;margin:10px 0 22px;color:#5f5e54;font-size:11px;line-height:1.65}
+.engineering-card li+li{margin-top:8px}
+.engineering-projects{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.engineering-projects button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:99px;background:transparent;padding:7px 10px;font:8px var(--mono);cursor:pointer}
+.engineering-projects button:hover,.engineering-projects button:focus-visible{border-color:var(--orange);color:var(--orange)}
+.engineering-projects button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+@media(max-width:900px){.engineering-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.engineering-grid{grid-template-columns:1fr}.engineering-card{min-height:0}.engineering-summary{min-height:0}}
