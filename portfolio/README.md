@@ -25,6 +25,7 @@ Archived projects without confirmed personal contribution are omitted.
 - `app.js` — bilingual copy, project data, filters and accessible controls.
 - `app.css`, `responsive.css` — visual system and responsive layouts.
 - `assets/atlas-map.svg` — original local hero illustration.
+- Project card media are marked 4:3 asset placeholders (`data-asset-slot`); replace only with approved authentic project captures.
 - `frontend/index.html` — compatibility redirect to the single portfolio.
 - `smoke-test.mjs` — static release checks.
 

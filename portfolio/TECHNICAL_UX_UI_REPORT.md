@@ -121,11 +121,23 @@ The page now uses an editorial atlas composition while retaining the existing se
 | Responsiveness | Yellow | Explicit desktop/tablet/mobile composition is defined; no viewport screenshots or browser checks were available. |
 | Brand | Green / source-level | NESTLIR illustrated digital atlas direction and warm cartographic palette remain intact. |
 
+### Files changed in this follow-up
+
+- `portfolio/index.html` — mark the repeated ticker as decorative for assistive technology.
+- `portfolio/app.js` — replace abstract glyphs with stable, labeled image-slot scaffolds.
+- `portfolio/app.css` — featured DataVac spread, editorial card hierarchy, 4:3 frames and larger controls.
+- `portfolio/responsive.css` — explicit tablet, mobile and compact-mobile composition rules.
+- `portfolio/smoke-test.mjs` — guard ticker semantics, placeholder metadata, feature placement and mobile rules.
+- `portfolio/README.md` — document the remote font dependency and future image slots.
+- `portfolio/TECHNICAL_UX_UI_REPORT.md` — this audit, implementation record and follow-up plan.
+
 ### Test and review status for this follow-up
 
-- The previous branch's static smoke-test assertions remain and were extended.
-- No local checkout/browser runtime was available through the connected repository workspace, so this follow-up's smoke test has **not** been represented as locally executed.
-- GitHub Actions must run against the updated PR commit to provide an execution result.
+- The existing static smoke-test assertions remain and were extended.
+- GitHub Actions `test` job for commit `cec4b8b6195d9d6a536750ff157c087886f09ae3`: **passed**.
+- GitHub Actions `frontend-audit` for the same commit: **passed**.
+- The `deploy` job was **skipped** as intended for a pull request.
+- No local checkout/browser runtime was available through the connected repository workspace; the smoke test was executed in CI, not locally.
 - Browser screenshots, visual comparison, screen-reader testing, computed WCAG contrast, Lighthouse and real-device responsive QA remain **not run**.
 - No visual QA result or contrast compliance claim is made in this report.
 - Authorship and project provenance remain conservative: DataVac is a team product, Furniture Store is AI-assisted, and the remaining listed work is marked educational.
