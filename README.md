@@ -1,6 +1,6 @@
 # Anastasia Kuzmina — Full-stack / Frontend Developer
 
-I build web interfaces and product experiences with attention to interaction, maintainable code, and the systems behind the screen — APIs, data flows, application states, and delivery.
+I build web interfaces and product experiences with attention to interaction, maintainable code, and the systems behind the screen — APIs, data flows, application states, quality, and delivery.
 
 <p align="left">
   <a href="https://nestlir.github.io/nestlir/"><strong>Open the Portfolio Magazine ↗</strong></a>
@@ -54,6 +54,7 @@ DataVac is presented as team work, Furniture Store is explicitly marked AI-assis
 - **Backend and APIs:** Node.js, Express, NestJS, REST APIs, typed data mapping, and service integration.
 - **Data and delivery:** PostgreSQL, MongoDB, Docker, Git, testing, and deployment workflows.
 - **Product thinking:** translating requirements into user journeys, interface structure, and maintainable implementation.
+- **Engineering quality:** accessibility, responsive behaviour, testing strategy, security-aware implementation, performance, documentation, and release checks.
 
 ## Tools and creative workflow
 
