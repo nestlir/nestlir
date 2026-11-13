@@ -71,3 +71,18 @@ test('engineering capabilities are evidence-led and open their related case stud
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('heading', { name: 'NOMAD — Quiet Kyoto' })).toBeVisible();
 });
+
+test('featured case studies expose architecture, outcomes and honest limitations in both locales', async ({ page }) => {
+  await page.goto('.');
+  const nomadCard = page.locator('.project-card').filter({ hasText: 'NOMAD — Quiet Kyoto' });
+  await nomadCard.getByRole('button', { name: /open case|открыть кейс/i }).click();
+  let dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: /architecture|архитектура/i })).toBeVisible();
+  await expect(dialog.getByRole('heading', { name: /outcome|результат/i })).toBeVisible();
+  await expect(dialog.getByRole('heading', { name: /limitations|ограничения/i })).toBeVisible();
+  await expect(dialog).toContainText(/JSON-file|JSON-файл/i);
+  await page.getByRole('button', { name: 'EN', exact: true }).click();
+  dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: 'Limitations & scope boundaries' })).toBeVisible();
+  await expect(dialog).toContainText(/managed production database/i);
+});
