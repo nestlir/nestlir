@@ -38,3 +38,12 @@
 .engineering-projects button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 @media(max-width:900px){.engineering-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.engineering-grid{grid-template-columns:1fr}.engineering-card{min-height:0}.engineering-summary{min-height:0}}
+
+.case-flow{counter-reset:case-flow;list-style:none;padding:0!important}
+.case-flow li{position:relative;padding:10px 12px 10px 42px;border-left:1px solid var(--orange);background:rgba(89,96,71,.055)}
+.case-flow li+li{margin-top:7px}
+.case-flow li:before{counter-increment:case-flow;content:"0" counter(case-flow);position:absolute;left:12px;top:11px;color:var(--orange);font:9px var(--mono)}
+.case-limitations{padding:18px;background:rgba(200,117,77,.075);border-left:2px solid var(--orange)}
+.case-limitations h3{color:var(--orange)}
+.case-source-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px}
+.case-source-links .text-link{margin-top:0}
