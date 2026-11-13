@@ -7,4 +7,5 @@ export interface Project {
   evidence: string[]; links: { label: string; href: string }[];
   architecture?: string[];
   outcomes?: string[];
+  limitations?: string[];
 }

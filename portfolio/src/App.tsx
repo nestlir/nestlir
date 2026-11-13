@@ -7,6 +7,7 @@ import { localizeProject } from './data/projectCopy';
 import ProjectCatalog from './components/ProjectCatalog';
 import ArchitectureMap from './components/ArchitectureMap';
 import QualityCards from './components/QualityCards';
+import EngineeringCenter from './components/EngineeringCenter';
 
 const CaseStudy = lazy(() => import('./components/CaseStudy'));
 
@@ -31,7 +32,7 @@ export default function App() {
     <header className="site-header">
       <a className="wordmark" href="#top" aria-label="NESTLIR home"><span className="monogram">N.</span><span>NESTLIR<small>ENGINEERING PORTFOLIO</small></span></a>
       <nav className={menuOpen ? 'main-nav open' : 'main-nav'} aria-label={locale === 'ru' ? 'Основная навигация' : 'Main navigation'}>
-        <a href="#work" onClick={navigate}>{t.navWork}</a><a href="#system" onClick={navigate}>{t.navSystem}</a><a href="#quality" onClick={navigate}>{t.navQuality}</a><a href="#approach" onClick={navigate}>{t.navAbout}</a><a href="#contact" onClick={navigate}>{t.contact}</a>
+        <a href="#work" onClick={navigate}>{t.navWork}</a><a href="#engineering" onClick={navigate}>{locale === "ru" ? "Инженерия" : "Engineering"}</a><a href="#system" onClick={navigate}>{t.navSystem}</a><a href="#quality" onClick={navigate}>{t.navQuality}</a><a href="#approach" onClick={navigate}>{t.navAbout}</a><a href="#contact" onClick={navigate}>{t.contact}</a>
       </nav>
       <div className="header-actions">
         <div className="language-toggle" role="group" aria-label={t.language}><button onClick={() => setLocale('ru')} aria-pressed={locale === 'ru'}>RU</button><button onClick={() => setLocale('en')} aria-pressed={locale === 'en'}>EN</button></div>
@@ -45,6 +46,7 @@ export default function App() {
         <div className="hero-index"><span>01</span><span>—</span><span>08</span></div>
       </section>
       <section className="section work-section" id="work"><div className="section-heading"><div><p className="eyebrow">01 / SELECTED WORK</p><h2>{t.selected}</h2><p>{t.selectedText}</p></div><span className="section-mark">N—01</span></div><ProjectCatalog t={t} locale={locale} onOpen={openCase}/></section>
+      <section className="section engineering-section" id="engineering"><div className="section-heading"><div><p className="eyebrow">02 / ENGINEERING PRACTICE</p><h2>{locale === "ru" ? "Инженерные направления" : "Engineering capabilities"}</h2></div><span className="section-mark">STACK / 02</span></div><EngineeringCenter locale={locale} onOpen={openCase}/></section>
       <section className="section system-section" id="system"><div className="section-heading"><div><p className="eyebrow">02 / SYSTEM DESIGN</p><h2>{t.systemTitle}</h2><p>{t.systemText}</p></div><span className="section-mark">MAP / 02</span></div><ArchitectureMap t={t}/></section>
       <section className="section quality-section" id="quality"><div className="section-heading"><div><p className="eyebrow">03 / QUALITY ENGINEERING</p><h2>{t.qualityTitle}</h2><p>{t.qualityText}</p></div><span className="section-mark">QA / 03</span></div><QualityCards t={t}/></section>
       <section className="section approach-section" id="approach"><div className="section-heading"><div><p className="eyebrow">04 / WORKING METHOD</p><h2>{t.approachTitle}</h2></div><span className="section-mark">FLOW / 04</span></div><ol className="approach-list">{t.steps.map((step, i) => <li key={step}><span>0{i + 1}</span><strong>{step}</strong><ArrowUpRight size={17}/></li>)}</ol></section>
