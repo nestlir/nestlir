@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { ArrowDown, ArrowUpRight, Github, Menu, X } from 'lucide-react';
 import { copy } from './i18n';
 import type { Locale } from './types';
 import { projects } from './data/projects';
 import { localizeProject } from './data/projectCopy';
 import ProjectCatalog from './components/ProjectCatalog';
-import CaseStudy from './components/CaseStudy';
 import ArchitectureMap from './components/ArchitectureMap';
 import QualityCards from './components/QualityCards';
+
+const CaseStudy = lazy(() => import('./components/CaseStudy'));
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>('ru');
@@ -50,6 +51,6 @@ export default function App() {
       <section className="contact-section" id="contact"><div><p className="eyebrow">05 / CORRESPONDENCE</p><h2>{t.contactTitle}</h2><p>{t.contactText}</p><a className="primary-link" href="mailto:nestlir@mail.ru?subject=NESTLIR%20portfolio%20inquiry">{t.email}<ArrowUpRight size={17}/></a></div><div className="contact-links"><a href="https://github.com/nestlir" target="_blank" rel="noopener noreferrer"><Github size={17}/>{t.github}</a><a href="https://t.me/nestlir" target="_blank" rel="noopener noreferrer">↗ {t.telegram}</a></div></section>
     </main>
     <footer className="site-footer"><a className="wordmark" href="#top"><span className="monogram">N.</span><span>NESTLIR<small>PORTFOLIO / 2026</small></span></a><span>{t.footer}</span><a href="https://github.com/nestlir/nestlir/tree/main/portfolio" target="_blank" rel="noopener noreferrer">SOURCE <ArrowUpRight size={14}/></a></footer>
-    {selectedProject && <CaseStudy project={localizeProject(selectedProject, locale)} t={t} onClose={closeAndRestore}/>}
+    {selectedProject && <Suspense fallback={<div className="modal-backdrop" role="status">{t.loading}</div>}><CaseStudy project={localizeProject(selectedProject, locale)} t={t} onClose={closeAndRestore}/></Suspense>}
   </>;
 }

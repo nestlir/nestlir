@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/nestlir/portfolio/',
   publicDir: 'assets',
-  build: { outDir: 'dist', emptyOutDir: true, sourcemap: true },
+  build: { outDir: 'dist', emptyOutDir: true, sourcemap: false },
   test: {
     include: ['src/**/*.test.ts'],
     environment: 'jsdom',

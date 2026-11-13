@@ -3,20 +3,23 @@ import { test, expect } from '@playwright/test';
 test('renders the portfolio and navigates to the work section', async ({ page }) => {
   await page.goto('.');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await page.getByRole('link', { name: /проекты|explore projects/i }).click();
+  await page.locator('.hero-copy .primary-link').click();
   await expect(page.locator('#work')).toBeInViewport();
   await expect(page.locator('.project-card')).toHaveCount(10);
 });
 
-test('filters projects and opens a detailed case study', async ({ page }) => {
+test('filters projects and opens an accessible detailed case study', async ({ page }) => {
   await page.goto('.');
   await page.getByRole('button', { name: /учебные проекты|study projects/i }).click();
   await expect(page.locator('.project-card')).toHaveCount(5);
-  await page.getByRole('button', { name: /open case|открыть кейс/i }).first().click();
+  const trigger = page.getByRole('button', { name: /open case|открыть кейс/i }).first();
+  await trigger.click();
   await expect(page.getByRole('dialog')).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2 }).last()).toBeVisible();
+  const close = page.getByRole('button', { name: /close|закрыть/i });
+  await expect(close).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(trigger).toBeFocused();
 });
 
 test('filters the platform category independently', async ({ page }) => {
@@ -30,7 +33,7 @@ test('search narrows the catalogue and language switch works', async ({ page }) 
   await page.goto('.');
   await page.getByPlaceholder(/название или технология|name or technology/i).fill('redux');
   await expect(page.locator('.project-card')).toHaveCount(1);
-  await page.getByRole('button', { name: 'EN' }).click();
+  await page.getByRole('button', { name: 'EN', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('From the first interface');
 });
 
