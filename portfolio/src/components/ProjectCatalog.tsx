@@ -7,11 +7,11 @@ import { localizeProject } from '../data/projectCopy';
 import type { copy } from '../i18n';
 
 type T = typeof copy.ru;
-const categories: ('all' | ProjectCategory)[] = ['all', 'product', 'experiment', 'study'];
+const categories: ('all' | ProjectCategory)[] = ['all', 'product', 'platform', 'experiment', 'study'];
 export default function ProjectCatalog({ t, locale, onOpen }: { t: T; locale: Locale; onOpen: (id: string) => void }) {
   const [category, setCategory] = useState<'all' | ProjectCategory>('all');
   const [query, setQuery] = useState('');
-  const labels = { all: t.all, product: t.product, experiment: t.experiment, study: t.study };
+  const labels = { all: t.all, product: t.product, platform: t.platform, experiment: t.experiment, study: t.study };
   const filtered = useMemo(() => filterProjects(projects, category, query), [category, query]);
   return <div className="catalog">
     <div className="catalog-controls">

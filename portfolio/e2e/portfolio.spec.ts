@@ -5,7 +5,7 @@ test('renders the portfolio and navigates to the work section', async ({ page })
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await page.getByRole('link', { name: /проекты|explore projects/i }).click();
   await expect(page.locator('#work')).toBeInViewport();
-  await expect(page.locator('.project-card')).toHaveCount(7);
+  await expect(page.locator('.project-card')).toHaveCount(10);
 });
 
 test('filters projects and opens a detailed case study', async ({ page }) => {
@@ -17,6 +17,13 @@ test('filters projects and opens a detailed case study', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 2 }).last()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('filters the platform category independently', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: /платформы и лаборатории|platforms & labs/i }).click();
+  await expect(page.locator('.project-card')).toHaveCount(1);
+  await expect(page.locator('.project-card h3')).toContainText('50 Projects Lab');
 });
 
 test('search narrows the catalogue and language switch works', async ({ page }) => {

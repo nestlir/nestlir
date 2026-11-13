@@ -8,7 +8,8 @@ describe('filterProjects', () => {
   });
   it('filters by category without mixing educational work into products', () => {
     expect(filterProjects(projects, 'study', '')).toHaveLength(5);
-    expect(filterProjects(projects, 'product', '').map(p => p.id)).toEqual(['datavac']);
+    expect(filterProjects(projects, 'product', '').map(p => p.id)).toEqual(['datavac', 'nomad-quiet-kyoto', 'momoha']);
+    expect(filterProjects(projects, 'platform', '').map(p => p.id)).toEqual(['50-projects-lab']);
   });
   it('searches names and technology tags case-insensitively', () => {
     expect(filterProjects(projects, 'all', 'rEdUx').map(p => p.id)).toEqual(['stellar-burger']);
