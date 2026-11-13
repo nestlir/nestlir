@@ -16,7 +16,7 @@
       'work.label':'ИЗБРАННЫЕ РАБОТЫ','work.title':'Избранные главы','work.intro':'Каждый проект — отдельное окно в моей практике. Роль и формат участия подписаны честно и ясно.',
       'filter.all':'Все','filter.team':'Командный проект','filter.assisted':'С помощью ИИ','filter.study':'Учебные',
       'approach.label':'РАБОЧИЕ ПРИНЦИПЫ','approach.line1':'Хороший интерфейс','approach.line2':'сначала','approach.em':'понятен.','approach.one.title':'Слушать контекст','approach.one.text':'Разобраться в задаче, людях и ограничениях до выбора решения.','approach.two.title':'Упростить путь','approach.two.text':'Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.','approach.three.title':'Проверить детали','approach.three.text':'Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.',
-      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Мышление системами.','about.text':'Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.','about.note':'За каждым окном — свой продукт, свой маршрут и люди, для которых он создан.',
+      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Мышление системами.','about.text':'Я развиваюсь в Full-Stack JavaScript: проектирую интерфейсы, связываю их с серверной логикой и внимательно отношусь к деталям реализации. В командной работе ясно обозначаю свою зону ответственности.','about.note':'За каждым окном — свой продукт, свой маршрут и люди, для которых он создан.',
       'contact.line1':'Есть задача?','contact.em':'Давайте обсудим.','contact.text':'Открыта к интересным командам и осмысленным цифровым продуктам.','footer.note':'Сделано внимательно','footer.top':'Наверх ↑','card.open':'Открыть репозиторий ↗','card.note':'Вклад описан отдельно от контекста проекта.','results':'ПРОЕКТОВ'
     },
     en: {
@@ -25,7 +25,7 @@
       'work.label':'SELECTED WORK','work.title':'Selected chapters','work.intro':'Each project is a window into my practice. My role and the project context are stated clearly.',
       'filter.all':'All','filter.team':'Team project','filter.assisted':'AI-assisted','filter.study':'Study projects',
       'approach.label':'WORKING PRINCIPLES','approach.line1':'A good interface','approach.line2':'is first','approach.em':'understood.','approach.one.title':'Listen to context','approach.one.text':'Understand the task, people and constraints before choosing a solution.','approach.two.title':'Make the path clear','approach.two.text':'Remove extra steps, use familiar words and make the next move visible.','approach.three.title':'Check the details','approach.three.text':'Think through states, keyboard navigation and small-screen behaviour.',
-      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Systems thinking.','about.text':'I’m drawn to frontend work where visual culture meets engineering. In team settings, I prefer to state my own responsibilities clearly and show what I have learned through practice.','about.note':'Behind each window is a product, a path and the people it was made for.',
+      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Systems thinking.','about.text':'I’m growing as a Full-Stack JavaScript developer: shaping interfaces, connecting them to server logic and caring about implementation details. In team settings, I state my responsibilities clearly.','about.note':'Behind each window is a product, a path and the people it was made for.',
       'contact.line1':'Have a challenge?','contact.em':'Let’s talk.','contact.text':'Open to thoughtful teams and meaningful digital products.','footer.note':'Made with care','footer.top':'Back to top ↑','card.open':'View repository ↗','card.note':'My contribution is distinct from the project context.','results':'PROJECTS'
     }
   };
@@ -82,7 +82,7 @@
     });
     document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
     applyFilter(filter);
-    document.title = language === 'ru' ? 'Анастасия — интерфейсы и цифровые продукты' : 'Anastasia — interfaces and digital products';
+    document.title = language === 'ru' ? 'NESTLIR — THE HUMAN ATLAS · Anastasia' : 'NESTLIR — THE HUMAN ATLAS · Anastasia';
     safeSet('portfolio-language', language);
   }
   function applyFilter(next) {
