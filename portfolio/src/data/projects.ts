@@ -7,26 +7,24 @@ export const projects: Project[] = [
     summary: 'A vaccine information service: live catalogues, search, detailed vaccine pages, payment flow and generated PDF instructions.',
     stack: ['React 19', 'Next.js 16', 'TypeScript 5', 'Tailwind CSS 4', 'Zustand 5', 'REST API', 'CloudPayments', 'React PDF', 'Playwright'],
     status: 'Team product · frontend contribution',
-    context: 'DataVac is a team-built information service with vaccine and reference information covering infections, ingredients, contraindications and instructions. The frontend is a Next.js App Router application integrated with a REST backend. The detailed contribution record documents work across catalogues, search, vaccine details, payment and PDF generation.',
+    context: "Team vaccine-reference service. Its Next.js frontend integrates REST catalogues, vaccine pages, checkout and PDF instructions.",
     decisions: [
       'Replace mock catalogue data with live API requests and explicit mapping from UI filters and sorting to backend parameters.',
       'Use TypeScript models and mapper functions to keep API response shapes separate from UI-facing data.',
       'Preserve search and filter state in URL/search parameters and provide loading, empty and error states.',
       'Treat payment and PDF generation as complete user flows: validation and failure states for payment; QR codes and Cyrillic fonts for PDF output.'
     ],
-    contribution: 'Frontend pages and reusable UI components; responsive layouts; REST API integration; vaccine, ingredient, infection and contraindication catalogues; search and filters; vaccine detail pages; CloudPayments checkout flow; PDF instruction generation. The work was delivered within a team product, not as sole ownership of the full service.',
+    contribution: "Frontend pages/components, responsive UI, REST integration, catalogues, search, vaccine details, CloudPayments checkout and PDF generation. Delivered as a team contribution, not sole ownership.",
     evidence: [
-      'Detailed contribution and implementation notes in this repository: projects/datavac-frontend/README.md',
-      'Team source repository: DataVac-masterskaya/data-vac-frontend',
-      'Documented GET /api/v1/vaccines/ integration and UI-to-API parameter mapping',
-      'Documented CloudPayments checkout/cryptogram flow and @react-pdf/renderer output with QR codes'
+      "Contribution record: projects/datavac-frontend/README.md",
+      "Team frontend repository: DataVac-masterskaya/data-vac-frontend",
+      "Documented vaccines API, CloudPayments checkout and PDF/QR generation."
     ],
     architecture: [
-      'Next.js 16 App Router / React 19 pages and reusable UI components',
-      'Typed frontend models + mapper functions translate REST responses and filter parameters',
-      'REST API /api/v1 supplies vaccines, ingredients, infections and contraindications',
-      'URL search parameters preserve search, sorting and filter state',
-      'CloudPayments checkout and client-side PDF generation are separate user-flow integrations'
+      "Next.js App Router / React pages and reusable UI.",
+      "Typed models and mappers adapt REST responses and filter parameters.",
+      "REST /api/v1 supplies catalogues; URL parameters hold filter state.",
+      "CloudPayments checkout and client-side PDF are separate integrations."
     ],
     outcomes: [
       'Catalogue pages moved from mock data to live backend data',
@@ -49,26 +47,24 @@ export const projects: Project[] = [
     summary: 'A modular travel-experience application with place, food and trip domains, client-side routing and a separate API.',
     stack: ['JavaScript', 'Node.js', 'HTTP API', 'Domain models', 'Repository pattern', 'Playwright'],
     status: 'Modular application · active codebase',
-    context: 'NOMAD is a Kyoto travel-experience application. The project documents a single frontend runtime with route-level pages and domain entities, plus a backend split into HTTP transport, application services, domain contracts and repository implementations.',
+    context: "Kyoto travel app with a route-based frontend and separate backend organized around trip services and repository contracts.",
     decisions: [
       'Keep page rendering and navigation in one application shell and route registry.',
       'Separate frontend API transport and browser persistence adapters from page components.',
       'Keep backend HTTP routes thin; place trip use cases in application services and persistence behind repository contracts.',
       'Use a JSON-file repository for local persistence with an in-memory repository for isolated tests.'
     ],
-    contribution: 'The repository contains the modular frontend and backend implementation, architecture documentation, test suite and browser QA flow. The case describes repository architecture and shipped project structure, not unverified user or business outcomes.',
+    contribution: "Modular frontend/backend implementation, architecture docs, tests and browser QA are present in the repository; this case makes no unsupported business-outcome claims.",
     evidence: [
-      'nomad-quiet-kyoto/README.md documents the active runtime and dependency direction',
-      'backend/src contains api, application, domain and infrastructure layers',
-      'JSON-file and in-memory trip repository implementations are present',
-      'README documents unit, backend and Playwright E2E commands'
+      "README documents runtime and dependency direction.",
+      "backend/src contains api, application, domain and infrastructure.",
+      "JSON-file/in-memory repositories and unit, backend and Playwright E2E are documented."
     ],
     architecture: [
-      'Frontend app shell → route registry → route-level pages',
-      'Place, Food and Trip domain entities are separate from UI components',
-      'Shared HTTP client and browser storage adapter isolate external I/O',
-      'Backend API transport → Trip application service → repository contract',
-      'JSON-file repository for persistence; in-memory adapter for isolated tests'
+      "Frontend shell → route registry → pages.",
+      "Place, Food and Trip entities stay separate from UI.",
+      "HTTP client and browser-storage adapter isolate external I/O.",
+      "Backend transport → Trip service → repository; JSON-file and in-memory adapters."
     ],
     outcomes: [
       'Frontend routing, domain entities and shared adapters have explicit boundaries',
@@ -88,26 +84,24 @@ export const projects: Project[] = [
     summary: 'A Japanese street-food experience with a menu, multi-item cart and an order submission API.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Docker', 'GitHub Actions'],
     status: 'Frontend and lightweight API',
-    context: 'MOMOHA (the suwenku directory) is a static restaurant frontend paired with a lightweight Node API. The primary task flow is menu → quick order → cart → contact → POST /api/orders → confirmation.',
+    context: "Static Japanese street-food frontend with a lightweight Node API. Flow: menu → cart → contact → POST /api/orders → confirmation.",
     decisions: [
       'Keep the frontend statically deployable while defining a clear API boundary for order submission.',
       'Persist order records through an atomic JSON-file write and cap the store at 500 records.',
       'Keep the admin-facing orders endpoint internal and document that authentication is required before public exposure.',
       'Use an exact CORS origin configuration and document the limits of JSON-file persistence.'
     ],
-    contribution: 'The repository contains the static user interface, lightweight API, Dockerfile, deployment blueprint, API tests and CI checks. The README explicitly identifies the need for managed database storage, authentication, order status management, notifications and payment integration before real restaurant production use.',
+    contribution: "The repository includes the static UI, lightweight API, Dockerfile, deployment blueprint, API tests and CI checks.",
     evidence: [
-      'suwenku/README.md documents screen map, UX audit, API and deployment',
-      'GET /api/health, GET /api/menu, GET /api/orders and POST /api/orders are documented',
-      'Order persistence uses atomic JSON writes and a 500-record cap',
-      'GitHub Actions runs Node tests, API smoke/E2E and frontend contract checks'
+      "suwenku/README.md documents screens, API and deployment.",
+      "Endpoints: GET /api/health, GET /api/menu, GET /api/orders, POST /api/orders.",
+      "Atomic JSON writes, 500-record cap and CI API checks are documented."
     ],
     architecture: [
-      'Static frontend: Hero → Menu → Kitchen → News → Visit → Footer',
-      'Cart and checkout interaction posts an order to the Node HTTP API',
-      'API validates and writes orders to a JSON-file store atomically',
-      'Dockerfile and Render blueprint describe a separately hosted API; Pages serves the frontend',
-      'CORS_ORIGIN is configured to the exact frontend origin'
+      "Static frontend serves menu and cart.",
+      "Checkout posts validated orders to Node HTTP API.",
+      "API atomically writes orders to JSON storage.",
+      "Pages hosts frontend; Docker/Render describe API hosting; CORS uses exact origin."
     ],
     outcomes: [
       'A multi-item cart and order confirmation flow are connected to POST /api/orders',
@@ -127,25 +121,24 @@ export const projects: Project[] = [
     summary: 'A self-contained archive with 30 browser demos and 13 native C/C++ systems projects.',
     stack: ['JavaScript', 'HTML', 'CSS', 'C/C++', 'Shared runtime', 'QA scripts'],
     status: 'Interactive learning platform',
-    context: 'The repository describes 30 local browser projects and 13 native C/C++ systems projects. Each browser demo keeps its own URL and page while using a shared local runtime; native project sources remain authoritative.',
+    context: "Local archive listing 30 browser demos and 13 native C/C++ projects. Browser pages have separate URLs and share a local runtime.",
     decisions: [
       'Use a shared local runtime for browser demos instead of remote demo iframes.',
       'Keep every demo addressable by its own public URL and index.html.',
       'Separate browser-interaction projects from native C/C++ systems implementations.',
       'Audit the archive so each browser page uses the local runtime and does not depend on the removed external site script.'
     ],
-    contribution: 'The repository includes the local project catalogue, shared browser runtime, 30 demo pages, native systems-project integration and QA scripts. The 50 Projects Lab name is retained; the README currently enumerates 30 browser demos plus 13 C/C++ projects.',
+    contribution: "The repository includes the local catalogue, shared browser runtime, 30 demos, native project integration and QA scripts.",
     evidence: [
-      '50-projects-lab/README.md documents 30 browser demos and 13 native projects',
-      'qa/audit-deep.mjs checks local runtime usage and absence of remote iframe dependencies',
-      'The live browser archive is published at 50-projects-lab.vercel.app'
+      "README lists 30 browser demos and 13 native projects.",
+      "qa/audit-deep.mjs checks local runtime and iframe independence.",
+      "Live browser archive: 50-projects-lab.vercel.app."
     ],
     architecture: [
-      'Catalog page and project-specific index.html routes',
-      'Shared project-runtime.js provides interactive behavior to the 30 browser demos',
-      'No remote demo iframes; local assets and runtime keep demos self-contained',
-      'Native C/C++ projects live in a separate projects/c-cpp tree',
-      'QA scripts validate the shared-runtime contract across browser demos'
+      "Catalogue with project-specific index.html pages.",
+      "Shared project-runtime.js powers 30 browser demos.",
+      "Browser demos use local assets/runtime, not remote iframes.",
+      "Native C/C++ sources stay separate under projects/c-cpp; QA audits runtime wiring."
     ],
     outcomes: [
       '30 browser projects use the local shared runtime',
