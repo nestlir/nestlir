@@ -34,6 +34,10 @@ export const projects: Project[] = [
       'Payment UI includes amount and recurring-payment selection, validation and success/failure states',
       'PDF instructions are generated from vaccine data with QR codes and Cyrillic font support'
     ],
+    limitations: [
+      "This is a team product; the case documents a frontend contribution, not sole ownership of the service.",
+      "The public project evidence does not provide independently verified usage, revenue or clinical outcome metrics."
+    ],
     links: [
       { label: 'Contribution notes', href: 'https://github.com/nestlir/nestlir/blob/main/projects/datavac-frontend/README.md' },
       { label: 'Team frontend repository', href: 'https://github.com/DataVac-masterskaya/data-vac-frontend' }
@@ -72,6 +76,10 @@ export const projects: Project[] = [
       'Persistence can switch behind a repository boundary without changing the HTTP contract',
       'The repository documents E2E coverage for navigation, detail pages, add/remove flows and API synchronization'
     ],
+    limitations: [
+      "The documented persistence adapters are JSON-file and in-memory repositories; a managed production database is not evidenced in the project documentation.",
+      "No production scale, uptime or user-adoption metrics are claimed."
+    ],
     links: [{ label: 'Project source and architecture', href: 'https://github.com/nestlir/nestlir/tree/main/nomad-quiet-kyoto' }]
   },
   {
@@ -107,6 +115,10 @@ export const projects: Project[] = [
       'Unit/integration tests and API smoke/E2E checks are included in CI',
       'Production limitations are documented: JSON storage is not a substitute for PostgreSQL, auth or payment processing'
     ],
+    limitations: [
+      "JSON-file persistence is a lightweight implementation, not a managed database; the documented store is capped at 500 records.",
+      "Before real restaurant production use, the project documentation calls for managed database storage, authentication, order statuses, notifications and payment integration."
+    ],
     links: [{ label: 'MOMOHA source and setup', href: 'https://github.com/nestlir/nestlir/tree/main/suwenku' }]
   },
   {
@@ -139,6 +151,10 @@ export const projects: Project[] = [
       '30 browser projects use the local shared runtime',
       '13 C/C++ systems projects are organized separately from browser demos',
       'The QA audit checks all browser pages for runtime wiring and iframe independence'
+    ],
+    limitations: [
+      "The current README enumerates 30 browser demos and 13 native C/C++ projects (43 listed projects), despite the retained 50 Projects Lab name.",
+      "The shared browser runtime applies to browser demos; native C/C++ projects remain separate implementations."
     ],
     links: [
       { label: 'Live 50 Projects Lab', href: 'https://50-projects-lab.vercel.app/' },
