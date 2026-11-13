@@ -1,0 +1,39 @@
+import type { Locale } from './types';
+export const copy = {
+  ru: {
+    eyebrow: 'PORTFOLIO / ISSUE 02', navWork: 'Проекты', navSystem: 'Архитектура', navQuality: 'Качество', navAbout: 'Подход', contact: 'Связаться',
+    coverKicker: 'ANASTASIA / NESTLIR', coverTitle: 'От первого интерфейса до системы.', coverText: 'Инженерное портфолио о том, как продуктовая идея превращается в понятный, проверяемый и поддерживаемый интерфейс.',
+    explore: 'Исследовать проекты', issue: 'ЦИФРОВОЙ ЖУРНАЛ · 2026', selected: 'Избранные работы', selectedText: 'Не витрина технологий, а разбор задач, решений, границ ответственности и доступных доказательств.',
+    all: 'Все', product: 'Продукты', platform: 'Платформы и лаборатории', experiment: 'Эксперименты', study: 'Учебные проекты', openCase: 'Открыть кейс', noResults: 'По этим фильтрам проектов нет.',
+    systemTitle: 'Как устроена система', systemText: 'Интерактивная карта показывает целевую архитектуру самого портфолио. Это схема проектирования, а не заявление о существующем backend или production-сервисах.',
+    frontend: 'Frontend', api: 'API boundary', data: 'Data layer', delivery: 'Delivery & quality', frontendDesc: 'React UI · навигация по разделам · состояние фильтров · доступность', apiDesc: 'Граница контрактов для будущих интеграций. Сейчас используются статический контент и внешние ссылки.', dataDesc: 'Типизированные данные проектов и словари RU / EN. Без базы данных и выдуманного persistence.', deliveryDesc: 'Vite build · GitHub Actions · unit / browser tests · статический GitHub Pages deploy',
+    qualityTitle: 'Качество — часть продукта', qualityText: 'Проверки описывают то, что автоматизировано в репозитории; демонстрационные панели не подменяют результаты измерений.',
+    tests: 'Тестирование', testsText: 'Vitest проверяет фильтрацию и структуру данных. Playwright проверяет пользовательские сценарии в Chromium, Firefox и WebKit на desktop и мобильных профилях.', testsDemo: 'Примеры: npm test · npm run build · npm run test:e2e. Сценарии проверяют поиск, фильтры, открытие кейса, Escape, переключение языка и мобильную навигацию.',
+    security: 'Безопасность', securityText: 'Минимум внешних зависимостей, безопасные ссылки, отсутствие секретов в клиентском коде и ясная граница: статический сайт не принимает и не хранит сообщения.', securityDemo: 'Контроль: rel="noopener noreferrer" для внешних вкладок · отсутствие API-ключей в bundle · отдельный SECURITY.md · будущая форма требует серверной валидации и rate limiting.',
+    performance: 'Производительность', performanceText: 'Разделение кода для кейсов, системные шрифты, ограничение сторонних запросов и контроль общего размера bundle. Численные результаты появятся только после измерений.', performanceDemo: 'Бюджеты сборки: суммарный JavaScript ≤ 250 KB и CSS ≤ 80 KB. Проверка выполняется после Vite build; это budget gate, не замена Lighthouse / Web Vitals замерам.',
+    inspect: 'Показать проверку', loading: 'Загружаю кейс…',
+    approachTitle: 'Инженерный подход', steps: ['Понять задачу и границы', 'Спроектировать поток и состояния', 'Реализовать доступный интерфейс', 'Проверить сценарии и риски', 'Поставить и документировать'],
+    contactTitle: 'Давайте обсудим задачу', contactText: 'Пока используется почтовый черновик: отправка происходит в почтовом клиенте пользователя. Серверного хранения или API отправки нет.',
+    email: 'Написать на почту', github: 'GitHub', telegram: 'Telegram', footer: 'Сделано с вниманием к деталям · NESTLIR',
+    role: 'Роль', context: 'Контекст', architecture: 'Архитектура и поток данных', decisions: 'Ключевые решения', contribution: 'Вклад и границы', outcomes: 'Что получилось', evidence: 'Что подтверждается', stack: 'Инструменты', close: 'Закрыть', caseDisclaimer: 'Кейс основан на доступных описаниях и публичных репозиториях. Неуказанные метрики и детали архитектуры не додумываются.',
+    status: 'Статус', search: 'Поиск проектов', searchPlaceholder: 'Название или технология…', language: 'Язык'
+  },
+  en: {
+    eyebrow: 'PORTFOLIO / ISSUE 02', navWork: 'Work', navSystem: 'Architecture', navQuality: 'Quality', navAbout: 'Approach', contact: 'Contact',
+    coverKicker: 'ANASTASIA / NESTLIR', coverTitle: 'From the first interface to the system.', coverText: 'An engineering portfolio about turning product ideas into understandable, testable and maintainable interfaces.',
+    explore: 'Explore projects', issue: 'DIGITAL JOURNAL · 2026', selected: 'Selected work', selectedText: 'Not a technology showcase: a review of problems, decisions, contribution boundaries and available evidence.',
+    all: 'All', product: 'Products', platform: 'Platforms & labs', experiment: 'Experiments', study: 'Study projects', openCase: 'Open case', noResults: 'No projects match these filters.',
+    systemTitle: 'How the system fits together', systemText: 'This interactive map describes the target architecture of the portfolio itself. It is a design model, not a claim that a backend or production services already exist.',
+    frontend: 'Frontend', api: 'API boundary', data: 'Data layer', delivery: 'Delivery & quality', frontendDesc: 'React UI · section navigation · filter state · accessibility', apiDesc: 'Contract boundary for future integrations. Current content is static with external links.', dataDesc: 'Typed project data and RU / EN dictionaries. No database or invented persistence.', deliveryDesc: 'Vite build · GitHub Actions · unit / browser tests · static GitHub Pages deploy',
+    qualityTitle: 'Quality is part of the product', qualityText: 'Checks describe what is automated in the repository; demo panels do not pretend to be measurement results.',
+    tests: 'Testing', testsText: 'Vitest covers filtering and data shape. Playwright exercises user journeys in Chromium, Firefox and WebKit on desktop and mobile profiles.', testsDemo: 'Examples: npm test · npm run build · npm run test:e2e. Journeys cover search, filters, case opening, Escape, locale switching and mobile navigation.',
+    security: 'Security', securityText: 'Minimal external dependencies, safe links, no secrets in client code and a clear boundary: this static site does not receive or store messages.', securityDemo: 'Controls: rel="noopener noreferrer" on external tabs · no API keys in the bundle · dedicated SECURITY.md · any future form needs server-side validation and rate limiting.',
+    performance: 'Performance', performanceText: 'Lazy-loaded case studies, system fonts, limited third-party requests and an aggregate bundle budget. Numeric results will appear only after measurement.', performanceDemo: 'Build budgets: total JavaScript ≤ 250 KB and CSS ≤ 80 KB. Enforced after Vite build; this budget gate does not replace Lighthouse / Web Vitals measurements.',
+    inspect: 'Inspect controls', loading: 'Loading case study…',
+    approachTitle: 'Engineering approach', steps: ['Understand the task and constraints', 'Design flows and states', 'Build an accessible interface', 'Verify scenarios and risks', 'Ship and document'],
+    contactTitle: 'Let’s discuss the work', contactText: 'The contact action currently opens an email draft. There is no server-side message storage or submission API.',
+    email: 'Write an email', github: 'GitHub', telegram: 'Telegram', footer: 'Made with attention to detail · NESTLIR',
+    role: 'Role', context: 'Context', architecture: 'Architecture & data flow', decisions: 'Key decisions', contribution: 'Contribution & boundaries', outcomes: 'Outcome', evidence: 'What is evidenced', stack: 'Tools', close: 'Close', caseDisclaimer: 'Cases are based on available descriptions and public repositories. Unreported metrics and architecture details are not invented.',
+    status: 'Status', search: 'Search projects', searchPlaceholder: 'Name or technology…', language: 'Language'
+  }
+} satisfies Record<Locale, Record<string, string | string[]>>;

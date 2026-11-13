@@ -7,6 +7,11 @@ on:
       - 'portfolio/**'
       - 'suwenku/**'
       - '.github/workflows/portfolio-pages.yml'
+  pull_request:
+    paths:
+      - 'portfolio/**'
+      - 'suwenku/**'
+      - '.github/workflows/portfolio-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -20,7 +25,7 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -28,8 +33,21 @@ jobs:
         uses: actions/setup-node@101b3474143230c3562bd21f0b3c3f8254784571
         with:
           node-version: 22
-      - name: Run portfolio smoke test
-        run: node portfolio/smoke-test.mjs
+      - name: Install portfolio dependencies
+        working-directory: portfolio
+        run: npm install --no-audit --no-fund
+      - name: Run portfolio unit tests
+        working-directory: portfolio
+        run: npm test
+      - name: Build portfolio and enforce bundle budgets
+        working-directory: portfolio
+        run: npm run build
+      - name: Install Playwright browsers
+        working-directory: portfolio
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Run cross-browser desktop and mobile tests
+        working-directory: portfolio
+        run: npm run test:e2e
       - name: Run SUWENKU tests
         working-directory: suwenku
         run: npm test
@@ -44,20 +62,31 @@ jobs:
           grep -q 'MOMOHA' suwenku/index.html
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Setup Node
+        uses: actions/setup-node@101b3474143230c3562bd21f0b3c3f8254784571
+        with:
+          node-version: 22
+      - name: Install portfolio dependencies
+        working-directory: portfolio
+        run: npm install --no-audit --no-fund
+      - name: Build portfolio
+        working-directory: portfolio
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - name: Prepare static site
         run: |
-          mkdir -p _site/suwenku
-          cp -R portfolio/. _site/
+          mkdir -p _site/portfolio _site/suwenku
+          cp -R portfolio/dist/. _site/portfolio/
           cp -R suwenku/. _site/suwenku/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
