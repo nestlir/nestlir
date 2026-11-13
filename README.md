@@ -1,52 +1,96 @@
 # Anastasia Kuzmina — Full-stack / Frontend Developer
 
-**React · TypeScript · Next.js · UX/UI · Product-minded engineering · APIs · Systems**
+I build web interfaces and product experiences with attention to interaction, maintainable code, and the systems behind the screen — APIs, data flows, application states, and delivery.
 
-I build modern interfaces and product experiences with a focus on clear interaction, maintainable code and visual detail — and I also work across APIs, data flows and engineering architecture when the project requires it.
+<p align="left">
+  <a href="https://nestlir.github.io/nestlir/"><strong>Open the Portfolio Magazine ↗</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://50-projects-lab.vercel.app/">50 Projects Lab ↗</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/nestlir">GitHub ↗</a>
+</p>
 
-## ✦ Live portfolio
+---
 
-- [Open Full-stack portfolio](https://nestlir.github.io/nestlir/)
-- [Open Frontend portfolio](https://nestlir.github.io/nestlir/)
+## Portfolio
 
-The portfolio presents selected work, engineering scope, technology stacks and the path from **UI → API → DATA → SHIP**.
+The portfolio is an eight-page, fullscreen digital magazine. On desktop it opens as an editorial cover and two-page spreads; on mobile it becomes a single-page reader.
 
-## ✦ 50 Projects Lab
+- **Live website:** [nestlir.github.io/nestlir](https://nestlir.github.io/nestlir/)
+- **Source:** [`portfolio/`](https://github.com/nestlir/nestlir/tree/main/portfolio)
+- **Design system:** [art direction, character sheet, UI kit, wireframes and release checklist](https://github.com/nestlir/nestlir/tree/main/portfolio/design-system)
 
-- [Open interactive Projects Lab](https://50-projects-lab.vercel.app/)
-- [Browse the source](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
-
-The lab combines a frontend-project catalog with interactive C/C++ systems architecture explainers.
-
-> The repository documents the current implementation honestly: some frontend demos are standalone wrappers around original educational projects, while the C/C++ systems projects live as native source code.
+The issue presents project context, contribution boundaries, technology groups, educational work, development approach, and contact links.
 
 ## Selected work
 
-| Project | Focus |
+| Project | Context |
 | --- | --- |
-| **DataVac** | Next.js · TypeScript · API · search · payments · PDF |
-| **Furniture Store** | Responsive UI · product experience · SEO |
-| **Story OS** | Python · Telegram · OpenAI · product architecture |
-| **Multimodal AI** | React · Python · microservices · AI |
-| **Stellar Burger** | React · Redux · API · application UI |
-| **Web Larek** | TypeScript · Express · MongoDB · e-commerce |
+| **DataVac** | Team information product. My contribution was frontend work within the vaccination module. |
+| **Furniture Store** | Independent AI-assisted experiment around product requirements, catalogue structure, and responsive UI. |
+| **Web Larek** | Educational TypeScript e-commerce project. [Repository](https://github.com/nestlir/web-larek-frontend) |
+| **Stellar Burger** | Educational React and Redux application. [Repository](https://github.com/nestlir/stellar-burger) |
+| **Mesto** | Educational React project focused on cards, forms, and interface state. [Repository](https://github.com/nestlir/mesto-project-ff) |
+| **Blog Customizer** | Educational React and TypeScript interface. [Repository](https://github.com/nestlir/blog-customizer) |
+| **Оно тебе надо** | Educational HTML and CSS layout project. [Repository](https://github.com/nestlir/ono-tebe-nado) |
 
-## What I do
+DataVac is presented as team work, Furniture Store is explicitly marked AI-assisted, and study assignments are separated from commercial experience.
 
-- **Frontend development:** React, Next.js, TypeScript, JavaScript
-- **UI engineering:** responsive interfaces, component systems, forms and complex states
-- **API integration:** REST, typed data mapping, loading/error states and external services
-- **Product & UX:** translating requirements and designs into usable user journeys
-- **Full-stack engineering:** Node.js, NestJS, Express, databases, Docker, testing and AI integrations
-- **Systems learning:** C/C++ projects covering processes, networking, storage, compilers, virtual machines and emulation
+## What I work with
 
-## Repository structure
+- **Frontend:** React, Next.js, TypeScript, JavaScript, HTML, CSS, responsive interfaces.
+- **UI engineering:** component systems, forms, interaction states, accessibility, and interface QA.
+- **Backend and APIs:** Node.js, Express, NestJS, REST APIs, typed data mapping, and service integration.
+- **Data and delivery:** PostgreSQL, MongoDB, Docker, Git, testing, and deployment workflows.
+- **Product thinking:** translating requirements into user journeys, interface structure, and maintainable implementation.
+
+## Tools and creative workflow
+
+A compact map of the design, development, visual-production, and documentation tools in my connected toolkit.
+
+### Design and prototyping
+
+- [MagicPath](https://www.magicpath.ai/) — visual design canvas and interactive prototypes.
+- [tldraw](https://tldraw.com/) — sketches, diagrams, and collaborative canvas work.
+- [Lucid](https://lucid.co/) — diagrams, system maps, and visual collaboration.
+- [Lovable](https://lovable.dev/) — AI-assisted application and website prototyping.
+
+### Programming and development
+
+- [GitHub](https://github.com/) — repositories, version control, pull requests, and project automation.
+- [Vercel](https://vercel.com/) — previews, hosting, and deployment.
+- [Hugging Face](https://huggingface.co/) — models, datasets, and machine-learning resources.
+
+### Graphics and visual production
+
+- [Higgsfield](https://higgsfield.ai/) — image and video generation.
+- [Magnific](https://www.magnific.com/) — visual creation, editing, and upscaling.
+- [Picsart](https://picsart.com/) — image, video, and creative asset production.
+- [fal](https://fal.ai/) — generative media models and inference APIs.
+- **Gradient Maker — Linear Color** — gradient exploration and color treatments.
+
+### Documentation and media
+
+- [Notion](https://www.notion.so/) — documentation, notes, and project organization.
+- [Descript](https://www.descript.com/) — video and audio editing, transcripts, and presentation materials.
+
+## 50 Projects Lab
+
+- [Open the interactive lab](https://50-projects-lab.vercel.app/)
+- [Browse the source](https://github.com/nestlir/nestlir/tree/main/50-projects-lab)
+
+The lab combines frontend learning projects with C/C++ systems exercises covering processes, networking, storage, compilers, virtual machines, and emulation. The repository distinguishes standalone educational wrappers from native systems projects.
+
+## Repository map
 
 ```text
 nestlir/
-├── portfolio/          # Full-stack + Frontend portfolio
-├── 50-projects-lab/    # Frontend exercises + C/C++ systems lab
-└── .github/workflows/  # CI, QA and GitHub Pages workflows
+├── portfolio/          # Fullscreen editorial developer portfolio
+│   ├── assets/          # Original illustration and graphic assets
+│   └── design-system/   # Art direction, UI kit, wireframes and QA docs
+├── 50-projects-lab/     # Frontend exercises and C/C++ systems lab
+├── suwenku/             # Separate web application
+└── .github/workflows/   # CI, QA and GitHub Pages deployment
 ```
 
 ## Contact
