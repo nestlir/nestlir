@@ -23,16 +23,6 @@ The portfolio is an eight-page, fullscreen digital magazine. On desktop it opens
 The issue presents project context, contribution boundaries, technology groups, educational work, development approach, and contact links.
 
 
-## AI Specialist Library
-
-A curated research index of AI agent skills, specialist agents, plugins, MCP integrations and workflows for design, software engineering, research and product work.
-
-- **Open the library:** [AI Specialist Library](https://nestlir.github.io/nestlir/portfolio/ai-library/)
-- **Detailed catalogue:** [library.md](https://github.com/nestlir/nestlir/blob/main/portfolio/ai-library/library.md)
-- **Source files:** [portfolio/ai-library/](https://github.com/nestlir/nestlir/tree/main/portfolio/ai-library)
-
-The catalogue distinguishes ChatGPT capabilities already available in this environment from connector-dependent operations, adaptable methodologies and components that require Codex, Claude Code or another runtime. External skills are not described as installed by default; versions, licensing, dependencies and security must be checked before adoption.
-
 ## Selected work
 
 | Project | Context |
