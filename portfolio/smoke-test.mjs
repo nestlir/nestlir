@@ -44,6 +44,11 @@ assert(css.includes('prefers-reduced-motion')||responsive.includes('prefers-redu
 assert(responsive.includes('@media(max-width:760px)'),'Mobile layout breakpoint is missing');
 assert(responsive.includes('@media print'),'Print / PDF stylesheet is missing');
 assert(app.includes('reportValidity')&&app.includes('mailto:nestlir@mail.ru'),'Contact form must validate and keep a mailto fallback');
+assert(app.includes('fullscreenchange')&&app.includes('aria-pressed'),'Fullscreen control state must be announced accessibly');
+assert(app.includes('QUALITY GATES')||app.includes('КОНТРОЛЬ КАЧЕСТВА'),'Engineering quality process is missing');
+assert(html.includes('application/ld+json'),'Structured person metadata is missing');
+assert(html.includes('preconnect'),'Hero image origin should be preconnected');
+assert(!html.includes('AI Specialist Library'),'Standalone AI catalogue must not be embedded in the portfolio');
 assert(html.includes('DataVac')&&html.includes('Furniture Store'),'Confirmed projects are missing');
 assert(html.includes('AI-assisted')||html.includes('AI-ASSISTED'),'AI-assisted project label is missing');
 assert(html.includes('https://github.com/nestlir/web-larek-frontend'),'Study archive repo link is missing');
