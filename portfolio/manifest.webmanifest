@@ -1,0 +1,13 @@
+{
+  "name": "NESTLIR — Portfolio Magazine",
+  "short_name": "NESTLIR",
+  "description": "An illustrated digital portfolio magazine.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#393d2e",
+  "theme_color": "#393d2e",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
