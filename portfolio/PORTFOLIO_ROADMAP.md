@@ -81,10 +81,11 @@ Do not show a technology as used in a project unless the project source supports
 - Keep the editorial art direction while using technical layouts for evidence.
 
 ### Phase 3 — Evidence-led case studies
-- Expand NOMAD, MOMOHA, DataVac and 50 Projects Lab.
-- Inspect source repositories before adding code-level claims.
-- Add architecture diagrams and source/test links.
-- Add explicit contribution and limitation sections.
+- [x] Expand NOMAD, MOMOHA, DataVac and 50 Projects Lab case-study content.
+- [x] Keep architecture/data-flow statements tied to documented repository structure.
+- [x] Add explicit outcomes, contribution boundaries and project-specific limitations.
+- [x] Keep evidence notes and source repository links visible in each case.
+- [ ] Add visual architecture diagrams only where they can be derived and verified from source code.
 
 ### Phase 4 — Engineering center
 - Organize Frontend, Backend, APIs, Data, Testing, Security and DevOps evidence.
