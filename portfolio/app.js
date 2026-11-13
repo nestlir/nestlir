@@ -50,8 +50,12 @@
       card.dataset.kind = project.type;
       const visual = make('div', 'project-visual art-' + project.number);
       visual.setAttribute('aria-hidden', 'true');
+      visual.dataset.assetSlot = project.id;
       visual.append(make('span', 'visual-coordinate', project.number + ' / NESTLIR'));
-      visual.append(make('span', 'visual-glyph', project.number === '01' ? '⌁' : project.number === '02' ? '◌' : '✳'));
+      const placeholder = make('span', 'visual-placeholder');
+      placeholder.append(make('span', 'placeholder-id', 'ASSET ' + project.number));
+      placeholder.append(make('span', 'placeholder-ratio', 'IMAGE SLOT · 4:3'));
+      visual.append(placeholder);
       visual.append(make('span', 'visual-caption', project.title.toUpperCase()));
       const content = make('div', 'project-copy');
       const meta = make('div', 'project-meta');
