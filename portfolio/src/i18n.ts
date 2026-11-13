@@ -15,7 +15,7 @@ export const copy = {
     approachTitle: 'Инженерный подход', steps: ['Понять задачу и границы', 'Спроектировать поток и состояния', 'Реализовать доступный интерфейс', 'Проверить сценарии и риски', 'Поставить и документировать'],
     contactTitle: 'Давайте обсудим задачу', contactText: 'Пока используется почтовый черновик: отправка происходит в почтовом клиенте пользователя. Серверного хранения или API отправки нет.',
     email: 'Написать на почту', github: 'GitHub', telegram: 'Telegram', footer: 'Сделано с вниманием к деталям · NESTLIR',
-    role: 'Роль', context: 'Контекст', architecture: 'Архитектура и поток данных', decisions: 'Ключевые решения', contribution: 'Вклад и границы', outcomes: 'Что получилось', evidence: 'Что подтверждается', stack: 'Инструменты', close: 'Закрыть', caseDisclaimer: 'Кейс основан на доступных описаниях и публичных репозиториях. Неуказанные метрики и детали архитектуры не додумываются.',
+    role: 'Роль', context: 'Контекст', architecture: 'Архитектура и поток данных', decisions: 'Ключевые решения', contribution: 'Вклад и границы', outcomes: 'Результат', limitations: 'Ограничения и честные границы', evidence: 'Что подтверждается', stack: 'Инструменты', close: 'Закрыть', caseDisclaimer: 'Кейс основан на доступных описаниях и публичных репозиториях. Неуказанные метрики и детали архитектуры не додумываются.',
     status: 'Статус', search: 'Поиск проектов', searchPlaceholder: 'Название или технология…', language: 'Язык', technologyFilter: 'Технология', allTechnologies: 'Все технологии', sortBy: 'Сортировка', curatedOrder: 'Рекомендуемый порядок', alphabeticalOrder: 'По алфавиту', resetFilters: 'Сбросить'
   },
   en: {
@@ -33,7 +33,7 @@ export const copy = {
     approachTitle: 'Engineering approach', steps: ['Understand the task and constraints', 'Design flows and states', 'Build an accessible interface', 'Verify scenarios and risks', 'Ship and document'],
     contactTitle: 'Let’s discuss the work', contactText: 'The contact action currently opens an email draft. There is no server-side message storage or submission API.',
     email: 'Write an email', github: 'GitHub', telegram: 'Telegram', footer: 'Made with attention to detail · NESTLIR',
-    role: 'Role', context: 'Context', architecture: 'Architecture & data flow', decisions: 'Key decisions', contribution: 'Contribution & boundaries', outcomes: 'Outcome', evidence: 'What is evidenced', stack: 'Tools', close: 'Close', caseDisclaimer: 'Cases are based on available descriptions and public repositories. Unreported metrics and architecture details are not invented.',
+    role: 'Role', context: 'Context', architecture: 'Architecture & data flow', decisions: 'Key decisions', contribution: 'Contribution & boundaries', outcomes: 'Outcomes', limitations: 'Limitations & scope boundaries', evidence: 'What is evidenced', stack: 'Tools', close: 'Close', caseDisclaimer: 'Cases are based on available descriptions and public repositories. Unreported metrics and architecture details are not invented.',
     status: 'Status', search: 'Search projects', searchPlaceholder: 'Name or technology…', language: 'Language', technologyFilter: 'Technology', allTechnologies: 'All technologies', sortBy: 'Sort', curatedOrder: 'Featured order', alphabeticalOrder: 'Alphabetical', resetFilters: 'Reset filters'
   }
 } satisfies Record<Locale, Record<string, string | string[]>>;
