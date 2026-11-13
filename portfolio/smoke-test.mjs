@@ -45,6 +45,7 @@ assert(responsive.includes('@media(max-width:760px)'),'Mobile layout breakpoint 
 assert(responsive.includes('@media print'),'Print / PDF stylesheet is missing');
 assert(app.includes('reportValidity')&&app.includes('mailto:nestlir@mail.ru'),'Contact form must validate and keep a mailto fallback');
 assert(app.includes('fullscreenchange')&&app.includes('aria-pressed'),'Fullscreen control state must be announced accessibly');
+assert(app.includes('function applyLanguage(nextLanguage)'),'Language handler must not shadow the next-page control');
 assert(app.includes('QUALITY GATES')||app.includes('КОНТРОЛЬ КАЧЕСТВА'),'Engineering quality process is missing');
 assert(html.includes('application/ld+json'),'Structured person metadata is missing');
 assert(html.includes('preconnect'),'Hero image origin should be preconnected');
