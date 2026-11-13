@@ -168,3 +168,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .workflow-note p{margin:5px 0 0;color:var(--muted);font:10px/1.5 var(--sans)}
 .magazine-book{touch-action:pan-y}
 .page-arrow:focus-visible,.progress-track button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+
+/* The working-method page contains denser editorial copy; keep it readable without clipping. */
+.magazine-page[data-page="7"]{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--olive-light) transparent}
+.magazine-page[data-page="7"]::-webkit-scrollbar{width:4px}
+.magazine-page[data-page="7"]::-webkit-scrollbar-thumb{background:var(--olive-light);border-radius:4px}
