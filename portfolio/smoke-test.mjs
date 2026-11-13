@@ -40,7 +40,7 @@ assert(html.includes('og:image'),'Open Graph image is missing');
 assert(html.includes('aria-label="Разделы журнала"'),'Section navigation needs an accessible label');
 assert(app.includes('ArrowRight')&&app.includes('ArrowLeft'),'Keyboard page navigation is missing');
 assert(app.includes('pointerdown')&&app.includes('pointerup'),'Swipe / drag navigation is missing');
-assert(app.includes('prefers-reduced-motion')===false || css.includes('prefers-reduced-motion'),'Reduced motion support is missing');
+assert(css.includes('prefers-reduced-motion')||responsive.includes('prefers-reduced-motion'),'Reduced motion support is missing');
 assert(responsive.includes('@media(max-width:760px)'),'Mobile layout breakpoint is missing');
 assert(responsive.includes('@media print'),'Print / PDF stylesheet is missing');
 assert(app.includes('reportValidity')&&app.includes('mailto:nestlir@mail.ru'),'Contact form must validate and keep a mailto fallback');

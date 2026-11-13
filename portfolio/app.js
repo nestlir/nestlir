@@ -140,8 +140,8 @@
   previous.addEventListener('click',backward);
   next.addEventListener('click',forward);
   window.addEventListener('popstate',()=>setPage(pageFromHash(),{history:false}));
-  mobileQuery.addEventListener?.('change',()=>renderPage({announce:false}));
-  window.addEventListener('resize',()=>renderPage({announce:false}));
+  mobileQuery.addEventListener?.('change',()=>setPage(currentPage,{history:false,announce:false}));
+  window.addEventListener('resize',()=>setPage(currentPage,{history:false,announce:false}));
 
   document.addEventListener('keydown',(event)=>{
     const target=event.target;

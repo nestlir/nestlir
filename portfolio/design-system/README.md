@@ -13,6 +13,8 @@ A personal, collectible digital magazine for Anastasia's full-stack / frontend e
 - [Grid and responsive system](./grid-responsive.md)
 - [Interaction and motion](./interaction-motion.md)
 - [Accessibility and performance](./accessibility-performance.md)
+- [Wireframes](./wireframes.md)
+- [Release checklist](./release-checklist.md)
 - [Asset provenance](./asset-manifest.md)
 - [Design tokens](./tokens.css)
 
