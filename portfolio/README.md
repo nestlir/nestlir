@@ -17,7 +17,7 @@ A fullscreen, eight-page digital magazine for Anastasia's Fullstack / Frontend e
 4. DataVac — team project, limited frontend contribution in the vaccination module
 5. Furniture Store — AI-assisted independent experiment
 6. Educational assignments: Web Larek, Stellar Burger, Mesto, Blog Customizer and Оно тебе надо
-7. Working approach: interface → API → data → delivery
+7. Working approach: discovery → design → implementation → quality gates → delivery
 8. Correspondence
 
 Project attribution is explicit. DataVac is not presented as solo work; Furniture Store is marked AI-assisted; educational assignments are not described as commercial client work.
@@ -47,3 +47,15 @@ A separate, responsive research index for AI skills, agents, plugins, MCP integr
 - Entry point: `portfolio/ai-library/index.html`.
 - Full catalogue: `portfolio/ai-library/library.md`.
 - External agent definitions are documented, not auto-installed into ChatGPT.
+
+## Engineering principles
+
+The portfolio presents technologies evidenced by the project repository separately from broader engineering practices. It does not claim every tool in external AI-agent catalogues as personal experience.
+
+- Product discovery and clear contribution boundaries.
+- Interface architecture, responsive behaviour and accessibility.
+- API and data-flow awareness across frontend/backend boundaries.
+- Test planning, security-aware changes, performance and documentation.
+- Human review of AI-assisted work and explicit attribution.
+
+The contact form is intentionally a validated `mailto:` draft. GitHub Pages is static hosting; no backend form submission or database is implied.
