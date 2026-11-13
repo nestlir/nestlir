@@ -12,20 +12,20 @@
   const dictionary = {
     ru: {
       'nav.work':'Работы','nav.approach':'Подход','nav.about':'Обо мне','nav.contact':'Контакт',
-      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Цифровые','hero.line2':'вещи с','hero.em':'человеческим','hero.line3':'масштабом.','hero.intro':'Я Анастасия. Собираю ясные интерфейсы и продумываю детали, которые помогают людям уверенно двигаться по продукту.','hero.cta':'Смотреть избранное','hero.mail':'Написать мне ↗','hero.note':'Заметки о работе с интерфейсами и продуктами',
-      'work.label':'ИЗБРАННЫЕ РАБОТЫ','work.title':'Полевой архив','work.intro':'Небольшая подборка проектов. Роль и контекст указаны прямо — чтобы было понятно, что именно стоит за каждой работой.',
+      'hero.eyebrow':'FULL-STACK JAVASCRIPT DEVELOPER · RU / EN','hero.line1':'Цифровые','hero.line2':'продукты,','hero.em':'созданные','hero.line3':'для людей.','hero.intro':'Я Анастасия. Соединяю frontend и backend, чтобы превращать идеи в цельные и понятные веб-продукты.','hero.cta':'Смотреть избранное','hero.mail':'Написать мне ↗','hero.note':'Редакционный портрет разработчика и её работ',
+      'work.label':'ИЗБРАННЫЕ РАБОТЫ','work.title':'Избранные главы','work.intro':'Каждый проект — отдельное окно в моей практике. Роль и формат участия подписаны честно и ясно.',
       'filter.all':'Все','filter.team':'Командный проект','filter.assisted':'С помощью ИИ','filter.study':'Учебные',
       'approach.label':'РАБОЧИЕ ПРИНЦИПЫ','approach.line1':'Хороший интерфейс','approach.line2':'сначала','approach.em':'понятен.','approach.one.title':'Слушать контекст','approach.one.text':'Разобраться в задаче, людях и ограничениях до выбора решения.','approach.two.title':'Упростить путь','approach.two.text':'Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.','approach.three.title':'Проверить детали','approach.three.text':'Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.',
-      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Любопытство к системам.','about.text':'Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.','about.note':'Каждый проект — точка на карте. Важен и маршрут, и то, что он помог понять.',
+      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Мышление системами.','about.text':'Я развиваюсь в Full-Stack JavaScript: проектирую интерфейсы, связываю их с серверной логикой и внимательно отношусь к деталям реализации. В командной работе ясно обозначаю свою зону ответственности.','about.note':'За каждым окном — свой продукт, свой маршрут и люди, для которых он создан.',
       'contact.line1':'Есть задача?','contact.em':'Давайте обсудим.','contact.text':'Открыта к интересным командам и осмысленным цифровым продуктам.','footer.note':'Сделано внимательно','footer.top':'Наверх ↑','card.open':'Открыть репозиторий ↗','card.note':'Вклад описан отдельно от контекста проекта.','results':'ПРОЕКТОВ'
     },
     en: {
       'nav.work':'Work','nav.approach':'Approach','nav.about':'About','nav.contact':'Contact',
-      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Digital','hero.line2':'things with a','hero.em':'human','hero.line3':'scale.','hero.intro':'I’m Anastasia. I build clear interfaces and sweat the details that help people move through a product with confidence.','hero.cta':'Explore selected work','hero.mail':'Get in touch ↗','hero.note':'Field notes on interfaces and products',
-      'work.label':'SELECTED WORK','work.title':'Field archive','work.intro':'A small selection of projects. Role and context are stated plainly, so you can see what each piece represents.',
+      'hero.eyebrow':'FULL-STACK JAVASCRIPT DEVELOPER · RU / EN','hero.line1':'Digital','hero.line2':'products,','hero.em':'made','hero.line3':'for people.','hero.intro':'I’m Anastasia. I connect frontend and backend to turn ideas into complete, clear web products.','hero.cta':'Explore selected work','hero.mail':'Get in touch ↗','hero.note':'An editorial portrait of a developer and her work',
+      'work.label':'SELECTED WORK','work.title':'Selected chapters','work.intro':'Each project is a window into my practice. My role and the project context are stated clearly.',
       'filter.all':'All','filter.team':'Team project','filter.assisted':'AI-assisted','filter.study':'Study projects',
       'approach.label':'WORKING PRINCIPLES','approach.line1':'A good interface','approach.line2':'is first','approach.em':'understood.','approach.one.title':'Listen to context','approach.one.text':'Understand the task, people and constraints before choosing a solution.','approach.two.title':'Make the path clear','approach.two.text':'Remove extra steps, use familiar words and make the next move visible.','approach.three.title':'Check the details','approach.three.text':'Think through states, keyboard navigation and small-screen behaviour.',
-      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Curiosity about systems.','about.text':'I’m drawn to frontend work where visual culture meets engineering. In team settings, I prefer to state my own responsibilities clearly and show what I have learned through practice.','about.note':'Each project is a point on the map. The route matters, as does what it helps us understand.',
+      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Systems thinking.','about.text':'I’m growing as a Full-Stack JavaScript developer: shaping interfaces, connecting them to server logic and caring about implementation details. In team settings, I state my responsibilities clearly.','about.note':'Behind each window is a product, a path and the people it was made for.',
       'contact.line1':'Have a challenge?','contact.em':'Let’s talk.','contact.text':'Open to thoughtful teams and meaningful digital products.','footer.note':'Made with care','footer.top':'Back to top ↑','card.open':'View repository ↗','card.note':'My contribution is distinct from the project context.','results':'PROJECTS'
     }
   };
@@ -50,8 +50,12 @@
       card.dataset.kind = project.type;
       const visual = make('div', 'project-visual art-' + project.number);
       visual.setAttribute('aria-hidden', 'true');
+      visual.dataset.assetSlot = project.id;
       visual.append(make('span', 'visual-coordinate', project.number + ' / NESTLIR'));
-      visual.append(make('span', 'visual-glyph', project.number === '01' ? '⌁' : project.number === '02' ? '◌' : '✳'));
+      const placeholder = make('span', 'visual-placeholder');
+      placeholder.append(make('span', 'placeholder-id', 'ASSET ' + project.number));
+      placeholder.append(make('span', 'placeholder-ratio', 'IMAGE SLOT · 4:3'));
+      visual.append(placeholder);
       visual.append(make('span', 'visual-caption', project.title.toUpperCase()));
       const content = make('div', 'project-copy');
       const meta = make('div', 'project-meta');
@@ -78,7 +82,7 @@
     });
     document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
     applyFilter(filter);
-    document.title = language === 'ru' ? 'Анастасия — интерфейсы и цифровые продукты' : 'Anastasia — interfaces and digital products';
+    document.title = language === 'ru' ? 'NESTLIR — THE HUMAN ATLAS · Anastasia' : 'NESTLIR — THE HUMAN ATLAS · Anastasia';
     safeSet('portfolio-language', language);
   }
   function applyFilter(next) {
@@ -118,6 +122,6 @@
     else menuButton.focus();
   }
   menuButton.addEventListener('click',() => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => { mobileNav.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); document.body.style.overflow = ''; menuButton.focus(); }));
+  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => setMenu(false)));
   document.addEventListener('keydown',(event) => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false); });
 })();

@@ -11,7 +11,7 @@ The portfolio is a single RU/EN experience under the Illustrated Digital Atlas d
 - Theme and language controls; menu, filters and state communicate via ARIA.
 - Safe storage fallbacks, external links use `noopener noreferrer`, and dynamic project text uses `textContent`.
 - Reduced-motion support, skip navigation and a live project count.
-- No remote project photography or font runtime dependency.
+- No remote project photography. Display fonts are requested from Google Fonts; system fallbacks are defined.
 
 ## Content accuracy
 

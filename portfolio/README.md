@@ -1,15 +1,15 @@
-# NESTLIR — Illustrated Digital Atlas
+# NESTLIR — THE HUMAN ATLAS
 
 Personal portfolio for Anastasia, focused on interface development and honest project context. The site is a single responsive experience in Russian and English.
 
 ## Experience
 
-- Editorial atlas identity with locally drawn SVG illustration and a matching monogram favicon.
+- Hybrid editorial cover with a winter city façade, illuminated project windows and matching monogram favicon.
 - One project catalog with filters for team, AI-assisted and educational work.
 - Project details are rendered with DOM nodes and text content.
 - Language and theme preferences are stored safely when browser storage is available.
 - Keyboard-accessible filter and theme states, skip link, live result count, mobile navigation and reduced-motion support.
-- No remote photography or font dependency.
+- No remote photography. Display fonts are requested from Google Fonts; system fallbacks are defined. For a fully self-hosted/offline build, bundle the required WOFF2 files locally.
 
 ## Project attribution
 
@@ -25,6 +25,7 @@ Archived projects without confirmed personal contribution are omitted.
 - `app.js` — bilingual copy, project data, filters and accessible controls.
 - `app.css`, `responsive.css` — visual system and responsive layouts.
 - `assets/atlas-map.svg` — original local hero illustration.
+- Project card media are marked 4:3 asset placeholders (`data-asset-slot`); replace only with approved authentic project captures.
 - `frontend/index.html` — compatibility redirect to the single portfolio.
 - `smoke-test.mjs` — static release checks.
 
