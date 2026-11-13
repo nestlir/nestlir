@@ -81,7 +81,9 @@ test('featured case studies expose architecture, outcomes and honest limitations
   await expect(dialog.getByRole('heading', { name: /outcome|результат/i })).toBeVisible();
   await expect(dialog.getByRole('heading', { name: /limitations|ограничения/i })).toBeVisible();
   await expect(dialog).toContainText(/JSON-file|JSON-файл/i);
+  await dialog.getByRole('button', { name: /close|закрыть/i }).click();
   await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await nomadCard.getByRole('button', { name: /open case|открыть кейс/i }).click();
   dialog = page.getByRole('dialog');
   await expect(dialog.getByRole('heading', { name: 'Limitations & scope boundaries' })).toBeVisible();
   await expect(dialog).toContainText(/managed production database/i);
