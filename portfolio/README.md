@@ -12,7 +12,7 @@ A React + TypeScript portfolio combining the original Atelier Narrative editoria
 - Project catalogue with category, full-text, technology and sorting filters.
 - Shareable catalogue state through URL query parameters.
 - Evidence-led project case studies with context, contribution boundaries, architecture, decisions, outcomes and source links.
-- Interactive architecture model for the portfolio itself.
+- Evidence-led Engineering section covering frontend, backend, integrations, data, quality and delivery, with links into relevant case studies.\n- Interactive architecture model for the portfolio itself.
 - Separate quality demonstrations for testing, security and performance.
 - RU / EN interface, keyboard-accessible navigation, dialog focus restoration and reduced-motion support.
 - Contact opens an email draft. There is no server-side submission or message storage.

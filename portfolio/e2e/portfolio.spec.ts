@@ -56,3 +56,14 @@ test('architecture nodes expose selectable layers', async ({ page }) => {
   await expect(api).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.architecture-detail')).toContainText(/No active server|contract/i);
 });
+
+test('engineering capabilities are evidence-led and open their related case study', async ({ page }) => {
+  await page.goto('.');
+  await page.getByRole('link', { name: /инженерия|engineering/i }).click();
+  await expect(page.locator('#engineering')).toBeInViewport();
+  await expect(page.locator('.engineering-card')).toHaveCount(6);
+  await expect(page.locator('.engineering-card').first()).toContainText(/DataVac/);
+  await page.locator('.engineering-card').filter({ hasText: /Backend & API/ }).getByRole('button', { name: /NOMAD/ }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'NOMAD — Quiet Kyoto' })).toBeVisible();
+});

@@ -55,7 +55,7 @@ Do not show a technology as used in a project unless the project source supports
 - Typed project data in `src/data/projects.ts`.
 - RU copy in `src/data/projectCopy.ts`; interface translations in `src/i18n.ts`.
 - Search and category filters in `src/components/ProjectCatalog.tsx`.
-- Architecture and quality modules in `src/components/`.
+- EngineeringCenter with six evidence-backed areas (Frontend, Backend, APIs, Data, Testing & Quality, DevOps & Delivery).\n- Architecture and quality modules in `src/components/`.
 - Vitest unit tests and Playwright cross-browser E2E.
 - Static GitHub Pages deployment under `/nestlir/portfolio/`.
 - Contact currently uses `mailto:`; no message API or database exists.

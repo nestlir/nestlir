@@ -13,7 +13,7 @@ Browser
       │   └─ filterProjects() → typed project data
       ├─ CaseStudy (lazy-loaded)
       │   └─ context / architecture / decisions / contribution / outcomes / evidence
-      ├─ ArchitectureMap (interactive target model)
+      ├─ EngineeringCenter (six evidence-backed capability areas)\n      │   └─ project case-study links\n      ├─ ArchitectureMap (interactive target model)
       └─ QualityCards
           ├─ test strategy
           ├─ security boundaries
@@ -25,7 +25,7 @@ Browser
 | Module | Responsibility | State / dependency |
 |---|---|---|
 | `App.tsx` | App shell, locale, mobile menu, case hash | React state; no global store |
-| `ProjectCatalog.tsx` | Search, category, technology and sort filters | Local state synchronized to URL query parameters |
+| `ProjectCatalog.tsx` | Search, category, technology and sort filters | Local state synchronized to URL query parameters |\n| `EngineeringCenter.tsx` | Six capability areas with project-backed evidence and case-study actions | Locale copy + `onOpen` callback into App case-study state |
 | `filterProjects.ts` | Pure filtering, sorting and URL state parsing/serialization | No React or browser dependency |
 | `projects.ts` | Canonical typed project facts | Static TypeScript data |
 | `projectCopy.ts` | RU project-content localization | Project IDs |
