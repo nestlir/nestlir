@@ -57,13 +57,17 @@ test('architecture nodes expose selectable layers', async ({ page }) => {
   await expect(page.locator('.architecture-detail')).toContainText(/No active server|contract/i);
 });
 
-test('engineering capabilities are evidence-led and open their related case study', async ({ page }) => {
+test('engineering capabilities are evidence-led and open their related case study', async ({ page }, testInfo) => {
   await page.goto('.');
+  if (testInfo.project.name.includes('mobile')) {
+    await page.getByRole('button', { name: /open menu|открыть меню/i }).click();
+  }
   await page.getByRole('link', { name: /инженерия|engineering/i }).click();
   await expect(page.locator('#engineering')).toBeInViewport();
   await expect(page.locator('.engineering-card')).toHaveCount(6);
   await expect(page.locator('.engineering-card').first()).toContainText(/DataVac/);
   await page.locator('.engineering-card').filter({ hasText: /Backend & API/ }).getByRole('button', { name: /NOMAD/ }).click();
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'NOMAD — Quiet Kyoto' })).toBeVisible();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('heading', { name: 'NOMAD — Quiet Kyoto' })).toBeVisible();
 });
