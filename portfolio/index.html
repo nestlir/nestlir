@@ -1,56 +1,260 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f3f0e8">
-<meta name="description" content="Анастасия — frontend-разработчик. Изучаю интерфейсы, проектирую понятные пользовательские сценарии и превращаю их в аккуратный код.">
-<link rel="icon" type="image/svg+xml" href="./favicon.svg">
-<link rel="stylesheet" href="./app.css">
-<link rel="stylesheet" href="./responsive.css">
-<title>Анастасия — интерфейсы и цифровые продукты</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#393d2e">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Анастасия — Fullstack / Frontend Developer. Цифровой журнал о проектах, интерфейсах, API, данных и инженерном процессе.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NESTLIR — Portfolio Magazine">
+  <meta property="og:description" content="Fullstack Developer Portfolio · Issue 01">
+  <meta property="og:image" content="https://gcdn.picsart.com/picsart-mcp/94bd9f3c-b926-4eeb-a846-6230e29fad1c.png">
+  <meta property="og:url" content="https://nestlir.github.io/nestlir/portfolio/">
+  <link rel="canonical" href="https://nestlir.github.io/nestlir/portfolio/">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.svg">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./responsive.css">
+  <title>NESTLIR — Portfolio Magazine · Выпуск 01</title>
 </head>
-<body>
-<a class="skip-link" href="#main">К содержанию</a>
-<header class="site-header">
-  <a class="wordmark" href="#top" aria-label="NESTLIR — на главную"><span class="wordmark-mark">N.</span><span>NESTLIR <small>FIELD NOTES / 2026</small></span></a>
-  <nav class="main-nav" aria-label="Основная навигация">
-    <a href="#work" data-i18n="nav.work">Работы</a><a href="#approach" data-i18n="nav.approach">Подход</a><a href="#about" data-i18n="nav.about">Обо мне</a><a href="#contact" data-i18n="nav.contact">Контакт</a>
-  </nav>
-  <div class="header-tools">
-    <div class="language-switch" aria-label="Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Включить тёмную тему" aria-pressed="false"><span aria-hidden="true">◐</span></button>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню"><span></span><span></span></button>
+<body class="magazine-body">
+  <a class="skip-link" href="#mainContent">Перейти к журналу</a>
+  <div class="reader-shell" id="readerApp">
+    <header class="reader-header">
+      <a class="brand" href="#page-1" data-go-page="1" aria-label="NESTLIR — обложка">
+        <img src="./assets/magazine/monogram.svg" alt="" width="34" height="34">
+        <span class="brand-name">NESTLIR <small>PORTFOLIO / ISSUE 01</small></span>
+      </a>
+      <nav class="section-nav" aria-label="Разделы журнала">
+        <a href="#page-1" data-go-page="1" data-i18n="nav.cover">Обложка</a>
+        <a href="#page-3" data-go-page="3" data-i18n="nav.stack">Стек</a>
+        <a href="#page-4" data-go-page="4" data-i18n="nav.work">Работы</a>
+        <a href="#page-8" data-go-page="8" data-i18n="nav.contact">Контакты</a>
+      </nav>
+      <div class="reader-tools">
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="tool-button fullscreen-button" id="fullscreenToggle" type="button" aria-label="Полноэкранный режим" title="Полноэкранный режим"><span aria-hidden="true">⛶</span></button>
+        <button class="tool-button menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню"><span aria-hidden="true">☰</span></button>
+      </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" hidden>
+      <a href="#page-1" data-go-page="1" data-i18n="nav.cover">Обложка</a>
+      <a href="#page-3" data-go-page="3" data-i18n="nav.stack">Стек</a>
+      <a href="#page-4" data-go-page="4" data-i18n="nav.work">Работы</a>
+      <a href="#page-8" data-go-page="8" data-i18n="nav.contact">Контакты</a>
+    </nav>
+
+    <main class="reader-main" id="mainContent">
+      <div class="reader-stage">
+        <button class="page-arrow page-arrow-left" id="previousPage" type="button" aria-label="Предыдущая страница" disabled><span aria-hidden="true">‹</span></button>
+
+        <section class="magazine-book is-cover" id="magazineBook" aria-label="Интерактивный журнал-портфолио">
+          <article class="magazine-page cover-page" data-page="1">
+            <div class="cover-art">
+              <img src="https://gcdn.picsart.com/picsart-mcp/94bd9f3c-b926-4eeb-a846-6230e29fad1c.png"
+                   alt="Авторская fashion-иллюстрация Анастасии в оливковом костюме в эстетике винтажного журнала"
+                   width="1024" height="1365" fetchpriority="high" decoding="async">
+              <span class="cover-art-caption">ILLUSTRATED EDITION · 2026</span>
+            </div>
+            <div class="cover-copy">
+              <div class="cover-overline"><span>THE DIGITAL ISSUE</span><span>№ 01 · 2026</span></div>
+              <p class="cover-kicker">ANASTASIA / NESTLIR</p>
+              <h1>От первого<br><em>интерфейса</em><br>до системы.</h1>
+              <p class="cover-description" data-i18n="cover.description">Fullstack-разработка на стыке интерфейсов, API, данных и внимательного продуктового мышления.</p>
+              <div class="cover-rule"></div>
+              <div class="cover-facts">
+                <div><span class="micro-label" data-i18n="cover.role">РОЛЬ</span><strong>Fullstack / Frontend Developer</strong></div>
+                <div><span class="micro-label" data-i18n="cover.focus">ФОКУС</span><strong>UI · API · DATA · SHIP</strong></div>
+              </div>
+              <div class="cover-bottom">
+                <span>PORTFOLIO · ISSUE 01</span>
+                <a href="#page-2" data-go-page="2" class="cover-enter"><span data-i18n="cover.enter">Листать журнал</span><b aria-hidden="true">↘</b></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="magazine-page paper-page page-left" data-page="2" hidden>
+            <header class="page-header"><span data-i18n="p2.section">СОДЕРЖАНИЕ</span><span>ВЫПУСК 01</span></header>
+            <h2 class="page-title"><span data-i18n="p2.title">В этом</span> <em data-i18n="p2.titleEm">выпуске</em></h2>
+            <nav class="contents-list" aria-label="Содержание">
+              <a href="#page-3" data-go-page="3"><span class="contents-number">01</span><span class="contents-copy"><strong data-i18n="toc.stack">Стек</strong><small data-i18n="toc.stackNote">Инструменты и технологии</small></span><span class="contents-folio">с. 03</span></a>
+              <a href="#page-4" data-go-page="4"><span class="contents-number">02</span><span class="contents-copy"><strong>DataVac</strong><small data-i18n="toc.dataVac">Командный продукт · вклад во frontend</small></span><span class="contents-folio">с. 04</span></a>
+              <a href="#page-5" data-go-page="5"><span class="contents-number">03</span><span class="contents-copy"><strong>Furniture Store</strong><small data-i18n="toc.furniture">AI-assisted эксперимент</small></span><span class="contents-folio">с. 05</span></a>
+              <a href="#page-6" data-go-page="6"><span class="contents-number">04</span><span class="contents-copy"><strong data-i18n="toc.study">Учебный архив</strong><small data-i18n="toc.studyNote">Практика и освоение инструментов</small></span><span class="contents-folio">с. 06</span></a>
+              <a href="#page-7" data-go-page="7"><span class="contents-number">05</span><span class="contents-copy"><strong data-i18n="toc.approach">Подход</strong><small data-i18n="toc.approachNote">От интерфейса к поставке</small></span><span class="contents-folio">с. 07</span></a>
+              <a href="#page-8" data-go-page="8"><span class="contents-number">06</span><span class="contents-copy"><strong data-i18n="toc.contact">Контакты</strong><small data-i18n="toc.contactNote">Профили и связь</small></span><span class="contents-folio">с. 08</span></a>
+            </nav>
+            <aside class="author-note">
+              <span class="micro-label" data-i18n="p2.noteLabel">ОТ АВТОРА</span>
+              <p data-i18n="p2.note">Мне интересны стыки между слоями продукта: как интерфейс разговаривает с API, как данные становятся понятными, а техническое решение — предсказуемым для человека.</p>
+              <span class="author-signature">— Anastasia</span>
+            </aside>
+            <footer class="page-footer"><span>02</span><span>NESTLIR · PORTFOLIO</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page page-right" data-page="3" hidden>
+            <header class="page-header"><span data-i18n="p3.section">ТЕХНОЛОГИИ</span><span>ВЫПУСК 01</span></header>
+            <h2 class="page-title">Tools <em>of the trade</em></h2>
+            <p class="page-intro" data-i18n="p3.intro">Инструменты, с которыми собираю продукт целиком. Без шкал «владения» — только технологии и области практики.</p>
+            <div class="stack-groups">
+              <section class="stack-group">
+                <div class="stack-heading"><span class="stack-index">01</span><h3>Frontend</h3><small data-i18n="stack.frontend">интерфейсы</small></div>
+                <ul class="tag-list"><li>React</li><li>TypeScript</li><li>Next.js</li><li>Vite</li><li>HTML</li><li>CSS</li></ul>
+              </section>
+              <section class="stack-group">
+                <div class="stack-heading"><span class="stack-index">02</span><h3>Backend</h3><small data-i18n="stack.backend">сервисы и API</small></div>
+                <ul class="tag-list"><li>Node.js</li><li>Express</li><li>NestJS</li><li>REST API</li></ul>
+              </section>
+              <section class="stack-group">
+                <div class="stack-heading"><span class="stack-index">03</span><h3 data-i18n="stack.dataTitle">Данные и инфраструктура</h3><small data-i18n="stack.data">хранение и выкладка</small></div>
+                <ul class="tag-list"><li>PostgreSQL</li><li>MongoDB</li><li>Docker</li><li>Git</li></ul>
+              </section>
+              <section class="stack-group">
+                <div class="stack-heading"><span class="stack-index">04</span><h3 data-i18n="stack.qualityTitle">Качество интерфейса</h3><small data-i18n="stack.quality">проверка и доступность</small></div>
+                <ul class="tag-list"><li>Responsive UI</li><li>Accessibility</li><li>Playwright</li><li>Forms & States</li></ul>
+              </section>
+            </div>
+            <p class="small-note" data-i18n="p3.note">Стек отражает инструменты из проектов и рабочего фокуса; уровни и проценты намеренно не приписываю.</p>
+            <footer class="page-footer"><span>03</span><span>NESTLIR · PORTFOLIO</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page page-left project-page" data-page="4" hidden>
+            <header class="page-header"><span>PROJECT 01 · DATAVAC</span><span class="issue-mark" data-i18n="label.team">КОМАНДНЫЙ ПРОЕКТ</span></header>
+            <h2 class="project-title">DataVac</h2>
+            <p class="project-subtitle" data-i18n="p4.subtitle">Информационный продукт · модуль вакцинации</p>
+            <div class="project-meta-grid">
+              <div><span class="micro-label" data-i18n="label.role">РОЛЬ</span><strong data-i18n="p4.role">Frontend-задачи в команде</strong></div>
+              <div><span class="micro-label" data-i18n="label.scope">МОЯ ЗОНА</span><strong data-i18n="p4.scope">Модуль вакцинации</strong></div>
+            </div>
+            <section class="case-block">
+              <span class="micro-label" data-i18n="label.context">КОНТЕКСТ</span>
+              <p data-i18n="p4.context">Командный информационный продукт. В этой работе я участвовала в frontend-задачах внутри модуля вакцинации.</p>
+            </section>
+            <section class="case-block">
+              <span class="micro-label" data-i18n="label.contribution">ЧТО МОЖНО ПОСМОТРЕТЬ</span>
+              <ul class="case-list">
+                <li data-i18n="p4.point1">Реализацию интерфейсной части в пределах моей зоны ответственности.</li>
+                <li data-i18n="p4.point2">Работу с данными и состояниями конкретного модуля.</li>
+                <li data-i18n="p4.point3">Код командного frontend-репозитория.</li>
+              </ul>
+            </section>
+            <ul class="tag-list"><li>Frontend</li><li>React</li><li>TypeScript</li><li>API</li></ul>
+            <p class="contribution-note" data-i18n="p4.note">Не приписываю себе остальные части продукта или работу команды целиком.</p>
+            <footer class="page-footer"><span>04</span><span>NESTLIR · PROJECT NOTES</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page page-right project-page" data-page="5" hidden>
+            <header class="page-header"><span>PROJECT 02 · EXPERIMENT</span><span class="issue-mark orange-mark">AI-ASSISTED</span></header>
+            <h2 class="project-title">Furniture<br><em>Store</em></h2>
+            <p class="project-subtitle" data-i18n="p5.subtitle">Эксперимент с продуктовым интерфейсом</p>
+            <figure class="project-figure">
+              <img src="./assets/magazine/furniture-store.svg" alt="" width="720" height="500" loading="lazy">
+              <figcaption data-i18n="p5.caption">Иллюстрация: каталог и карточка товара</figcaption>
+            </figure>
+            <section class="case-block">
+              <span class="micro-label" data-i18n="label.format">ФОРМАТ РАБОТЫ</span>
+              <p data-i18n="p5.context">AI-assisted эксперимент: я задала требования, направление и структуру продукта, а ИИ использовался в процессе реализации.</p>
+            </section>
+            <section class="case-block">
+              <span class="micro-label" data-i18n="label.focus">ФОКУС</span>
+              <ul class="tag-list"><li>Product Brief</li><li>Responsive UI</li><li>Catalogue</li><li>AI-assisted</li></ul>
+            </section>
+            <p class="contribution-note" data-i18n="p5.note">Это самостоятельный эксперимент, не клиентский проект и не заявка на командную коммерческую разработку.</p>
+            <a class="repo-link" href="https://github.com/nestlir/Furniture_Store_Ru" target="_blank" rel="noopener noreferrer"><span data-i18n="link.repository">Открыть репозиторий</span><span aria-hidden="true">↗</span></a>
+            <footer class="page-footer"><span>05</span><span>NESTLIR · PROJECT NOTES</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page page-left" data-page="6" hidden>
+            <header class="page-header"><span data-i18n="p6.section">УЧЕБНЫЙ АРХИВ</span><span>ВЫПУСК 01</span></header>
+            <h2 class="page-title"><span data-i18n="p6.title">Practice</span> <em data-i18n="p6.titleEm">makes craft.</em></h2>
+            <p class="page-intro" data-i18n="p6.intro">Учебные задания — отдельная категория. Они показывают практику с инструментами и паттернами, а не коммерческий опыт.</p>
+            <figure class="archive-figure">
+              <img src="./assets/magazine/study-archive.svg" alt="" width="720" height="500" loading="lazy">
+            </figure>
+            <ol class="study-list">
+              <li><a href="https://github.com/nestlir/web-larek-frontend" target="_blank" rel="noopener noreferrer"><span>01</span><strong>Web Larek</strong><small>TypeScript · E-commerce ↗</small></a></li>
+              <li><a href="https://github.com/nestlir/stellar-burger" target="_blank" rel="noopener noreferrer"><span>02</span><strong>Stellar Burger</strong><small>React · Redux ↗</small></a></li>
+              <li><a href="https://github.com/nestlir/mesto-project-ff" target="_blank" rel="noopener noreferrer"><span>03</span><strong>Mesto</strong><small>React · Forms ↗</small></a></li>
+              <li><a href="https://github.com/nestlir/blog-customizer" target="_blank" rel="noopener noreferrer"><span>04</span><strong>Blog Customizer</strong><small>React · TypeScript ↗</small></a></li>
+              <li><a href="https://github.com/nestlir/ono-tebe-nado" target="_blank" rel="noopener noreferrer"><span>05</span><strong>Оно тебе надо</strong><small>HTML · CSS ↗</small></a></li>
+            </ol>
+            <footer class="page-footer"><span>06</span><span>NESTLIR · STUDY NOTES</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page page-right" data-page="7" hidden>
+            <header class="page-header"><span data-i18n="p7.section">РАБОЧИЙ ПОДХОД</span><span>ВЫПУСК 01</span></header>
+            <h2 class="page-title"><span data-i18n="p7.title">From interface</span><br><em data-i18n="p7.titleEm">to delivery.</em></h2>
+            <p class="page-intro" data-i18n="p7.intro">Мне важно понимать не только экран, но и путь данных, ограничения API, ошибки и то, как продукт ведёт себя после релиза.</p>
+            <figure class="flow-figure">
+              <img src="./assets/magazine/system-flow.svg" alt="Схема: интерфейс, API, данные, доставка" width="820" height="360" loading="lazy">
+            </figure>
+            <div class="principles-grid">
+              <section><span>01</span><h3 data-i18n="p7.oneTitle">Разобраться</h3><p data-i18n="p7.oneText">Контекст, пользователь, ограничения, данные.</p></section>
+              <section><span>02</span><h3 data-i18n="p7.twoTitle">Спроектировать</h3><p data-i18n="p7.twoText">Сценарии, состояния, структуру интерфейса и API.</p></section>
+              <section><span>03</span><h3 data-i18n="p7.threeTitle">Проверить</h3><p data-i18n="p7.threeText">Клавиатуру, маленький экран, ошибки и крайние случаи.</p></section>
+              <section><span>04</span><h3 data-i18n="p7.fourTitle">Доставить</h3><p data-i18n="p7.fourText">Понятная сборка, репозиторий, документация, выкладка.</p></section>
+            </div>
+            <footer class="page-footer"><span>07</span><span>NESTLIR · WORKING NOTES</span></footer>
+          </article>
+
+          <article class="magazine-page paper-page final-page" data-page="8" hidden>
+            <header class="page-header"><span data-i18n="p8.section">КОРРЕСПОНДЕНЦИЯ</span><span>ВЫПУСК 01</span></header>
+            <div class="contact-layout">
+              <div class="contact-copy">
+                <p class="micro-label">ANASTASIA / NESTLIR</p>
+                <h2 class="contact-title"><span data-i18n="p8.title">Давайте</span><br><em data-i18n="p8.titleEm">поговорим.</em></h2>
+                <p class="page-intro" data-i18n="p8.intro">Открыта к интересным командам, продуктовым задачам и сотрудничеству, где ценят ясность и внимательную реализацию.</p>
+                <dl class="contact-list">
+                  <div><dt>EMAIL</dt><dd><a href="mailto:nestlir@mail.ru">nestlir@mail.ru ↗</a></dd></div>
+                  <div><dt>GITHUB</dt><dd><a href="https://github.com/nestlir" target="_blank" rel="noopener noreferrer">github.com/nestlir ↗</a></dd></div>
+                  <div><dt>TELEGRAM</dt><dd><a href="https://t.me/nestlir" target="_blank" rel="noopener noreferrer">@nestlir ↗</a></dd></div>
+                </dl>
+              </div>
+              <div class="contact-art" role="img" aria-label="Иллюстрированный портрет автора в журнальной манере">
+                <img src="https://gcdn.picsart.com/picsart-mcp/94bd9f3c-b926-4eeb-a846-6230e29fad1c.png" alt="" loading="lazy">
+                <span class="portrait-caption">A NOTE FROM THE EDITOR</span>
+              </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+              <label><span data-i18n="form.name">Ваше имя</span><input type="text" name="name" autocomplete="name" required></label>
+              <label><span data-i18n="form.email">Почта для ответа</span><input type="email" name="email" autocomplete="email" required></label>
+              <label class="message-field"><span data-i18n="form.message">Сообщение</span><textarea name="message" rows="2" required></textarea></label>
+              <button class="button-primary" type="submit"><span data-i18n="form.submit">Подготовить письмо</span><b aria-hidden="true">↗</b></button>
+              <p class="form-status" id="formStatus" aria-live="polite" data-i18n="form.hint">Откроется ваше почтовое приложение — письмо можно проверить перед отправкой.</p>
+            </form>
+            <footer class="page-footer"><span>08</span><span>THANK YOU FOR READING · NESTLIR</span></footer>
+          </article>
+        </section>
+
+        <button class="page-arrow page-arrow-right" id="nextPage" type="button" aria-label="Следующая страница"><span aria-hidden="true">›</span></button>
+      </div>
+
+      <div class="reader-footer">
+        <div class="progress-track" id="progressTrack" aria-label="Переход к странице">
+          <button type="button" data-progress-page="1" aria-label="Страница 1"></button>
+          <button type="button" data-progress-page="2" aria-label="Страница 2"></button>
+          <button type="button" data-progress-page="3" aria-label="Страница 3"></button>
+          <button type="button" data-progress-page="4" aria-label="Страница 4"></button>
+          <button type="button" data-progress-page="5" aria-label="Страница 5"></button>
+          <button type="button" data-progress-page="6" aria-label="Страница 6"></button>
+          <button type="button" data-progress-page="7" aria-label="Страница 7"></button>
+          <button type="button" data-progress-page="8" aria-label="Страница 8"></button>
+        </div>
+        <div class="page-counter"><span id="pageCounter">01 / 08</span><small data-i18n="reader.issue">ВЫПУСК 01</small></div>
+        <div class="reader-actions">
+          <span class="keyboard-hint" data-i18n="reader.hint">← → листать · перетащите страницу</span>
+          <button class="footer-action" id="printButton" type="button" data-i18n="reader.print">Печать / PDF</button>
+        </div>
+      </div>
+    </main>
+    <p class="sr-only" id="readerAnnouncement" aria-live="polite" aria-atomic="true"></p>
   </div>
-</header>
-<nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" hidden>
-  <a href="#work" data-i18n="nav.work">Работы</a><a href="#approach" data-i18n="nav.approach">Подход</a><a href="#about" data-i18n="nav.about">Обо мне</a><a href="#contact" data-i18n="nav.contact">Контакт</a>
-</nav>
-<main id="main">
-<section class="hero" id="top">
-  <div class="hero-copy">
-    <p class="eyebrow"><span class="live-dot"></span><span data-i18n="hero.eyebrow">FRONTEND DEVELOPER · RU / EN</span></p>
-    <h1><span data-i18n="hero.line1">Цифровые</span><br><span data-i18n="hero.line2">вещи с</span> <em data-i18n="hero.em">человеческим</em><br><span data-i18n="hero.line3">масштабом.</span></h1>
-    <p class="hero-intro" data-i18n="hero.intro">Я Анастасия. Собираю ясные интерфейсы и продумываю детали, которые помогают людям уверенно двигаться по продукту.</p>
-    <div class="hero-actions"><a class="button button-dark" href="#work" data-i18n="hero.cta">Смотреть избранное <span aria-hidden="true">↘</span></a><a class="text-link" href="mailto:nestlir@mail.ru" data-i18n="hero.mail">Написать мне ↗</a></div>
-  </div>
-  <div class="hero-map" aria-label="Авторская схематичная карта интерфейсов" role="img">
-    <img src="./assets/atlas-map.svg" alt="">
-    <span class="map-stamp">N° 01<br><small>MADE WITH CARE</small></span>
-    <span class="map-caption"><i></i> FIELD 55°45′N / 37°37′E</span>
-  </div>
-  <div class="hero-foot"><span data-i18n="hero.note">Заметки о работе с интерфейсами и продуктами</span><a href="#work" aria-label="Прокрутить к работам">↓</a><span>55°45′N — 37°37′E</span></div>
-</section>
-<div class="ticker" aria-label="Дизайн, доступность, интерфейс, исследование"><div class="ticker-track"><span>DESIGN WITH INTENT</span><b>✳</b><span>BUILD WITH CARE</span><b>✳</b><span>DESIGN WITH INTENT</span><b>✳</b><span>BUILD WITH CARE</span><b>✳</b></div></div>
-<section class="work section-wrap" id="work">
-  <div class="section-heading"><div><p class="eyebrow">01 / <span data-i18n="work.label">ИЗБРАННЫЕ РАБОТЫ</span></p><h2 data-i18n="work.title">Полевой архив<span class="heading-period">.</span></h2></div><p class="section-intro" data-i18n="work.intro">Небольшая подборка проектов. Роль и контекст указаны прямо — чтобы было понятно, что именно стоит за каждой работой.</p></div>
-  <div class="filters" role="group" aria-label="Фильтр проектов"><button class="filter is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="filter.all">Все</button><button class="filter" type="button" data-filter="team" aria-pressed="false" data-i18n="filter.team">Командный проект</button><button class="filter" type="button" data-filter="assisted" aria-pressed="false" data-i18n="filter.assisted">С помощью ИИ</button><button class="filter" type="button" data-filter="study" aria-pressed="false" data-i18n="filter.study">Учебные</button></div>
-  <p class="results-count" id="resultsCount" aria-live="polite"></p><div class="project-grid" id="projectGrid"></div>
-</section>
-<section class="approach" id="approach"><div class="approach-inner"><p class="eyebrow">02 / <span data-i18n="approach.label">РАБОЧИЕ ПРИНЦИПЫ</span></p><h2><span data-i18n="approach.line1">Хороший интерфейс</span><br><span data-i18n="approach.line2">сначала</span> <em data-i18n="approach.em">понятен.</em></h2><div class="principles"><article><span>01</span><h3 data-i18n="approach.one.title">Слушать контекст</h3><p data-i18n="approach.one.text">Разобраться в задаче, людях и ограничениях до выбора решения.</p></article><article><span>02</span><h3 data-i18n="approach.two.title">Упростить путь</h3><p data-i18n="approach.two.text">Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.</p></article><article><span>03</span><h3 data-i18n="approach.three.title">Проверить детали</h3><p data-i18n="approach.three.text">Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.</p></article></div></div></section>
-<section class="about section-wrap" id="about"><div class="about-index"><span>03 / ABOUT</span><div class="index-rule"></div><span>EST. 2026</span></div><div class="about-copy"><p class="eyebrow" data-i18n="about.label">НЕМНОГО ОБО МНЕ</p><h2><span data-i18n="about.line1">Внимание к людям.</span><br><span data-i18n="about.line2">Любопытство к системам.</span></h2><p data-i18n="about.text">Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.</p><a class="text-link" href="https://github.com/nestlir" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><div class="about-note"><span class="note-mark">✳</span><p data-i18n="about.note">Каждый проект — точка на карте. Важен и маршрут, и то, что он помог понять.</p><small>PERSONAL FIELD NOTE / 001</small></div></section>
-<section class="contact" id="contact"><div><p class="eyebrow">04 / CONTACT</p><h2><span data-i18n="contact.line1">Есть задача?</span><br><em data-i18n="contact.em">Давайте обсудим.</em></h2><p data-i18n="contact.text">Открыта к интересным командам и осмысленным цифровым продуктам.</p></div><a class="contact-link" href="mailto:nestlir@mail.ru">nestlir@mail.ru <span>↗</span></a></section>
-</main>
-<footer><a class="wordmark footer-mark" href="#top"><span class="wordmark-mark">N.</span><span>NESTLIR</span></a><span>© 2026 Anastasia · <span data-i18n="footer.note">Сделано внимательно</span></span><a href="#top" data-i18n="footer.top">Наверх ↑</a></footer>
-<script src="./app.js" defer></script>
-</body></html>
+  <script src="./app.js" defer></script>
+</body>
+</html>

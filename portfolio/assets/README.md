@@ -1,20 +1,16 @@
-# Visual assets
-
-This directory is reserved for portfolio-owned visual assets.
+# Magazine assets
 
 ## Structure
+- `magazine/`: paper texture, editorial ornament, custom project illustrations, monogram and icon family.
+- `../design-system/`: art direction, character identity rules, storyboard, UI kit, grid, motion, accessibility and tokens.
+- `../favicon.svg` and `../apple-touch-icon.svg`: browser and home-screen identity.
 
-- `stickers/` — decorative stickers and badges
-- `icons/` — interface and technology icons
-- `photos/` — project and editorial photography
-- `markers/` — frame labels, stamps and visual punctuation
-
-External project imagery currently uses remote URLs so the GitHub Pages build stays lightweight. When final licensed images are selected, place optimized WebP/AVIF files in the corresponding folders and update the project data in `script.js`.
+## Provenance
+The owner supplied the personal portrait references and selected RONDO-inspired fashion illustration reference. The approved generated cover art is stored in the owner's durable Picsart Drive and referenced in `design-system/asset-manifest.md`. Original project vignettes and interface icons are hand-authored SVGs for this repository.
 
 ## Rules
-
-- Prefer SVG for icons and stickers.
-- Prefer WebP/AVIF for photographs.
-- Keep decorative assets separate from content assets.
-- Add meaningful `alt` text to informative images; mark purely decorative assets `aria-hidden="true"`.
-- Do not use visual elements as substitutes for project information or navigation.
+- Prefer SVG for line art, icons, project diagrams and editorial ornaments.
+- Keep the user's face and hair identity consistent across generated portraits.
+- Do not publish raw personal portrait photographs.
+- Add descriptive alt text for informative images; decorative images use empty alt text.
+- Do not use illustrations as substitutes for project information or repository links.

@@ -1,0 +1,34 @@
+/* Atelier Narrative — design tokens */
+:root {
+  color-scheme: light;
+  --paper: #f4eddd;
+  --paper-deep: #e9dec7;
+  --paper-shadow: #d8cbb0;
+  --ink: #211e1b;
+  --ink-soft: #514941;
+  --olive: #73784f;
+  --olive-deep: #393d2e;
+  --olive-light: #9b9a72;
+  --wine: #762d34;
+  --orange: #e78426;
+  --gold: #c39a52;
+  --sage: #a7a786;
+  --line: rgba(48, 42, 34, .42);
+  --line-soft: rgba(48, 42, 34, .18);
+  --paper-grain-opacity: .15;
+  --shadow-book: 0 24px 60px rgba(17, 19, 13, .22);
+  --serif-display: "Bodoni MT", Didot, "Times New Roman", Georgia, serif;
+  --serif-text: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --sans: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --page-padding: clamp(22px, 3.4vw, 52px);
+  --spread-width: min(96vw, calc(100dvh * 1.58));
+}

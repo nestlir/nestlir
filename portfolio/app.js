@@ -1,123 +1,232 @@
 (() => {
   'use strict';
-  const projects = [
-    { id:'datavac', type:'team', number:'01', title:'DataVac', field:'TEAM PROJECT', tags:['Frontend','Vaccination'], repo:'https://github.com/DataVac-masterskaya/data-vac-frontend', ru:{summary:'Командный информационный продукт. Мой вклад — frontend-задачи в модуле вакцинации.', note:'Остальные части продукта и командные технологии не приписываю себе.'}, en:{summary:'Team information product. My contribution was frontend work in the vaccination module.', note:'Other product areas and team technologies are not presented as my individual work.'} },
-    { id:'furniture', type:'assisted', number:'02', title:'Furniture Store', field:'AI-ASSISTED', tags:['Product brief','AI-assisted'], repo:'https://github.com/nestlir/Furniture_Store_Ru', ru:{summary:'Эксперимент с мебельным магазином, созданный с помощью ИИ по моим требованиям и направлениям.', note:'Отдельно показываю постановку задачи и AI-assisted формат работы.'}, en:{summary:'An AI-assisted furniture store experiment shaped by my requirements and creative direction.', note:'The project brief and AI-assisted nature of the work are stated clearly.'} },
-    { id:'larek', type:'study', number:'03', title:'Web Larek', field:'STUDY PROJECT', tags:['TypeScript','E-commerce'], repo:'https://github.com/nestlir/web-larek-frontend', ru:{summary:'Учебный проект по заданию: интерфейс интернет-магазина и работа с каталогом.'}, en:{summary:'Educational assignment: an online shop interface and product catalog.'} },
-    { id:'burger', type:'study', number:'04', title:'Stellar Burger', field:'STUDY PROJECT', tags:['React','Redux'], repo:'https://github.com/nestlir/stellar-burger', ru:{summary:'Учебный проект по заданию: интерфейс сборки заказа и каталог ингредиентов.'}, en:{summary:'Educational assignment: an order builder interface and ingredient catalog.'} },
-    { id:'mesto', type:'study', number:'05', title:'Mesto', field:'STUDY PROJECT', tags:['React','Forms'], repo:'https://github.com/nestlir/mesto-project-ff', ru:{summary:'Учебный проект по заданию: профиль и коллекция карточек с пользовательскими действиями.'}, en:{summary:'Educational assignment: a profile and card collection with user interactions.'} },
-    { id:'blog', type:'study', number:'06', title:'Blog Customizer', field:'STUDY PROJECT', tags:['React','TypeScript'], repo:'https://github.com/nestlir/blog-customizer', ru:{summary:'Учебный проект по заданию: интерфейс статьи с настраиваемыми параметрами оформления.'}, en:{summary:'Educational assignment: an article interface with configurable display settings.'} },
-    { id:'ono', type:'study', number:'07', title:'Оно тебе надо', field:'STUDY PROJECT', tags:['HTML','CSS'], repo:'https://github.com/nestlir/ono-tebe-nado', ru:{summary:'Учебный проект по заданию: адаптивная редакционная страница и типографическая композиция.'}, en:{summary:'Educational assignment: a responsive editorial page and typographic composition.'} }
-  ];
+  const book = document.getElementById('magazineBook');
+  const pages = [...document.querySelectorAll('.magazine-page')];
+  const counter = document.getElementById('pageCounter');
+  const progress = [...document.querySelectorAll('[data-progress-page]')];
+  const previous = document.getElementById('previousPage');
+  const next = document.getElementById('nextPage');
+  const announcement = document.getElementById('readerAnnouncement');
+  const mobileQuery = window.matchMedia('(max-width: 760px)');
+  let currentPage = 1;
+  let language = 'ru';
+  let startX = null;
+  let historyReady = false;
+
   const dictionary = {
     ru: {
-      'nav.work':'Работы','nav.approach':'Подход','nav.about':'Обо мне','nav.contact':'Контакт',
-      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Цифровые','hero.line2':'вещи с','hero.em':'человеческим','hero.line3':'масштабом.','hero.intro':'Я Анастасия. Собираю ясные интерфейсы и продумываю детали, которые помогают людям уверенно двигаться по продукту.','hero.cta':'Смотреть избранное','hero.mail':'Написать мне ↗','hero.note':'Заметки о работе с интерфейсами и продуктами',
-      'work.label':'ИЗБРАННЫЕ РАБОТЫ','work.title':'Полевой архив','work.intro':'Небольшая подборка проектов. Роль и контекст указаны прямо — чтобы было понятно, что именно стоит за каждой работой.',
-      'filter.all':'Все','filter.team':'Командный проект','filter.assisted':'С помощью ИИ','filter.study':'Учебные',
-      'approach.label':'РАБОЧИЕ ПРИНЦИПЫ','approach.line1':'Хороший интерфейс','approach.line2':'сначала','approach.em':'понятен.','approach.one.title':'Слушать контекст','approach.one.text':'Разобраться в задаче, людях и ограничениях до выбора решения.','approach.two.title':'Упростить путь','approach.two.text':'Убрать лишние шаги, назвать вещи привычными словами, показать следующий ход.','approach.three.title':'Проверить детали','approach.three.text':'Продумать состояния, клавиатурную навигацию и поведение на маленьком экране.',
-      'about.label':'НЕМНОГО ОБО МНЕ','about.line1':'Внимание к людям.','about.line2':'Любопытство к системам.','about.text':'Мне близка frontend-разработка на стыке визуальной культуры и инженерного мышления. В командной работе я предпочитаю ясно обозначать свою зону ответственности и показывать, чему научилась на практике.','about.note':'Каждый проект — точка на карте. Важен и маршрут, и то, что он помог понять.',
-      'contact.line1':'Есть задача?','contact.em':'Давайте обсудим.','contact.text':'Открыта к интересным командам и осмысленным цифровым продуктам.','footer.note':'Сделано внимательно','footer.top':'Наверх ↑','card.open':'Открыть репозиторий ↗','card.note':'Вклад описан отдельно от контекста проекта.','results':'ПРОЕКТОВ'
+      'nav.cover':'Обложка','nav.stack':'Стек','nav.work':'Работы','nav.contact':'Контакты',
+      'cover.description':'Fullstack-разработка на стыке интерфейсов, API, данных и внимательного продуктового мышления.',
+      'cover.role':'РОЛЬ','cover.focus':'ФОКУС','cover.enter':'Листать журнал',
+      'p2.section':'СОДЕРЖАНИЕ','p2.title':'В этом','p2.titleEm':'выпуске',
+      'toc.stack':'Стек','toc.stackNote':'Инструменты и технологии','toc.dataVac':'Командный продукт · вклад во frontend','toc.furniture':'AI-assisted эксперимент','toc.study':'Учебный архив','toc.studyNote':'Практика и освоение инструментов','toc.approach':'Подход','toc.approachNote':'От интерфейса к поставке','toc.contact':'Контакты','toc.contactNote':'Профили и связь',
+      'p2.noteLabel':'ОТ АВТОРА','p2.note':'Мне интересны стыки между слоями продукта: как интерфейс разговаривает с API, как данные становятся понятными, а техническое решение — предсказуемым для человека.',
+      'p3.section':'ТЕХНОЛОГИИ','p3.intro':'Инструменты, с которыми собираю продукт целиком. Без шкал «владения» — только технологии и области практики.',
+      'stack.frontend':'интерфейсы','stack.backend':'сервисы и API','stack.dataTitle':'Данные и инфраструктура','stack.data':'хранение и выкладка','stack.qualityTitle':'Качество интерфейса','stack.quality':'проверка и доступность',
+      'p3.note':'Стек отражает инструменты из проектов и рабочего фокуса; уровни и проценты намеренно не приписываю.',
+      'label.team':'КОМАНДНЫЙ ПРОЕКТ','label.role':'РОЛЬ','label.scope':'МОЯ ЗОНА','label.context':'КОНТЕКСТ','label.contribution':'ЧТО МОЖНО ПОСМОТРЕТЬ','label.format':'ФОРМАТ РАБОТЫ','label.focus':'ФОКУС',
+      'p4.subtitle':'Информационный продукт · модуль вакцинации','p4.role':'Frontend-задачи в команде','p4.scope':'Модуль вакцинации','p4.context':'Командный информационный продукт. В этой работе я участвовала в frontend-задачах внутри модуля вакцинации.',
+      'p4.point1':'Реализацию интерфейсной части в пределах моей зоны ответственности.','p4.point2':'Работу с данными и состояниями конкретного модуля.','p4.point3':'Код командного frontend-репозитория.','p4.note':'Не приписываю себе остальные части продукта или работу команды целиком.',
+      'p5.subtitle':'Эксперимент с продуктовым интерфейсом','p5.caption':'Иллюстрация: каталог и карточка товара','p5.context':'AI-assisted эксперимент: я задала требования, направление и структуру продукта, а ИИ использовался в процессе реализации.','p5.note':'Это самостоятельный эксперимент, не клиентский проект и не заявка на командную коммерческую разработку.',
+      'link.repository':'Открыть репозиторий',
+      'p6.section':'УЧЕБНЫЙ АРХИВ','p6.title':'Practice','p6.titleEm':'makes craft.','p6.intro':'Учебные задания — отдельная категория. Они показывают практику с инструментами и паттернами, а не коммерческий опыт.',
+      'p7.section':'РАБОЧИЙ ПОДХОД','p7.title':'From interface','p7.titleEm':'to delivery.','p7.intro':'Мне важно понимать не только экран, но и путь данных, ограничения API, ошибки и то, как продукт ведёт себя после релиза.',
+      'p7.oneTitle':'Разобраться','p7.oneText':'Контекст, пользователь, ограничения, данные.','p7.twoTitle':'Спроектировать','p7.twoText':'Сценарии, состояния, структуру интерфейса и API.','p7.threeTitle':'Проверить','p7.threeText':'Клавиатуру, маленький экран, ошибки и крайние случаи.','p7.fourTitle':'Доставить','p7.fourText':'Понятная сборка, репозиторий, документация, выкладка.',
+      'p8.section':'КОРРЕСПОНДЕНЦИЯ','p8.title':'Давайте','p8.titleEm':'поговорим.','p8.intro':'Открыта к интересным командам, продуктовым задачам и сотрудничеству, где ценят ясность и внимательную реализацию.',
+      'form.name':'Ваше имя','form.email':'Почта для ответа','form.message':'Сообщение','form.submit':'Подготовить письмо','form.hint':'Откроется ваше почтовое приложение — письмо можно проверить перед отправкой.',
+      'reader.issue':'ВЫПУСК 01','reader.hint':'← → листать · перетащите страницу','reader.print':'Печать / PDF',
+      'menu.open':'Открыть меню','menu.close':'Закрыть меню','page.announce':'Страница'
     },
     en: {
-      'nav.work':'Work','nav.approach':'Approach','nav.about':'About','nav.contact':'Contact',
-      'hero.eyebrow':'FRONTEND DEVELOPER · RU / EN','hero.line1':'Digital','hero.line2':'things with a','hero.em':'human','hero.line3':'scale.','hero.intro':'I’m Anastasia. I build clear interfaces and sweat the details that help people move through a product with confidence.','hero.cta':'Explore selected work','hero.mail':'Get in touch ↗','hero.note':'Field notes on interfaces and products',
-      'work.label':'SELECTED WORK','work.title':'Field archive','work.intro':'A small selection of projects. Role and context are stated plainly, so you can see what each piece represents.',
-      'filter.all':'All','filter.team':'Team project','filter.assisted':'AI-assisted','filter.study':'Study projects',
-      'approach.label':'WORKING PRINCIPLES','approach.line1':'A good interface','approach.line2':'is first','approach.em':'understood.','approach.one.title':'Listen to context','approach.one.text':'Understand the task, people and constraints before choosing a solution.','approach.two.title':'Make the path clear','approach.two.text':'Remove extra steps, use familiar words and make the next move visible.','approach.three.title':'Check the details','approach.three.text':'Think through states, keyboard navigation and small-screen behaviour.',
-      'about.label':'A LITTLE ABOUT ME','about.line1':'Care for people.','about.line2':'Curiosity about systems.','about.text':'I’m drawn to frontend work where visual culture meets engineering. In team settings, I prefer to state my own responsibilities clearly and show what I have learned through practice.','about.note':'Each project is a point on the map. The route matters, as does what it helps us understand.',
-      'contact.line1':'Have a challenge?','contact.em':'Let’s talk.','contact.text':'Open to thoughtful teams and meaningful digital products.','footer.note':'Made with care','footer.top':'Back to top ↑','card.open':'View repository ↗','card.note':'My contribution is distinct from the project context.','results':'PROJECTS'
+      'nav.cover':'Cover','nav.stack':'Stack','nav.work':'Work','nav.contact':'Contact',
+      'cover.description':'Full-stack product work across interfaces, APIs, data and thoughtful engineering decisions.',
+      'cover.role':'ROLE','cover.focus':'FOCUS','cover.enter':'Read the issue',
+      'p2.section':'CONTENTS','p2.title':'Inside this','p2.titleEm':'issue',
+      'toc.stack':'Stack','toc.stackNote':'Tools and technologies','toc.dataVac':'Team product · frontend contribution','toc.furniture':'AI-assisted experiment','toc.study':'Study archive','toc.studyNote':'Practice and learning','toc.approach':'Approach','toc.approachNote':'From interface to delivery','toc.contact':'Contact','toc.contactNote':'Profiles and correspondence',
+      'p2.noteLabel':'A NOTE FROM THE AUTHOR','p2.note':'I am interested in the seams between product layers: how an interface talks to an API, how data becomes understandable, and how technical decisions remain predictable for people.',
+      'p3.section':'TECHNOLOGY','p3.intro':'Tools I use to assemble product experiences. No invented proficiency scores — just technologies and areas of practice.',
+      'stack.frontend':'interfaces','stack.backend':'services and APIs','stack.dataTitle':'Data and infrastructure','stack.data':'storage and delivery','stack.qualityTitle':'Interface quality','stack.quality':'testing and accessibility',
+      'p3.note':'The list reflects tools present in projects and current focus; I intentionally avoid made-up levels or percentages.',
+      'label.team':'TEAM PROJECT','label.role':'ROLE','label.scope':'MY SCOPE','label.context':'CONTEXT','label.contribution':'WHAT TO EXPLORE','label.format':'WORK FORMAT','label.focus':'FOCUS',
+      'p4.subtitle':'Information product · vaccination module','p4.role':'Frontend work within the team','p4.scope':'Vaccination module','p4.context':'A team-built information product. My contribution was frontend work within the vaccination module.',
+      'p4.point1':'Implementation of interface tasks within my scope.','p4.point2':'Data and UI states for the specific module.','p4.point3':'The team frontend repository.','p4.note':'I do not claim the rest of the product or the team’s work as my own.',
+      'p5.subtitle':'Product interface experiment','p5.caption':'Illustration: catalogue and product detail','p5.context':'An AI-assisted experiment: I defined the brief, direction and product structure, with AI used during implementation.','p5.note':'This is an independent experiment, not a client engagement or a claim of team-based commercial delivery.',
+      'link.repository':'Open repository',
+      'p6.section':'STUDY ARCHIVE','p6.title':'Practice','p6.titleEm':'makes craft.','p6.intro':'Educational assignments are listed separately. They show practice with tools and patterns, not commercial experience.',
+      'p7.section':'WORKING APPROACH','p7.title':'From interface','p7.titleEm':'to delivery.','p7.intro':'I care about more than the screen: data flow, API constraints, errors and how a product behaves after release.',
+      'p7.oneTitle':'Understand','p7.oneText':'Context, user, constraints and data.','p7.twoTitle':'Design','p7.twoText':'Journeys, states, interface and API structure.','p7.threeTitle':'Verify','p7.threeText':'Keyboard, small screens, errors and edge cases.','p7.fourTitle':'Deliver','p7.fourText':'Clear build, repository, documentation and deployment.',
+      'p8.section':'CORRESPONDENCE','p8.title':'Let’s','p8.titleEm':'talk.','p8.intro':'Open to thoughtful teams, product challenges and collaborations where clarity and careful implementation matter.',
+      'form.name':'Your name','form.email':'Reply-to email','form.message':'Message','form.submit':'Prepare email','form.hint':'Your email application will open so you can review the message before sending.',
+      'reader.issue':'ISSUE 01','reader.hint':'← → turn · swipe the page','reader.print':'Print / PDF',
+      'menu.open':'Open menu','menu.close':'Close menu','page.announce':'Page'
     }
   };
-  const projectGrid = document.getElementById('projectGrid');
-  const resultsCount = document.getElementById('resultsCount');
-  let language = 'ru';
-  let filter = 'all';
-  const text = (key) => dictionary[language][key] || dictionary.ru[key] || key;
-  const safeGet = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
-  const safeSet = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
-  function make(tag, className, value) {
-    const el = document.createElement(tag);
-    if (className) el.className = className;
-    if (value !== undefined) el.textContent = value;
-    return el;
+
+  function safeGet(key,fallback){try{return localStorage.getItem(key)||fallback;}catch{return fallback;}}
+  function safeSet(key,value){try{localStorage.setItem(key,value);}catch{}}
+  function isMobile(){return mobileQuery.matches;}
+  function normalizePage(page){
+    const value=Math.max(1,Math.min(8,Number(page)||1));
+    if(isMobile()||value===1||value===8)return value;
+    return value%2===0?value:value-1;
   }
-  function renderProjects() {
-    const visible = projects.filter((project) => filter === 'all' || project.type === filter);
-    projectGrid.replaceChildren();
-    visible.forEach((project) => {
-      const card = make('article', 'project-card');
-      card.dataset.kind = project.type;
-      const visual = make('div', 'project-visual art-' + project.number);
-      visual.setAttribute('aria-hidden', 'true');
-      visual.append(make('span', 'visual-coordinate', project.number + ' / NESTLIR'));
-      visual.append(make('span', 'visual-glyph', project.number === '01' ? '⌁' : project.number === '02' ? '◌' : '✳'));
-      visual.append(make('span', 'visual-caption', project.title.toUpperCase()));
-      const content = make('div', 'project-copy');
-      const meta = make('div', 'project-meta');
-      meta.append(make('span', 'project-field', language === 'ru' ? ({team:'КОМАНДНЫЙ ПРОЕКТ',assisted:'AI-ASSISTED',study:'УЧЕБНЫЙ ПРОЕКТ'}[project.type]) : project.field));
-      meta.append(make('span', 'project-number', project.number));
-      const title = make('h3', '', project.title);
-      const summary = make('p', 'project-summary', project[language].summary);
-      const tags = make('ul', 'tag-list');
-      project.tags.forEach((tag) => tags.append(make('li', '', tag)));
-      const note = project[language].note ? make('p','contribution-note',project[language].note) : make('p','contribution-note',text('card.note'));
-      const link = make('a', 'project-link', text('card.open'));
-      link.href = project.repo; link.target = '_blank'; link.rel = 'noopener noreferrer';
-      content.append(meta,title,summary,tags,note,link);
-      card.append(visual,content); projectGrid.append(card);
+  function visiblePages(){
+    if(currentPage===1||currentPage===8)return [currentPage];
+    return isMobile()?[currentPage]:[currentPage,currentPage+1];
+  }
+  function pageLabel(){
+    if(currentPage===1||currentPage===8||isMobile())return String(currentPage).padStart(2,'0')+' / 08';
+    return String(currentPage).padStart(2,'0')+'–'+String(currentPage+1).padStart(2,'0')+' / 08';
+  }
+  function renderPage({announce=true}={}){
+    const visible=visiblePages();
+    book.className='magazine-book '+(currentPage===1?'is-cover':currentPage===8||isMobile()?'is-single':'is-spread');
+    pages.forEach((page)=>{
+      const active=visible.includes(Number(page.dataset.page));
+      page.hidden=!active;
+      page.inert=!active;
+      page.setAttribute('aria-hidden',String(!active));
     });
-    resultsCount.textContent = String(visible.length).padStart(2,'0') + ' ' + text('results');
-  }
-  function applyLanguage(next) {
-    language = next === 'en' ? 'en' : 'ru';
-    document.documentElement.lang = language;
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const value = dictionary[language][el.dataset.i18n];
-      if (value !== undefined) el.textContent = value;
+    counter.textContent=pageLabel();
+    previous.disabled=currentPage===1;
+    next.disabled=currentPage===8;
+    progress.forEach((button)=>{
+      const n=Number(button.dataset.progressPage);
+      const active=visible.includes(n);
+      button.classList.toggle('is-current',n===currentPage);
+      button.classList.toggle('is-visible',active);
+      button.setAttribute('aria-current',active?'page':'false');
     });
-    document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
-    applyFilter(filter);
-    document.title = language === 'ru' ? 'Анастасия — интерфейсы и цифровые продукты' : 'Anastasia — interfaces and digital products';
-    safeSet('portfolio-language', language);
-  }
-  function applyFilter(next) {
-    filter = next;
-    document.querySelectorAll('[data-filter]').forEach((button) => {
-      const active = button.dataset.filter === filter;
-      button.classList.toggle('is-active',active);
-      button.setAttribute('aria-pressed',String(active));
+    document.querySelectorAll('[data-go-page]').forEach((link)=>{
+      const target=normalizePage(link.dataset.goPage);
+      link.classList.toggle('is-current',visible.includes(target));
     });
-    renderProjects();
+    if(announce)announcement.textContent=(dictionary[language]['page.announce']||'Страница')+' '+pageLabel();
   }
-  document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-  document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => { applyLanguage(button.dataset.lang); setTheme(document.body.classList.contains('dark')); }));
-  const savedLanguage = safeGet('portfolio-language','ru');
-  applyLanguage(savedLanguage);
-  const themeToggle = document.getElementById('themeToggle');
-  const setTheme = (dark) => {
-    document.body.classList.toggle('dark',dark);
-    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
-    themeToggle.setAttribute('aria-pressed',String(dark));
-    themeToggle.setAttribute('aria-label',dark ? (language === 'ru' ? 'Включить светлую тему' : 'Switch to light theme') : (language === 'ru' ? 'Включить тёмную тему' : 'Switch to dark theme'));
-  };
-  setTheme(safeGet('portfolio-theme','light') === 'dark');
-  themeToggle.addEventListener('click',() => {
-    const dark = !document.body.classList.contains('dark');
-    setTheme(dark); safeSet('portfolio-theme',dark ? 'dark' : 'light');
+  function setPage(page,{history=true,announce=true}={}){
+    currentPage=normalizePage(page);
+    renderPage({announce});
+    if(history){
+      const nextUrl='#page-'+currentPage;
+      if(window.location.hash!==nextUrl)window.history.pushState({page:currentPage},'',nextUrl);
+    }
+  }
+  function forward(){
+    if(isMobile())setPage(currentPage+1);
+    else if(currentPage===1)setPage(2);
+    else if(currentPage===2)setPage(4);
+    else if(currentPage===4)setPage(6);
+    else if(currentPage===6)setPage(8);
+  }
+  function backward(){
+    if(isMobile())setPage(currentPage-1);
+    else if(currentPage===8)setPage(6);
+    else if(currentPage===6)setPage(4);
+    else if(currentPage===4)setPage(2);
+    else if(currentPage===2)setPage(1);
+  }
+  function pageFromHash(){
+    const match=window.location.hash.match(/^#page-(\d+)$/);
+    return match?Number(match[1]):1;
+  }
+
+  document.querySelectorAll('[data-go-page]').forEach((link)=>link.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const page=Number(link.dataset.goPage);
+    setPage(page);
+    closeMenu();
+  }));
+  progress.forEach((button)=>button.addEventListener('click',()=>setPage(Number(button.dataset.progressPage))));
+  previous.addEventListener('click',backward);
+  next.addEventListener('click',forward);
+  window.addEventListener('popstate',()=>setPage(pageFromHash(),{history:false}));
+  mobileQuery.addEventListener?.('change',()=>setPage(currentPage,{history:false,announce:false}));
+  window.addEventListener('resize',()=>setPage(currentPage,{history:false,announce:false}));
+
+  document.addEventListener('keydown',(event)=>{
+    const target=event.target;
+    if(target instanceof HTMLElement && (target.isContentEditable||['INPUT','TEXTAREA','SELECT'].includes(target.tagName)))return;
+    if(event.altKey||event.ctrlKey||event.metaKey)return;
+    if(event.key==='ArrowRight'){event.preventDefault();forward();}
+    if(event.key==='ArrowLeft'){event.preventDefault();backward();}
+    if(event.key==='Home'){event.preventDefault();setPage(1);}
+    if(event.key==='End'){event.preventDefault();setPage(8);}
   });
-  const menuButton = document.getElementById('menuToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  function setMenu(open) {
-    menuButton.setAttribute('aria-expanded',String(open));
-    menuButton.setAttribute('aria-label',open ? (language === 'ru' ? 'Закрыть меню' : 'Close menu') : (language === 'ru' ? 'Открыть меню' : 'Open menu'));
-    mobileNav.hidden = !open;
-    document.body.classList.toggle('menu-open',open);
-    document.body.style.overflow = open ? 'hidden' : '';
-    if (open) mobileNav.querySelector('a').focus();
-    else menuButton.focus();
+
+  book.addEventListener('pointerdown',(event)=>{
+    if(event.target.closest('a,button,input,textarea,select')){startX=null;return;}
+    startX=event.clientX;
+  });
+  book.addEventListener('pointerup',(event)=>{
+    if(startX===null)return;
+    const delta=event.clientX-startX;
+    startX=null;
+    if(Math.abs(delta)>48){if(delta<0)forward();else backward();}
+  });
+  book.addEventListener('pointercancel',()=>{startX=null;});
+
+  const languageButtons=[...document.querySelectorAll('[data-lang]')];
+  function applyLanguage(next){
+    language=next==='en'?'en':'ru';
+    document.documentElement.lang=language;
+    document.querySelectorAll('[data-i18n]').forEach((element)=>{
+      const value=dictionary[language][element.dataset.i18n];
+      if(value!==undefined)element.textContent=value;
+    });
+    languageButtons.forEach((button)=>button.setAttribute('aria-pressed',String(button.dataset.lang===language)));
+    document.title=language==='ru'?'NESTLIR — Portfolio Magazine · Выпуск 01':'NESTLIR — Portfolio Magazine · Issue 01';
+    safeSet('nestlir-magazine-language',language);
   }
-  menuButton.addEventListener('click',() => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click',() => { mobileNav.hidden = true; menuButton.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); document.body.style.overflow = ''; menuButton.focus(); }));
-  document.addEventListener('keydown',(event) => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') setMenu(false); });
+  languageButtons.forEach((button)=>button.addEventListener('click',()=>applyLanguage(button.dataset.lang)));
+
+  const menuButton=document.getElementById('menuToggle');
+  const mobileNav=document.getElementById('mobileNav');
+  function openMenu(){
+    menuButton.setAttribute('aria-expanded','true');
+    menuButton.setAttribute('aria-label',dictionary[language]['menu.close']);
+    mobileNav.hidden=false;
+  }
+  function closeMenu(){
+    menuButton.setAttribute('aria-expanded','false');
+    menuButton.setAttribute('aria-label',dictionary[language]['menu.open']);
+    mobileNav.hidden=true;
+  }
+  menuButton.addEventListener('click',()=>menuButton.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());
+  mobileNav.querySelectorAll('a').forEach((link)=>link.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',(event)=>{if(event.key==='Escape')closeMenu();});
+
+  const fullscreenButton=document.getElementById('fullscreenToggle');
+  fullscreenButton.addEventListener('click',async()=>{
+    try{
+      if(!document.fullscreenElement)await document.documentElement.requestFullscreen();
+      else await document.exitFullscreen();
+    }catch(error){announcement.textContent=language==='ru'?'Полноэкранный режим недоступен в этом браузере.':'Fullscreen mode is unavailable in this browser.';}
+  });
+  document.getElementById('printButton').addEventListener('click',()=>window.print());
+
+  const form=document.getElementById('contactForm');
+  const status=document.getElementById('formStatus');
+  form.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    status.classList.remove('is-error','is-success');
+    if(!form.reportValidity()){
+      status.classList.add('is-error');
+      status.textContent=language==='ru'?'Проверьте заполнение полей.':'Please check the required fields.';
+      return;
+    }
+    const data=new FormData(form);
+    const subject=encodeURIComponent(language==='ru'?'Сообщение по портфолио':'Portfolio enquiry');
+    const body=encodeURIComponent(
+      (language==='ru'?'Имя: ':'Name: ')+data.get('name')+'\n'+
+      'Email: '+data.get('email')+'\n\n'+
+      (language==='ru'?'Сообщение: ':'Message: ') +data.get('message')
+    );
+    status.classList.add('is-success');
+    status.textContent=language==='ru'?'Откроется почтовое приложение. Проверьте черновик и отправьте письмо.':'Your email app will open. Review the draft and send it.';
+    window.location.href='mailto:nestlir@mail.ru?subject='+subject+'&body='+body;
+  });
+
+  applyLanguage(safeGet('nestlir-magazine-language','ru'));
+  setPage(pageFromHash(),{history:false,announce:false});
+  closeMenu();
 })();
