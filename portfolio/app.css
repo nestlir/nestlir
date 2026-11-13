@@ -31,7 +31,7 @@ footer{min-height:82px;padding:18px 5vw;display:flex;align-items:center;justify-
 .placeholder-ratio{align-self:flex-end}
 .project-copy{display:flex;flex-direction:column;align-items:flex-start}
 .project-link{margin-top:auto;min-height:42px;align-items:center}
-.filter{min-height:42px}
+.filter{min-height:44px}
 .language-switch button{min-width:38px;min-height:32px}
 .theme-toggle,.menu-toggle{width:44px;height:44px}
 .contact-link{min-height:44px;display:inline-flex;align-items:center}

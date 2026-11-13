@@ -107,7 +107,7 @@ The page now uses an editorial atlas composition while retaining the existing se
 |---|---|---|---|
 | A11Y-01 | P2 | Repeating ticker text had a redundant accessible label and could be read as content. | Marked the purely decorative ticker `aria-hidden="true"`; verify announcement behavior with a screen reader in browser QA. |
 | UX-03 | P1 | The portfolio lacked a clear editorial focal project and its media areas were abstract decorations rather than asset-ready layout slots. | DataVac gets featured placement; project visuals now have labeled 4:3 placeholders and stable IDs. |
-| UX-04 | P2 | Compact controls could fall short of comfortable touch sizing. | Main theme/menu controls and project filters now have 44px minimum targets. Language choices have 32px height and 38px width; enlarge further if device QA identifies misses. |
+| UX-04 | P2 | Compact controls could fall short of comfortable touch sizing. | Main theme/menu controls and project filters now have 44px minimum targets. At compact widths (≤360px), theme/menu controls reduce to 40px to preserve header fit; language choices have 32px height and 38px width. Confirm the compact header in browser QA. |
 | QA-03 | P1 | Existing static checks did not guard new layout and ticker semantics. | Added static assertions for decorative ticker hiding, asset slot IDs, ratio labels, feature placement and mobile rules. |
 
 ### Revised UX/UI scorecard (source review)

@@ -30,6 +30,7 @@ assert(app.includes('visual.dataset.assetSlot = project.id'), 'Project media mus
 assert(app.includes('IMAGE SLOT · 4:3'), 'Project media placeholders must communicate their intended ratio');
 assert(css.includes('.project-card:first-child{grid-column:span 2'), 'Featured team case must receive editorial feature placement');
 assert(read(responsivePath).includes('@media(max-width:700px)'), 'Mobile layout rules are required');
+assert(css.includes('.filter{min-height:44px}'), 'Project filter targets must be at least 44px high');
 assert(css.includes('prefers-reduced-motion'), 'Reduced-motion styles are missing');
 assert(app.includes('textContent'), 'Project content must use textContent');
 assert(app.includes('safeGet') && app.includes('safeSet'), 'Storage access must be guarded');
