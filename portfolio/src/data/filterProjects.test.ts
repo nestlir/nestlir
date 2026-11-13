@@ -36,7 +36,7 @@ describe('filterProjects', () => {
     expect(filterProjects(projects, {
       ...defaultCatalogFilters,
       category: 'product',
-      technology: 'TypeScript',
+      technology: 'TypeScript 5',
       query: 'vaccine'
     }).map(p => p.id)).toEqual(['datavac']);
   });

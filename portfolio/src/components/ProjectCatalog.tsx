@@ -36,7 +36,7 @@ export default function ProjectCatalog({ t, locale, onOpen }: { t: T; locale: Lo
     if (nextUrl !== currentUrl) window.history.replaceState(window.history.state, '', nextUrl);
   }, [filters]);
 
-  const update = <K extends keyof typeof filters,>(key: K, value: (typeof filters)[K]) => {
+  const update = <K extends keyof typeof filters>(key: K, value: (typeof filters)[K]) => {
     setFilters(current => ({ ...current, [key]: value }));
   };
   const reset = () => setFilters(defaultCatalogFilters);
