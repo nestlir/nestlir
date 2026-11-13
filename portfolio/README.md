@@ -11,7 +11,7 @@ A React + TypeScript portfolio combining the original Atelier Narrative editoria
 - Editorial landing page with a clear Full-Stack positioning.
 - Project catalogue with category, full-text, technology and sorting filters.
 - Shareable catalogue state through URL query parameters.
-- Evidence-led project case studies with context, contribution boundaries, architecture, decisions, outcomes and source links.
+- Evidence-led project case studies with context, contribution boundaries, architecture/data flow, decisions, contribution boundaries, outcomes, explicit limitations and source links.
 - Evidence-led Engineering section covering frontend, backend, integrations, data, quality and delivery, with links into relevant case studies.\n- Interactive architecture model for the portfolio itself.
 - Separate quality demonstrations for testing, security and performance.
 - RU / EN interface, keyboard-accessible navigation, dialog focus restoration and reduced-motion support.
