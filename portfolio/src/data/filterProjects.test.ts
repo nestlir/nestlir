@@ -37,7 +37,7 @@ describe('filterProjects', () => {
       ...defaultCatalogFilters,
       category: 'product',
       technology: 'TypeScript',
-      query: 'catalogue'
+      query: 'vaccine'
     }).map(p => p.id)).toEqual(['datavac']);
   });
 
