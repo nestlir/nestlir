@@ -161,3 +161,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .footer-action:hover{border-color:var(--orange);color:var(--orange)}
 
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Workflow note: a compact editorial quality gate, not a decorative badge row. */
+.workflow-note{margin-top:14px;padding:10px 12px;border-left:2px solid var(--orange);background:rgba(115,120,79,.08)}
+.workflow-note p{margin:5px 0 0;color:var(--muted);font:10px/1.5 var(--sans)}
+.magazine-book{touch-action:pan-y}
+.page-arrow:focus-visible,.progress-track button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
