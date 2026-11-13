@@ -12,7 +12,7 @@ Browser
       │   ├─ URL query state (category / q / technology / sort)
       │   └─ filterProjects() → typed project data
       ├─ CaseStudy (lazy-loaded)
-      │   └─ context / architecture / decisions / contribution / outcomes / evidence
+      │   └─ context / architecture and data flow / decisions / contribution / outcomes / limitations / evidence
       ├─ EngineeringCenter (six evidence-backed capability areas)\n      │   └─ project case-study links\n      ├─ ArchitectureMap (interactive target model)
       └─ QualityCards
           ├─ test strategy
