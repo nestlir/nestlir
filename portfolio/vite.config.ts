@@ -6,5 +6,9 @@ export default defineConfig({
   base: '/nestlir/portfolio/',
   publicDir: 'assets',
   build: { outDir: 'dist', emptyOutDir: true, sourcemap: true },
-  test: { environment: 'jsdom', globals: true }
+  test: {
+    include: ['src/**/*.test.ts'],
+    environment: 'jsdom',
+    globals: true
+  }
 });
