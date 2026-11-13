@@ -9,6 +9,7 @@ Browser
   └─ React App shell
       ├─ Navigation + locale state
       ├─ ProjectCatalog
+      │   ├─ URL query state (category / q / technology / sort)
       │   └─ filterProjects() → typed project data
       ├─ CaseStudy (lazy-loaded)
       │   └─ context / architecture / decisions / contribution / outcomes / evidence
@@ -24,8 +25,8 @@ Browser
 | Module | Responsibility | State / dependency |
 |---|---|---|
 | `App.tsx` | App shell, locale, mobile menu, case hash | React state; no global store |
-| `ProjectCatalog.tsx` | Search, category filters, result states | Local component state |
-| `filterProjects.ts` | Pure project selection logic | No React or browser dependency |
+| `ProjectCatalog.tsx` | Search, category, technology and sort filters | Local state synchronized to URL query parameters |
+| `filterProjects.ts` | Pure filtering, sorting and URL state parsing/serialization | No React or browser dependency |
 | `projects.ts` | Canonical typed project facts | Static TypeScript data |
 | `projectCopy.ts` | RU project-content localization | Project IDs |
 | `CaseStudy.tsx` | Detailed case presentation and dialog lifecycle | Lazy-loaded on demand |
@@ -36,7 +37,9 @@ Browser
 ## State and navigation
 
 - Locale and mobile-menu visibility are ephemeral React state.
-- Catalogue filters and search are local to the catalogue; they do not claim persistence.
+- Catalogue category, search, technology and sort are local component state reflected in URL query parameters.
+- Invalid category, technology and sort query values are ignored and fall back to safe defaults.
+- The catalogue uses `history.replaceState` so typing does not create a browser-history entry for every keystroke.
 - Opening a case writes its stable ID to the URL hash, so a case can be linked directly.
 - Project content is curated and versioned with the code. No database is used.
 - The contact action is `mailto:`; the portfolio does not receive or store messages.
@@ -54,7 +57,7 @@ If a server-side contact form is approved later, introduce it as a separate serv
 
 ## Quality gates
 
-1. `npm test` — pure filtering and project-data invariants.
+1. `npm test` — pure filtering, URL state parsing/serialization and project-data invariants.
 2. `npm run build` — strict TypeScript check, production build and aggregate JS/CSS budgets.
 3. `npm run test:e2e` — Chromium, Firefox and WebKit desktop; Chromium and WebKit mobile profiles.
 4. GitHub Actions runs the portfolio checks before Pages deployment and retains the existing SUWENKU checks.
@@ -65,4 +68,5 @@ If a server-side contact form is approved later, introduce it as a separate serv
 - **Vite + static Pages:** keep hosting simple; do not add a server solely to render portfolio content.
 - **Typed source data:** project facts are reviewed with code and do not require runtime CMS/database complexity.
 - **Lazy case studies:** defer detailed case content until a visitor opens a project.
+- **URL-backed catalogue state:** filters can be shared and restored without introducing a database or global state library.
 - **mailto for now:** no message-processing backend is introduced without a deliberate hosting and privacy decision.
