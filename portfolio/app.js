@@ -168,8 +168,8 @@
   book.addEventListener('pointercancel',()=>{startX=null;});
 
   const languageButtons=[...document.querySelectorAll('[data-lang]')];
-  function applyLanguage(next){
-    language=next==='en'?'en':'ru';
+  function applyLanguage(nextLanguage){
+    language=nextLanguage==='en'?'en':'ru';
     document.documentElement.lang=language;
     document.querySelectorAll('[data-i18n]').forEach((element)=>{
       const value=dictionary[language][element.dataset.i18n];
