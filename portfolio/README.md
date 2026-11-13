@@ -39,3 +39,11 @@ node portfolio/smoke-test.mjs
 ```
 
 The site is dependency-free static HTML, CSS and JavaScript; the existing GitHub Pages workflow can continue serving `portfolio/`.
+
+## AI Specialist Library
+
+A separate, responsive research index for AI skills, agents, plugins, MCP integrations and workflows. It keeps upstream references, capability domains, runtime compatibility, an adoption roadmap and security guidance outside the eight-page editorial issue.
+
+- Entry point: `portfolio/ai-library/index.html`.
+- Full catalogue: `portfolio/ai-library/library.md`.
+- External agent definitions are documented, not auto-installed into ChatGPT.
